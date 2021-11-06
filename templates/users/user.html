@@ -1,0 +1,154 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">System Users</h4>
+
+                       <button type="button" id="saveUser" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+                       <button type="button" id="newUser" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>
+
+
+            </div>
+
+        <div class="col-md-10 col-sm-11 mx-5">
+
+ <form id="user-form">
+     {% csrf_token %}
+<input type="hidden" name="user_id" id="userCode">
+                <div class="form-row">
+
+
+                      <div class="form-row">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">FirstName</label>
+                            <input type="text" name="user_firstname" id="firstName" class="form-control col-md-8">
+                          </div>
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">LastName</label>
+                            <input name="user_lastname" id="lastName" type="text" class="form-control col-md-8">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-12">
+                             <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Teachers</label>
+                            <input type="hidden" name="user_teacher_ref " id="teacher-id">
+
+                    <select class="form-control col-md-8" id="teacher_frm">
+
+
+                    </select>                          </div>
+                                <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">UserType</label>
+                                    <input type="hidden" name="user_type" id="userType">
+
+                    <select class="form-control col-md-8"
+                      id="usertype_frm">
+
+
+                    </select>
+                        </div>
+                        </div>
+                               <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Gender</label>
+                    <select class="form-control col-md-8"
+                      name="user_gender" id="gender">
+                     <option value=""></option>
+                     <option value="M">Male</option>
+                     <option value="F">Female</option>
+                     <option value="O">Other</option>
+
+                    </select>                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Address</label>
+                            <input name="user_address" id="address" type="text" class="form-control col-md-8">
+                          </div>
+                        </div>
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Username</label>
+                            <input name="username" id="userName" type="text" class="form-control col-md-8">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Password</label>
+                            <input type="password" name="password" id="password" class="form-control col-md-8">
+
+                        </div>
+                           </div>
+
+                          <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Email Address</label>
+                            <input name="email" id="email" type="text" class="form-control col-md-8">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Telephone</label>
+                             <input name="user_phone" id="phone" type="text" class="form-control col-md-8">
+
+                          </div>
+                        </div>
+                              <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Active</label>
+                            <input type="checkbox" name="user_active"  id="active">
+
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Report To</label>
+                                  <input type="hidden" name="user_supervisor" id="supervisor">
+                       <select class="form-control col-md-8"
+                      id="user_frm" >
+
+
+                    </select>                             </div>
+                        </div>
+
+
+                    </form>
+        </div>
+
+    </div>
+    </div>
+
+        <div class="col-md-11 col-sm-11 ml-3 mt-4 mr-0">
+
+            <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="usersTable">
+  <thead>
+    <tr>
+      <th scope="col">UserName</th>
+      <th scope="col">UserType</th>
+      <th scope="col">FirstName</th>
+      <th scope="col">LastName</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Email</th>
+       <th scope="col">Address</th>
+      <th scope="col">TelNo</th>
+      <th scope="col">ReportTo</th>
+      <th scope="col">Active</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+</div>
+
+
+
+      <script src=" {% static 'custom/users/user.js' %}"></script>
+
+{% endblock %}

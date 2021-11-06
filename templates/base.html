@@ -1,0 +1,191 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>School</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablesbootstrap.css' %}">
+
+{#                  	<link rel="stylesheet" href="{% static 'datatables/css/datatables.css' %}">#}
+{#                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablebuttons.css' %}">#}
+                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablesresponsive.css' %}">
+                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablescroller.css' %}">
+                  	<link rel="stylesheet" href="{% static 'filecontrol/css/fileinput.css' %}">
+
+        <link rel="stylesheet" href="{% static 'select2/css/select2.css' %}">
+      	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src=" {% static 'bootstrap/js/bootstrap.js' %}"></script>
+        <script src=" {% static 'datatables/js/datatables.js' %}"></script>
+                      <script src=" {% static 'datatables/js/datatablesbootstrap.js' %}"></script>
+
+              <script src=" {% static 'datatables/js/datatablebuttons.js' %}"></script>
+        <script src=" {% static 'datatables/js/datatableresponsive.js' %}"></script>
+                <script src=" {% static 'datatables/js/datatablescroller.js' %}"></script>
+                      <script src=" {% static 'filecontrol/js/fileinput.js' %}"></script>
+
+
+        <script src=" {% static 'select2/js/select2.js' %}"></script>
+        <script src="{% static 'js/bootbox.min.js' %}"></script>
+        <script src=" {% static 'custom/base.js' %}"></script>
+
+  </head>
+  <body>
+	<div class="wrapper">
+            <nav id="sidebar">
+               <div class="sidebar-header">
+                   <h1>SchoolSys</h1>
+               </div>
+
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="#setupsSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-cogs"></i></span>Configs</a>
+                        <ul class="collapse list-unstyled" id="setupsSubMenu">
+                                 <li>
+                    <a href="#">System Setups</a>
+                                </li>
+                <li>
+                    <a href="{% url 'usersadmin' %}">Admin Setups</a>
+                </li>
+                <li>
+                    <a href="#">Account Setups</a>
+                </li>
+                      <li>
+                    <a href="{% url 'academics' %}">Academic Setups</a>
+                      </li>
+                               <li>
+                    <a href="#">End of Period</a>
+                      </li>
+
+                        </ul>
+                    </li>
+                                <li>
+              <a href="#userSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-users"></i></span>Users</a>
+              <ul class="collapse list-unstyled" id="userSubmenu">
+                <li>
+                    <a href="#">Registration</a>
+                </li>
+                <li>
+                    <a href="#">Roles</a>
+                </li>
+
+              </ul>
+	          </li>
+                      <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-graduation-cap"></i></span>Students</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="">Student Enquiry</a>
+                </li>
+                <li>
+                    <a  href="{% url 'getparent' %}">Parents</a>
+                </li>
+                <li>
+                    <a href="#">Student Details</a>
+                </li>
+                  <li>
+                    <a href="#">Online Applications</a>
+                </li>
+                     <li>
+                    <a href="#">Student Subjects</a>
+                </li>
+                   <li>
+                    <a href="#">Student Movements</a>
+                </li>
+                     <li>
+                    <a href="#">Student Daily Register</a>
+                </li>
+                     <li>
+                    <a href="#">Trips</a>
+                </li>
+                      <li>
+                    <a href="#">Extra Curriculum</a>
+                </li>
+                        <li>
+                    <a href="#">Events Calendar</a>
+                </li>
+              </ul>
+	          </li>
+	             <li>
+              <a href="#marksSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-book"></i></span>Marks</a>
+              <ul class="collapse list-unstyled" id="marksSubmenu">
+                <li>
+                    <a href="#">Register</a>
+                </li>
+                <li>
+                    <a href="#">Mark</a>
+                </li>
+                <li>
+                    <a href="#">Combine</a>
+                </li>
+                  <li>
+                    <a href="#">Grade</a>
+                </li>
+              </ul>
+	          </li>
+	            <li>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-money"></i></span>Finance</a>
+              <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li>
+                    <a href="#">Payments</a>
+                </li>
+                <li>
+                    <a href="#">Balances</a>
+                </li>
+                <li>
+                    <a href="#">Creditors</a>
+                </li>
+                  <li>
+                    <a href="#">Clearances</a>
+                </li>
+                    <li>
+                    <a href="#">Reception</a>
+                </li>
+              </ul>
+	          </li>
+                <li>
+              <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-line-chart"></i></span>Reports</a>
+              <ul class="collapse list-unstyled" id="reportsSubmenu">
+                <li>
+                    <a href="#">Students</a>
+                </li>
+                <li>
+                    <a href="#">Departments</a>
+                </li>
+                <li>
+                    <a href="#">Halls</a>
+                </li>
+                  <li>
+                    <a href="#">Leaving</a>
+                </li>
+              </ul>
+	          </li>
+                </ul>
+            </nav>
+
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                  <button type="button" id="sidebarCollapse" class="btn btn-muted">
+                      <i class="fa fa-bars" style="font-size:27px"></i>
+                  </button>
+                  <a class="pull-right mr-3" href="{% url 'logout' %}"><i class="fa fa-sign-out"></i>Logout</a>
+              </div>
+            </nav>
+          <br>
+                 {% block content %}
+
+        {% endblock %}
+        </div>
+        </div>
+
+
+
+  </body>
+</html>

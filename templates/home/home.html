@@ -1,0 +1,119 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+    <h2 class="text-muted mr-3 ml-5">Home Coming Soon</h2>
+{#        <div class="col-md-10 col-sm-11 mx-auto">#}
+{#            <form id="student-form">#}
+{#                {% csrf_token %}#}
+{#                <input type="hidden" name="stdCode" id="inputCode">#}
+{#                <div class="form-group row mb-3">#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputFirstname">First Name</label>#}
+{#                        <input type="text" name="firstName" class="form-control" id="inputFirstname" placeholder="">#}
+{#                    </div>#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputLastname">Last Name</label>#}
+{#                        <input type="text" name="lastName" class="form-control" id="inputLastname" placeholder="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group row mb-3">#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputAddressLine1">Age</label>#}
+{#                        <input type="text" name="age" class="form-control" id="inputAge" placeholder="">#}
+{#                    </div>#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputAddressLine2">Height</label>#}
+{#                        <input type="text" name="height" class="form-control" id="inputHeight" placeholder="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group row mb-3">#}
+{#                         <div class="col-sm ml-2 mr-2">#}
+{##}
+{#                    <label for="country-frm" class="control-label col-md-2" style="font-weight: lighter">#}
+{#            Country</label>#}
+{##}
+{#                <input type="hidden" id="country-id" name="stud_country"/>#}
+{#                <input type="hidden" id="country-name">#}
+{#                <select id="country-frm" class="form-control"#}
+{#                     >#}
+{##}
+{##}
+{#        </select>#}
+{#                   </div>#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#              <label for="county-frm" class="control-label col-md-2" style="font-weight: lighter">#}
+{#              County</label>#}
+{##}
+{#                <input type="hidden" id="county-id" name="stud_county"/>#}
+{#                <input type="hidden" id="county-name">#}
+{#                <select id="county-frm" class="form-control"#}
+{#                     >#}
+{##}
+{##}
+{#        </select>#}
+{#                    </div>#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputPostalCode">Town</label>#}
+{#                        <input type="text" name="town" class="form-control" id="inputTown" placeholder="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group row mb-3">#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputContactNumber">Contact Number</label>#}
+{#                        <input type="text" name="phone" class="form-control" id="inputPhone" placeholder="">#}
+{#                    </div>#}
+{#                    <div class="col-sm  ml-2 mr-2">#}
+{#                        <label for="inputWebsite">Website</label>#}
+{#                        <input type="text" name="website" class="form-control" id="inputWebsite" placeholder="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                   <div class="form-group row mb-3">#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputContactNumber">Logo</label>#}
+{#                        <input type="file" name="file" class="form-control" id="parent-avatar" placeholder="">#}
+{#                    </div>#}
+{#                    <div class="col-sm  ml-2 mr-2">#}
+{#                        <label for="inputWebsite">&nbsp;</label>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <button type="button" id="save-stud" class="btn btn-outline-primary px-4 float-right">Save</button>#}
+{##}
+{##}
+{#            </form>#}
+{#        </div>#}
+{#        <div class="col-md-10 col-sm-11 mx-auto mt-4">#}
+{##}
+{#            <div class="table-responsive">#}
+{#        <table class="table table-striped display responsive nowrap" id="studTable">#}
+{#  <thead>#}
+{#    <tr>#}
+{#      <th scope="col">Name</th>#}
+{#      <th scope="col">Age</th>#}
+{#      <th scope="col">Country</th>#}
+{#      <th scope="col">County</th>#}
+{#      <th scope="col">Town</th>#}
+{#      <th scope="col">Phone</th>#}
+{#      <th scope="col">Website</th>#}
+{##}
+{#        <th></th>#}
+{#        <th></th>#}
+{##}
+{#    </tr>#}
+{#  </thead>#}
+{#  <tbody>#}
+{#  </tbody>#}
+{#</table>#}
+{#    </div>#}
+{##}
+{#        </div>#}
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/main.js' %}"></script>
+
+{% endblock %}

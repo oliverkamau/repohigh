@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
+		<link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+
+      	<link rel="stylesheet" href="{% static 'css/login.css' %}">
+        <script src="{% static 'js/jquery.js' %}"></script>
+        <script src="{% static 'js/popper.js' %}"></script>
+        <script src=" {% static 'bootstrap/js/bootstrap.js' %}"></script>
+
+</head>
+<body class="my-login-page">
+	  <div class="container">
+        <div class="row">
+			<div class="col-md-5 mx-auto">
+			<div id="first">
+				<div class="myform form ">
+					 <div class="logo mb-4">
+						 <div class="col-md-12 text-center">
+							<h1>SchoolSys</h1>
+						 </div>
+					</div>
+
+                   <form action="{% url 'userlogin' %}" method="post">
+                       {% csrf_token %}
+                           <div class="form-group mb-3 mt-4">
+                              <label for="exampleInputEmail1">Username</label>
+                              <input type="text" name="username"  class="form-control" id="email" aria-describedby="emailHelp" placeholder="">
+                           </div>
+                           <div class="form-group mb-3 mt-3">
+                              <label for="exampleInputEmail1">Password</label>
+                              <input type="password" name="password" id="password"  class="form-control" aria-describedby="emailHelp" placeholder="">
+                           </div>
+                           <div class="form-group">
+                              <p class="text-center">&nbsp;</p>
+                           </div>
+                           <div class="col-md-12 text-center mb-3">
+                              <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm">Login</button>
+                           </div>
+                           <div class="col-md-12 mb-3">
+                               {% if messages %}
+                                   {% for message in messages %}
+   <div class="alert alert-danger text-center">
+{{ message }}
+   </div>
+                                   {% endfor %}
+                             {% endif %}
+                           </div>
+                           <div class="col-md-12 mb-3 mt-2">
+                              <p class="text-center">
+                                 <a href="javascript:void();" class="google btn mybtn"><i class="fa fa-key">
+                                 </i> Forgot Password?
+                                 </a>
+                              </p>
+                           </div>
+                           <div class="form-group">
+                              <p class="text-center">©2021 All Rights Reserved</p>
+                           </div>
+                        </form>
+
+				</div>
+			</div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Parents Setups</h4>
+
+                       <button type="button" id="saveParent" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+                       <button type="button" id="newParent" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>
+
+                <label class="btn btn-outline-success mr-1 ml-2 pull-right" id="excelParent">
+                        Excel <input type="file" id="btn-import-parent" style="display: none;" accept="application/vnd.ms-excel">
+                    </label>
+               <form action="{% url 'downloadexcel' %}">
+                 {% csrf_token %}
+                                 <button type="submit"  class="btn btn-outline-success mr-1 ml-2 pull-right">Download</button>
+
+               </form>
+
+
+            </div>
+        <div class="col-md-10 col-sm-11 mx-5">
+
+ <form id="parent-form">
+     {% csrf_token %}
+<input type="hidden" name="parent_code" id="parentCode">
+                <div class="form-row">
+
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-1 ml-1 mr-1">
+                            <h6 class="text-muted">Father Details/Guardian Details</h6>
+                          </div>
+                          <div class="form-row mb-2 ml-1 mr-1">
+                           &nbsp;
+                          </div>
+                        </div>
+                         <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-1 ml-1 mr-1">
+                            <h6 class="text-muted">Mother Details</h6>
+                          </div>
+                          <div class="form-row mb-1 ml-1 mr-1">
+                           &nbsp;
+                          </div>
+                        </div>
+
+
+                      <div class="form-row">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Name</label>
+                            <input type="text" name="father_name" id="fatherName" class="form-control col-md-8">
+                          </div>
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Address</label>
+                            <input name="father_address" id="fatherAddress" type="text" class="form-control col-md-8">
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Name</label>
+                            <input name="mother_name" id="motherName" type="text" class="form-control col-md-8">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Address</label>
+                            <input name="mother_address" id="motherAddress" type="text" class="form-control col-md-8">
+                          </div>
+                        </div>
+                               <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">ID No.</label>
+                            <input name="id_no" id="idNo" type="text" class="form-control col-md-8">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Telephone No.</label>
+                            <input name="father_phone" id="fatherPhone" type="text" class="form-control col-md-8">
+                          </div>
+                        </div>
+
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">&nbsp;</label>
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Telephone No.</label>
+                            <input name="mother_phone" id="motherPhone" type="text" class="form-control col-md-8">
+                          </div>
+                        </div>
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Email Address</label>
+                            <input name="father_email" id="fatherEmail" type="text" class="form-control col-md-8">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Proffession</label>
+                                  <input type="hidden" name="father_proffession" id="fatherProffession">
+                                  <select id="prf-frm" type="text" class="form-control col-md-8"></select>
+                          </div>
+                        </div>
+
+                          <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Email Address</label>
+                            <input name="mother_email" id="motherEmail" type="text" class="form-control col-md-8">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Proffession</label>
+                                  <input type="hidden" name="mother_proffession" id="motherProffession">
+                                  <select id="prm-frm" type="text" class="form-control col-md-8"></select>
+                          </div>
+                        </div>
+                              <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Par/Guardian</label>
+                      <select class="form-control col-md-4"
+                      name="parent_type" id="parentType">
+                     <option value=""></option>
+                     <option value="P">Parent</option>
+                     <option value="G">Guardian</option>
+
+                    </select>
+                              <label for="unit-id" class="col-md-3 ml-3 col-sm-11 control-label">Email_Required</label>
+
+                        <div class="col-md-1 col-sm-11">
+                          <input type="checkbox" name="email_required"  id="emailRequired">
+
+                        </div>
+                          </div>
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">Prepared In</label>#}
+{#                            <input type="text" class="form-control col-md-8">#}
+{#                          </div>#}
+                        </div>
+
+{#                              <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">&nbsp;</label>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">&nbsp;</label>#}
+{#                          </div>#}
+{#                        </div>#}
+                              <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Parent_Photo</label>
+                            <input type="file" name="file" id="parent-avatar" class="form-control col-md-8">
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </form>
+        </div>
+
+    </div>
+        <div class="col-md-11 col-sm-11 mx-5 mt-4">
+
+            <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="parTable">
+  <thead>
+    <tr>
+      <th scope="col">Father Name</th>
+      <th scope="col">Address</th>
+      <th scope="col">TelNo</th>
+      <th scope="col">occupation</th>
+      <th scope="col">Email</th>
+      <th scope="col">Par/Gur</th>
+      <th scope="col">Mother Name</th>
+       <th scope="col">Address</th>
+      <th scope="col">TelNo</th>
+      <th scope="col">occupation</th>
+      <th scope="col">Email</th>
+      <th scope="col">Require Mail</th>
+              <th scope="col">ID No</th>
+
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/students/parents.js' %}"></script>
+
+{% endblock %}

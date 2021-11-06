@@ -1,0 +1,164 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+            <div class="col-md-11 col-sm-11 mx-3">
+
+              <h4 class="text-muted mb-3">Class Setups</h4>
+            </div>
+
+        <div class="col-md-11 col-sm-11 mx-3">
+<button type="button" class="btn btn-outline-primary float-right" id="open-modal">
+    New
+</button>
+
+
+        </div>
+
+        <div class="col-md-11 col-sm-12 mt-2 mx-3">
+
+        <table class="table table-striped display responsive nowrap" id="classTable">
+  <thead>
+    <tr>
+      <th scope="col">Class Name</th>
+      <th scope="col">Next Class</th>
+      <th scope="col">Class Teacher</th>
+      <th scope="col">Max Capacity</th>
+      <th scope="col">Current Capacity</th>
+      <th scope="col">Active</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+
+<div class="modal fade" id="classModal" role="dialog" aria-labelledby="classModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="classModalTitle">Add/Edit Classes</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="class-form">
+                {% csrf_token %}
+                <input type="hidden" name="class_code" id="classCode">
+                <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Form</label>
+
+                        <div class="col-md-8 col-sm-11 ml-0">
+                         <input type="text" name="form" class="form-control" id="form" placeholder="">
+
+                        </div>
+                </div>
+                 <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Stream</label>
+
+                        <div class="col-md-8 col-sm-11">
+                            <textarea type="text" name="stream" class="form-control" id="stream" placeholder=""></textarea>
+
+                        </div>
+                </div>
+                    <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Class_Name</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="text" name="class_name" class="form-control" id="className" placeholder="">
+
+                        </div>
+                </div>
+                <div class="form-group row mb-3">
+                         <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Active</label>
+
+                        <div class="col-md-8 col-sm-11">
+                          <input type="checkbox" name="active"  id="active">
+
+                        </div>
+                </div>
+                  <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Max Capacity</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="text" name="max_capacity" class="form-control" id="maxCapacity" placeholder="">
+
+                        </div>
+                </div>
+
+                   <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Current Capacity</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="text" name="current_capacity" class="form-control" id="currentCapacity" placeholder="" readonly>
+
+                        </div>
+                </div>
+                   <div class="form-group row mb-3">
+                         <input type="hidden" id="teacher-id" name="class_teacher"/>
+                          <input type="hidden" id="teacher-name">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Teacher</label>
+
+                        <div class="col-md-8 col-sm-11">
+
+                            <select id="teacher-frm" class="form-control"
+                     >
+
+
+        </select>
+                        </div>
+                </div>
+                            <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Next_Class</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="hidden" id="next-id" name="next_class"/>
+                          <input type="hidden" id="next-name">
+                         <select id="class-frm" class="form-control"
+                     >
+
+
+        </select>
+                        </div>
+                </div>
+{#                   <div class="form-group row mb-3">#}
+{#                          <label for="unit-id" class="col-md-3 col-sm-11 control-label">Next Class</label>#}
+{##}
+{#                        <div class="col-md-8 col-sm-11">#}
+{#                         <input type="hidden" id="class-id" name="next_class"/>#}
+{#                          <input type="hidden" id="class-name">#}
+{#                         <select id="class-frm" class="form-control"#}
+{#                     >#}
+{#                </div>#}
+{#                   </div>#}
+                   <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Adm_Prefix</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="text" name="admno_prefix" class="form-control" id="admnoPrefix" placeholder="">
+
+                        </div>
+                </div>
+
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="saveClass" class="btn btn-outline-primary">Save</button>
+
+        <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </div>
+
+      <script src=" {% static 'custom/setups/academics/classes.js' %}"></script>
+
+{% endblock %}
