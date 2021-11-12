@@ -1,0 +1,682 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+{#    <h2 class="text-muted mr-3 ml-5">Home Coming Soon</h2>#}
+           <div class="col-md-12 col-sm-12 mx-1 mb-2">
+
+              <h4 class="text-muted mr-3 ml-5">Student Details</h4>
+                        <div class="mr-2 ml-4">
+                       <button type="button" id="saveParent" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+                       <button type="button" id="newParent" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>
+
+                <label class="btn btn-outline-success mr-1 ml-2 pull-right" id="excelParent">
+                        Excel <input type="file" id="btn-import-parent" style="display: none;" accept="application/vnd.ms-excel">
+                    </label>
+               <form action="{% url 'downloadexcel' %}">
+                 {% csrf_token %}
+                                 <button type="submit"  class="btn btn-outline-success mr-1 ml-2 pull-right">Download</button>
+
+               </form>
+                        </div>
+
+            </div>
+         <div class="container">
+      <div class="row mr-2 ml-2">
+
+
+
+
+        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">
+        	<br />
+
+        	<ul class="nav nav-tabs">
+        		<li class="nav-item">
+        			<a href="#home" class="nav-link active" role="tab" data-toggle="tab">Main</a>
+        		</li>
+
+        		<li class="nav-item">
+        			<a href="#profile" class="nav-link" role="tab" data-toggle="tab">Contact Details</a>
+        		</li>
+
+        		<li class="nav-item">
+        			<a href="#about" class="nav-link" role="tab" data-toggle="tab">Other Details</a>
+        		</li>
+
+        		<li class="nav-item">
+        			<a href="#dis" class="nav-link" role="tab" data-toggle="tab">Documents</a>
+        		</li>
+        	</ul>
+
+        	<div class="tab-content">
+        		<div role="tabpanel" class="tab-pane fade show active" id="home">
+
+        <div class="col-md-12 col-sm-12 mx-0 mt-4">
+
+ <form id="parent-form">
+     {% csrf_token %}
+<input type="hidden" name="parent_code" id="parentCode">
+                <div class="form-row">
+                      <div class="form-row">
+                        <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Adm No.</label>
+                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">
+                          </div>
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">UPI No.</label>
+                            <input name="student_upi" id="upi" type="text" class="form-control col-md-8">
+                          </div>
+
+                        </div>
+                        <div class="col-md-3 col-sm-12">
+                          <div class="form-row mb-4">
+                              <button type="button" id="loadPhoto" class="btn btn-outline-secondary col-md-10">Load Student Photo</button>
+                          </div>
+                              <div class="form-row mb-4">
+                              <button type="button" id="detailedReport" class="btn btn-outline-secondary col-md-10">Detailed Reports</button>
+
+                          </div>
+                        </div>
+                               <div class="col-md-5 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Fee Category</label>
+                            <input type="hidden" name="student_fee_category" id="feeCategory">
+
+                            <select id="fee_frm" class="form-control col-md-8">
+
+                            </select>
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Dorm/House</label>
+                             <input type="hidden" name="student_dorm" id="dorm">
+
+                            <select name="student_dorm" id="dorm_frm" class="form-control col-md-8">
+                            </select>
+                          </div>
+                        </div>
+
+                           <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Name</label>
+                             <input name="student_name" id="studentName" type="text" class="form-control col-md-8">
+
+                          </div>
+                              <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Gender</label>
+                            <select name="student_gender" id="gender" class="form-control col-md-8">
+                                <option value=""></option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
+                                <option value="O">Other</option>
+                            </select>
+                          </div>
+                        </div>
+                              <div class="col-md-3 col-sm-12">
+                          <div class="form-row mb-3">
+                              <button type="button" id="exportPhoto" class="btn btn-outline-secondary col-md-10">Export Photos</button>
+                          </div>
+                              <div class="form-row mb-3">
+                              <button type="button" id="leaveOuts" class="btn btn-outline-secondary col-md-10">Issue Leaveouts</button>
+
+                          </div>
+                        </div>
+
+                         <div class="col-md-5 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Campus</label>
+                            <input type="hidden" name="student_campus" id="campus">
+                            <select id="campus_frm" class="form-control col-md-8">
+                            </select>
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Fee Balance</label>
+                          </div>
+                        </div>
+                            <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-1">
+                            <label class="col-md-3 control-label" for="select">Class</label>
+                            <input type="hidden" name="student_class" id="studentClass">
+
+                            <select id="class_frm" class="form-control col-md-8">
+
+                            </select>
+                          </div>
+                          <div class="form-row mb-1">
+                            &nbsp;
+                          </div>
+
+                        </div>
+                          <div class="col-md-3 col-sm-12">
+                          <div class="form-row mb-1">
+                            <select name="adm_term" id="term" class="form-control col-md-10">
+                                <option value="">Term</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+
+                            </select>
+                          </div>
+                              <div class="form-row mb-1">
+                            &nbsp;
+                          </div>
+                        </div>
+
+                          <div class="col-md-5 col-sm-12">
+                          <div class="form-row mb-1 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Parent/Guardian</label>
+                             <input type="hidden" name="student_parent" id="parent">
+                            <select id="parent_frm" type="text" class="form-control col-md-8">
+                            </select>
+                          </div>
+                              <div class="form-row mb-1 ml-1 mr-1">
+                                  &nbsp;
+                          </div>
+                        </div>
+                           <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-4">
+                            &nbsp;
+                          </div>
+                          <div class="form-row mb-4">
+                            &nbsp;
+                          </div>
+
+                        </div>
+                            <div class="col-md-3 col-sm-12">
+                          <div class="form-row mb-3">
+                              <button type="button" id="stats" class="btn btn-outline-secondary col-md-10">Statistics</button>
+                          </div>
+                              <div class="form-row mb-3">
+                             &nbsp;
+                          </div>
+                        </div>
+                           <div class="col-md-5 col-sm-12">
+                          <div class="form-row mb-1 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Photo</label>
+                            <input type="file" name="student_photo" id="student-avatar" class="form-control col-md-8">
+                          </div>
+                              <div class="form-row mb-1 ml-1 mr-1">
+                                  &nbsp;
+                          </div>
+                        </div>
+{#                              <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">&nbsp;</label>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">&nbsp;</label>#}
+{#                          </div>#}
+{#                        </div>#}
+
+
+                      </div>
+                      </div>
+                    </form>
+
+
+    </div>
+
+
+
+                </div>
+        		<div role="tabpanel" class="tab-pane fade" id="profile">
+
+
+                     <div class="col-md-12 col-sm-12 mx-0 mt-4">
+
+      <form id="parent-form">
+     {% csrf_token %}
+  <input type="hidden" name="parent_code" id="parentCode">
+                <div class="form-row">
+                      <div class="form-row">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Nationality</label>
+                            <input type="hidden" name="nationality" id="nationality">
+
+                            <select id="nationality_frm" class="form-control col-md-7">
+                            </select>
+                          </div>
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">County</label>
+                             <input type="hidden" name="student_county" id="studentCounty">
+
+                            <select id="county_frm" class="form-control col-md-6">
+                            </select>
+                          </div>
+
+                        </div>
+                               <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Address</label>
+                              <textarea name="student_address" id="address" class="form-control col-md-7"></textarea>
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Student Email</label>
+                            <input name="student_email" id="studentEmail" type="text" class="form-control col-md-7">
+                          </div>
+                        </div>
+
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">SubCounty</label>
+                              <input type="hidden" name="stud_sub_county" id="subCounty">
+
+                            <select id="subcounty_frm" class="form-control col-md-6">
+                            </select>
+                          </div>
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Location</label>
+                            <input type="hidden" name="stud_location" id="location">
+
+                            <select id="location_frm" type="text" class="form-control col-md-6">
+                            </select>
+                          </div>
+
+                        </div>
+                                <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Parent Phone</label>
+                              <input name="parent_phone" id="parentPhone" type="text" class="form-control col-md-7">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Student Phone</label>
+                            <input name="student_phone" id="studentPhone" type="text" class="form-control col-md-7">
+                          </div>
+                        </div>
+
+
+                      <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">SubLocation</label>
+                              <input type="hidden" name="stud_sub_location" id="subLocation">
+                            <select  id="sublocation_frm" class="form-control col-md-6">
+                            </select>
+                          </div>
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Village</label>
+                             <input type="hidden" name="stud_village" id="village">
+
+                            <select id="village_frm" class="form-control col-md-6">
+                            </select>
+                          </div>
+
+                        </div>
+
+
+                      </div>
+                      </div>
+                    </form>
+
+
+    </div>
+
+
+                </div>
+        		<div role="tabpanel" class="tab-pane fade" id="about">
+
+
+                    <div class="col-md-12 col-sm-12 mx-0 mt-4">
+
+ <form id="parent-form">
+     {% csrf_token %}
+<input type="hidden" name="parent_code" id="parentCode">
+                <div class="form-row">
+                      <div class="form-row">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Adm. Date</label>
+                            <input type="date" name="adm_date" id="admDate" class="form-control col-md-6">
+                          </div>
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">D.O.B</label>
+                            <input name="date_of_birth" id="dob" type="date" class="form-control col-md-6">
+                          </div>
+
+                        </div>
+                               <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Completion Date</label>
+                            <input name="completion_date" id="completionDate" type="date" class="form-control col-md-6">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Denomination</label>
+                                  <input type="hidden" name="student_denomination" id="religion">
+                            <select id="denomination_frm" class="form-control col-md-7">
+                            </select>
+                          </div>
+                        </div>
+
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">BirthCertNo.</label>
+                            <input type="text" name="birth_cert_no" id="birthCertNo" class="form-control col-md-6">
+                          </div>
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Source</label>
+                            <input type="hidden" name="student_sources" id="sources">
+
+                            <select id="sources_frm" class="form-control col-md-6">
+                            </select>
+                          </div>
+
+                        </div>
+                                <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Index No.</label>
+                              <input name="index_no" id="indexNo" type="text" class="form-control col-md-4 mr-1">
+                              <input type="hidden" name="year" id="year">
+                                                            <select id="year_frm" class="form-control col-md-3">
+                                                            </select>
+
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">KCPE Marks</label>
+                            <input name="marks" id="marks" type="text" class="form-control col-md-6">
+                          </div>
+                        </div>
+
+
+                      <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Health Status</label>
+                             <input type="hidden" name="health_status" id="healthStatus">
+
+                            <select id="healthstatus_frm" class="form-control col-md-6">
+                            </select>
+                          </div>
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">KCPE Grade</label>
+                            <input name="grade" id="grade" type="text" class="form-control col-md-6">
+                          </div>
+
+                        </div>
+
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Primary School</label>
+                              <input name="primary_school" id="primarySchool" type="text" class="form-control col-md-6 mr-1">
+
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Student Status</label>
+                            <input type="hidden" name="student_status" id="studentStatus">
+
+                                  <select id="studentstatus_frm" type="text" class="form-control col-md-7"></select>
+                          </div>
+                        </div>
+
+
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">&nbsp;</label>
+                          </div>
+
+                        </div>
+
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                           <label class="col-md-4 control-label" for="select">&nbsp;</label>
+
+                              <button type="button" id="healthStatus" class="btn btn-outline-secondary col-md-7">Health Status</button>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+                      </div>
+                    </form>
+
+
+    </div>
+
+
+
+                </div>
+                        		<div role="tabpanel" class="tab-pane fade" id="dis">
+
+
+                                    <div class="col-md-12 col-sm-12 mx-0 mt-4">
+
+ <form id="parent-form">
+     {% csrf_token %}
+<input type="hidden" name="parent_code" id="parentCode">
+                <div class="form-row">
+                        <div class="col-md-6 col-sm-12 mb-4">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Document</label>
+                              <input type="hidden" name="student_document" id="studentDocument">
+                            <select id="document_frm" class="form-control col-md-6 mr-1">
+                            </select>
+
+                              <label class="btn btn-outline-secondary ml-1" id="getDocs">
+                        Browse <input type="file" id="btn-import-docs" style="display: none;">
+                    </label>
+                          </div>
+
+                        </div>
+                         <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">&nbsp;</label>
+                              <button type="button" id="batch" class="btn btn-outline-secondary col-md-7">Load Batch Student Photo</button>
+                          </div>
+
+                        </div>
+
+                      <div class="col-md-9 col-sm-12 mt-4">
+                          <div class="form-row mb-4">
+                            <label class="col-md-2 control-label" for="select">&nbsp;</label>
+                              <button type="button" id="saveDocs" class="btn btn-outline-primary col-md-2 mr-1">Save</button>
+                              <button type="button" id="deleteDocs" class="btn btn-outline-danger col-md-2">Delete</button>
+
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </form>
+
+
+    </div>
+
+
+
+
+                                </div>
+
+        	</div>
+        </div>
+
+                     <div class="col-md-11 col-sm-11 mx-1 mb-1">
+                                             <div class="form-row">
+
+                              <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-1">
+                            <label class="col-md-2 control-label" for="select">Name</label>
+                            <input type="text" name="father_name" id="fatherName" class="form-control col-md-9">
+                          </div>
+
+
+                        </div>
+                          <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-1">
+                           <label class="col-md-2 control-label" for="select">Class</label>
+                            <input type="text" name="father_name" id="fatherName" class="form-control col-md-9">                          </div>
+
+                        </div>
+
+                          <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-1 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Status</label>
+                            <select name="id_no" id="idNo" class="form-control col-md-9">
+                                 <option value=""></option>
+                                 <option value="S">Suspended</option>
+                                 <option value="T">Transferred</option>
+                                 <option value="E">Expelled</option>
+                                 <option value="G">Graduated</option>
+
+                            </select>
+                          </div>
+
+                        </div>
+
+                                                 <div class="col-md-12 col-sm-12 mx-1 mt-4">
+<div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="parTable">
+  <thead>
+    <tr>
+      <th scope="col">AdmNo</th>
+      <th scope="col">Name</th>
+      <th scope="col">BirthDate</th>
+      <th scope="col">AdmDate</th>
+       <th scope="col">CompletionDate</th>
+      <th scope="col">Dorm</th>
+      <th scope="col">Form</th>
+      <th scope="col">Stream</th>
+       <th scope="col">Class</th>
+      <th scope="col">Parent</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Nationality</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+        </div>
+                                                     </div>
+
+                     </div>
+
+
+
+                     </div>
+
+    </div>
+         </div>
+
+{#        <div class="col-md-10 col-sm-11 mx-auto">#}
+{#            <form id="student-form">#}
+{#                {% csrf_token %}#}
+{#                <input type="hidden" name="stdCode" id="inputCode">#}
+{#                <div class="form-group row mb-3">#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputFirstname">First Name</label>#}
+{#                        <input type="text" name="firstName" class="form-control" id="inputFirstname" placeholder="">#}
+{#                    </div>#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputLastname">Last Name</label>#}
+{#                        <input type="text" name="lastName" class="form-control" id="inputLastname" placeholder="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group row mb-3">#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputAddressLine1">Age</label>#}
+{#                        <input type="text" name="age" class="form-control" id="inputAge" placeholder="">#}
+{#                    </div>#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputAddressLine2">Height</label>#}
+{#                        <input type="text" name="height" class="form-control" id="inputHeight" placeholder="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group row mb-3">#}
+{#                         <div class="col-sm ml-2 mr-2">#}
+{##}
+{#                    <label for="country-frm" class="control-label col-md-2" style="font-weight: lighter">#}
+{#            Country</label>#}
+{##}
+{#                <input type="hidden" id="country-id" name="stud_country"/>#}
+{#                <input type="hidden" id="country-name">#}
+{#                <select id="country-frm" class="form-control"#}
+{#                     >#}
+{##}
+{##}
+{#        </select>#}
+{#                   </div>#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#              <label for="county-frm" class="control-label col-md-2" style="font-weight: lighter">#}
+{#              County</label>#}
+{##}
+{#                <input type="hidden" id="county-id" name="stud_county"/>#}
+{#                <input type="hidden" id="county-name">#}
+{#                <select id="county-frm" class="form-control"#}
+{#                     >#}
+{##}
+{##}
+{#        </select>#}
+{#                    </div>#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputPostalCode">Town</label>#}
+{#                        <input type="text" name="town" class="form-control" id="inputTown" placeholder="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="form-group row mb-3">#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputContactNumber">Contact Number</label>#}
+{#                        <input type="text" name="phone" class="form-control" id="inputPhone" placeholder="">#}
+{#                    </div>#}
+{#                    <div class="col-sm  ml-2 mr-2">#}
+{#                        <label for="inputWebsite">Website</label>#}
+{#                        <input type="text" name="website" class="form-control" id="inputWebsite" placeholder="">#}
+{#                    </div>#}
+{#                </div>#}
+{#                   <div class="form-group row mb-3">#}
+{#                    <div class="col-sm ml-2 mr-2">#}
+{#                        <label for="inputContactNumber">Logo</label>#}
+{#                        <input type="file" name="file" class="form-control" id="parent-avatar" placeholder="">#}
+{#                    </div>#}
+{#                    <div class="col-sm  ml-2 mr-2">#}
+{#                        <label for="inputWebsite">&nbsp;</label>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <button type="button" id="save-stud" class="btn btn-outline-primary px-4 float-right">Save</button>#}
+{##}
+{##}
+{#            </form>#}
+{#        </div>#}
+{#        <div class="col-md-10 col-sm-11 mx-auto mt-4">#}
+{##}
+{#            <div class="table-responsive">#}
+{#        <table class="table table-striped display responsive nowrap" id="studTable">#}
+{#  <thead>#}
+{#    <tr>#}
+{#      <th scope="col">Name</th>#}
+{#      <th scope="col">Age</th>#}
+{#      <th scope="col">Country</th>#}
+{#      <th scope="col">County</th>#}
+{#      <th scope="col">Town</th>#}
+{#      <th scope="col">Phone</th>#}
+{#      <th scope="col">Website</th>#}
+{##}
+{#        <th></th>#}
+{#        <th></th>#}
+{##}
+{#    </tr>#}
+{#  </thead>#}
+{#  <tbody>#}
+{#  </tbody>#}
+{#</table>#}
+{#    </div>#}
+{##}
+{#        </div>#}
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/students/studentdetails.js' %}"></script>
+
+{% endblock %}

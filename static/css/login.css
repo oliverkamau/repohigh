@@ -7,7 +7,9 @@
          text-decoration:none !important;
          }
          h1,h2,h3{
-         font-family: 'Kaushan Script', cursive;
+         /*font-family: 'Kaushan Script', cursive;*/
+             font-weight: bold;
+
          }
           .myform{
 		position: relative;

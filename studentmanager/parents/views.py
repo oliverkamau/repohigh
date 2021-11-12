@@ -16,8 +16,8 @@ from rest_framework import status
 from studentmanager.parents.forms import ParentsForm
 from studentmanager.parents.models import Parents, ExcelFile
 from studentmanager.parents.proffessions.models import Proffessions
-from students.models import Select2Data
-from students.serializers import Select2Serializer
+from localities.models import Select2Data
+from localities.serializers import Select2Serializer
 from django.conf import Settings, settings
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)

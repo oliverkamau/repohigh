@@ -6,8 +6,8 @@ from django.shortcuts import render
 from django.views.decorators.cache import cache_control
 
 from staff.teachers.models import Teachers
-from students.models import Select2Data
-from students.serializers import Select2Serializer
+from localities.models import Select2Data
+from localities.serializers import Select2Serializer
 from useradmin.users.forms import UserForm
 from useradmin.users.models import UserType, User
 

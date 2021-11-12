@@ -15,6 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 import os
 
+from django.conf import settings
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -33,7 +35,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'rest_framework',
-    'students.apps.StudentsConfig',
+    'localities.apps.StudentsConfig',
     'setups.apps.SetupsConfig',
     'setups.academics.apps.AcademicsConfig',
     'staff.apps.StaffConfig',
@@ -45,7 +47,20 @@ INSTALLED_APPS = [
     'studentmanager.apps.StudentmanagerConfig',
     'studentmanager.parents.apps.ParentsConfig',
     'studentmanager.parents.proffessions.apps.ProffessionsConfig',
+    'studentmanager.student.apps.StudentConfig',
     'login.apps.LoginConfig',
+    'setups.academics.documents.apps.DocumentsConfig',
+    'setups.academics.documents.studentdocuments.apps.StudentdocumentsConfig',
+    'setups.academics.campuses.apps.CampusesConfig',
+    'setups.academics.denominations.apps.DenominationsConfig',
+    'setups.academics.dorms.apps.DormsConfig',
+    'setups.academics.sources.apps.SourcesConfig',
+    'setups.academics.healthconditions.apps.HealthconditionsConfig',
+    'setups.academics.studentstatus.apps.StudentstatusConfig',
+    'setups.academics.years.apps.YearsConfig',
+    'feemanager.apps.FeemanagerConfig',
+    'feemanager.feesetup.apps.FeesetupConfig',
+    'feemanager.feesetup.feecategories.apps.FeecategoriesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,8 +77,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
-
+SESSION_EXPIRE_SECONDS = 300
+SESSION_TIMEOUT_REDIRECT = '/login/loginpage'
 ROOT_URLCONF = 'schoolsys.urls'
 LOGIN_URL= '/login/loginpage'
 TEMPLATES = [

@@ -48,6 +48,7 @@ function formatDate() {
     $('#toDate').val([year, month, day].join('-'))
 
 }
+
 function saveTerm() {
     $('#saveTerm').click(function () {
         var data = $('#term-form').serialize();

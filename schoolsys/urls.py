@@ -23,8 +23,8 @@ handler404 = custom404
 
 urlpatterns = [
 
-    path('',include('students.urls')),
-    path('students/', include('students.urls')),
+    path('', include('localities.urls')),
+    path('localities/', include('localities.urls')),
     path('setups/', include('setups.urls')),
     path('login/', include('login.urls')),
     path('studentmanager/', include('studentmanager.urls')),

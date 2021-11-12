@@ -10,8 +10,8 @@ from django.views.decorators.cache import cache_control
 from setups.academics.classes.models import SchoolClasses
 from setups.academics.termdates.forms import TermForm
 from setups.academics.termdates.models import TermDates
-from students.models import Select2Data
-from students.serializers import Select2Serializer
+from localities.models import Select2Data
+from localities.serializers import Select2Serializer
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required

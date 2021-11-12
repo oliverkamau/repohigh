@@ -5,6 +5,527 @@
 {% block content %}
     <div class="row">
     <h2 class="text-muted mr-3 ml-5">Home Coming Soon</h2>
+{#           <div class="col-md-11 col-sm-11 mx-3 mb-3">#}
+{##}
+{#              <h4 class="text-muted">Student Details</h4>#}
+{#                        <div class="mr-2 ml-4">#}
+{#                       <button type="button" id="saveParent" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>#}
+{##}
+{#                       <button type="button" id="newParent" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>#}
+{##}
+{#                <label class="btn btn-outline-success mr-1 ml-2 pull-right" id="excelParent">#}
+{#                        Excel <input type="file" id="btn-import-parent" style="display: none;" accept="application/vnd.ms-excel">#}
+{#                    </label>#}
+{#               <form action="{% url 'downloadexcel' %}">#}
+{#                 {% csrf_token %}#}
+{#                                 <button type="submit"  class="btn btn-outline-success mr-1 ml-2 pull-right">Download</button>#}
+{##}
+{#               </form>#}
+{#                        </div>#}
+{##}
+{#            </div>#}
+{#         <div class="container">#}
+{#      <div class="row mr-2 ml-2">#}
+{##}
+{##}
+{##}
+{##}
+{#        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11 col-xl-11">#}
+{#        	<br />#}
+{##}
+{#        	<ul class="nav nav-tabs">#}
+{#        		<li class="nav-item">#}
+{#        			<a href="#home" class="nav-link active" role="tab" data-toggle="tab">Main</a>#}
+{#        		</li>#}
+{##}
+{#        		<li class="nav-item">#}
+{#        			<a href="#profile" class="nav-link" role="tab" data-toggle="tab">Contact Details</a>#}
+{#        		</li>#}
+{##}
+{#        		<li class="nav-item">#}
+{#        			<a href="#about" class="nav-link" role="tab" data-toggle="tab">Other Details</a>#}
+{#        		</li>#}
+{##}
+{#        		<li class="nav-item">#}
+{#        			<a href="#dis" class="nav-link" role="tab" data-toggle="tab">Documents</a>#}
+{#        		</li>#}
+{#        	</ul>#}
+{##}
+{#        	<div class="tab-content">#}
+{#        		<div role="tabpanel" class="tab-pane fade show active" id="home">#}
+{##}
+{#        <div class="col-md-12 col-sm-12 mx-0 mt-4">#}
+{##}
+{# <form id="parent-form">#}
+{#     {% csrf_token %}#}
+{#<input type="hidden" name="parent_code" id="parentCode">#}
+{#                <div class="form-row">#}
+{#                      <div class="form-row">#}
+{#                        <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">#}
+{#                          </div>#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">UPI No.</label>#}
+{#                            <input name="student_upi" id="upi" type="text" class="form-control col-md-8">#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                        <div class="col-md-3 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                              <button type="button" id="loadPhoto" class="btn btn-outline-secondary col-md-10">Load Student Photo</button>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4">#}
+{#                              <button type="button" id="detailedReport" class="btn btn-outline-secondary col-md-10">Detailed Reports</button>#}
+{##}
+{#                          </div>#}
+{#                        </div>#}
+{#                               <div class="col-md-5 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Fee Category</label>#}
+{#                            <select name="student_fee_category" id="feeCategory" class="form-control col-md-8">#}
+{##}
+{#                            </select>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Dorm/House</label>#}
+{#                            <select name="student_dorm" id="dorm" class="form-control col-md-8">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{#                           <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Name</label>#}
+{#                             <input name="student_name" id="studentName" type="text" class="form-control col-md-8">#}
+{##}
+{#                          </div>#}
+{#                              <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Gender</label>#}
+{#                            <select name="student_gender" id="gender" class="form-control col-md-8">#}
+{#                                <option value=""></option>#}
+{#                                <option value="M">Male</option>#}
+{#                                <option value="F">Female</option>#}
+{#                                <option value="O">Other</option>#}
+{#                            </select>#}
+{#                          </div>#}
+{#                        </div>#}
+{#                              <div class="col-md-3 col-sm-12">#}
+{#                          <div class="form-row mb-3">#}
+{#                              <button type="button" id="exportPhoto" class="btn btn-outline-secondary col-md-10">Export Photos</button>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-3">#}
+{#                              <button type="button" id="leaveOuts" class="btn btn-outline-secondary col-md-10">Issue Leaveouts</button>#}
+{##}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{#                         <div class="col-md-5 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Campus</label>#}
+{#                            <select name="student_campus" id="campus" class="form-control col-md-8">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Fee Balance</label>#}
+{#                          </div>#}
+{#                        </div>#}
+{#                            <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-1">#}
+{#                            <label class="col-md-3 control-label" for="select">Class</label>#}
+{#                            <select name="student_class" id="studentClass" class="form-control col-md-8">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                          <div class="form-row mb-1">#}
+{#                            &nbsp;#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                          <div class="col-md-3 col-sm-12">#}
+{#                          <div class="form-row mb-1">#}
+{#                            <select name="adm_term" id="term" class="form-control col-md-10">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-1">#}
+{#                            &nbsp;#}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{#                          <div class="col-md-5 col-sm-12">#}
+{#                          <div class="form-row mb-1 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Parent/Guardian</label>#}
+{#                            <select name="student_parent" id="parent" type="text" class="form-control col-md-8">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-1 ml-1 mr-1">#}
+{#                                  &nbsp;#}
+{#                          </div>#}
+{#                        </div>#}
+{#                           <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            &nbsp;#}
+{#                          </div>#}
+{#                          <div class="form-row mb-4">#}
+{#                            &nbsp;#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                            <div class="col-md-3 col-sm-12">#}
+{#                          <div class="form-row mb-3">#}
+{#                              <button type="button" id="stats" class="btn btn-outline-secondary col-md-10">Statistics</button>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-3">#}
+{#                             &nbsp;#}
+{#                          </div>#}
+{#                        </div>#}
+{#                           <div class="col-md-5 col-sm-12">#}
+{#                          <div class="form-row mb-1 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">Photo</label>#}
+{#                            <input type="file" name="file" id="student-avatar" class="form-control col-md-8">#}
+{#                          </div>#}
+{#                              <div class="form-row mb-1 ml-1 mr-1">#}
+{#                                  &nbsp;#}
+{#                          </div>#}
+{#                        </div>#}
+{#                              <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">&nbsp;</label>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">&nbsp;</label>#}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{##}
+{#                      </div>#}
+{#                      </div>#}
+{#                    </form>#}
+{##}
+{##}
+{#    </div>#}
+{##}
+{##}
+{##}
+{#                </div>#}
+{#        		<div role="tabpanel" class="tab-pane fade" id="profile">#}
+{##}
+{##}
+{#                     <div class="col-md-12 col-sm-12 mx-0 mt-4">#}
+{##}
+{# <form id="parent-form">#}
+{#     {% csrf_token %}#}
+{#<input type="hidden" name="parent_code" id="parentCode">#}
+{#                <div class="form-row">#}
+{#                      <div class="form-row">#}
+{#                        <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Nationality</label>#}
+{#                            <select  name="nationality" id="nationality" class="form-control col-md-6">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">County</label>#}
+{#                            <select name="student_county" id="studentCounty" class="form-control col-md-6">#}
+{#                            </select>#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                               <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Address</label>#}
+{#                              <textarea name="student_address" id="address" class="form-control col-md-7"></textarea>#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Student Email</label>#}
+{#                            <input name="student_email" id="studentEmail" type="text" class="form-control col-md-7">#}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{#                           <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">SubCounty</label>#}
+{#                            <select name="stud_sub_county" id="subCounty" class="form-control col-md-6">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Location</label>#}
+{#                            <select name="stud_location" id="studLocation" type="text" class="form-control col-md-6">#}
+{#                            </select>#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                                <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Parent Phone</label>#}
+{#                              <input name="parent_phone" id="parentPhone" type="text" class="form-control col-md-7">#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Student Phone</label>#}
+{#                            <input name="student_phone" id="studentPhone" type="text" class="form-control col-md-7">#}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{##}
+{#                      <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">SubLocation</label>#}
+{#                            <select name="stud_sub_location" id="subLocation" class="form-control col-md-6">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Village</label>#}
+{#                            <select name="stud_village" id="village" class="form-control col-md-6">#}
+{#                            </select>#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{##}
+{#                      </div>#}
+{#                      </div>#}
+{#                    </form>#}
+{##}
+{##}
+{#    </div>#}
+{##}
+{##}
+{#                </div>#}
+{#        		<div role="tabpanel" class="tab-pane fade" id="about">#}
+{##}
+{##}
+{#                    <div class="col-md-12 col-sm-12 mx-0 mt-4">#}
+{##}
+{# <form id="parent-form">#}
+{#     {% csrf_token %}#}
+{#<input type="hidden" name="parent_code" id="parentCode">#}
+{#                <div class="form-row">#}
+{#                      <div class="form-row">#}
+{#                        <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Adm. Date</label>#}
+{#                            <input type="date" name="adm_date" id="admDate" class="form-control col-md-6">#}
+{#                          </div>#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">D.O.B</label>#}
+{#                            <input name="date_of_birth" id="dob" type="date" class="form-control col-md-6">#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                               <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Completion Date</label>#}
+{#                            <input name="completion_date" id="completionDate" type="date" class="form-control col-md-6">#}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Denomination</label>#}
+{#                            <select name="student_denomination" id="denomination" class="form-control col-md-7">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{#                           <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">BirthCertNo.</label>#}
+{#                            <input type="text" name="birth_cert_no" id="birthCertNo" class="form-control col-md-6">#}
+{#                          </div>#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Source</label>#}
+{#                            <select name="student_sources" id="studentSources" type="text" class="form-control col-md-6">#}
+{#                            </select>#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                                <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Index No.</label>#}
+{#                              <input name="index_no" id="indexNo" type="text" class="form-control col-md-4 mr-1">#}
+{#                                                            <select name="year" id="year" class="form-control col-md-3">#}
+{#                                                            </select>#}
+{##}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">KCPE Marks</label>#}
+{#                            <input name="marks" id="marks" type="text" class="form-control col-md-7">#}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{##}
+{#                      <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Health Status</label>#}
+{#                            <select name="father_name" id="fatherName" class="form-control col-md-6">#}
+{#                            </select>#}
+{#                          </div>#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">KCPE Grade</label>#}
+{#                            <input name="grade" id="grade" type="text" class="form-control col-md-6">#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                           <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Primary School</label>#}
+{#                              <input name="primary_school" id="primarySchool" type="text" class="form-control col-md-4 mr-1">#}
+{##}
+{#                          </div>#}
+{#                              <div class="form-row mb-4 ml-1 mr-1">#}
+{#                            <label class="col-md-4 control-label" for="select">Student Status</label>#}
+{#                            <input name="student_status" id="studentStatus" type="text" class="form-control col-md-7">#}
+{#                          </div>#}
+{#                        </div>#}
+{##}
+{##}
+{#                           <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">&nbsp;</label>#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                           <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4 ml-1 mr-1">#}
+{#                           <label class="col-md-4 control-label" for="select">&nbsp;</label>#}
+{##}
+{#                              <button type="button" id="healthStatus" class="btn btn-outline-secondary col-md-7">Health Status</button>#}
+{##}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                      </div>#}
+{#                      </div>#}
+{#                    </form>#}
+{##}
+{##}
+{#    </div>#}
+{##}
+{##}
+{##}
+{#                </div>#}
+{#                        		<div role="tabpanel" class="tab-pane fade" id="dis">#}
+{##}
+{##}
+{#                                    <div class="col-md-12 col-sm-12 mx-0 mt-4">#}
+{##}
+{# <form id="parent-form">#}
+{#     {% csrf_token %}#}
+{#<input type="hidden" name="parent_code" id="parentCode">#}
+{#                <div class="form-row">#}
+{#                        <div class="col-md-6 col-sm-12 mb-4">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">Document</label>#}
+{#                            <select name="student_document" id="document" class="form-control col-md-6 mr-1">#}
+{#                            </select>#}
+{#                             <button type="button" id="getDocs" class="btn btn-outline-secondary col-md-2">Browse</button>#}
+{##}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                         <div class="col-md-6 col-sm-12">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-3 control-label" for="select">&nbsp;</label>#}
+{#                              <button type="button" id="batch" class="btn btn-outline-secondary col-md-7">Load Batch Student Photo</button>#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                      <div class="col-md-9 col-sm-12 mt-4">#}
+{#                          <div class="form-row mb-4">#}
+{#                            <label class="col-md-2 control-label" for="select">&nbsp;</label>#}
+{#                              <button type="button" id="saveDocs" class="btn btn-outline-primary col-md-2 mr-1">Save</button>#}
+{#                              <button type="button" id="deleteDocs" class="btn btn-outline-danger col-md-2">Delete</button>#}
+{##}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                      </div>#}
+{#                    </form>#}
+{##}
+{##}
+{#    </div>#}
+{##}
+{##}
+{##}
+{##}
+{#                                </div>#}
+{##}
+{#        	</div>#}
+{#        </div>#}
+{##}
+{#                     <div class="col-md-11 col-sm-11 mx-1 mb-1">#}
+{#                                             <div class="form-row">#}
+{##}
+{#                              <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-1">#}
+{#                            <label class="col-md-2 control-label" for="select">Name</label>#}
+{#                            <input type="text" name="father_name" id="fatherName" class="form-control col-md-9">#}
+{#                          </div>#}
+{##}
+{##}
+{#                        </div>#}
+{#                          <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-1">#}
+{#                           <label class="col-md-2 control-label" for="select">Class</label>#}
+{#                            <input type="text" name="father_name" id="fatherName" class="form-control col-md-9">                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                          <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-1 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">Status</label>#}
+{#                            <select name="id_no" id="idNo" class="form-control col-md-9">#}
+{#                                 <option value=""></option>#}
+{#                                 <option value="S">Suspended</option>#}
+{#                                 <option value="T">Transferred</option>#}
+{#                                 <option value="E">Expelled</option>#}
+{#                                 <option value="G">Graduated</option>#}
+{##}
+{#                            </select>#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                                                 <div class="col-md-12 col-sm-12 mx-1 mt-4">#}
+{#<div class="table-responsive">#}
+{#        <table class="table table-striped display responsive nowrap" id="parTable">#}
+{#  <thead>#}
+{#    <tr>#}
+{#      <th scope="col">AdmNo</th>#}
+{#      <th scope="col">Name</th>#}
+{#      <th scope="col">BirthDate</th>#}
+{#      <th scope="col">AdmDate</th>#}
+{#       <th scope="col">CompletionDate</th>#}
+{#      <th scope="col">Dorm</th>#}
+{#      <th scope="col">Form</th>#}
+{#      <th scope="col">Stream</th>#}
+{#       <th scope="col">Class</th>#}
+{#      <th scope="col">Parent</th>#}
+{#      <th scope="col">Gender</th>#}
+{#      <th scope="col">Nationality</th>#}
+{#        <th></th>#}
+{#        <th></th>#}
+{##}
+{#    </tr>#}
+{#  </thead>#}
+{#  <tbody>#}
+{#  </tbody>#}
+{#</table>#}
+{##}
+{#        </div>#}
+{#                                                     </div>#}
+{##}
+{#                     </div>#}
+{##}
+{##}
+{##}
+{#                     </div>#}
+{##}
+{#    </div>#}
+{#         </div>#}
+{##}
 {#        <div class="col-md-10 col-sm-11 mx-auto">#}
 {#            <form id="student-form">#}
 {#                {% csrf_token %}#}
@@ -109,7 +630,7 @@
 {#    </div>#}
 {##}
 {#        </div>#}
-
+{##}
 
 
     </div>
