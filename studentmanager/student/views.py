@@ -7,12 +7,15 @@ from datetime import datetime
 
 # Create your views here.
 from django.views.decorators.cache import cache_control
+from rest_framework import status
 
 from feemanager.feesetup.feecategories.models import FeeCategories
 from setups.academics.campuses.models import Campuses
 from setups.academics.classes.models import SchoolClasses
 from setups.academics.denominations.models import Denomination
 from setups.academics.documents.models import Documents
+from setups.academics.documents.studentdocuments.forms import StudentDocsForm
+from setups.academics.documents.studentdocuments.models import StudentDocument
 from setups.academics.dorms.models import Dorms
 from setups.academics.healthconditions.models import HealthStatus
 from setups.academics.sources.models import StudentSources
@@ -686,3 +689,50 @@ def deletestudent(request,id):
     student=Students.objects.get(pk=id)
     student.delete()
     return JsonResponse({'success': 'Student Deleted Successfully'})
+
+
+def uploadstudentdocs(request):
+    doc = StudentDocsForm(request.POST,request.FILES)
+    d = doc.data['stud_doc_document']
+    s = doc.data['stud_doc_student']
+    document=Documents.objects.get(pk=d)
+    student=Students.objects.get(pk=s)
+    studentdoc=StudentDocument.objects.filter(stud_doc_document_id=d,stud_doc_student_id=s)
+    if studentdoc is not None:
+        studentdoc.delete()
+    doc.stud_doc_document=document
+    doc.stud_doc_student=student
+    doc.save()
+    return JsonResponse({'success': 'Document Uploaded Successfully'})
+
+def viewdocs(request):
+    doc = StudentDocsForm(request.POST)
+    d = doc.data['stud_doc_document']
+    s = doc.data['stud_doc_student']
+    try:
+        studentdoc = StudentDocument.objects.get(stud_doc_document_id=d, stud_doc_student_id=s)
+        response_data = {}
+        if studentdoc.document_file:
+            response_data['url'] = urlsplit(
+                request.build_absolute_uri(None)).scheme + '://' + request.get_host() + studentdoc.document_file.url
+        return JsonResponse(response_data)
+
+    except StudentDocument.DoesNotExist:
+        return JsonResponse({'error': 'File Does Not Exist!'},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+
+
+def deletestudentdocs(request):
+    doc = StudentDocsForm(request.POST)
+    d = doc.data['stud_doc_document']
+    s = doc.data['stud_doc_student']
+    try:
+        studentdoc = StudentDocument.objects.get(stud_doc_document_id=d, stud_doc_student_id=s)
+        studentdoc.delete()
+        return JsonResponse({'success': 'Document Deleted Successfully'})
+
+    except StudentDocument.DoesNotExist:
+        return JsonResponse({'error': 'File Does Not Exist!'},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)

@@ -39,12 +39,100 @@ documentChange();
 saveStudent()
 getStudents()
 editStudent()
-    newStudent()
-    deleteStudent()
+newStudent()
+deleteStudent()
+saveDocs()
+viewDocs()
+deleteDocs()
 })
 function newStudent() {
    $('#newStudent').click(function () {
        clearPage();
+   })
+}
+function saveDocs(){
+   $('#saveDocs').click(function () {
+
+        if($('#studentCode').val()==='' || $('#studentDocument').val()==='' || $( '#importDocs' )[0].files.length===0){
+            bootbox.alert('Student or File not selected');
+        }
+        else {
+            var formData = new FormData();
+            formData.append( 'document_file', $( '#importDocs' )[0].files[0]);
+            formData.append('stud_doc_document',$('#studentDocument').val());
+            formData.append('stud_doc_student',$('#studentCode').val());
+            $.ajax({
+                type: 'POST',
+                url: 'uploadstudentdocs',
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function (s) {
+                bootbox.alert(s.success)
+
+            }).fail(function (xhr, error) {
+                bootbox.alert(xhr.responseText)
+            })
+
+        }
+   })
+}
+function viewDocs(){
+   $('#viewDocs').click(function () {
+
+        if($('#studentCode').val()==='' || $('#studentDocument').val()===''){
+            bootbox.alert('Student or File not selected');
+        }
+        else {
+            var formData = new FormData();
+            formData.append('stud_doc_document',$('#studentDocument').val());
+            formData.append('stud_doc_student',$('#studentCode').val());
+            $.ajax({
+                type: 'POST',
+                url: 'viewstudentdocs',
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function (s) {
+               if (s.length === 0 ) {
+               bootbox.alert('No File Found')
+               }
+               else{
+               window.open(s.url);
+               }
+
+            }).fail(function (xhr, error) {
+                bootbox.alert(xhr.responseText)
+            })
+
+        }
+   })
+}
+function deleteDocs() {
+   $('#deleteDocs').click(function () {
+
+        if($('#studentCode').val()==='' || $('#studentDocument').val()===''){
+            bootbox.alert('Student or File not selected');
+        }
+        else {
+            var formData = new FormData();
+            formData.append('stud_doc_document',$('#studentDocument').val());
+            formData.append('stud_doc_student',$('#studentCode').val());
+            $.ajax({
+                type: 'POST',
+                url: 'deletestudentdocs',
+                data: formData,
+                processData: false,
+                contentType: false
+            }).done(function (s) {
+               bootbox.alert(s.success)
+
+
+            }).fail(function (xhr, error) {
+                bootbox.alert(xhr.responseText)
+            })
+
+        }
    })
 }
 function deleteStudent() {
@@ -475,10 +563,13 @@ function clearPage(){
     $('#studentStatus').val('')
     $('#year_frm').empty();
     $('#year').val('')
+    $('#document_frm').empty()
+    $('#studentDocument').val('')
     formatDate()
     studentImage("")
 }
 function searchParent() {
+
      $('#parent_frm').select2({
            placeholder: 'Names',
            allowClear: true,

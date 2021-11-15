@@ -448,19 +448,18 @@
 
                                     <div class="col-md-12 col-sm-12 mx-0 mt-4">
 
- <form id="parent-form">
+ <form id="document-form">
      {% csrf_token %}
-<input type="hidden" name="parent_code" id="parentCode">
                 <div class="form-row">
                         <div class="col-md-6 col-sm-12 mb-4">
                           <div class="form-row mb-4">
                             <label class="col-md-3 control-label" for="select">Document</label>
-                              <input type="hidden" name="student_document" id="studentDocument">
+                              <input type="hidden" name="stud_doc_document" id="studentDocument">
                             <select id="document_frm" class="form-control col-md-8 mr-1">
                             </select>
 
                               <label class="btn btn-outline-secondary ml-1" id="getDocs">
-                        Browse <input type="file" id="btn-import-docs" style="display: none;">
+                        Browse <input type="file" name="stud_doc_document" id="importDocs" style="display: none;">
                     </label>
                           </div>
 
@@ -477,7 +476,8 @@
                           <div class="form-row mb-4">
                             <label class="col-md-2 control-label" for="select">&nbsp;</label>
                               <button type="button" id="saveDocs" class="btn btn-outline-primary col-md-2 mr-1">Save</button>
-                              <button type="button" id="deleteDocs" class="btn btn-outline-danger col-md-2">Delete</button>
+                              <button type="button" id="deleteDocs" class="btn btn-outline-danger col-md-2 mr-1">Delete</button>
+                              <button type="button" id="viewDocs" class="btn btn-outline-secondary col-md-2">View</button>
 
                           </div>
 
