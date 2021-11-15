@@ -240,17 +240,6 @@ function saveStudent(){
             data: data,
             processData: false,
             contentType: false
-			// data: {
-			// 	'firstName':$('#inputFirstname').val(),
-			// 	'lastName':$('#inputLastname').val(),
-			// 	'age':$('#inputAge').val(),
-			// 	'height':$('#inputHeight').val(),
-			// 	'country':$('#inputCountry').val(),
-			// 	'county':$('#inputCounty').val(),
-			// 	'town':$('#inputTown').val(),
-			// 	'phone':$('#inputPhone').val(),
-			// 	'website':$('#inputWebsite').val(),
-			// }
 		}).done(function (s) {
 		    getStudents()
 			bootbox.alert(s.success)

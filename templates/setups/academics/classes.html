@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-    <div class="row">
+    <div class="row container-fluid">
             <div class="col-md-11 col-sm-11 mx-3">
 
               <h4 class="text-muted mb-3">Class Setups</h4>
@@ -16,7 +16,8 @@
 
         </div>
 
-        <div class="col-md-11 col-sm-12 mt-2 mx-3">
+        <div class="col-md-12 col-sm-12 mt-2 mx-3">
+             <div class="table-responsive">
 
         <table class="table table-striped display responsive nowrap" id="classTable">
   <thead>
@@ -36,6 +37,7 @@
   </tbody>
 </table>
     </div>
+        </div>
 
 
 <div class="modal fade" id="classModal" role="dialog" aria-labelledby="classModalCenterTitle" aria-hidden="true">

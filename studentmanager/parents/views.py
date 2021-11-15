@@ -252,6 +252,7 @@ def editparents(request,id):
     #    print('File Present')
     # url = request.get_host() + parent.parent_photo.url
     # print(urlsplit(request.build_absolute_uri(None)).scheme)
+
     if parent.parent_photo:
         response_data['url'] = urlsplit(request.build_absolute_uri(None)).scheme + '://' + request.get_host() + parent.parent_photo.url
     return JsonResponse(response_data)

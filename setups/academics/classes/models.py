@@ -10,6 +10,6 @@ class SchoolClasses(models.Model):
     class_name = models.CharField(max_length=200)
     active=models.BooleanField(default=True)
     max_capacity=models.IntegerField(default=0)
-    admno_prefix = models.CharField(max_length=200)
+    admno_prefix = models.CharField(max_length=200,null=True,blank=True)
     class_teacher = models.ForeignKey(Teachers, on_delete=models.CASCADE, null=True,blank=True)
     next_class = models.ForeignKey("self", on_delete=models.CASCADE, null=True,blank=True)
