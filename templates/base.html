@@ -14,13 +14,17 @@
 {#                  	<link rel="stylesheet" href="{% static 'datatables/css/datatables.css' %}">#}
 {#                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablebuttons.css' %}">#}
                   	<link rel="stylesheet" href="{% static 'datatables/css/datatablesresponsive.css' %}">
-                  	<link rel="stylesheet" href="{% static 'datatables/css/datatablescroller.css' %}">
+                  	<link rel="stylesheet" href="{% static 'sweetalert/sweetalert.css' %}">
                   	<link rel="stylesheet" href="{% static 'filecontrol/css/fileinput.css' %}">
 
+        <link rel="stylesheet" href="{% static 'select2/css/select2.css' %}">
         <link rel="stylesheet" href="{% static 'select2/css/select2.css' %}">
       	<link rel="stylesheet" href="{% static 'css/main.css' %}">
         <script src="{% static 'js/jquery.js' %}"></script>
         <script src="{% static 'js/popper.js' %}"></script>
+        <script src="{% static 'sweetalert/sweetalert.js' %}"></script>
+
+
         <script src=" {% static 'bootstrap/js/bootstrap.js' %}"></script>
         <script src=" {% static 'datatables/js/datatables.js' %}"></script>
                       <script src=" {% static 'datatables/js/datatablesbootstrap.js' %}"></script>
@@ -93,7 +97,7 @@
                     <a href="#">Online Applications</a>
                 </li>
                      <li>
-                    <a href="#">Student Subjects</a>
+                    <a href="{% url 'getstudentsubject' %}">Student Subjects</a>
                 </li>
                    <li>
                     <a href="#">Student Movements</a>

@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'feemanager.apps.FeemanagerConfig',
     'feemanager.feesetup.apps.FeesetupConfig',
     'feemanager.feesetup.feecategories.apps.FeecategoriesConfig',
+    'studentmanager.studentsubjects.apps.StudentsubjectsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

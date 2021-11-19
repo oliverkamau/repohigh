@@ -1,0 +1,123 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+          <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-3 mb-2">
+
+              <h4 class="text-muted mr-2 ml-2">Student Subjects</h4>
+                        <div class="mr-1 ml-4">
+                        <button type="button" id="assignMandatory" class="btn btn-outline-secondary mr-1 ml-2 pull-right">Assign Mandatory Subjects</button>
+
+                       <button type="button" id="reports" class="btn btn-outline-secondary mr-1 ml-2 pull-right">Reports</button>
+
+
+                        </div>
+
+            </div>
+
+  <div class="row col-md-11 col-sm-11 mx-3">
+    <div class="col-md-5 col-sm-10">
+
+ <form id="document-form">
+     {% csrf_token %}
+                 <input type="hidden" id="tpCode" name="code">
+
+ </form>
+        <div class="col-md-12 col-sm-12">
+              <label class="control-label" for="class_frm">Class</label>
+            <input type="hidden" id="classCode" name="stud_subject_class">
+            <select id="class_frm" class="form-control col-md-11"></select>
+        </div>
+        <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="unAssignedTbl">
+  <thead>
+    <tr>
+        <th>&nbsp;</th>
+
+    </tr>
+
+  </thead>
+            <tbody>
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                 <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{##}
+{#            </tr>#}
+            </tbody>
+        </table>
+    </div>
+     <div class="col-md-2 col-sm-10">
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+       <button type="button" id="assignAll" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2">>></button>
+       <button type="button" id="assignSelected" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2"> > </button>
+       <button type="button" id="unAssignSelected" class="btn btn-outline-primary col-md-8 mb-2 col-sm-10"> < </button>
+       <button type="button" id="unAssignAll" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2"> << </button>
+
+    </div>
+    <div class="col-md-5 col-sm-10">
+          <div class="col-md-12 col-sm-12">
+              <label class="control-label" for="select">Subject</label>
+              <input type="hidden" id="subjectCode" name="stud_subject_subject">
+
+            <select id="subject_frm" class="form-control col-md-11"></select>
+        </div>
+                <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="assignedTbl">
+  <thead>
+    <tr>
+        <th>&nbsp;</th>
+    </tr>
+  </thead>
+                              <tbody>
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                 <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{##}
+{#            </tr>#}
+            </tbody>
+        </table>
+    </div>
+   </div>
+</div>
+
+
+
+
+      <script src=" {% static 'custom/students/studentsubjects.js' %}"></script>
+<script type="text/javascript">
+    var assigned = [];
+</script>
+<script type="text/javascript">
+    var unassigned = [];
+</script>
+    <script type="text/javascript">
+    var spinner ="";
+</script>
+{% endblock %}

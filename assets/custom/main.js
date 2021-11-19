@@ -227,8 +227,9 @@ function saveStudent(){
 			// }
 		}).done(function (s) {
 		    getStudents()
-			bootbox.alert(s.success)
+            sweetAlert({
 
+            })
 		}).fail(function (xhr, error) {
 						bootbox.alert(xhr.responseText)
             // bootbox.alert("Error Occured while saving")
