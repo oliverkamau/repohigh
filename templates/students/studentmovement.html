@@ -1,0 +1,257 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Student Movement</h4>
+
+                       <button type="button" id="process" class="btn btn-outline-secondary mr-3 ml-2 pull-right">Process</button>
+
+
+
+
+            </div>
+        <div class="col-md-10 col-sm-11 mx-5 mb-2" id="studentmovement">
+
+ <form id="parent-form">
+     {% csrf_token %}
+<input type="hidden" name="parent_code" id="parentCode">
+                <div class="form-row">
+
+
+
+                      <div class="form-row">
+                        <div class="col-md-6 col-sm-12">
+                         <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Class</label>
+                                  <input type="hidden" name="class_code" id="classCode">
+                                  <select id="class_frm" type="text" class="form-control col-md-8"></select>
+                          </div>
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Term</label>
+                            <select name="movement_term" id="term" class="form-control col-md-8">
+                                <option value="">Term</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+
+                            </select>
+                          </div>
+
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Date</label>
+                            <input name="movement_date" id="date" type="date" class="form-control col-md-8">
+                          </div>
+                               <div class="form-row mb-4 ml-1 mr-1" id="resume">
+                            <label class="col-md-4 control-label" for="select">Resume Date</label>
+                            <input name="resume_date" id="resumeDate" type="date" class="form-control col-md-8">
+                          </div>
+                            <div class="form-row mb-4 ml-1 mr-1" id="noResume">
+                            <label class="col-md-4 control-label" for="select">&nbsp;</label>
+                          </div>
+                        </div>
+                               <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Admno.</label>
+                                  <input type="hidden" name="movement_admno" id="studentCode">
+                                  <select id="student_frm" type="text" class="form-control col-md-8"></select>
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Action</label>
+                              <select name="movement_action" id="action" class="form-control col-md-8">
+                                <option value="">Action</option>
+                                <option value="CM">Class Movements</option>
+                                <option value="S">Suspend</option>
+                                <option value="ES">End Suspension</option>
+                                <option value="T">Transfer</option>
+                                <option value="EX">Expel</option>
+                            </select>
+                          </div>
+                        </div>
+
+                              <div class="col-md-6 col-sm-12">
+                                    <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">Reason/Comments</label>
+                              <textarea name="movement_reason" id="reason" class="form-control col-md-8"></textarea>
+                          </div>
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-4 control-label" for="select">&nbsp;</label>
+                            <input type="file" name="file" id="student-avatar" class="form-control col-md-11">
+                          </div>
+
+                        </div>
+
+                      </div>
+                    </form>
+        </div>
+
+    </div>
+
+
+     <div class="row col-md-11 col-sm-11 mx-3 mb-2" id="classmovement">
+    <div class="col-md-5 col-sm-10">
+
+ <form id="document-form">
+     {% csrf_token %}
+                 <input type="hidden" id="tpCode" name="code">
+
+ </form>
+        <div class="form-row col-md-12 col-sm-12">
+                       <div class="col-md-8 col-sm-12">
+
+              <label class="control-label" for="class_frm">Current Class</label>
+            <input type="hidden" id="classmvClassCode" name="stud_subject_class">
+            <select id="classmv_class_frm" class="form-control col-md-11"></select>
+        </div>
+          <div class="col-md-4 col-sm-12">
+              <label class="control-label" for="class_frm">Term</label>
+              <select name="class_movement_term" id="classMvterm" class="form-control col-md-11">
+                                <option value="">Term</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+
+                            </select>        </div>
+        </div>
+        <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="unAssignedTbl">
+  <thead>
+    <tr>
+        <th>&nbsp;</th>
+
+    </tr>
+
+  </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+     <div class="col-md-2 col-sm-10">
+            <div class="col-md-12 col-sm-12">
+              <label class="control-label" for="class_frm">Reason</label>
+                              <textarea name="classmvmovement_reason" id="classMvReason" class="form-control col-md-12"></textarea>
+                  </div>
+
+         <br>
+         <br>
+       <button type="button" id="assignAll" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2">>></button>
+       <button type="button" id="assignSelected" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2"> > </button>
+       <button type="button" id="unAssignSelected" class="btn btn-outline-primary col-md-8 mb-2 col-sm-10"> < </button>
+       <button type="button" id="unAssignAll" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2"> << </button>
+
+    </div>
+    <div class="col-md-5 col-sm-10">
+           <div class="form-row col-md-12 col-sm-12">
+                       <div class="col-md-5 col-sm-12">
+
+              <label class="control-label" for="class_frm">Next Class</label>
+            <input type="hidden" id="nextMvClassCode" name="stud_subject_class">
+            <select id="nextmv_class_frm" class="form-control col-md-11"></select>
+        </div>
+          <div class="col-md-7 col-sm-12">
+              <label class="control-label" for="class_frm">Date</label>
+             <input name="classmovement_date" id="classMvDate" type="date" class="form-control col-md-11">
+      </div>
+        </div>
+                <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="assignedTbl">
+  <thead>
+    <tr>
+        <th>&nbsp;</th>
+    </tr>
+  </thead>
+                              <tbody>
+
+            </tbody>
+        </table>
+    </div>
+   </div>
+
+
+    <div class="col-md-11 col-sm-11 mx-1 mb-1">
+                                             <div class="form-row">
+
+                              <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-1">
+                            <label class="col-md-2 control-label" for="select">Name</label>
+                            <input type="text" name="father_name" id="fatherName" class="form-control col-md-9">
+                          </div>
+
+
+                        </div>
+                          <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-1">
+                           <label class="col-md-2 control-label" for="select">Class</label>
+                              <input type="hidden" name="search_class" id="sClass">
+                              <select id="table_search_frm" class="form-control col-md-9"></select>                         </div>
+
+                        </div>
+
+                          <div class="col-md-4 col-sm-12">
+                          <div class="form-row mb-1 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Status</label>
+                            <select id="statii" class="form-control col-md-9">
+                                 <option value="">Status</option>
+                                 <option value="S">Suspended</option>
+                                 <option value="T">Transferred</option>
+                                 <option value="E">Expelled</option>
+                                 <option value="G">Graduated</option>
+
+                            </select>
+                          </div>
+
+                        </div>
+                                             </div>
+    </div>
+
+        <div class="col-md-11 col-sm-11 ml-2 mt-2">
+
+            <div class="table-responsive">
+      <table class="table table-striped display responsive nowrap" id="studTable">
+  <thead>
+    <tr>
+      <th scope="col">AdmNo</th>
+      <th scope="col">Name</th>
+        <th scope="col">Status</th>
+      <th scope="col">BirthDate</th>
+      <th scope="col">AdmDate</th>
+       <th scope="col">CompletionDate</th>
+      <th scope="col">Dorm</th>
+      <th scope="col">Class</th>
+      <th scope="col">Email</th>
+       <th scope="col">Phone</th>
+      <th scope="col">Parent</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Nationality</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/students/movement.js' %}"></script>
+    <script type="text/javascript">
+    var assigned = [];
+</script>
+<script type="text/javascript">
+    var unassigned = [];
+</script>
+    <script type="text/javascript">
+    var spinner ="";
+</script>
+
+
+{% endblock %}

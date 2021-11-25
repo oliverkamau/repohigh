@@ -450,6 +450,7 @@ def addstudent(request):
     #         parent.parent_photo = image
 
 
+    birthcert= student.data['birth_cert_no']
     category = student.data['student_fee_category']
     dorm = student.data['student_dorm']
     campus = student.data['student_campus']
@@ -527,6 +528,7 @@ def addstudent(request):
         student.student_status = stat
 
     print(student)
+
     inst=student.save()
     stud = Students.objects.get(pk=inst.pk)
     year = datetime.today().year
@@ -535,6 +537,7 @@ def addstudent(request):
     year=year.replace('0','',2)
     keyuniq='S00'+str(stud.pk)+'/'+year
     stud.adm_no=keyuniq
+    stud.birth_cert_no = 'brdq001'
     stud.save()
     return JsonResponse({'success': 'Student Saved Successfully'})
 
@@ -547,7 +550,8 @@ def getstudents(request):
         " LEFT JOIN dorms_dorms ON student_dorm_id=dorm_code" +
         " LEFT JOIN classes_schoolclasses ON student_class_id=class_code" +
         " LEFT JOIN localities_countries ON nationality_id=country_id" +
-        " LEFT JOIN parents_parents ON student_parent_id=parent_code"
+        " LEFT JOIN parents_parents ON student_parent_id=parent_code"+
+        " where student_school_status='Active'"
 
     )
 

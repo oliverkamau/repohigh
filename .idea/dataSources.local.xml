@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="schoolsys" uuid="a8ac39f1-8d9c-4c79-bea4-64559d6605b1">
-      <database-info product="Microsoft SQL Server" version="15.00.2000" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 7.4 for SQL Server" driver-version="7.4.1.0">
+    <data-source name="highschool" uuid="28442480-445e-48ed-8545-2bad4a7d3e62">
+      <database-info product="Microsoft SQL Server" version="15.00.2000" jdbc-version="4.2" driver-name="Microsoft JDBC Driver 7.4 for SQL Server" driver-version="7.4.1.0" dbms="MSSQL" exact-version="15.0.2000" exact-driver-version="7.4">
         <extra-name-characters>$#@</extra-name-characters>
         <identifier-quote-string>&quot;</identifier-quote-string>
       </database-info>
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed" />
       <secret-storage>master_key</secret-storage>
       <user-name>sa</user-name>
-      <introspection-schemas>high_db:dbo</introspection-schemas>
+      <introspection-schemas>@:@</introspection-schemas>
     </data-source>
   </component>
 </project>

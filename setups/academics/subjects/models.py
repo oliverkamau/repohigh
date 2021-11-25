@@ -1,6 +1,6 @@
 from django.db import models
 
-from setups.academics.models import Departments
+from setups.academics.departments.models import Departments
 
 
 class Subjects(models.Model):

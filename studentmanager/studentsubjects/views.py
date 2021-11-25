@@ -56,7 +56,7 @@ def searchsubjects(request):
 
     listsel = []
     subjects = Subjects.objects.raw(
-        "SELECT top 5 subject_code,subject_name FROM academics_subjects WHERE subject_name like %s",
+        "SELECT top 5 subject_code,subject_name FROM subjects_subjects WHERE subject_name like %s",
         tuple([query]))
 
     for obj in subjects:
@@ -75,7 +75,7 @@ def getunassignedstudents(request,classcode,subject):
     listsel = []
     students = Students.objects.raw(
         "SELECT student_code,student_name FROM student_students" +
-        " where student_class_id = %s and "+
+        " where student_school_status='Active' and  student_class_id = %s and "+
         " student_code not in(select stud_subject_student_id from studentsubjects_studentsubjects"+
         " where stud_subject_class_id = %s and stud_subject_subject_id = %s)",
         [classcode,classcode,subject]
@@ -151,7 +151,7 @@ def unassignsubjects(request):
 def assignallsubjects(request):
     classcode = request.POST.get('classcode', None)
     subject = request.POST.get('subject', None)
-    students = Students.objects.raw("select student_code from student_students where student_class_id =%s", [classcode])
+    students = Students.objects.raw("select student_code from student_students where student_class_id =%s and student_school_status='Active'", [classcode])
     for obj in students:
 
         std = obj.student_code
@@ -200,7 +200,7 @@ def populatemandatorysubjects(request):
         subjects = Subjects.objects.all()
         for sub in subjects:
                  if sub.mandatory_subject:
-                    students = Students.objects.raw("select student_code from student_students where student_class_id =%s",
+                    students = Students.objects.raw("select student_code from student_students where student_class_id =%s and student_school_status='Active'",
                                         [cl.class_code])
                     for obj in students:
                        std = obj.student_code
@@ -219,5 +219,4 @@ def populatemandatorysubjects(request):
                          studSubjects.save()
 
     return JsonResponse({'success': 'Mandatory Subjects Assigned Successfully'})
-
 

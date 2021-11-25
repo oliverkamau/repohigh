@@ -58,10 +58,13 @@ INSTALLED_APPS = [
     'setups.academics.healthconditions.apps.HealthconditionsConfig',
     'setups.academics.studentstatus.apps.StudentstatusConfig',
     'setups.academics.years.apps.YearsConfig',
+    'setups.academics.subjects.apps.SubjectsConfig',
     'feemanager.apps.FeemanagerConfig',
     'feemanager.feesetup.apps.FeesetupConfig',
     'feemanager.feesetup.feecategories.apps.FeecategoriesConfig',
     'studentmanager.studentsubjects.apps.StudentsubjectsConfig',
+    'setups.academics.departments.apps.DepartmentsConfig',
+    'setups.academics.responsibilities.apps.ResponsibilitiesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,7 +112,7 @@ WSGI_APPLICATION = 'schoolsys.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'high_db',
+        'NAME': 'highschool',
         'USER': 'sa',
         'PASSWORD': 'kamau',
         'HOST': 'DESKTOP-AT48DO2\SQLEXPRESS',

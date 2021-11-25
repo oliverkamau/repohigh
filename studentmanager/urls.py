@@ -5,6 +5,7 @@ from studentmanager.parents import views
 urlpatterns = [
 	path(r'parents/', include('studentmanager.parents.urls')),
 	path(r'students/', include('studentmanager.student.urls')),
-	path(r'subjects/', include('studentmanager.studentsubjects.urls'))
+	path(r'subjects/', include('studentmanager.studentsubjects.urls')),
+	path(r'movements/', include('studentmanager.movements.urls'))
 
 ]

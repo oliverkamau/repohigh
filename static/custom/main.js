@@ -6,20 +6,20 @@ $(document).ready(function () {
          "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
        }
    });
-    getStudents();
-    editStudent();
-    saveStudent();
-    deleteStudent();
-    searchStudent();
-    studentChange();
-    saveCountry();
-    saveCounty();
-    getCountries();
-    searchCountries();
-    countryChange();
-    getCounties();
-    countyChange()
-    parentImage("");
+//    getStudents();
+//    editStudent();
+//    saveStudent();
+//    deleteStudent();
+//    searchStudent();
+//    studentChange();
+//    saveCountry();
+//    saveCounty();
+//    getCountries();
+//    searchCountries();
+//    countryChange();
+//    getCounties();
+//    countyChange()
+//    parentImage("");
 
 
 

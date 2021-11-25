@@ -1,6 +1,7 @@
 from django.db import models
 
-from setups.academics.models import Departments, Responsibilities
+from setups.academics.departments.models import Departments
+from setups.academics.responsibilities.models import Responsibilities
 from useradmin.users.models import User
 
 

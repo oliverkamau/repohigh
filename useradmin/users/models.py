@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.db import models
 from django.http import JsonResponse
@@ -43,7 +45,7 @@ class User(AbstractBaseUser,models.Model):
     user_phone = models.CharField(max_length=200,null=True,blank=True)
     user_address = models.CharField(max_length=200,null=True,blank=True)
     user_gender = models.CharField(max_length=200,null=True,blank=True)
-    date_created = models.DateField(verbose_name="date_created",auto_now_add=True)
+    date_created = models.DateField(verbose_name="date_created",default=datetime.date.today)
     last_login = models.DateField(verbose_name="last_login",auto_now=True)
     is_active = models.BooleanField(default=True)
     user_teacher_ref = models.IntegerField(default=0,blank=True,null=True)
