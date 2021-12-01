@@ -53,7 +53,7 @@ def searchstudent(request,id):
 
     listsel = []
     students = Students.objects.raw(
-        "SELECT top 5 student_code,concat(adm_no,'--',student_name)name FROM student_students WHERE student_class_id=%s and student_school_status='Active' and( adm_no like %s or student_name like %s)",
+        "SELECT top 5 student_code,concat(adm_no,'--',student_name)name FROM student_students WHERE student_class_id=%s and( adm_no like %s or student_name like %s)",
         [id,query, query])
 
     for obj in students:
@@ -71,13 +71,12 @@ def searchstudent(request,id):
 def getstudents(request):
     listsel = []
     students = Students.objects.raw(
-        "SELECT top 20 student_code,student_school_status,adm_no,student_name,date_of_birth,adm_date,completion_date,dorm_name," +
+        "SELECT top 100 student_code,student_school_status,adm_no,student_name,date_of_birth,adm_date,completion_date,dorm_name," +
         "class_name,student_email,student_phone,coalesce(father_name,mother_name)parent,student_gender,country_name FROM student_students" +
         " LEFT JOIN dorms_dorms ON student_dorm_id=dorm_code" +
         " LEFT JOIN classes_schoolclasses ON student_class_id=class_code" +
         " LEFT JOIN localities_countries ON nationality_id=country_id" +
-        " LEFT JOIN parents_parents ON student_parent_id=parent_code"+
-        " where student_school_status='Active'"
+        " LEFT JOIN parents_parents ON student_parent_id=parent_code"
 
     )
 
@@ -207,7 +206,7 @@ def assignstudents(request):
     unstringified = json.loads(students)
 
     for std in unstringified:
-        print(std)
+        # print(std)
         student = Students.objects.get(pk=std)
         classcodes = SchoolClasses.objects.get(pk=classcode)
         nextcodes = SchoolClasses.objects.get(pk=nextcode)
@@ -215,7 +214,7 @@ def assignstudents(request):
         student.student_statuschange_reason=reason
         student.student_statuschange_term=term
         student.student_statuschange_date=movementdate
-        if(classcodes==nextcodes):
+        if(classcodes==nextcodes and classcodes.next_class_id is None):
             student.student_statuschange_reason='Graduation'
             student.student_school_status='Graduated'
             studentyear = datetime.today().year
@@ -247,7 +246,7 @@ def unassignstudents(request):
         student.student_statuschange_reason = reason
         student.student_statuschange_term = term
         student.student_statuschange_date = movementdate
-        if (classcodes == nextcodes):
+        if (classcodes == nextcodes and nextcodes.next_class_id is None):
             student.student_statuschange_reason = 'Graduation'
             student.student_school_status = 'Graduated'
             studentyear = datetime.today().year
@@ -280,7 +279,7 @@ def assignallstudents(request):
         student.student_statuschange_reason = reason
         student.student_statuschange_term = term
         student.student_statuschange_date = movementdate
-        if (classcodes == nextcodes):
+        if (classcodes == nextcodes and classcodes.next_class_id is None):
             student.student_statuschange_reason = 'Graduation'
             student.student_school_status = 'Graduated'
             studentyear = datetime.today().year
@@ -314,7 +313,7 @@ def unassignallstudents(request):
         student.student_statuschange_reason = reason
         student.student_statuschange_term = term
         student.student_statuschange_date = movementdate
-        if (classcodes == nextcodes):
+        if (classcodes == nextcodes and nextcodes.next_class_id is None):
             student.student_statuschange_reason = 'Graduation'
             student.student_school_status = 'Graduated'
             studentyear = datetime.today().year

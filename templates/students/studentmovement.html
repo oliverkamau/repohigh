@@ -14,83 +14,80 @@
 
 
             </div>
-        <div class="col-md-10 col-sm-11 mx-5 mb-2" id="studentmovement">
-
- <form id="parent-form">
-     {% csrf_token %}
-<input type="hidden" name="parent_code" id="parentCode">
-                <div class="form-row">
 
 
-
-                      <div class="form-row">
-                        <div class="col-md-6 col-sm-12">
-                         <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-3 control-label" for="select">Class</label>
+        <div class="container-fluid" id="studentmovement">
+<div class="row">
+  <div class="col-md-4 col-sm-11">
+    <div class="form-row mb-4">
+          <label class="col-md-2 control-label" for="select">Class</label>
                                   <input type="hidden" name="class_code" id="classCode">
-                                  <select id="class_frm" type="text" class="form-control col-md-8"></select>
-                          </div>
-                          <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-3 control-label" for="select">Term</label>
-                            <select name="movement_term" id="term" class="form-control col-md-8">
+                                  <select id="class_frm" type="text" class="form-control col-md-9"></select>
+    </div>
+    <div class="form-row mb-4">
+           <label class="col-md-2 control-label" for="select">Term</label>
+                            <select name="movement_term" id="term" class="form-control col-md-9">
                                 <option value="">Term</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
 
-                            </select>
-                          </div>
-
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                          <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-4 control-label" for="select">Date</label>
-                            <input name="movement_date" id="date" type="date" class="form-control col-md-8">
-                          </div>
-                               <div class="form-row mb-4 ml-1 mr-1" id="resume">
-                            <label class="col-md-4 control-label" for="select">Resume Date</label>
-                            <input name="resume_date" id="resumeDate" type="date" class="form-control col-md-8">
-                          </div>
-                            <div class="form-row mb-4 ml-1 mr-1" id="noResume">
-                            <label class="col-md-4 control-label" for="select">&nbsp;</label>
-                          </div>
-                        </div>
-                               <div class="col-md-6 col-sm-12">
-                          <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-3 control-label" for="select">Admno.</label>
+                            </select></div>
+    <div class="form-row mb-4">
+      <label class="col-md-2 control-label" for="select">Admno</label>
                                   <input type="hidden" name="movement_admno" id="studentCode">
-                                  <select id="student_frm" type="text" class="form-control col-md-8"></select>
-                          </div>
-                              <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-3 control-label" for="select">Action</label>
-                              <select name="movement_action" id="action" class="form-control col-md-8">
+                                  <select id="student_frm" type="text" class="form-control col-md-9"></select> </div>
+       <div class="form-row mb-4">
+       <label class="col-md-2 control-label" for="select">Action</label>
+                              <select name="movement_action" id="action" class="form-control col-md-9">
                                 <option value="">Action</option>
                                 <option value="CM">Class Movements</option>
                                 <option value="S">Suspend</option>
                                 <option value="ES">End Suspension</option>
                                 <option value="T">Transfer</option>
                                 <option value="EX">Expel</option>
-                            </select>
-                          </div>
-                        </div>
+                            </select>  </div>
+  </div>
 
-                              <div class="col-md-6 col-sm-12">
-                                    <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-4 control-label" for="select">Reason/Comments</label>
-                              <textarea name="movement_reason" id="reason" class="form-control col-md-8"></textarea>
-                          </div>
-                          <div class="form-row mb-4 ml-1 mr-1">
-                            <label class="col-md-4 control-label" for="select">&nbsp;</label>
-                            <input type="file" name="file" id="student-avatar" class="form-control col-md-11">
-                          </div>
-
-                        </div>
-
-                      </div>
-                    </form>
-        </div>
+  <div class="col-md-3 col-sm-11">
+    <div class="form-row mb-4">
+                                       <input type="file" name="file" id="student-avatar" class="form-control col-md-10">
 
     </div>
+{#    <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+{#    <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+{#       <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+  </div>
+
+  <div class="col-md-3 col-sm-11 ml-2">
+    <div class="form-row mb-4">
+             <label class="col-md-4 control-label" for="select">Date</label>
+                            <input name="movement_date" id="date" type="date" class="form-control col-md-8">
+    </div>
+    <div class="form-row mb-4" id="resume">
+ <label class="col-md-4 control-label" for="select">Resume Date</label>
+                            <input name="resume_date" id="resumeDate" type="date" class="form-control col-md-8">
+
+
+    </div>
+          <div class="form-row mb-4" id="noResume">
+
+                                  <label class="col-md-4 control-label" for="select">&nbsp;</label>
+          </div>
+
+    <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Comments</label>
+                              <textarea name="movement_reason" id="reason" class="form-control col-md-8"></textarea>   </div>
+  </div>
+
+</div>
+</div>
 
 
      <div class="row col-md-11 col-sm-11 mx-3 mb-2" id="classmovement">
@@ -171,41 +168,41 @@
    </div>
 
 
-    <div class="col-md-11 col-sm-11 mx-1 mb-1">
-                                             <div class="form-row">
-
-                              <div class="col-md-4 col-sm-12">
-                          <div class="form-row mb-1">
-                            <label class="col-md-2 control-label" for="select">Name</label>
-                            <input type="text" name="father_name" id="fatherName" class="form-control col-md-9">
-                          </div>
-
-
-                        </div>
-                          <div class="col-md-4 col-sm-12">
-                          <div class="form-row mb-1">
-                           <label class="col-md-2 control-label" for="select">Class</label>
-                              <input type="hidden" name="search_class" id="sClass">
-                              <select id="table_search_frm" class="form-control col-md-9"></select>                         </div>
-
-                        </div>
-
-                          <div class="col-md-4 col-sm-12">
-                          <div class="form-row mb-1 ml-1 mr-1">
-                            <label class="col-md-3 control-label" for="select">Status</label>
-                            <select id="statii" class="form-control col-md-9">
-                                 <option value="">Status</option>
-                                 <option value="S">Suspended</option>
-                                 <option value="T">Transferred</option>
-                                 <option value="E">Expelled</option>
-                                 <option value="G">Graduated</option>
-
-                            </select>
-                          </div>
-
-                        </div>
-                                             </div>
-    </div>
+{#    <div class="col-md-11 col-sm-11 mx-1 mb-1">#}
+{#                                             <div class="form-row">#}
+{##}
+{#                              <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-1">#}
+{#                            <label class="col-md-2 control-label" for="select">Name</label>#}
+{#                            <input type="text" name="father_name" id="fatherName" class="form-control col-md-9">#}
+{#                          </div>#}
+{##}
+{##}
+{#                        </div>#}
+{#                          <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-1">#}
+{#                           <label class="col-md-2 control-label" for="select">Class</label>#}
+{#                              <input type="hidden" name="search_class" id="sClass">#}
+{#                              <select id="table_search_frm" class="form-control col-md-9"></select>                         </div>#}
+{##}
+{#                        </div>#}
+{##}
+{#                          <div class="col-md-4 col-sm-12">#}
+{#                          <div class="form-row mb-1 ml-1 mr-1">#}
+{#                            <label class="col-md-3 control-label" for="select">Status</label>#}
+{#                            <select id="statii" class="form-control col-md-9">#}
+{#                                 <option value="">Status</option>#}
+{#                                 <option value="S">Suspended</option>#}
+{#                                 <option value="T">Transferred</option>#}
+{#                                 <option value="E">Expelled</option>#}
+{#                                 <option value="G">Graduated</option>#}
+{##}
+{#                            </select>#}
+{#                          </div>#}
+{##}
+{#                        </div>#}
+{#                                             </div>#}
+{#    </div>#}
 
         <div class="col-md-11 col-sm-11 ml-2 mt-2">
 

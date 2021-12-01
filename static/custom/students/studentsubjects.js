@@ -229,6 +229,7 @@ $('#unAssignedTbl').on('change','.stud-check',function (s) {
     });
 
 }
+
 function unassignSubjects() {
 $('#assignedTbl').on('change','.stud-check',function (s) {
 

@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'studentmanager.studentsubjects.apps.StudentsubjectsConfig',
     'setups.academics.departments.apps.DepartmentsConfig',
     'setups.academics.responsibilities.apps.ResponsibilitiesConfig',
+    'staff.teachersubjects.apps.TeachersubjectsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -578,7 +578,7 @@ function studentImage(url){
             removeTitle: 'Cancel or reset changes',
             elErrorContainer: '#kv-avatar-errors',
             msgErrorClass: 'alert alert-block alert-danger',
-            defaultPreviewContent: '<img src="' + url + '"  style="height:13em;width:230px">',
+            defaultPreviewContent: '<img src="' + url + '"  style="height:13em;width:225px">',
             layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
             allowedFileExtensions: ["jpg", "png", "gif"]
         });
@@ -588,7 +588,7 @@ function searchClass() {
         $('#class_frm').select2({
             placeholder: 'Class',
             allowClear: true,
-            width:'67%',
+            width:'75%',
             ajax: {
                 delay: 250,
                 url: 'searchclasses',
@@ -726,7 +726,18 @@ function editStudent(){
             $('#action').val(s[0].action);
             $('#reason').val(s[0].reason);
             $('#term').val(s[0].term);
+            if (s[0].classCode) {
+			    var $newCl = $("<option selected='selected' value='" + s[0].classCode + "'>'+s[0].className+'</option>").val(s[0].classCode.toString()).text(s[0].className)
 
+               $('#class_frm').append($newCl).trigger('change');
+			    $('#classCode').val(s[0].classCode)
+			    }
+			    else {
+			    $('#class_frm').empty();
+			    $('#classCode').val('')
+
+			}
+			    searchStudent($('#classCode').val())
             if (s[0].studentCode) {
                 var $newCat = $("<option selected='selected' value='" + s[0].studentCode + "'>'+s[0].studentName+'</option>").val(s[0].studentCode.toString()).text(s[0].studentName)
 
@@ -740,17 +751,7 @@ function editStudent(){
             }
 
 
-			if (s[0].classCode) {
-			    var $newCl = $("<option selected='selected' value='" + s[0].classCode + "'>'+s[0].className+'</option>").val(s[0].classCode.toString()).text(s[0].className)
 
-               $('#class_frm').append($newCl).trigger('change');
-			    $('#classCode').val(s[0].classCode)
-			    }
-			    else {
-			    $('#class_frm').empty();
-			    $('#classCode').val('')
-
-			}
 
 			if(s[0].url) {
                 studentImage(s[0].url)
@@ -837,7 +838,7 @@ function searchStudent(id){
      $('#student_frm').select2({
             placeholder: 'Students',
             allowClear: true,
-            width:'67%',
+            width:'75%',
             ajax: {
                 delay: 250,
                 url: 'searchstudent/'+id,
@@ -860,6 +861,7 @@ function searchStudent(id){
             }
         })
 }
+
 function getUnloaded(){
     var data = $('#classmvClassCode').val();
      $.ajax({
@@ -885,6 +887,7 @@ function getUnloaded(){
        bootbox.alert(xhr.responseText);
     });
 }
+
 function getLoaded() {
   var data = $('#nextMvClassCode').val();
      $.ajax({

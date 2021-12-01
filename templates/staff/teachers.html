@@ -1,0 +1,277 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Teacher Details</h4>
+
+
+                       <button type="button" id="saveTeacher" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+
+                       <button type="button" id="newTeacher" class="btn btn-outline-secondary mr-3 ml-2 pull-right">New</button>
+
+            </div>
+
+
+        <div class="container-fluid" id="teacherregistry">
+             <form id="teacher-form">
+                 <input type="hidden" name="teacher_code" id="teacherCode">
+<div class="row">
+
+  <div class="col-md-4 col-sm-11">
+    <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Title</label>
+                                  <input type="hidden" name="title" id="titleCode">
+                                  <select id="title_frm" type="text" class="form-control col-md-8"></select>
+    </div>
+    <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Name</label>
+                                        <input name="teacher_name" id="teacherName" type="text" class="form-control col-md-8">
+
+    </div>
+    <div class="form-row mb-4">
+      <label class="col-md-4 control-label" for="select">Gender</label>
+                                        <select id="gender" name="gender" class="form-control col-md-8">
+                                 <option value="">Gender</option>
+                                 <option value="M">Male</option>
+                                 <option value="F">Female</option>
+                                 <option value="O">Other</option>
+
+                            </select> </div>
+        <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Responsibility</label>
+                                  <input type="hidden" name="responsibility" id="responsibilityCode">
+                                  <select id="responsibility_frm" type="text" class="form-control col-md-8"></select>
+    </div>
+          <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Department</label>
+                                  <input type="hidden" name="department" id="departmentCode">
+                                  <select id="department_frm" type="text" class="form-control col-md-8"></select>
+    </div>
+      <div class="form-row mb-4">
+      <label class="col-md-4 control-label" for="select">Status</label>
+                                        <select id="status" name="status" class="form-control col-md-8">
+                                 <option value="">Status</option>
+                                 <option value="Active">Active</option>
+                                 <option value="Inactive">Inactive</option>
+
+                            </select> </div>
+            <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">TscNo/UPI</label>
+                              <input name="tsc_no" id="tscNo" class="form-control col-md-8">   </div>
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+
+  <div class="form-row mb-1 form-check">
+    <input type="checkbox" class="form-check-input" id="assign">
+    <label class="form-check-label" for="assign">Assign Subjects</label>
+  </div>
+        <div class="form-row">
+                              <button type="button" id="unassignallbtn" class="btn btn-outline-secondary col-md-5 mr-2">Un-Assign all</button>
+
+                              <button type="button" id="transfer" class="btn btn-outline-secondary col-md-6">TransferSubjects</button>
+
+      </div>
+    <div class="form-row mb-2">
+                                       <input type="file" name="file" id="teacher-avatar" class="form-control col-md-10">
+
+    </div>
+         <div class="form-row mb-3">
+                              <button type="button" id="unassignall" class="btn btn-outline-secondary col-md-5 mr-2">Leave Outs</button>
+
+                              <button type="button" id="transfer" class="btn btn-outline-secondary col-md-6">Save GridValues</button>
+
+      </div>
+{#    <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+{#    <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+{#       <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+    <div class="form-row mb-4">
+             <label class="col-md-4 control-label" for="select">WEF Date</label>
+                            <input name="date_joined" id="dateJoined" type="date" class="form-control col-md-8">
+    </div>
+    <div class="form-row mb-4" id="resume">
+ <label class="col-md-4 control-label" for="select">WET Date</label>
+                            <input name="date_left" id="dateLeft" type="date" class="form-control col-md-8">
+
+
+    </div>
+
+    <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Address</label>
+                              <input name="box_address" id="address" class="form-control col-md-8">   </div>
+      <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Telephone</label>
+                              <input name="phone_number" id="phoneNumber" class="form-control col-md-8">   </div>
+      <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Email</label>
+                              <input name="email" id="email" class="form-control col-md-8">   </div>
+         <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">ID No.</label>
+                              <input name="id_no" id="idNo" class="form-control col-md-8">   </div>
+
+
+<div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Intials</label>
+                              <input name="intials" id="intials" class="form-control col-md-8">   </div>
+  </div>
+
+</div>
+             </form>
+</div>
+
+
+     <div class="row col-md-11 col-sm-11 mx-3 mb-2" id="subjectsassignment">
+    <div class="col-md-5 col-sm-10">
+
+ <form id="document-form">
+     {% csrf_token %}
+                 <input type="hidden" id="tpCode" name="code">
+
+ </form>
+
+        <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="unAssignedTbl">
+  <thead>
+    <tr>
+        <th>&nbsp;</th>
+
+    </tr>
+
+  </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+     <div class="col-md-2 col-sm-10">
+            <div class="form-row mb-1 form-check">
+    <input type="checkbox" class="form-check-input" id="assign-subs">
+    <label class="form-check-label" for="assign">Assign Subjects</label>
+  </div>
+
+         <br>
+         <br>
+       <button type="button" id="assignAll" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2">>></button>
+       <button type="button" id="assignSelected" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2"> > </button>
+       <button type="button" id="unAssignSelected" class="btn btn-outline-primary col-md-8 mb-2 col-sm-10"> < </button>
+       <button type="button" id="unAssignAll" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2"> << </button>
+
+    </div>
+    <div class="col-md-5 col-sm-10">
+
+                <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="assignedTbl">
+  <thead>
+    <tr>
+        <th>&nbsp;</th>
+    </tr>
+  </thead>
+                              <tbody>
+
+            </tbody>
+        </table>
+    </div>
+   </div>
+
+        <div class="col-md-11 col-sm-11 ml-2 mt-2">
+
+            <div class="table-responsive">
+      <table class="table table-striped display responsive nowrap" id="teaTable">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Gender</th>
+        <th scope="col">Phone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Address</th>
+       <th scope="col">Duty</th>
+      <th scope="col">Adm Date</th>
+      <th scope="col">TscNo</th>
+      <th scope="col">StaffNo</th>
+       <th scope="col">IDNo</th>
+      <th scope="col">Department</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+<div class="modal fade" id="transferModal" role="dialog" aria-labelledby="transferModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="transferModalTitle">Transfer Subjects</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="tansfer-form">
+                {% csrf_token %}
+                <input type="hidden" name="teacher_to_code" id="teacherTransferFrom">
+                <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Transfer From</label>
+
+                        <div class="col-md-8 col-sm-11 ml-0">
+                         <input type="text" name="teacher" class="form-control" id="teacherTransferName" placeholder="" readonly>
+
+                        </div>
+                </div>
+                   <div class="form-group row mb-3">
+                         <input type="hidden" id="teacherTransferTo" name="teacher_from_code"/>
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Transfer To</label>
+
+                        <div class="col-md-8 col-sm-11">
+
+                            <select id="transfer_frm" class="form-control"
+                     >
+
+
+        </select>
+                        </div>
+                </div>
+
+            </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="transferToBtn" class="btn btn-outline-primary">Save</button>
+
+        <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/staff/teachers.js' %}"></script>
+    <script type="text/javascript">
+    var assigned = [];
+</script>
+<script type="text/javascript">
+    var unassigned = [];
+</script>
+    <script type="text/javascript">
+    var spinner ="";
+</script>
+
+
+{% endblock %}
