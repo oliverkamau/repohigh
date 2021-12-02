@@ -2,24 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/staff/teachers/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff/teachers/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/staff/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/custom/staff/teachers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/staff/teachers.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schoolsys/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schoolsys/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/staff/teachers/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/staff/teachers/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff/teachers/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/staff/teachers/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/staff/teachers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/staff/teachers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/custom/students/movement.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/students/movement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/custom/students/studentsubjects.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/students/studentsubjects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentmanager/movements/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentmanager/movements/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/students/studentmovement.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/students/studentmovement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/staff/teachersubjects/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/staff/teachersubjects/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/staff/teachers.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/staff/teachers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/students/studentdetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/students/studentdetails.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/staff/teachers.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/staff/teachers.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/students/studentsdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/students/studentsdetail.html" afterDir="false" />
     </list>
     <ignored path="D:\django\gabu\repohigh\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,10 +60,42 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/localities/views.py">
+        <entry file="file://$PROJECT_DIR$/static/custom/staff/teachers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1219">
-              <caret line="79" column="27" selection-start-line="79" selection-end-line="80" />
+            <state relative-caret-position="94">
+              <caret line="173" column="41" lean-forward="true" selection-start-line="173" selection-start-column="41" selection-end-line="173" selection-end-column="41" />
+              <folding>
+                <element signature="e#104#110#0" expanded="true" />
+                <element signature="e#110#116#0" expanded="true" />
+                <element signature="e#116#122#0" expanded="true" />
+                <element signature="e#122#128#0" expanded="true" />
+                <element signature="e#104#110#0" expanded="true" />
+                <element signature="e#110#116#0" expanded="true" />
+                <element signature="e#116#122#0" expanded="true" />
+                <element signature="e#122#128#0" expanded="true" />
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/custom/students/studentdetails.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="365" column="40" lean-forward="true" selection-start-line="365" selection-start-column="40" selection-end-line="365" selection-end-column="40" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/staff/teachers/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-991">
+              <caret line="346" column="17" lean-forward="true" selection-start-line="346" selection-start-column="17" selection-end-line="346" selection-end-column="17" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -80,39 +104,35 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/staff/views.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studentmanager/movements/views.py">
+        <entry file="file://$PROJECT_DIR$/templates/students/studentsdetail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1215">
-              <caret line="118" column="5" lean-forward="true" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
+            <state relative-caret-position="221">
+              <caret line="605" column="31" lean-forward="true" selection-start-line="605" selection-start-column="31" selection-end-line="605" selection-end-column="31" />
               <folding>
-                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#13059#13065#0#HTML" expanded="true" />
+                <element signature="e#14536#14542#1#HTML" expanded="true" />
+                <element signature="e#14881#14887#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/students/studentmovement.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-357">
-              <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/student_students">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="0a8bb71b-a63d-4755-a222-488bcd89aa8c">
+              <filtering>
+                <filter text="" />
+              </filtering>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studentmanager/studentsubjects/views.py">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_7.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2890">
-              <caret line="187" selection-start-line="187" selection-end-line="187" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+            <state>
+              <caret column="58" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -120,33 +140,19 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/staff/teachers.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1479">
-              <caret line="87" selection-start-line="87" selection-end-line="88" selection-end-column="12" />
+            <state relative-caret-position="1428">
+              <caret line="84" column="104" selection-start-line="84" selection-start-column="104" selection-end-line="84" selection-end-column="104" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/counties.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/setups/academics/classes.html">
+        <entry file="file://$PROJECT_DIR$/staff/teachers/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="612">
-              <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/staff/teachers/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5882">
-              <caret line="362" column="37" lean-forward="true" selection-start-line="362" selection-start-column="37" selection-end-line="362" selection-end-column="37" />
+            <state relative-caret-position="306">
+              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#28#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -155,10 +161,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/staff/teachersubjects/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="8" column="23" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="23" />
+            <state relative-caret-position="85">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="24" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/static/custom/students/movement.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="263">
+              <caret line="580" column="76" lean-forward="true" selection-start-line="580" selection-start-column="76" selection-end-line="580" selection-end-column="76" />
+              <folding>
+                <element signature="e#106#112#0" expanded="true" />
+                <element signature="e#112#118#0" expanded="true" />
+                <element signature="e#106#112#0" expanded="true" />
+                <element signature="e#112#118#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -178,14 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>classc</find>
-      <find>department</find>
-      <find>models.ForeignKey(Departments</find>
-      <find>contenttypes</find>
-      <find>Select2Da</find>
-      <find>stude</find>
-      <find>classCH</find>
-      <find>students</find>
       <find>students(</find>
       <find>students()</find>
       <find>dy</find>
@@ -199,7 +212,6 @@
       <find>.cha</find>
       <find>clearp</find>
       <find>unassigna</find>
-      <find>searchcl</find>
       <find>searchstu</find>
       <find>button</find>
       <find>r'te</find>
@@ -208,6 +220,15 @@
       <find>editSTUDENT</find>
       <find>delete</find>
       <find>checke</find>
+      <find>searchClass(</find>
+      <find>searchcl</find>
+      <find>change</find>
+      <find>assignall</find>
+      <find>hide</find>
+      <find>searchfee</find>
+      <find>image</find>
+      <find>500</find>
+      <find>assigntea</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -221,9 +242,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/custom/main.js" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a8ac39f1-8d9c-4c79-bea4-64559d6605b1/console_6.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a8ac39f1-8d9c-4c79-bea4-64559d6605b1/console_17.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a8ac39f1-8d9c-4c79-bea4-64559d6605b1/console_9.sql" />
         <option value="$PROJECT_DIR$/assets/custom/main.js" />
         <option value="$PROJECT_DIR$/setups/academics/classsubjects/models.py" />
@@ -241,14 +259,12 @@
         <option value="$PROJECT_DIR$/studentmanager/urls.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/206d3428-9aa9-4adb-9533-6a303b858571/console_1.sql" />
         <option value="$PROJECT_DIR$/studentmanager/student/views.py" />
-        <option value="$PROJECT_DIR$/static/custom/students/studentdetails.js" />
         <option value="$PROJECT_DIR$/templates/students/studentsubjects.html" />
         <option value="$PROJECT_DIR$/studentmanager/studentsubjects/views.py" />
         <option value="$PROJECT_DIR$/studentmanager/student/models.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_1.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_2.sql" />
         <option value="$PROJECT_DIR$/studentmanager/movements/urls.py" />
-        <option value="$PROJECT_DIR$/templates/students/studentsdetail.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console.sql" />
         <option value="$PROJECT_DIR$/templates/home/home.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
@@ -260,18 +276,23 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_3.sql" />
         <option value="$PROJECT_DIR$/staff/teachers/models.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_4.sql" />
-        <option value="$PROJECT_DIR$/staff/teachersubjects/models.py" />
         <option value="$PROJECT_DIR$/staff/teachersubjects/apps.py" />
         <option value="$PROJECT_DIR$/schoolsys/settings.py" />
-        <option value="$PROJECT_DIR$/static/custom/students/movement.js" />
         <option value="$PROJECT_DIR$/static/custom/students/studentsubjects.js" />
         <option value="$PROJECT_DIR$/studentmanager/studentsubjects/urls.py" />
-        <option value="$PROJECT_DIR$/staff/teachers/urls.py" />
-        <option value="$PROJECT_DIR$/staff/teachers/views.py" />
-        <option value="$PROJECT_DIR$/templates/staff/teachers.html" />
-        <option value="$PROJECT_DIR$/static/custom/staff/teachers.js" />
         <option value="$PROJECT_DIR$/studentmanager/movements/views.py" />
         <option value="$PROJECT_DIR$/templates/students/studentmovement.html" />
+        <option value="$PROJECT_DIR$/templates/staff/teachers.html" />
+        <option value="$PROJECT_DIR$/staff/teachersubjects/models.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_5.sql" />
+        <option value="$PROJECT_DIR$/staff/teachers/urls.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_6.sql" />
+        <option value="$PROJECT_DIR$/static/custom/students/movement.js" />
+        <option value="$PROJECT_DIR$/static/custom/students/studentdetails.js" />
+        <option value="$PROJECT_DIR$/templates/students/studentsdetail.html" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_7.sql" />
+        <option value="$PROJECT_DIR$/staff/teachers/views.py" />
+        <option value="$PROJECT_DIR$/static/custom/staff/teachers.js" />
       </list>
     </option>
   </component>
@@ -305,6 +326,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -474,7 +496,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -626,11 +647,13 @@
       <workItem from="1638340745841" duration="9814000" />
       <workItem from="1638357450707" duration="9557000" />
       <workItem from="1638381340128" duration="434000" />
+      <workItem from="1638428147399" duration="21832000" />
+      <workItem from="1638465892786" duration="5640000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114576000" />
+    <option name="totallyTimeSpent" value="142048000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -644,7 +667,7 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2716249" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.30719483" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -665,7 +688,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32972974" />
-      <window_info anchor="right" id="Database" order="4" weight="0.3039612" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.21907842" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27647534" />
@@ -699,82 +722,10 @@
     <SUITE FILE_PATH="coverage/repohigh$settings.coverage" NAME="settings Coverage Results" MODIFIED="1638169422009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/schoolsys" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/students/parents.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="125" selection-start-line="124" selection-start-column="29" selection-end-line="127" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/useradmin/users/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="3" selection-start-line="5" selection-end-line="5" selection-end-column="15" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1032">
-          <caret line="124" column="20" lean-forward="true" selection-start-line="124" selection-start-column="20" selection-end-line="124" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff/teachers/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/parents/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/student/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studentmanager/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/students/studentsdetail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1224">
-          <caret line="72" column="65" selection-start-line="72" selection-end-line="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/movements/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="5" selection-end-column="78" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -891,39 +842,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/staff/teachers/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studentmanager/parents/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4182">
           <caret line="266" column="40" selection-start-line="261" selection-start-column="3" selection-end-line="270" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/student/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10999">
-          <caret line="674" column="81" selection-start-line="673" selection-start-column="3" selection-end-line="674" selection-end-column="134" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/student_students">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="f64ce070-0ab8-41ed-b16f-31cc0f5b7fe9">
-          <filtering>
-            <filter text="" />
-          </filtering>
         </state>
       </provider>
     </entry>
@@ -933,16 +855,6 @@
           <filtering>
             <filter text="" />
           </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/students/studentdetails.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="150" column="12" selection-start-line="150" selection-start-column="12" selection-end-line="150" selection-end-column="12" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -960,27 +872,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/students/movement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3089">
-          <caret line="671" column="1" lean-forward="true" selection-start-line="671" selection-start-column="1" selection-end-line="671" selection-end-column="1" />
-          <folding>
-            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-            <element signature="e#106#112#0" expanded="true" />
-            <element signature="e#112#118#0" expanded="true" />
-            <element signature="e#106#112#0" expanded="true" />
-            <element signature="e#112#118#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/studentsubjects/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="48" lean-forward="true" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/studentmanager/studentsubjects/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -994,10 +885,239 @@
     <entry file="file://$PROJECT_DIR$/staff/teachers/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/staff/teachers.js">
+    <entry file="file://$PROJECT_DIR$/static/custom/setups/academics/classes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="26" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/students/studentsubjects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3502">
+          <caret line="206" column="9" selection-start-line="206" selection-start-column="9" selection-end-line="206" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/localities/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="79" column="27" selection-start-line="79" selection-end-line="80" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentmanager/studentsubjects/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2890">
+          <caret line="187" selection-start-line="187" selection-end-line="187" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/counties.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/students/parents.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="55" column="32" lean-forward="true" selection-start-line="55" selection-start-column="32" selection-end-line="55" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/students/studentmovement.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="149" column="42" selection-start-line="149" selection-start-column="42" selection-end-line="149" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentmanager/student/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="674" column="81" selection-start-line="673" selection-start-column="3" selection-end-line="674" selection-end-column="134" />
+          <folding>
+            <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentmanager/parents/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentmanager/movements/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="23" selection-start-line="6" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentmanager/movements/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="38" column="27" selection-start-line="22" selection-end-line="43" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/setups/academics/classes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python39/Lib/json/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="298" column="4" selection-start-line="298" selection-start-column="4" selection-end-line="298" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/teachersubjects_teachersubjects">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="1ec14cf5-9b5a-4d80-a422-8573fdf340ad">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_5.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="43" lean-forward="true" selection-start-column="43" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_6.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="39" lean-forward="true" selection-start-column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentmanager/studentsubjects/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff/teachers/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/staff/teachers.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1428">
+          <caret line="84" column="104" selection-start-line="84" selection-start-column="104" selection-end-line="84" selection-end-column="104" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff/teachers/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
-          <caret line="54" selection-start-line="54" selection-end-line="54" />
+          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff/teachersubjects/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/students/movement.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="580" column="76" lean-forward="true" selection-start-line="580" selection-start-column="76" selection-end-line="580" selection-end-column="76" />
+          <folding>
+            <element signature="e#106#112#0" expanded="true" />
+            <element signature="e#112#118#0" expanded="true" />
+            <element signature="e#106#112#0" expanded="true" />
+            <element signature="e#112#118#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/student_students">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="0a8bb71b-a63d-4755-a222-488bcd89aa8c">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_7.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="58" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/students/studentsdetail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="605" column="31" lean-forward="true" selection-start-line="605" selection-start-column="31" selection-end-line="605" selection-end-column="31" />
+          <folding>
+            <element signature="e#13059#13065#0#HTML" expanded="true" />
+            <element signature="e#14536#14542#1#HTML" expanded="true" />
+            <element signature="e#14881#14887#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/students/studentdetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="365" column="40" lean-forward="true" selection-start-line="365" selection-start-column="40" selection-end-line="365" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/staff/teachers.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="94">
+          <caret line="173" column="41" lean-forward="true" selection-start-line="173" selection-start-column="41" selection-end-line="173" selection-end-column="41" />
           <folding>
             <element signature="e#104#110#0" expanded="true" />
             <element signature="e#110#116#0" expanded="true" />
@@ -1012,104 +1132,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/setups/academics/classes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="6" selection-start-line="25" selection-start-column="6" selection-end-line="26" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff/teachers/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/students/studentsubjects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3502">
-          <caret line="206" column="9" selection-start-line="206" selection-start-column="9" selection-end-line="206" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/studentsubjects/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2890">
-          <caret line="187" selection-start-line="187" selection-end-line="187" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/staff/teachers.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1479">
-          <caret line="87" selection-start-line="87" selection-end-line="88" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/counties.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/setups/academics/classes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="10" selection-start-line="36" selection-start-column="10" selection-end-line="36" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/staff/teachers/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5882">
-          <caret line="362" column="37" lean-forward="true" selection-start-line="362" selection-start-column="37" selection-end-line="362" selection-end-column="37" />
+        <state relative-caret-position="-991">
+          <caret line="346" column="17" lean-forward="true" selection-start-line="346" selection-start-column="17" selection-end-line="346" selection-end-column="17" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff/teachersubjects/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/localities/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1219">
-          <caret line="79" column="27" selection-start-line="79" selection-end-line="80" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff/views.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/movements/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1215">
-          <caret line="118" column="5" lean-forward="true" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/students/studentmovement.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-357">
-          <caret line="168" lean-forward="true" selection-start-line="168" selection-end-line="168" />
         </state>
       </provider>
     </entry>

@@ -33,11 +33,24 @@ $(document).ready(function () {
     transferChange();
     transferSubjects();
     newPage();
+    searchClass();
+    classChange();
 })
 function newPage(){
     $('#newTeacher').click(function () {
         clearpage();
     })
+}
+function classChange() {
+    $('#class_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#classCode').val(data.id)
+         getSubjects();
+          getSubjectsAssigned();
+    });
+    $("#class_frm").on("select2:unselecting", function(e) {
+    $('#classCode').val('')
+ });
 }
 function clearpage(){
     $('#teacher-form')[0].reset();
@@ -54,12 +67,41 @@ function clearpage(){
     formatDate()
 
 }
+function searchClass() {
+        $('#class_frm').select2({
+            placeholder: 'Class',
+            allowClear: true,
+            width:'75%',
+            ajax: {
+                delay: 250,
+                url: 'searchclasses',
+                data: function (params) {
+                    console.log("AA", params);
+                    return {
+                        query: params.term,
+                        gotoPage: params.page
+                    }
+                },
 
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log('data: ', data);
+                    return {
+                        results: data.results
+                    };
+                }
+
+            }
+        })
+
+}
 function getSubjects() {
  var data = $('#teacherCode').val();
+  var cl  = $('#classCode').val();
+
      $.ajax({
         type: 'GET',
-        url: 'getunassignedsubjects/'+data,
+        url: 'getunassignedsubjects/'+data+'/'+cl,
 
     }).done(function (s) {
        $('#unAssignedTbl').DataTable().destroy();
@@ -129,7 +171,7 @@ function assignTeacherSubjects() {
       swal({
           title: 'Alert!',
           type: 'info',
-          text: 'No Teachers selected to assign subjects to',
+          text: 'No Subjects selected to assign',
          confirmButtonText: 'OK'
       })
   } else {
@@ -140,8 +182,10 @@ function assignTeacherSubjects() {
               allowOutsideClick: false
             });
       var data = new FormData();
-      data.append("teacher", $('#teacherCode').val())
-      data.append('subjects', JSON.stringify(assigned))
+      data.append("teacher", $('#teacherCode').val());
+      data.append('subjects', JSON.stringify(assigned));
+      data.append("classcode", $('#classCode').val());
+
       $.ajax({
           type: 'POST',
           url: 'assignsubjects',
@@ -161,6 +205,9 @@ function assignTeacherSubjects() {
      //})
       }).fail(function (xhr, error) {
             swal.close()
+           getSubjectsAssigned();
+          getSubjects();
+          assigned=[]
           bootbox.alert(xhr.responseText)
 
       });
@@ -185,7 +232,7 @@ function unassignTeacherSubjects() {
       swal({
           title: 'Alert!',
           type: 'info',
-          text: 'No Teachers selected to assign subjects to',
+          text: 'No Subjects selected to unassign',
          confirmButtonText: 'OK'
       })
   } else {
@@ -196,8 +243,10 @@ function unassignTeacherSubjects() {
               allowOutsideClick: false
             });
            var data = new FormData();
-           data.append("teacher", $('#teacherCode').val())
-           data.append('subjects', JSON.stringify(unassigned))
+           data.append("teacher", $('#teacherCode').val());
+           data.append('subjects', JSON.stringify(unassigned));
+           data.append("classcode", $('#classCode').val());
+
            $.ajax({
                type: 'POST',
                url: 'unassignsubjects',
@@ -212,6 +261,9 @@ function unassignTeacherSubjects() {
 
       }).fail(function (xhr, error) {
             swal.close()
+               getSubjectsAssigned();
+            getSubjects();
+            unassigned=[]
               bootbox.alert(xhr.responseText)
       });
        }
@@ -241,9 +293,10 @@ $('#assignedTbl').on('change','.sub-check',function (s) {
 function getSubjectsAssigned() {
 
     var data = $('#teacherCode').val();
+    var cl =  $('#classCode').val();
      $.ajax({
         type: 'GET',
-        url: 'getassignedsubjects/'+data,
+        url: 'getassignedsubjects/'+data+'/'+cl,
 
     }).done(function (s) {
        $('#assignedTbl').DataTable().destroy();
@@ -268,11 +321,11 @@ function getSubjectsAssigned() {
 
 function assignallSubjects() {
 $('#assignAll').on('click',function (s) {
-      if($('#teacherCode').val()===''){
+      if($('#teacherCode').val()==='' ||  $('#classCode').val()===''){
       swal({
           title: 'Alert!',
           type: 'info',
-          text: 'No Teacher selected to assign subjects to',
+          text: 'No Teacher or class selected to assign subjects to',
          confirmButtonText: 'OK'
       })
   } else {
@@ -283,7 +336,9 @@ $('#assignAll').on('click',function (s) {
               allowOutsideClick: false
             });
           var data = new FormData();
-          data.append("teacher", $('#teacherCode').val())
+          data.append("teacher", $('#teacherCode').val());
+          data.append("classcode", $('#classCode').val());
+
           $.ajax({
               type: 'POST',
               url: 'assignallsubjects',
@@ -304,11 +359,11 @@ $('#assignAll').on('click',function (s) {
 }
 function unassignallSubjectsBtn() {
 $('#unassignallbtn').on('click',function (s) {
-     if($('#teacherCode').val() ===''){
+     if($('#teacherCode').val() ==='' || $('#classCode').val()===''){
       swal({
           title: 'Alert!',
           type: 'info',
-          text: 'No students selected to assign subjects to',
+          text: 'No Teacher or Class selected to assign subjects to',
          confirmButtonText: 'OK'
       })
   } else {
@@ -319,7 +374,10 @@ $('#unassignallbtn').on('click',function (s) {
               allowOutsideClick: false
             });
          var data = new FormData();
-         data.append("teacher", $('#teacherCode').val())
+         data.append("teacher", $('#teacherCode').val());
+         data.append("classcode", $('#classCode').val());
+         data.append("classcode", $('#classCode').val());
+
          $.ajax({
              type: 'POST',
              url: 'unassignallsubjects',
@@ -341,7 +399,8 @@ $('#unassignallbtn').on('click',function (s) {
 }
 function unassignallSubjects() {
 $('#unAssignAll').on('click',function (s) {
-     if($('#teacherCode').val()===''){
+     if($('#teacherCode').val()==='' || $('#classCode').val() === '')
+{
       swal({
           title: 'Alert!',
           type: 'info',
@@ -356,7 +415,9 @@ $('#unAssignAll').on('click',function (s) {
               allowOutsideClick: false
             });
          var data = new FormData();
-         data.append("teacher", $('#teacherCode').val())
+         data.append("teacher", $('#teacherCode').val());
+         data.append("classcode", $('#classCode').val());
+
          $.ajax({
              type: 'POST',
              url: 'unassignallsubjects',
@@ -392,8 +453,6 @@ $('#assign').on('change',function (s) {
 
         }
         else {
-            getSubjects()
-            getSubjectsAssigned()
             $('#assign').prop('checked', false);
             $('#assign-subs').prop('checked', true);
             $('#subjectsassignment').show()
@@ -449,7 +508,10 @@ $('#assign-subs').on('change',function (s) {
         $('#assign-subs').prop('checked',true);
         $('#subjectsassignment').hide()
         $('#teacherregistry').show();
-
+        $('#class_frm').empty();
+        $('#classCode').val('');
+         $('#unAssignedTbl tbody').empty();
+         $('#assignedTbl tbody').empty();
     }
     else {
          $('#assign').prop('checked',true);

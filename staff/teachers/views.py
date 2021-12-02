@@ -9,6 +9,7 @@ from rest_framework import status
 
 from localities.models import Select2Data
 from localities.serializers import Select2Serializer
+from setups.academics.classes.models import SchoolClasses
 from setups.academics.departments.models import Departments
 from setups.academics.responsibilities.models import Responsibilities
 from setups.academics.subjects.models import Subjects
@@ -230,13 +231,13 @@ def updateteachers(request,id):
     return JsonResponse({'success': 'Teacher Updated Successfully'})
 
 
-def getunassignedsubjects(request,id):
+def getunassignedsubjects(request,id,cl):
     listsel = []
     teachers = Subjects.objects.raw(
         "SELECT subject_code,subject_name FROM subjects_subjects" +
         " where subject_code not in(select teacher_subjectsubject_id from teachersubjects_teachersubjects" +
-        " where teacher_subjectteacher_id = %s)",
-        [id]
+        " where teacher_subjectteacher_id = %s and teacher_subjectclass_id = %s)",
+        [id,cl]
 
     )
 
@@ -252,13 +253,13 @@ def getunassignedsubjects(request,id):
     return JsonResponse(listsel, safe=False)
 
 
-def getassignedsubjects(request,id):
+def getassignedsubjects(request,id,cl):
     listsel = []
     teachers = TeacherSubjects.objects.raw(
         "SELECT teacher_subjectcode,subject_name FROM teachersubjects_teachersubjects"+
         " inner join subjects_subjects on teacher_subjectsubject_id=subject_code" +
-        " where teacher_subjectteacher_id = %s",
-        [id]
+        " where teacher_subjectteacher_id = %s and teacher_subjectclass_id = %s",
+        [id,cl]
 
     )
 
@@ -284,16 +285,31 @@ def dynamicaddress(request):
 def assignsubjects(request):
     subject = request.POST.get('subjects', None)
     teacher = request.POST.get('teacher', None)
+    classes = request.POST.get('classcode', None)
     unstringified = json.loads(subject)
 
     for std in unstringified:
         print(std)
         teachers = Teachers.objects.get(pk=teacher)
         subjects = Subjects.objects.get(pk=std)
+        clss = SchoolClasses.objects.get(pk=classes)
         teacherSubjects = TeacherSubjects()
         teacherSubjects.teacher_subjectsubject = subjects
         teacherSubjects.teacher_subjectteacher = teachers
-        teacherSubjects.save()
+        teacherSubjects.teacher_subjectclass = clss
+
+        assn = TeacherSubjects.objects.filter(teacher_subjectsubject=subjects,
+                                              teacher_subjectclass=clss).exists()
+        if (assn):
+            return JsonResponse({'error':subjects.subject_name + ' already assigned'},
+                                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            teacherSubjects.save()
+
+        # try:
+        #     subjecttea = TeacherSubjects.objects.get(teacher_subjectsubject=subjects,teacher_subjectclass=clss)
+        # except TeacherSubjects.DoesNotExist:
+        #        teacherSubjects.save()
 
     return JsonResponse({'success': 'Assigned Successfully'})
 
@@ -311,7 +327,10 @@ def unassignsubjects(request):
 
 def assignallsubjects(request):
     teacher = request.POST.get('teacher', None)
+    classes = request.POST.get('classcode', None)
     teachers = Teachers.objects.get(pk=teacher)
+    clss = SchoolClasses.objects.get(pk=classes)
+
     subjects = Subjects.objects.all()
     for obj in subjects:
 
@@ -321,17 +340,28 @@ def assignallsubjects(request):
         teachersubjects = TeacherSubjects()
         teachersubjects.teacher_subjectteacher = teachers
         teachersubjects.teacher_subjectsubject = sub
-        try:
-            subjecttea = TeacherSubjects.objects.get(teacher_subjectteacher=teachers,teacher_subjectsubject=sub)
-        except TeacherSubjects.DoesNotExist:
-               teachersubjects.save()
+        teachersubjects.teacher_subjectclass = clss
+
+        assn=TeacherSubjects.objects.filter(teacher_subjectsubject=sub,
+                                    teacher_subjectclass=clss).exists()
+        if(assn):
+            return JsonResponse({'error': sub.subject_name +' already assigned'},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        else:
+            teachersubjects.save()
+
+        # try:
+        #     subjecttea = TeacherSubjects.objects.get(teacher_subjectteacher=teachers,teacher_subjectsubject=sub,teacher_subjectclass=clss)
+        # except TeacherSubjects.DoesNotExist:
+        #        teachersubjects.save()
 
     return JsonResponse({'success': 'Unassigned Successfully'})
 
 
 def unassignallsubjects(request):
     teacher = request.POST.get('teacher', None)
-    teachers = TeacherSubjects.objects.raw("select teacher_subjectcode from teachersubjects_teachersubjects where teacher_subjectteacher_id =%s",[teacher])
+    classes = request.POST.get('classcode', None)
+    teachers = TeacherSubjects.objects.raw("select teacher_subjectcode from teachersubjects_teachersubjects where teacher_subjectteacher_id =%s and teacher_subjectclass_id =%s",[teacher,classes])
     for obj in teachers:
         std=obj.teacher_subjectcode
         try:
@@ -347,6 +377,7 @@ def unassignallsubjects(request):
 def transfersubjects(request):
     teacherFrom = request.POST.get('transferFrom', None)
     teacherTo = request.POST.get('transferTo', None)
+
     teachersTo = Teachers.objects.get(pk=teacherTo)
 
     teachersubs = TeacherSubjects.objects.raw("select teacher_subjectcode from teachersubjects_teachersubjects where teacher_subjectteacher_id =%s",[teacherFrom])
@@ -370,3 +401,27 @@ def transfersubjects(request):
                                 status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     return JsonResponse({'success': 'Transferred Successfully'})
+
+
+def searchclasses(request):
+        if request.method == 'GET' and 'query' in request.GET:
+            query = request.GET['query']
+            query = '%' + query + '%'
+        else:
+            query = '%' + '' + '%'
+
+        listsel = []
+        classes = SchoolClasses.objects.raw(
+            "SELECT top 5 class_code,class_name FROM classes_schoolclasses WHERE class_name like %s or class_code like %s",
+            tuple([query, query]))
+
+        for obj in classes:
+            text = obj.class_name
+            select2 = Select2Data()
+            select2.id = str(obj.class_code)
+            select2.text = text
+            serializer = Select2Serializer(select2)
+
+            listsel.append(serializer.data)
+
+        return JsonResponse({'results': listsel})

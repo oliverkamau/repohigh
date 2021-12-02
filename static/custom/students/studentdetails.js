@@ -355,7 +355,7 @@ function studentImage(url){
             removeTitle: 'Cancel or reset changes',
             elErrorContainer: '#kv-avatar-errors',
             msgErrorClass: 'alert alert-block alert-danger',
-            defaultPreviewContent: '<img src="' + url + '"  style="height:13em;width:230px">',
+            defaultPreviewContent: '<img src="' + url + '"  style="height:13em;width:190px">',
             layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
             allowedFileExtensions: ["jpg", "png", "gif"]
         });
