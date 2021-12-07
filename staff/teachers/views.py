@@ -16,6 +16,7 @@ from setups.academics.subjects.models import Subjects
 from staff.teachers.forms import TeacherForm
 from staff.teachers.models import TeacherSalution, Teachers
 from staff.teachersubjects.models import TeacherSubjects
+from django.db import connection
 
 
 def teacherpage(request):
@@ -23,6 +24,8 @@ def teacherpage(request):
 
 
 def searchtitle(request):
+
+    vendor=connection.vendor
     if request.method == 'GET' and 'query' in request.GET:
         query = request.GET['query']
         query = '%' + query + '%'
@@ -30,8 +33,15 @@ def searchtitle(request):
         query = '%' + '' + '%'
 
     listsel = []
-    titles = TeacherSalution.objects.raw(
-        "SELECT top 5 salutation_id,salutation_name FROM teachers_teachersalution WHERE salutation_name like %s or salutation_desc like %s",
+    mysql='SELECT salutation_id,salutation_name FROM teachers_teachersalution WHERE salutation_name like %s or salutation_desc like %s LIMIT 5'
+    mssql="SELECT top 5 salutation_id,salutation_name FROM teachers_teachersalution WHERE salutation_name like %s or salutation_desc like %s"
+    usedquery = ''
+    if(vendor == 'microsoft'):
+        usedquery = mssql
+    else:
+        usedquery = mysql
+
+    titles = TeacherSalution.objects.raw(usedquery,
         tuple([query, query]))
 
     for obj in titles:
@@ -46,6 +56,8 @@ def searchtitle(request):
     return JsonResponse({'results': listsel})
 
 def searchresponsibility(request):
+    vendor=connection.vendor
+
     if request.method == 'GET' and 'query' in request.GET:
         query = request.GET['query']
         query = '%' + query + '%'
@@ -53,8 +65,14 @@ def searchresponsibility(request):
         query = '%' + '' + '%'
 
     listsel = []
-    responsibility = Responsibilities.objects.raw(
-        "SELECT top 5 rb_code,rb_name FROM responsibilities_responsibilities WHERE rb_ts='T' and rb_name like %s",
+    mysql = "SELECT rb_code,rb_name FROM responsibilities_responsibilities WHERE rb_ts='T' and rb_name like %s LIMIT 5"
+    mssql = "SELECT top 5 rb_code,rb_name FROM responsibilities_responsibilities WHERE rb_ts='T' and rb_name like %s"
+    usedquery = ''
+    if (vendor == 'microsoft'):
+        usedquery = mssql
+    else:
+        usedquery = mysql
+    responsibility = Responsibilities.objects.raw(usedquery,
        [ query])
 
     for obj in responsibility:
@@ -69,6 +87,8 @@ def searchresponsibility(request):
     return JsonResponse({'results': listsel})
 
 def searchteachers(request):
+    vendor=connection.vendor
+
     if request.method == 'GET' and 'query' in request.GET:
         query = request.GET['query']
         query = '%' + query + '%'
@@ -76,8 +96,14 @@ def searchteachers(request):
         query = '%' + '' + '%'
 
     listsel = []
-    teachers = Teachers.objects.raw(
-        "SELECT top 5 teacher_code,teacher_name FROM teachers_teachers WHERE status='Active' and (teacher_name like %s or tsc_no like %s)",
+    mysql = "SELECT teacher_code,teacher_name FROM teachers_teachers WHERE status='Active' and (teacher_name like %s or tsc_no like %s) LIMIT 5"
+    mssql = "SELECT top 5 teacher_code,teacher_name FROM teachers_teachers WHERE status='Active' and (teacher_name like %s or tsc_no like %s)"
+    usedquery = ''
+    if (vendor == 'microsoft'):
+        usedquery = mssql
+    else:
+        usedquery = mysql
+    teachers = Teachers.objects.raw(usedquery,
        [ query,query])
 
     for obj in teachers:
@@ -92,6 +118,8 @@ def searchteachers(request):
     return JsonResponse({'results': listsel})
 
 def searchdepartment(request):
+    vendor=connection.vendor
+
     if request.method == 'GET' and 'query' in request.GET:
         query = request.GET['query']
         query = '%' + query + '%'
@@ -99,9 +127,15 @@ def searchdepartment(request):
         query = '%' + '' + '%'
 
     listsel = []
-    departments = Departments.objects.raw(
-        "SELECT top 5 dp_code,dp_name FROM departments_departments WHERE dp_name like %s",
-       [ query])
+    mysql = "SELECT dp_code,dp_name FROM departments_departments WHERE dp_name like %s LIMIT 5"
+    mssql = "SELECT top 5 dp_code,dp_name FROM departments_departments WHERE dp_name like %s"
+    usedquery = ''
+    if (vendor == 'microsoft'):
+        usedquery = mssql
+    else:
+        usedquery = mysql
+    departments = Departments.objects.raw(usedquery,
+       [query])
 
     for obj in departments:
         text = obj.dp_name

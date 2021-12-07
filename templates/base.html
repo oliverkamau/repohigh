@@ -82,7 +82,7 @@
               </ul>
 	          </li>
                       <li>
-              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-graduation-cap"></i></span>Students</a>
+              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-graduation-cap"></i></span>Student Manager</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
                     <a href="">Student Enquiry</a>
@@ -117,7 +117,7 @@
               </ul>
 	          </li>
 	             <li>
-              <a href="#marksSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-users"></i></span>Staff</a>
+              <a href="#marksSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-users"></i></span>Staff Manager</a>
               <ul class="collapse list-unstyled" id="marksSubmenu">
                 <li>
                     <a href="{% url 'teacherpage' %}">Teachers Details</a>
@@ -137,27 +137,30 @@
               </ul>
 	          </li>
 	            <li>
-              <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-money"></i></span>Finance</a>
-              <ul class="collapse list-unstyled" id="pageSubmenu">
+              <a href="#examSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-line-chart"></i></span>Exam Manager</a>
+              <ul class="collapse list-unstyled" id="examSubmenu">
                 <li>
-                    <a href="#">Payments</a>
+                    <a href="{% url 'examreg' %}">Exam Registration</a>
                 </li>
                 <li>
-                    <a href="#">Balances</a>
+                    <a href="#">Marks Recording</a>
                 </li>
                 <li>
-                    <a href="#">Creditors</a>
+                    <a href="#">Exam Processing</a>
                 </li>
                   <li>
-                    <a href="#">Clearances</a>
+                    <a href="#">Merge Exams</a>
                 </li>
                     <li>
-                    <a href="#">Reception</a>
+                    <a href="#">Combine Subjects</a>
+                </li>
+                  <li>
+                    <a href="#">Custom Teacher Comments</a>
                 </li>
               </ul>
 	          </li>
                 <li>
-              <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-line-chart"></i></span>Reports</a>
+              <a href="#reportsSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-pie-chart"></i></span>Reports</a>
               <ul class="collapse list-unstyled" id="reportsSubmenu">
                 <li>
                     <a href="#">Students</a>

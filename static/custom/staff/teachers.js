@@ -523,6 +523,16 @@ $('#assign-subs').on('change',function (s) {
 
 
 }
+function revertTeacher(){
+          $('#assign').prop('checked',false);
+        $('#assign-subs').prop('checked',true);
+        $('#subjectsassignment').hide()
+        $('#teacherregistry').show();
+        $('#class_frm').empty();
+        $('#classCode').val('');
+         $('#unAssignedTbl tbody').empty();
+         $('#assignedTbl tbody').empty();
+}
 function titleChange() {
     $('#title_frm').on('select2:select', function (e) {
         var data = e.params.data;
@@ -948,6 +958,7 @@ function editTeacher(){
             else{
 			    teacherImage("")
             }
+            revertTeacher()
 
         }).fail(function (xhr, error) {
         bootbox.alert(xhr.responseText)

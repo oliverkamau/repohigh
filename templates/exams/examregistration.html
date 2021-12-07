@@ -1,0 +1,165 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Exam Registration</h4>
+
+                       <button type="button" id="saveRegister" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+                       <button type="button" id="newRegister" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>
+
+{#                <label class="btn btn-outline-success mr-1 ml-2 pull-right" id="excelParent">#}
+{#                        Excel <input type="file" id="btn-import-parent" style="display: none;" accept="application/vnd.ms-excel">#}
+{#                    </label>#}
+{#               <form action="{% url 'downloadexcel' %}">#}
+{#                 {% csrf_token %}#}
+{#                                 <button type="submit"  class="btn btn-outline-success mr-1 ml-2 pull-right">Download</button>#}
+{##}
+{#               </form>#}
+
+
+            </div>
+        <div class="col-md-10 col-sm-11 mx-5">
+
+ <form id="reg-form">
+     {% csrf_token %}
+<input type="hidden" name="exam_reg_code" id="regCode">
+                <div class="form-row">
+
+                      <div class="form-row">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Type</label>
+                              <input type="hidden" name="exam_type" id="typeCode">
+                               <input type="hidden" id="typeName">
+                              <select id="type_frm" class="form-control col-md-8"></select>
+                          </div>
+                          <div class="form-row mb-4 ml-1 mr-1">
+                              <input type="hidden"  id="monthName">
+                            <label class="col-md-3 control-label" for="select">Month</label>
+                            <select class="form-control col-md-8"
+                      name="month" id="month">
+                     <option value="">Month</option>
+                     <option value="Jan">Jan</option>
+                     <option value="Feb">Feb</option>
+                     <option value="Mar">Mar</option>
+                     <option value="Apr">Apr</option>
+                     <option value="May">May</option>
+                     <option value="Jun">Jun</option>
+                     <option value="Jul">Jul</option>
+                     <option value="Aug">Aug</option>
+                     <option value="Sep">Sep</option>
+                     <option value="Oct">Oct</option>
+                     <option value="Nov">Nov</option>
+                     <option value="Dec">Dec</option>
+
+                    </select>
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                           <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Year</label>
+                            <input type="hidden"  id="yearName">
+
+                              <input type="hidden" name="exam_year" id="yearCode">
+
+                              <select id="year_frm" class="form-control col-md-8"></select>
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Exam Name</label>
+                            <input name="exam_name" id="examName" type="text" class="form-control col-md-8">
+                          </div>
+                        </div>
+                               <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Term</label>
+                              <input type="hidden" name="exam_term" id="termCode">
+                                                            <input type="hidden"  id="termName">
+
+                           <select id="term_frm" class="form-control col-md-8" ></select>
+                          </div>
+                                  <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Grading</label>
+                              <input type="hidden" name="exam_grading" id="gradeCode">
+                              <input type="hidden"  id="gradingName">
+
+                              <select id="grading_frm" class="form-control col-md-8"></select>
+                          </div>
+                        </div>
+                           <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Display Name</label>
+                            <input name="display_name" id="displayName" type="text" class="form-control col-md-8">
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Effective Date</label>
+                            <input name="effective_date" id="effectiveDate" type="date" class="form-control col-md-8">
+
+                          </div>
+                        </div>
+
+                          <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Final Exam</label>
+                           <input type="checkbox" name="final_exam"  id="finalExam">
+                          </div>
+                                <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Combined Exam</label>
+                           <input type="checkbox" name="combined_exam"  id="combinedExam">
+                          </div>
+                        </div>
+
+    <div class="col-md-6 col-sm-12">
+
+                              <div class="form-row mb-4 ml-1 mr-1">
+                            <label class="col-md-3 control-label" for="select">Lock Date</label>
+                            <input name="lock_date" id="lockDate" type="date" class="form-control col-md-8">
+
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+        </div>
+
+    </div>
+        <div class="col-md-11 col-sm-11 mx-5 mt-4">
+
+            <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="examTable">
+  <thead>
+    <tr>
+      <th scope="col">Exam Name</th>
+      <th scope="col">Year</th>
+      <th scope="col">Month</th>
+      <th scope="col">Type</th>
+      <th scope="col">Term</th>
+      <th scope="col">Exam Final</th>
+      <th scope="col">Authorised</th>
+       <th scope="col">National</th>
+      <th scope="col">Grading</th>
+      <th scope="col">WEF</th>
+      <th scope="col">WET</th>
+
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/exams/registration.js' %}"></script>
+
+{% endblock %}
