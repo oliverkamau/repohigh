@@ -2,20 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/exams/registration/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exams/registration/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/exams/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/custom/exams/registration.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/exams/examregistration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exams/processing/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exams/processing/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/custom/exams/process.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/exams/examprocessing.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exams/registration/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/exams/registration/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exams/registration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/exams/registration/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exams/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/exams/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schoolsys/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schoolsys/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setups/academics/gradingsystem/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/setups/academics/gradingsystem/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/staff/teachers/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/staff/teachers/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/custom/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/custom/staff/teachers.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/staff/teachers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/exams/examregistration.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/exams/examregistration.html" afterDir="false" />
     </list>
     <ignored path="D:\django\gabu\repohigh\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -55,13 +56,6 @@
         <item name="highschool: database" type="ccb7ac2a:MsImplModel$Database" />
         <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="highschool" type="feb32156:DbDataSourceImpl" />
-        <item name="highschool: database" type="ccb7ac2a:MsImplModel$Database" />
-        <item name="dbo: schema" type="2865ee2e:MsImplModel$Schema" />
-        <item name="parents_excelfile: table" type="63ab2ba1:MsImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
@@ -71,10 +65,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exams/registration/models.py">
+        <entry file="file://$PROJECT_DIR$/static/custom/exams/process.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="22" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="22" />
+            <state relative-caret-position="365">
+              <caret line="598" column="41" selection-start-line="598" selection-start-column="41" selection-end-line="598" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/students/parents.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/exams/processing/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="21" column="55" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="55" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -83,102 +95,72 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setups/academics/gradingsystem/models.py">
+        <entry file="file://$PROJECT_DIR$/exams/processing/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="369">
+              <caret line="565" column="36" selection-start-line="565" selection-start-column="23" selection-end-line="565" selection-end-column="36" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_15.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/exams/examprocessing.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/processing_examprocessing">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="d006cb0d-7170-430a-a240-00c1d48ae3c7">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_16.sql">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="28" selection-start-column="28" selection-end-column="28" />
+              <caret column="37" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/exams/examregistration.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="131" column="82" selection-start-line="131" selection-start-column="73" selection-end-line="131" selection-end-column="82" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/custom/exams/registration.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1">
-              <caret line="329" column="6" lean-forward="true" selection-start-line="329" selection-start-column="6" selection-end-line="329" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/custom/staff/teachers.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="791">
-              <caret line="897" column="1" lean-forward="true" selection-start-line="897" selection-start-column="1" selection-end-line="897" selection-end-column="1" />
-              <folding>
-                <element signature="e#104#110#0" expanded="true" />
-                <element signature="e#110#116#0" expanded="true" />
-                <element signature="e#116#122#0" expanded="true" />
-                <element signature="e#122#128#0" expanded="true" />
-                <element signature="e#104#110#0" expanded="true" />
-                <element signature="e#110#116#0" expanded="true" />
-                <element signature="e#116#122#0" expanded="true" />
-                <element signature="e#122#128#0" expanded="true" />
-                <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exams/registration/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
-              <folding>
-                <element signature="e#0#36#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/studentmanager/parents/views.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="270" column="27" lean-forward="true" selection-start-line="270" selection-end-line="271" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/exams/registration/urls.py">
+        <entry file="file://$PROJECT_DIR$/exams/registration/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="13" column="49" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="49" />
+              <caret line="13" column="16" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="16" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_1.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="43" selection-start-line="4" selection-end-line="4" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/staff/teachers/views.py">
+        <entry file="file://$PROJECT_DIR$/studentmanager/parents/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
+            <state relative-caret-position="2006">
+              <caret line="187" column="18" selection-start-line="187" selection-start-column="18" selection-end-line="187" selection-end-column="18" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -200,24 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>field</find>
-      <find>processT</find>
-      <find>.cha</find>
-      <find>clearp</find>
-      <find>unassigna</find>
-      <find>searchstu</find>
-      <find>button</find>
-      <find>r'te</find>
-      <find>brows</find>
-      <find>save</find>
-      <find>editSTUDENT</find>
-      <find>checke</find>
-      <find>searchClass(</find>
-      <find>searchcl</find>
-      <find>assignall</find>
-      <find>hide</find>
-      <find>searchfee</find>
-      <find>image</find>
       <find>500</find>
       <find>assigntea</find>
       <find>editTeacher</find>
@@ -228,8 +192,26 @@
       <find>searchye</find>
       <find>getsti</find>
       <find>clea</find>
-      <find>delete</find>
       <find>sea</find>
+      <find>searchte</find>
+      <find>examre</find>
+      <find>50</find>
+      <find>g</find>
+      <find>get</find>
+      <find>edit</find>
+      <find>delete</find>
+      <find>cleard</find>
+      <find>update</find>
+      <find>.adm</find>
+      <find>save</find>
+      <find>does</find>
+      <find>dyna</find>
+      <find>getDy</find>
+      <find>marks</find>
+      <find>dy</find>
+      <find>displ</find>
+      <find>cleardata(){</find>
+      <find>, N</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -243,23 +225,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/studentmanager/student/views.py" />
-        <option value="$PROJECT_DIR$/templates/students/studentsubjects.html" />
-        <option value="$PROJECT_DIR$/studentmanager/studentsubjects/views.py" />
-        <option value="$PROJECT_DIR$/studentmanager/student/models.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_2.sql" />
-        <option value="$PROJECT_DIR$/studentmanager/movements/urls.py" />
-        <option value="$PROJECT_DIR$/templates/home/home.html" />
-        <option value="$PROJECT_DIR$/staff/urls.js" />
-        <option value="$PROJECT_DIR$/staff/urls.py" />
-        <option value="$PROJECT_DIR$/staff/teachers/forms.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_3.sql" />
-        <option value="$PROJECT_DIR$/staff/teachers/models.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_4.sql" />
-        <option value="$PROJECT_DIR$/staff/teachersubjects/apps.py" />
-        <option value="$PROJECT_DIR$/static/custom/students/studentsubjects.js" />
-        <option value="$PROJECT_DIR$/studentmanager/studentsubjects/urls.py" />
-        <option value="$PROJECT_DIR$/studentmanager/movements/views.py" />
         <option value="$PROJECT_DIR$/templates/students/studentmovement.html" />
         <option value="$PROJECT_DIR$/templates/staff/teachers.html" />
         <option value="$PROJECT_DIR$/staff/teachersubjects/models.py" />
@@ -273,27 +238,44 @@
         <option value="$PROJECT_DIR$/static/custom/main.js" />
         <option value="$PROJECT_DIR$/exams/registration/apps.py" />
         <option value="$PROJECT_DIR$/schoolsys/urls.py" />
-        <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console.sql" />
         <option value="$PROJECT_DIR$/exams/examtype/models.py" />
         <option value="$PROJECT_DIR$/setups/academics/termdates/models.py" />
-        <option value="$PROJECT_DIR$/exams/urls.py" />
         <option value="$PROJECT_DIR$/setups/academics/termdates/views.py" />
-        <option value="$PROJECT_DIR$/setups/academics/gradingsystem/models.py" />
         <option value="$PROJECT_DIR$/exams/models.py" />
         <option value="$PROJECT_DIR$/setups/academics/gradingsystem/apps.py" />
         <option value="$PROJECT_DIR$/exams/examtype/apps.py" />
-        <option value="$PROJECT_DIR$/schoolsys/settings.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/templates/exams/examregistration.html" />
         <option value="$PROJECT_DIR$/exams/registration/forms.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_1.sql" />
-        <option value="$PROJECT_DIR$/exams/registration/models.py" />
         <option value="$PROJECT_DIR$/static/custom/staff/teachers.js" />
         <option value="$PROJECT_DIR$/static/custom/exams/registration.js" />
         <option value="$PROJECT_DIR$/exams/registration/urls.py" />
+        <option value="$PROJECT_DIR$/exams/processing/apps.py" />
+        <option value="$PROJECT_DIR$/exams/urls.py" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_8.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_9.sql" />
+        <option value="$PROJECT_DIR$/setups/academics/gradingschemes/models.py" />
+        <option value="$PROJECT_DIR$/setups/academics/gradingsystem/models.py" />
+        <option value="$PROJECT_DIR$/setups/academics/gradingschemes/apps.py" />
+        <option value="$PROJECT_DIR$/schoolsys/settings.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_10.sql" />
+        <option value="$PROJECT_DIR$/templates/exams/examregistration.html" />
+        <option value="$PROJECT_DIR$/exams/registration/models.py" />
+        <option value="$PROJECT_DIR$/exams/processing/forms.py" />
         <option value="$PROJECT_DIR$/exams/registration/views.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_11.sql" />
+        <option value="$PROJECT_DIR$/exams/processing/models.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/staff/teachers/views.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_14.sql" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_13.sql" />
+        <option value="$PROJECT_DIR$/exams/processing/urls.py" />
+        <option value="$PROJECT_DIR$/static/custom/exams/process.js" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_15.sql" />
+        <option value="$PROJECT_DIR$/exams/processing/views.py" />
+        <option value="$PROJECT_DIR$/templates/exams/examprocessing.html" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_16.sql" />
       </list>
     </option>
   </component>
@@ -350,6 +332,12 @@
               <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
               <item name="repohigh" type="462c0819:PsiDirectoryNode" />
               <item name="exams" type="462c0819:PsiDirectoryNode" />
+              <item name="processing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repohigh" type="462c0819:PsiDirectoryNode" />
+              <item name="exams" type="462c0819:PsiDirectoryNode" />
               <item name="registration" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -367,34 +355,6 @@
               <item name="repohigh" type="462c0819:PsiDirectoryNode" />
               <item name="setups" type="462c0819:PsiDirectoryNode" />
               <item name="academics" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="repohigh" type="462c0819:PsiDirectoryNode" />
-              <item name="setups" type="462c0819:PsiDirectoryNode" />
-              <item name="academics" type="462c0819:PsiDirectoryNode" />
-              <item name="gradingsystem" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="repohigh" type="462c0819:PsiDirectoryNode" />
-              <item name="setups" type="462c0819:PsiDirectoryNode" />
-              <item name="academics" type="462c0819:PsiDirectoryNode" />
-              <item name="studentstatus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="repohigh" type="462c0819:PsiDirectoryNode" />
-              <item name="setups" type="462c0819:PsiDirectoryNode" />
-              <item name="academics" type="462c0819:PsiDirectoryNode" />
-              <item name="termdates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
-              <item name="repohigh" type="462c0819:PsiDirectoryNode" />
-              <item name="setups" type="462c0819:PsiDirectoryNode" />
-              <item name="academics" type="462c0819:PsiDirectoryNode" />
-              <item name="years" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
@@ -727,11 +687,23 @@
       <workItem from="1638842412846" duration="3873000" />
       <workItem from="1638858470997" duration="17525000" />
       <workItem from="1638895546423" duration="8342000" />
+      <workItem from="1638904367927" duration="5000" />
+      <workItem from="1638928895914" duration="1968000" />
+      <workItem from="1638945086646" duration="997000" />
+      <workItem from="1638946292906" duration="28000" />
+      <workItem from="1638959002356" duration="6936000" />
+      <workItem from="1638968292963" duration="658000" />
+      <workItem from="1639012098109" duration="6607000" />
+      <workItem from="1639032849086" duration="3826000" />
+      <workItem from="1639037359740" duration="3233000" />
+      <workItem from="1639069554082" duration="5809000" />
+      <workItem from="1639197075041" duration="24570000" />
+      <workItem from="1639229927940" duration="11072000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="178750000" />
+    <option name="totallyTimeSpent" value="244459000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -745,11 +717,11 @@
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.20210186" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.20210186" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3291592" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3280142" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.9468085" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -760,20 +732,20 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3297619" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Console" order="12" weight="0.8333333" />
-      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49567568" weight="0.85106385" />
+      <window_info anchor="bottom" id="Database Console" order="12" weight="0.30496454" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.49567568" visible="true" weight="0.85106385" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32972974" />
-      <window_info anchor="right" id="Database" order="4" weight="0.21907842" />
+      <window_info anchor="right" id="Database" order="4" weight="0.50687146" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20210186" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="1" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.19967663" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3291592" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3280142" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.9468085" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -784,13 +756,13 @@
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3297619" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Console" order="12" weight="0.8333333" />
+      <window_info anchor="bottom" id="Database Console" order="12" weight="0.30496454" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49567568" weight="0.85106385" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32972974" />
-      <window_info anchor="right" id="Database" order="4" weight="0.21907842" />
+      <window_info anchor="right" id="Database" order="4" weight="0.50687146" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -800,154 +772,50 @@
     <SUITE FILE_PATH="coverage/repohigh$settings.coverage" NAME="settings Coverage Results" MODIFIED="1638169422009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/schoolsys" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/custom/base.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/home.html">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_9.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12954">
-          <caret line="762" column="42" selection-start-line="762" selection-start-column="38" selection-end-line="762" selection-end-column="42" />
+        <state>
+          <caret column="30" selection-start-column="14" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/students/studentdetails.js">
+    <entry file="file://$PROJECT_DIR$/setups/academics/subjects/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12359">
-          <caret line="727" selection-start-line="727" selection-end-line="727" />
+        <state relative-caret-position="68">
+          <caret line="6" column="16" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/staff/teachersubjects/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="24" />
+        <state relative-caret-position="119">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="26" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/useradmin/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff/teachers/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="4" selection-start-line="4" selection-end-line="6" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2465">
-          <caret line="145" column="44" selection-start-line="145" selection-start-column="44" selection-end-line="145" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="29" selection-start-line="1" selection-end-line="1" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/studentstatus/models.py">
+    <entry file="file://$PROJECT_DIR$/setups/academics/gradingschemes/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="5" column="71" selection-start-line="3" selection-start-column="4" selection-end-line="5" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/gradingsystem/views.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/examtype/views.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/schoolsys/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="34" column="27" selection-start-line="34" selection-start-column="27" selection-end-line="34" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/models.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/registration/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/schoolsys/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="71" column="29" selection-start-line="71" selection-start-column="29" selection-end-line="71" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/examtype/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/gradingsystem/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/parents/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="18" selection-start-line="18" selection-start-column="18" selection-end-line="18" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/student/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="359" lean-forward="true" selection-start-line="349" selection-start-column="4" selection-end-line="370" />
-          <folding>
-            <element signature="e#0#33#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="318">
+          <caret line="91" column="1" selection-start-line="91" selection-start-column="1" selection-end-line="91" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/gradingsystem_gradesapplicableto">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="162ea1bc-cc5d-4a8c-8796-12f0bec441a8">
+        <state projectRestartId="8edc1891-f74f-487a-a536-d40dd7893f03">
           <filtering>
             <filter text="" />
           </filtering>
@@ -956,19 +824,116 @@
     </entry>
     <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/gradingsystem_gradingsystem">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="162ea1bc-cc5d-4a8c-8796-12f0bec441a8">
+        <state projectRestartId="8edc1891-f74f-487a-a536-d40dd7893f03">
           <filtering>
             <filter text="" />
           </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/movements/models.py">
+    <entry file="file://$PROJECT_DIR$/exams/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/examtype_examtype">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_10.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="41" selection-start-column="41" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/gradingschemes_gradingschemes">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="162ea1bc-cc5d-4a8c-8796-12f0bec441a8">
+        <state projectRestartId="43b86f8c-3383-468a-a616-af314cd4dd8a">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setups/academics/gradingschemes/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exams/registration/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="26" selection-start-line="6" selection-start-column="3" selection-end-line="8" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/exams/examregistration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-153">
+          <caret line="72" column="96" lean-forward="true" selection-start-line="72" selection-start-column="96" selection-end-line="72" selection-end-column="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exams/processing/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exams/processing/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setups/academics/gradingsystem/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exams/examtype/views.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/useradmin/users/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="42" column="12" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="37" selection-start-line="2" selection-end-line="2" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_12.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_11.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="54" selection-start-line="7" selection-start-column="31" selection-end-line="7" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/users_user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="43b86f8c-3383-468a-a616-af314cd4dd8a">
           <filtering>
             <filter text="" />
           </filtering>
@@ -977,57 +942,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/static/custom/setups/academics/classes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="104" column="17" selection-start-line="89" selection-start-column="3" selection-end-line="113" selection-end-column="6" />
+        <state relative-caret-position="306">
+          <caret line="153" lean-forward="true" selection-start-line="149" selection-start-column="11" selection-end-line="160" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/setups/academics/academics.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/termdates/urls.py">
+    <entry file="file://$PROJECT_DIR$/exams/registration/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="16" lean-forward="true" selection-start-line="6" selection-start-column="4" selection-end-line="8" selection-end-column="78" />
+        <state relative-caret-position="340">
+          <caret line="250" lean-forward="true" selection-start-line="244" selection-start-column="3" selection-end-line="250" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/students/studentdetails.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="314">
+          <caret line="479" column="32" selection-start-line="479" selection-start-column="20" selection-end-line="479" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/exams/registration.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="271" column="16" lean-forward="true" selection-start-line="258" selection-start-column="2" selection-end-line="271" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/studentmanager/parents/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="15" lean-forward="true" selection-start-line="6" selection-end-line="7" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/termdates/views.py">
+    <entry file="file://$PROJECT_DIR$/studentmanager/parents/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="82" column="14" selection-start-line="75" selection-start-column="4" selection-end-line="86" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/registration/tests.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/termdates/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/studentmanager/parents/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="391">
+          <caret line="23" column="20" selection-start-line="22" selection-end-line="23" selection-end-column="46" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -1036,24 +996,24 @@
     </entry>
     <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/registration_examregistration">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="162ea1bc-cc5d-4a8c-8796-12f0bec441a8">
+        <state projectRestartId="d006cb0d-7170-430a-a240-00c1d48ae3c7">
           <filtering>
             <filter text="" />
           </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exams/registration/forms.py">
+    <entry file="file://$PROJECT_DIR$/studentmanager/student/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="17" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="17" />
+        <state relative-caret-position="76">
+          <caret line="536" column="31" lean-forward="true" selection-start-line="536" selection-start-column="31" selection-end-line="536" selection-end-column="31" />
           <folding>
-            <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/models.py">
+    <entry file="file://$PROJECT_DIR$/staff/teachers/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -1062,79 +1022,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/years/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="15" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="15" />
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/classes_schoolclasses">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="d006cb0d-7170-430a-a240-00c1d48ae3c7">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/termdates/models.py">
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/teachers_teachers">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="d006cb0d-7170-430a-a240-00c1d48ae3c7">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/staff/teachers/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="7" column="15" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="15" />
+          <caret line="7" column="13" selection-start-line="7" selection-end-line="8" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exams/examtype/models.py">
+    <entry file="file://$PROJECT_DIR$/staff/teachers/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_1.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="43" selection-start-line="4" selection-end-line="4" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/students/movement.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="547" column="7" lean-forward="true" selection-start-line="514" selection-end-line="549" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/setups/academics/gradingsystem/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="28" selection-start-column="28" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/exams/examregistration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="131" column="82" selection-start-line="131" selection-start-column="73" selection-end-line="131" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/registration/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="22" />
+        <state relative-caret-position="161">
+          <caret line="313" selection-start-line="313" selection-end-line="317" selection-end-column="38" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/setups/academics/termdates.js">
+    <entry file="file://$PROJECT_DIR$/templates/staff/teachers.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="129" column="9" lean-forward="true" selection-start-line="129" selection-start-column="9" selection-end-line="129" selection-end-column="9" />
+        <state relative-caret-position="298">
+          <caret line="279" column="4" selection-start-line="279" selection-start-column="4" selection-end-line="281" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/static/custom/staff/teachers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="791">
-          <caret line="897" column="1" lean-forward="true" selection-start-line="897" selection-start-column="1" selection-end-line="897" selection-end-column="1" />
+        <state relative-caret-position="229">
+          <caret line="256" column="11" lean-forward="true" selection-start-line="256" selection-start-column="11" selection-end-line="256" selection-end-column="25" />
           <folding>
             <element signature="e#104#110#0" expanded="true" />
             <element signature="e#110#116#0" expanded="true" />
@@ -1149,47 +1085,118 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/exams/registration/urls.py">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_14.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_13.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/students/parents.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="95" column="11" selection-start-line="91" selection-end-line="122" selection-end-column="1" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/exams/process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="598" column="41" selection-start-line="598" selection-start-column="41" selection-end-line="598" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exams/registration/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
-          <caret line="13" column="49" selection-start-line="13" selection-start-column="39" selection-end-line="13" selection-end-column="49" />
+          <caret line="13" column="16" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="16" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/exams/registration.js">
+    <entry file="file://$PROJECT_DIR$/exams/processing/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1">
-          <caret line="329" column="6" lean-forward="true" selection-start-line="329" selection-start-column="6" selection-end-line="329" selection-end-column="6" />
+        <state relative-caret-position="212">
+          <caret line="26" column="25" selection-start-line="26" selection-start-column="25" selection-end-line="26" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exams/processing/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="55" selection-start-line="21" selection-start-column="37" selection-end-line="21" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_15.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/exams/processing/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="565" column="36" selection-start-line="565" selection-start-column="23" selection-end-line="565" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/students/parents.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/processing_examprocessing">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="d006cb0d-7170-430a-a240-00c1d48ae3c7">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_16.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="37" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/exams/examprocessing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/studentmanager/parents/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="270" column="27" lean-forward="true" selection-start-line="270" selection-end-line="271" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/exams/registration/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/staff/teachers/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="210" lean-forward="true" selection-start-line="210" selection-end-line="210" />
+        <state relative-caret-position="2006">
+          <caret line="187" column="18" selection-start-line="187" selection-start-column="18" selection-end-line="187" selection-end-column="18" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

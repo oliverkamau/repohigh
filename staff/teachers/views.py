@@ -170,8 +170,10 @@ def addteachers(request):
         dept = Departments.objects.get(pk=dp)
         teacher.department = dept
 
-
-    teacher.save()
+    inst = teacher.save()
+    tp = Teachers.objects.get(pk=inst.pk)
+    tp.staff_number='T00'+str(tp.teacher_code)
+    tp.save()
     return JsonResponse({'success': 'Teacher Saved Successfully'})
 
 

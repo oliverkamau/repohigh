@@ -70,6 +70,8 @@ INSTALLED_APPS = [
     'exams.registration.apps.RegistrationConfig',
     'exams.examtype.apps.ExamtypeConfig',
     'setups.academics.gradingsystem.apps.GradingsystemConfig',
+    'exams.processing.apps.ProcessingConfig',
+    'setups.academics.gradingschemes.apps.GradingschemesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

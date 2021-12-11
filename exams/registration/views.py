@@ -7,6 +7,7 @@ from exams.registration.forms import ExamRegForm
 from exams.registration.models import ExamRegistration
 from localities.models import Select2Data
 from localities.serializers import Select2Serializer
+from setups.academics.gradingschemes.models import GradingSchemes
 from setups.academics.gradingsystem.models import GradingSystem
 from setups.academics.termdates.models import TermDates
 from setups.academics.years.models import Years
@@ -69,14 +70,14 @@ def searchexamgrading(request):
         query = '%' + '' + '%'
 
     listsel = []
-    grading = GradingSystem.objects.raw(
-        "SELECT top 5 grading_code,grading_name FROM gradingsystem_gradingsystem WHERE grading_name like %s",
+    grading = GradingSchemes.objects.raw(
+        "SELECT top 5 scheme_code,scheme_name FROM gradingschemes_gradingschemes WHERE scheme_name like %s",
         [query])
 
     for obj in grading:
         select2 = Select2Data()
-        select2.id = str(obj.grading_code)
-        select2.text = obj.grading_name
+        select2.id = str(obj.scheme_code)
+        select2.text = obj.scheme_name
         serializer = Select2Serializer(select2)
 
         listsel.append(serializer.data)
@@ -132,7 +133,8 @@ def createexamreg(request):
     et = exam.data['exam_type']
     ey = exam.data['exam_year']
     etr = exam.data['exam_term']
-    eg = exam.data['exam_grading']
+    eg = exam.data['exam_grade_scheme']
+    ep = exam.data['']
 
     if et is not None and et != '':
         type = ExamType.objects.get(pk=et)
@@ -147,8 +149,8 @@ def createexamreg(request):
         exam.exam_term = trm
 
     if eg is not None and eg != '':
-        grade = GradingSystem.objects.get(pk=eg)
-        exam.exam_grading = grade
+        grade = GradingSchemes.objects.get(pk=eg)
+        exam.exam_grade_scheme = grade
 
 
     if final is not None and final == 'on':
@@ -170,9 +172,9 @@ def getexamreg(request):
     listsel = []
 
     regs = ExamRegistration.objects.raw(
-        "select top 100 exam_reg_code,exam_status,exam_national, month, display_name, effective_date, final_exam, combined_exam, lock_date, grading_name, term_number, year_number, type_name, exam_name from registration_examregistration" +
+        "select top 100 exam_reg_code,exam_status,exam_national, month, display_name, effective_date, final_exam, combined_exam, lock_date, scheme_name, term_number, year_number, type_name, exam_name from registration_examregistration" +
         " inner join examtype_examtype  on exam_type_id = type_code"+
-        " inner join gradingsystem_gradingsystem  on exam_grading_id = grading_code" +
+        " inner join gradingschemes_gradingschemes  on exam_grade_scheme_id = scheme_code" +
         " inner join years_years on exam_year_id = year_code"+
         " inner join termdates_termdates on exam_term_id = term_code")
 
@@ -187,7 +189,7 @@ def getexamreg(request):
         response_data['termNumber'] = obj.term_number
         response_data['effectiveDate'] = obj.effective_date.strftime("%d/%m/%Y")
         response_data['lockDate'] = obj.lock_date.strftime("%d/%m/%Y")
-        response_data['gradingName'] = obj.grading_name
+        response_data['gradingName'] = obj.scheme_name
         response_data['typeName'] = obj.type_name
         response_data['yearNumber'] = obj.year_number
         response_data['status'] = obj.exam_status
@@ -211,10 +213,10 @@ def editexamreg(request,id):
         response_data['yearCode'] = yr.year_code
         response_data['yearNumber'] = yr.year_number
 
-    if examreg.exam_grading is not None:
-        gr = GradingSystem.objects.get(pk=examreg.exam_grading.pk)
-        response_data['gradeCode'] = gr.grading_code
-        response_data['gradeName'] = gr.grading_name
+    if examreg.exam_grade_scheme is not None:
+        gr = GradingSchemes.objects.get(pk=examreg.exam_grade_scheme.pk)
+        response_data['gradeCode'] = gr.scheme_code
+        response_data['gradeName'] = gr.scheme_name
 
     if examreg.exam_type is not None:
         ty = ExamType.objects.get(pk=examreg.exam_type.pk)

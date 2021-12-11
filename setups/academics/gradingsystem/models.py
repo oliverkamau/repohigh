@@ -1,6 +1,7 @@
 from django.db import models
 
 from setups.academics.departments.models import Departments
+from setups.academics.gradingschemes.models import GradingSchemes
 
 
 class GradesApplicableTo(models.Model):
@@ -15,5 +16,7 @@ class GradingSystem(models.Model):
     grading_grade = models.CharField(max_length=200, null=True, blank=True)
     grading_remarks = models.CharField(max_length=400, null=True, blank=True)
     auto_increment = models.BooleanField(default=False)
+    default_system = models.BooleanField(default=False)
     applicable_for = models.ForeignKey(GradesApplicableTo, on_delete=models.CASCADE, null=True, blank=True)
     grading_department = models.ForeignKey(Departments,on_delete=models.CASCADE, null=True, blank=True)
+    grading_scheme = models.ForeignKey(GradingSchemes,on_delete=models.CASCADE, null=True, blank=True)

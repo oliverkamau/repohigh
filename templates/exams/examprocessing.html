@@ -1,0 +1,231 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Exam Recording</h4>
+
+
+                       <button type="button" id="saveMarks" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+
+                       <button type="button" id="newMarks" class="btn btn-outline-secondary mr-3 ml-2 pull-right">New</button>
+  <form action="{% url 'downloadmarksexcel' %}">
+                 {% csrf_token %}
+                           <input type="hidden" name="exam" id="examExcelCode">
+                          <input type="hidden" name="class" id="examExcelClass">
+                          <input type="hidden" name="teacher" id="examExcelTeacher">
+                          <input type="hidden" name="subject" id="examExcelSubject">
+
+                         <button type="submit"  class="btn btn-outline-success mr-3 ml-2 pull-right" id="exportBtn">Export Template</button>
+
+               </form>
+            </div>
+
+
+        <div class="container-fluid mx-3">
+             <form id="processing-form">
+                 {% csrf_token %}
+                 <input type="hidden" name="exam_process_code" id="processCode">
+                 <input type="hidden" name="exam_processed_by" id="userLogged">
+<div class="row">
+
+  <div class="col-md-4 col-sm-11">
+    <div class="form-row mb-4">
+        <label class="col-md-3 control-label" for="select">Term</label>
+                              <input type="hidden" name="exam_process_term" id="termCode">
+
+                           <select id="term_frm" class="form-control col-md-8" ></select>
+    </div>
+    <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Exam Name</label>
+                           <input type="hidden" name="exam_process_exam" id="regCode">
+                           <select id="reg_frm" class="form-control col-md-8" ></select>
+                          </div>
+
+
+    <div class="form-row mb-4">
+     <label class="control-label col-md-3" for="frm">Class</label>
+            <input type="hidden" id="classCode" name="exam_process_class">
+            <select id="class_frm" class="form-control col-md-8"></select>
+    </div>
+        <div class="form-row mb-4">
+          <label class="col-md-3 control-label" for="select">Teacher</label>
+                                  <input type="hidden" name="exam_process_teacher" id="teacherCode">
+                                  <select id="teacher_frm" class="form-control col-md-8"></select>
+    </div>
+          <div class="form-row mb-4">
+        <label class="control-label col-md-3" for="select">Subject</label>
+              <input type="hidden" id="subjectCode" name="exam_process_subject">
+
+            <select id="subject_frm" class="form-control col-md-8"></select>
+    </div>
+      <div class="form-row mb-4">
+       <input type="hidden" name="exam_process_student" id="studentCode">
+                  <label class="control-label col-md-3" for="select">Student</label>
+
+                                  <select id="student_frm" type="text" class="form-control col-md-8"></select> </div>
+
+            <div class="form-row mb-4">
+     <label class="col-md-3 control-label" for="select">Marks</label>
+                              <input type="number" name="exam_marks" id="marks" class="form-control col-md-2">
+                     <label class="col-md-2 control-label ml-4" for="select">Out Of</label>
+                              <input type="number" name="exam_outof" id="outof" class="form-control col-md-3">
+
+            </div>
+  </div>
+
+  <div class="col-md-4 col-sm-11">
+
+  <div class="form-row mb-4">
+                                    <label class="col-md-4 control-label" for="select">Year</label>
+
+     <input type="hidden" name="exam_process_year" id="yearCode">
+
+ <select id="year_frm" class="form-control col-md-8"></select>
+  </div>
+         <div class="form-row mb-3">
+                              <label class="col-md-4 control-label" for="select">Exam Date</label>
+                            <input name="exam_process_date" id="examDate" type="date" class="form-control col-md-8">
+
+      </div>
+       <div class="form-row mb-4">
+                              <label class="col-md-4 control-label" for="select">Remarks</label>
+                              <textarea name="exam_process_remarks" id="examRemarks" class="form-control col-md-8" style="height: 4.6em"></textarea>   </div>
+
+          <div class="form-row mb-4">
+                                          <label class="col-md-4 control-label" for="select">&nbsp;</label>
+
+
+
+      </div>
+
+
+            <div class="form-row mb-4">
+
+                              <button type="button" id="unassignallbtn" class="btn btn-outline-secondary col-md-5 mr-2">Miss Exam</button>
+
+                              <button type="button" id="transfer" class="btn btn-outline-secondary col-md-6">UndoMiss Exam</button>
+
+      </div>
+
+           <div class="form-row mb-3">
+                                          <label class="col-md-4 control-label" for="select">&nbsp;;</label>
+
+
+
+      </div>
+
+        <div class="form-row mb-4">
+            <input type="hidden" name="exam_processing_grade" id="processGrade">
+            <input type="hidden" name="exam_percentage_marks" id="examPercentageMarks">
+            <input type="text" class="form-control col-md-3" name="display_grade" id="displayGrade" readonly>
+                                          <label class="col-md-3 control-label" for="select">Grading</label>
+
+                               <input type="hidden" name="exam_grading" id="gradeCode">
+
+                              <select id="grading_frm" class="form-control col-md-6"></select>
+
+      </div>
+{#    <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+{#    <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+{#       <div class="form-row mb-3">#}
+{#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
+{#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+    <div class="form-row mb-4">
+             <label class="col-md-2 control-label" for="select"></label>
+                              <button type="button" id="convert" class="btn btn-outline-secondary col-md-8">Convert %</button>
+    </div>
+
+
+
+         <div class="form-row mb-4">
+                          <label class="col-md-2 control-label" for="select"></label>
+
+              <label class="btn btn-outline-secondary col-md-8" id="excelMarks">
+                        Import Template <input type="file" id="btn-import-marks" style="display: none;" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                    </label>
+    </div>
+           <div class="form-row mb-4">
+             <label class="col-md-2 control-label" for="select"></label>
+                              <button type="button" id="email" class="btn btn-outline-secondary col-md-8">Email Reports</button>
+    </div>
+
+
+           <div class="form-row mb-4">
+             <label class="col-md-2 control-label" for="select">&nbsp;</label>
+    </div>
+
+       <div class="form-row mb-5">
+             <label class="col-md-2 control-label" for="select">&nbsp;</label>
+    </div>
+
+      <div class="form-row mb-4">
+             <label class="col-md-2 control-label" for="select"></label>
+                              <button type="button" id="ungraded" class="btn btn-outline-secondary col-md-9">View Reason Ungraded</button>
+    </div>
+
+
+
+  </div>
+
+</div>
+             </form>
+</div>
+
+        <div class="col-md-11 col-sm-11 ml-2 mt-2">
+
+            <div class="table-responsive">
+      <table class="table table-striped display responsive nowrap" id="processTable">
+  <thead>
+    <tr>
+      <th scope="col">Student</th>
+      <th scope="col">AdmNo</th>
+        <th scope="col">Subjects</th>
+              <th scope="col">Exam</th>
+      <th scope="col">Marks</th>
+       <th scope="col">OutOf</th>
+        <th>Percentage</th>
+              <th scope="col">Grade</th>
+
+      <th scope="col">Term</th>
+        <th scope="col">Year</th>
+                  <th>Teacher</th>
+<th>Class</th>
+        <th scope="col">Remarks</th>
+      <th scope="col">Date</th>
+      <th scope="col">RecordedBy</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/exams/process.js' %}"></script>
+<script type="text/javascript">
+    var spinner ="";
+</script>
+
+
+{% endblock %}
