@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/static/custom/exams/process.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/exams/process.js" afterDir="false" />
-    </list>
+    <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="" />
     <ignored path="D:\django\gabu\repohigh\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -687,12 +685,12 @@
       <workItem from="1639229927940" duration="11072000" />
       <workItem from="1639241245157" duration="665000" />
       <workItem from="1639406278698" duration="3284000" />
-      <workItem from="1639413337024" duration="2061000" />
+      <workItem from="1639413337024" duration="2157000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="250469000" />
+    <option name="totallyTimeSpent" value="250565000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -705,7 +703,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
