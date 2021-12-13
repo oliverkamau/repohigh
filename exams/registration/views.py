@@ -125,10 +125,6 @@ def createexamreg(request):
         combined = ''
 
     exam = ExamRegForm(request.POST)
-    # if request.method == 'POST':
-    #     if 'parent_photo' in request.FILES:
-    #         image = request.FILES.get('parent_photo')
-    #         parent.parent_photo = image
 
     et = exam.data['exam_type']
     ey = exam.data['exam_year']

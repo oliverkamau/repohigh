@@ -306,6 +306,10 @@ def saveexammarks(request):
         u = get_current_user()
         savedexam.exam_processed_by = u
         savedexam.save()
+
+    else:
+        return JsonResponse({'error': examex.exam_process_student.adm_no+' in class '+examex.exam_process_class.class_name+' already has marks for '+examex.exam_process_subject.subject_name},
+                            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     return JsonResponse({'success':'Marks Recorded Successfully'})
 
 
@@ -516,6 +520,10 @@ def importmarks(request):
                u = User.objects.get(username=request.user)
                exam.exam_processed_by = u
                exam.save()
+            else:
+                return JsonResponse({
+                                        'error': examex.exam_process_student.adm_no + ' in class ' + examex.exam_process_class.class_name + ' already has marks for ' + examex.exam_process_subject.subject_name},
+                                    status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
         return JsonResponse({'success': 'Marks Imported Successfully'})
