@@ -27,6 +27,8 @@ from studentmanager.parents.models import ExcelFile
 from studentmanager.student.models import Students
 from studentmanager.studentsubjects.models import StudentSubjects
 from useradmin.users.models import User
+from django_currentuser.middleware import (
+    get_current_user, get_current_authenticated_user)
 
 
 def examprocess(request):
@@ -301,7 +303,7 @@ def saveexammarks(request):
                                             exam_process_student=exam.exam_process_student)
     except examex.DoesNotExist:
         savedexam=exam.save()
-        u = User.objects.get(username=request.user)
+        u = get_current_user()
         savedexam.exam_processed_by = u
         savedexam.save()
     return JsonResponse({'success':'Marks Recorded Successfully'})

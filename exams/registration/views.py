@@ -134,7 +134,6 @@ def createexamreg(request):
     ey = exam.data['exam_year']
     etr = exam.data['exam_term']
     eg = exam.data['exam_grade_scheme']
-    ep = exam.data['']
 
     if et is not None and et != '':
         type = ExamType.objects.get(pk=et)
