@@ -369,6 +369,7 @@ function importmarks(){
                     text: s.success,
                     showConfirmButton: true
                 })
+                $('#btn-import-marks').val('');
 		    getExamMarks()
             $('#marks').val('')
             $('#examRemarks').val('')
@@ -377,6 +378,8 @@ function importmarks(){
 
             }).fail(function (xhr, error) {
                  swal.close();
+                 $('#btn-import-marks').val('');
+
                  getExamMarks()
                 p=JSON.parse(xhr.responseText)
 

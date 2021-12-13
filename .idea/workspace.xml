@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/exams/processing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/exams/processing/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exams/registration/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/exams/registration/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/exams/process.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/exams/process.js" afterDir="false" />
     </list>
     <ignored path="D:\django\gabu\repohigh\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,14 +50,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exams/processing/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12">
+            <state relative-caret-position="-141">
               <caret line="316" selection-start-line="316" selection-end-line="316" />
               <folding>
                 <element signature="e#0#22#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/custom/exams/process.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="380" column="16" selection-start-line="380" selection-start-column="16" selection-end-line="380" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -75,8 +83,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/exams/examprocessing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
+            <state relative-caret-position="161">
+              <caret line="155" column="72" selection-start-line="155" selection-start-column="63" selection-end-line="155" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -160,7 +168,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>500</find>
       <find>assigntea</find>
       <find>editTeacher</find>
       <find>for</find>
@@ -190,6 +197,7 @@
       <find>displ</find>
       <find>cleardata(){</find>
       <find>, N</find>
+      <find>import</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -243,7 +251,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_14.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_13.sql" />
         <option value="$PROJECT_DIR$/exams/processing/urls.py" />
-        <option value="$PROJECT_DIR$/static/custom/exams/process.js" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_15.sql" />
         <option value="$PROJECT_DIR$/templates/exams/examprocessing.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_16.sql" />
@@ -254,10 +261,11 @@
         <option value="$PROJECT_DIR$/exams/processing/models.py" />
         <option value="$PROJECT_DIR$/exams/registration/views.py" />
         <option value="$PROJECT_DIR$/exams/processing/views.py" />
+        <option value="$PROJECT_DIR$/static/custom/exams/process.js" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="522" />
     <option name="width" value="1401" />
     <option name="height" value="981" />
@@ -679,12 +687,12 @@
       <workItem from="1639229927940" duration="11072000" />
       <workItem from="1639241245157" duration="665000" />
       <workItem from="1639406278698" duration="3284000" />
-      <workItem from="1639413337024" duration="749000" />
+      <workItem from="1639413337024" duration="2061000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="249157000" />
+    <option name="totallyTimeSpent" value="250469000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -697,6 +705,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
@@ -714,7 +723,7 @@
       <window_info anchor="bottom" id="Python Console" order="10" weight="0.3297619" />
       <window_info anchor="bottom" id="Docker" order="11" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Console" order="12" weight="0.8031915" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="13" sideWeight="0.49567568" visible="true" weight="0.85106385" />
+      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49567568" weight="0.85106385" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -1047,13 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/exams/process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10166">
-          <caret line="598" column="41" selection-start-line="598" selection-start-column="41" selection-end-line="598" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/students/parents.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
@@ -1107,13 +1109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/exams/examprocessing.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="78" selection-start-line="17" selection-start-column="78" selection-end-line="17" selection-end-column="78" />
         </state>
       </provider>
     </entry>
@@ -1172,11 +1167,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exams/processing/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
+        <state relative-caret-position="-141">
           <caret line="316" selection-start-line="316" selection-end-line="316" />
           <folding>
             <element signature="e#0#22#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/exams/examprocessing.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="155" column="72" selection-start-line="155" selection-start-column="63" selection-end-line="155" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/exams/process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="380" column="16" selection-start-line="380" selection-start-column="16" selection-end-line="380" selection-end-column="16" />
         </state>
       </provider>
     </entry>
