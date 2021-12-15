@@ -64,6 +64,7 @@ function clearpage(){
     $('#departmentCode').val('');
     $('#teacherTransferFrom').val('');
     $('#teacherTransferTo').val('');
+    $('#dbStaffNo').val('');
     formatDate()
 
 }
@@ -917,7 +918,8 @@ function editTeacher(){
             $('#email').val(s.email);
             $('#idNo').val(s.id_no);
             $('#intials').val(s.intials);
-
+            $('#staffNo').val(s.staffNo)
+            $('#dbStaffNo').val(s.staffNo)
             if (s.title_code) {
                 var $newCat = $("<option selected='selected' value='" + s.title_code + "'>'+s.title_name+'</option>").val(s.title_code.toString()).text(s.title_name)
 

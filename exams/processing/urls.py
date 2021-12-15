@@ -14,6 +14,8 @@ urlpatterns = [
     path('processgrade', views.processgrade, name='processgrade'),
     path('saveexammarks', views.saveexammarks, name='saveexammarks'),
     path('getrecordedmarks', views.getrecordedmarks, name='getrecordedmarks'),
+    path('getexamrecordedmarks/<int:id>', views.getexamrecordedmarks, name='getexamrecordedmarks'),
+
     path('editmarks/<int:id>', views.editmarks, name='editmarks'),
     path('updateexammarks/<int:id>', views.updateexammarks, name='updateexammarks'),
     path('deleteexammarks/<int:id>', views.deleteexammarks, name='deleteexammarks'),

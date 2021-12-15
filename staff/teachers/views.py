@@ -189,7 +189,7 @@ def getteachers(request):
  for obj in teachers:
      response_data={}
      response_data['teacherCode']=obj.teacher_code
-     response_data['staffNo'] = obj.teacher_code
+     response_data['staffNo'] = obj.staff_number
      response_data['name']=obj.salutation_name+'. '+obj.teacher_name
      response_data['phone']=obj.phone_number
      response_data['email']=obj.email
@@ -214,6 +214,8 @@ def getteachers(request):
 def editteacher(request,id):
     response_data = {}
     teacher = Teachers.objects.get(pk=id)
+    response_data['staffNo'] = teacher.staff_number
+
     if teacher.responsibility is not None:
        rb = Responsibilities.objects.get(pk=teacher.responsibility.pk)
        response_data['rb_code'] = rb.rb_code

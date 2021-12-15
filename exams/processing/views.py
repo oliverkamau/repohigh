@@ -1,6 +1,7 @@
 from io import BytesIO
 from urllib.parse import urlsplit
 
+from django.contrib.auth.decorators import login_required
 from django.db import connection
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render
@@ -8,6 +9,7 @@ import pandas as pd
 from datetime import datetime
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
 from rest_framework import status
 
 from exams.processing.forms import ProcessingForm
@@ -30,7 +32,8 @@ from useradmin.users.models import User
 from django_currentuser.middleware import (
     get_current_user, get_current_authenticated_user)
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def examprocess(request):
     return render(request,'exams/examprocessing.html')
 
@@ -44,7 +47,7 @@ def searchexamterm(request):
 
     listsel = []
     terms = TermDates.objects.raw(
-        "SELECT top 5 term_code,term_number FROM termdates_termdates WHERE term_number like %s",
+        "SELECT top 5 term_code,term_number FROM termdates_termdates WHERE term_number like %s order by term_number asc",
         [query])
 
     for obj in terms:
@@ -302,10 +305,25 @@ def saveexammarks(request):
                                             exam_process_subject=exam.exam_process_subject,
                                             exam_process_student=exam.exam_process_student)
     except examex.DoesNotExist:
-        savedexam=exam.save()
-        u = get_current_user()
-        savedexam.exam_processed_by = u
-        savedexam.save()
+        savedExam = ExamProcessing()
+        print(request.user)
+
+        u = User.objects.get(username=request.user)
+        savedExam.exam_process_term=exam.exam_process_term
+        savedExam.exam_process_exam=exam.exam_process_exam
+        savedExam.exam_process_class=exam.exam_process_class
+        savedExam.exam_process_teacher=exam.exam_process_teacher
+        savedExam.exam_process_date=datetime.now()
+        savedExam.exam_process_year=exam.exam_process_year
+        savedExam.exam_process_remarks=exam.data['exam_process_remarks']
+        savedExam.exam_marks=exam.data['exam_marks']
+        savedExam.exam_outof=exam.data['exam_outof']
+        savedExam.exam_percentage_marks=exam.data['exam_percentage_marks']
+        savedExam.exam_processing_grade=exam.data['exam_processing_grade']
+        savedExam.exam_processed_by=u
+        savedExam.exam_process_student=exam.exam_process_student
+        savedExam.exam_process_subject=exam.exam_process_subject
+        savedExam.save()
 
     else:
         return JsonResponse({'error': examex.exam_process_student.adm_no+' in class '+examex.exam_process_class.class_name+' already has marks for '+examex.exam_process_subject.subject_name},
@@ -317,7 +335,7 @@ def getrecordedmarks(request):
 
     listsel = []
 
-    processes = ExamProcessing.objects.raw("select top 50 exam_process_code,exam_marks,exam_outof,exam_percentage_marks,exam_process_date,exam_process_remarks,exam_processing_grade,"+
+    processes = ExamProcessing.objects.raw("select top 100 exam_process_code,exam_marks,exam_outof,exam_percentage_marks,exam_process_date,exam_process_remarks,exam_processing_grade,"+
        "term_number,year_number,exam_name,class_name,student_name,adm_no,subject_name,teacher_name,username from processing_examprocessing"+
         " inner join termdates_termdates on exam_process_term_id = term_code"+
         " inner join years_years on exam_process_year_id = year_code"+
@@ -326,7 +344,7 @@ def getrecordedmarks(request):
         " inner join teachers_teachers on exam_process_teacher_id = teacher_code"+
         " inner join subjects_subjects on exam_process_subject_id = subject_code" +
         " inner join student_students on exam_process_student_id = student_code"+
-        " inner join users_user on exam_processed_by_id = user_id")
+        " inner join users_user on exam_processed_by_id = user_id order by exam_process_code desc")
 
     for obj in processes:
         response_data={}
@@ -342,7 +360,7 @@ def getrecordedmarks(request):
         response_data['percentage'] = obj.exam_percentage_marks
         response_data['grade'] = obj.exam_processing_grade
         response_data['remarks'] = obj.exam_process_remarks
-        response_data['examDate'] = obj.exam_process_date.strftime("%Y-%m-%d")
+        response_data['examDate'] = obj.exam_process_date.strftime("%d/%m/%Y")
         response_data['user'] = obj.username
         response_data['year'] = obj.year_number
         response_data['examName'] = obj.exam_name
@@ -540,7 +558,7 @@ def dynamicaddress(request):
 def get_marksData(exam,classes,teacher,subject):
     listsel = []
     processes = ExamProcessing.objects.raw(
-        "select top 50 exam_process_code,display_name,exam_marks,exam_outof,exam_percentage_marks,exam_process_date,exam_process_remarks,exam_processing_grade," +
+        "select top 200 exam_process_code,display_name,exam_marks,exam_outof,exam_percentage_marks,exam_process_date,exam_process_remarks,exam_processing_grade," +
         "term_code,term_number,year_code,year_number,exam_reg_code,exam_name,class_code,class_name,student_code,student_name,adm_no,subject_code,subject_name,teacher_code,teacher_name,user_id,username from processing_examprocessing" +
         " inner join termdates_termdates on exam_process_term_id = term_code" +
         " inner join years_years on exam_process_year_id = year_code" +
@@ -598,3 +616,46 @@ def downloadmarksexcel(request):
         )
         res['Content-Disposition'] = f'attachment; filename={filename}'
         return res
+
+
+def getexamrecordedmarks(request,id):
+    listsel = []
+
+    processes = ExamProcessing.objects.raw(
+        "select top 100 exam_process_code,exam_marks,exam_outof,exam_percentage_marks,exam_process_date,exam_process_remarks,exam_processing_grade," +
+        "term_number,year_number,exam_name,class_name,student_name,adm_no,subject_name,teacher_name,username from processing_examprocessing" +
+        " inner join termdates_termdates on exam_process_term_id = term_code" +
+        " inner join years_years on exam_process_year_id = year_code" +
+        " inner join registration_examregistration on exam_process_exam_id = exam_reg_code" +
+        " inner join classes_schoolclasses on exam_process_class_id = class_code" +
+        " inner join teachers_teachers on exam_process_teacher_id = teacher_code" +
+        " inner join subjects_subjects on exam_process_subject_id = subject_code" +
+        " inner join student_students on exam_process_student_id = student_code" +
+        " inner join users_user on exam_processed_by_id = user_id "+
+        " where exam_process_exam_id=%s"+
+        " order by exam_process_code desc",
+    [id])
+
+    for obj in processes:
+        response_data = {}
+        print(obj.student_name)
+        response_data['processCode'] = obj.exam_process_code
+        response_data['name'] = obj.student_name
+        response_data['admNo'] = obj.adm_no
+        response_data['subject'] = obj.subject_name
+        response_data['teacher'] = obj.teacher_name
+        response_data['term'] = obj.term_number
+        response_data['marks'] = obj.exam_marks
+        response_data['outof'] = obj.exam_outof
+        response_data['percentage'] = obj.exam_percentage_marks
+        response_data['grade'] = obj.exam_processing_grade
+        response_data['remarks'] = obj.exam_process_remarks
+        response_data['examDate'] = obj.exam_process_date.strftime("%d/%m/%Y")
+        response_data['user'] = obj.username
+        response_data['year'] = obj.year_number
+        response_data['examName'] = obj.exam_name
+        response_data['className'] = obj.class_name
+
+        listsel.append(response_data)
+
+    return JsonResponse(listsel, safe=False)

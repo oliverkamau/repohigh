@@ -14,7 +14,7 @@ teacherChange();
 subjectChange();
 studentChange();
 calculateMarks();
-getExamMarks();
+ getExamMarks();
 saveMarks();
 editMarks();
 deleteMarks();
@@ -23,6 +23,9 @@ getDynamicUrl();
 importmarks();
 $('#exportBtn').prop('disabled',true)
 })
+function getExamMarks() {
+    $('#processTable').DataTable({})
+}
 function clearData(){
     $('#newMarks').click(function () {
         $('#marks').val('')
@@ -370,7 +373,7 @@ function importmarks(){
                     showConfirmButton: true
                 })
                 $('#btn-import-marks').val('');
-		    getExamMarks()
+		    getExamMarks($('#regCode').val())
             $('#marks').val('')
             $('#examRemarks').val('')
             $('#examPercentageMarks').val('')
@@ -380,7 +383,7 @@ function importmarks(){
                  swal.close();
                  $('#btn-import-marks').val('');
 
-                 getExamMarks()
+		        getExamMarks($('#regCode').val())
                 p=JSON.parse(xhr.responseText)
 
                 console.log(p.error)
@@ -494,8 +497,9 @@ function examChange() {
         var data = e.params.data;
         $('#regCode').val(data.id)
         $('#examExcelCode').val(data.id)
-         searchClass()
-         getGrading(data.id)
+        getExamMarks(data.id)
+        searchClass()
+        getGrading(data.id)
     });
     $("#reg_frm").on("select2:unselecting", function(e) {
     $('#regCode').val('')
@@ -626,10 +630,18 @@ function editMarks(){
     });
 
 }
-function getExamMarks() {
+function getExamMarks(id) {
+    console.log(id)
+    url=''
+    if(id === undefined || id === ''){
+        url='getrecordedmarks'
+    }
+    else{
+        url='getexamrecordedmarks/'+id
+    }
         $.ajax({
         type: 'GET',
-        url: 'getrecordedmarks',
+        url: url,
     }).done(function (s) {
 
    $('#processTable').DataTable().destroy();
@@ -662,6 +674,8 @@ function getExamMarks() {
     }).fail(function (xhr, error) {
        bootbox.alert(xhr.responseText);
     });
+
+
 }
 
 function saveMarks(){
@@ -684,7 +698,7 @@ function saveMarks(){
                     text: s.success,
                     showConfirmButton: true
                 })
-		    getExamMarks()
+		    getExamMarks($('#regCode').val());
             $('#marks').val('')
             $('#examRemarks').val('')
             $('#examPercentageMarks').val('')
@@ -709,7 +723,7 @@ function deleteMarks() {
             url: 'deleteexammarks/'+data,
 
         }).done(function (s) {
-          getExamMarks()
+          getExamMarks($('#regCode').val())
           swal({
                     type: 'success',
                     title: 'Success',

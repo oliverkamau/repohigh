@@ -197,6 +197,12 @@ function editExam(){
             $('#lockDate').val(s.lockDate);
             $('#displayName').val(s.displayName);
             $('#examName').val(s.examName);
+            $('#termName').val('T'+s.termNumber+'_')
+            $('#monthName').val('_'+s.month)
+            $('#yearName').val('_'+s.yearNumber)
+            $('#typeName').val('_'+s.typeName)
+
+
             if (s.finalExam === true) {
                 $('#finalExam').prop('checked', true);
             }

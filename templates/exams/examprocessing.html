@@ -34,12 +34,21 @@
 <div class="row">
 
   <div class="col-md-4 col-sm-11">
+
     <div class="form-row mb-4">
         <label class="col-md-3 control-label" for="select">Term</label>
                               <input type="hidden" name="exam_process_term" id="termCode">
 
                            <select id="term_frm" class="form-control col-md-8" ></select>
     </div>
+         <div class="form-row mb-4">
+                                    <label class="col-md-3 control-label" for="select">Year</label>
+
+     <input type="hidden" name="exam_process_year" id="yearCode">
+
+ <select id="year_frm" class="form-control col-md-8"></select>
+  </div>
+
     <div class="form-row mb-4">
                             <label class="col-md-3 control-label" for="select">Exam Name</label>
                            <input type="hidden" name="exam_process_exam" id="regCode">
@@ -80,13 +89,7 @@
 
   <div class="col-md-4 col-sm-11">
 
-  <div class="form-row mb-4">
-                                    <label class="col-md-4 control-label" for="select">Year</label>
 
-     <input type="hidden" name="exam_process_year" id="yearCode">
-
- <select id="year_frm" class="form-control col-md-8"></select>
-  </div>
          <div class="form-row mb-3">
                               <label class="col-md-4 control-label" for="select">Exam Date</label>
                             <input name="exam_process_date" id="examDate" type="date" class="form-control col-md-8">
@@ -94,7 +97,7 @@
       </div>
        <div class="form-row mb-4">
                               <label class="col-md-4 control-label" for="select">Remarks</label>
-                              <textarea name="exam_process_remarks" id="examRemarks" class="form-control col-md-8" style="height: 4.6em"></textarea>   </div>
+                              <textarea name="exam_process_remarks" id="examRemarks" class="form-control col-md-8" style="height: 5.0em"></textarea>   </div>
 
           <div class="form-row mb-4">
                                           <label class="col-md-4 control-label" for="select">&nbsp;</label>
@@ -102,7 +105,20 @@
 
 
       </div>
+ <div class="form-row mb-4">
+                              <label class="col-md-4 control-label" for="select">&nbsp;</label>
 
+
+
+
+      </div>
+       <div class="form-row mb-4">
+                              <label class="col-md-4 control-label" for="select">&nbsp;</label>
+
+
+
+
+      </div>
 
             <div class="form-row mb-4">
 
@@ -112,8 +128,8 @@
 
       </div>
 
-           <div class="form-row mb-3">
-                                          <label class="col-md-4 control-label" for="select">&nbsp;;</label>
+           <div class="form-row mb-4">
+                                          <label class="col-md-4 control-label" for="select">&nbsp;</label>
 
 
 
@@ -166,10 +182,16 @@
              <label class="col-md-2 control-label" for="select">&nbsp;</label>
     </div>
 
-       <div class="form-row mb-5">
+       <div class="form-row mb-4">
+             <label class="col-md-2 control-label" for="select">&nbsp;</label>
+    </div>
+ <div class="form-row mb-4">
              <label class="col-md-2 control-label" for="select">&nbsp;</label>
     </div>
 
+<div class="form-row mb-5">
+             <label class="col-md-2 control-label" for="select">&nbsp;</label>
+    </div>
       <div class="form-row mb-4">
              <label class="col-md-2 control-label" for="select"></label>
                               <button type="button" id="ungraded" class="btn btn-outline-secondary col-md-9">View Reason Ungraded</button>

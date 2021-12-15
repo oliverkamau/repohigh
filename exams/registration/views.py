@@ -1,7 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
+
 from exams.examtype.models import ExamType
 from exams.registration.forms import ExamRegForm
 from exams.registration.models import ExamRegistration
@@ -12,7 +15,8 @@ from setups.academics.gradingsystem.models import GradingSystem
 from setups.academics.termdates.models import TermDates
 from setups.academics.years.models import Years
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def examreg(request):
     return render(request,'exams/examregistration.html')
 

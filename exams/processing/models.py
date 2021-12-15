@@ -12,9 +12,9 @@ from useradmin.users.models import User
 
 class ExamProcessing(models.Model):
     exam_process_code = models.AutoField(primary_key=True)
-    exam_marks = models.CharField(max_length=200,null=True,blank=True)
-    exam_outof = models.CharField(max_length=200,null=True,blank=True)
-    exam_processing_grade = models.CharField(max_length=200,null=True,blank=True)
+    exam_marks = models.CharField(max_length=200)
+    exam_outof = models.CharField(max_length=200)
+    exam_processing_grade = models.CharField(max_length=200)
     exam_process_date = models.DateTimeField()
     exam_percentage_marks = models.CharField(max_length=200,null=True,blank=True)
     position_outof = models.CharField(max_length=200,null=True,blank=True)
@@ -38,7 +38,7 @@ class ExamProcessing(models.Model):
     exam_process_subject = models.ForeignKey(Subjects,on_delete=models.CASCADE, null=True, blank=True)
     exam_process_student = models.ForeignKey(Students,on_delete=models.CASCADE, null=True, blank=True)
     exam_process_year = models.ForeignKey(Years,on_delete=models.CASCADE, null=True, blank=True)
-    exam_processed_by = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
+    exam_processed_by = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)
 
 
 
