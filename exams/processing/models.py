@@ -30,7 +30,7 @@ class ExamProcessing(models.Model):
     class_mean_mark =  models.CharField(max_length=200, null=True, blank=True)
     form_mean_grade = models.CharField(max_length=200, null=True, blank=True)
     form_mean_mark = models.CharField(max_length=200, null=True, blank=True)
-    exam_process_remarks = models.CharField(max_length=400,null=True,blank=True)
+    exam_process_remarks = models.CharField(max_length=400)
     exam_process_exam = models.ForeignKey(ExamRegistration,on_delete=models.CASCADE, null=True, blank=True)
     exam_process_term = models.ForeignKey(TermDates,on_delete=models.CASCADE, null=True, blank=True)
     exam_process_class = models.ForeignKey(SchoolClasses,on_delete=models.CASCADE, null=True, blank=True)

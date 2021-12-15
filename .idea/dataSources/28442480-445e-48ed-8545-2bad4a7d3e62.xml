@@ -115,7 +115,7 @@
     </schema>
     <schema id="31" parent="7" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2021-12-15.09:16:07.010</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-12-16.03:02:35.033</IntrospectionTimestamp>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -268,7 +268,7 @@
     <table id="62" parent="31" name="processing_examprocessing">
       <ObjectId>1202103323</ObjectId>
       <CreatedTimestamp>2021-12-11.15:05:44.593</CreatedTimestamp>
-      <ModifiedTimestamp>2021-12-15.09:14:20.490</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-12-16.03:02:15.240</ModifiedTimestamp>
     </table>
     <table id="63" parent="31" name="processing_marksexcelfile">
       <ObjectId>1362103893</ObjectId>
@@ -343,7 +343,7 @@
     <table id="77" parent="31" name="users_user">
       <ObjectId>645577338</ObjectId>
       <CreatedTimestamp>2021-11-23.15:57:13.500</CreatedTimestamp>
-      <ModifiedTimestamp>2021-12-15.09:14:20.427</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-12-16.03:02:14.753</ModifiedTimestamp>
     </table>
     <table id="78" parent="31" name="users_usertype">
       <ObjectId>613577224</ObjectId>
@@ -1837,6 +1837,7 @@ model</ColNames>
     <column id="322" parent="62" name="exam_processing_grade">
       <Position>4</Position>
       <DataType>nvarchar(200 char)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
     <column id="323" parent="62" name="exam_process_date">
       <Position>5</Position>
@@ -1902,6 +1903,7 @@ model</ColNames>
     <column id="338" parent="62" name="exam_process_remarks">
       <Position>20</Position>
       <DataType>nvarchar(400 char)|0s</DataType>
+      <NotNull>1</NotNull>
     </column>
     <column id="339" parent="62" name="exam_process_class_id">
       <Position>21</Position>
@@ -2062,9 +2064,9 @@ model</ColNames>
       <RefColNames>year_code</RefColNames>
     </foreign-key>
     <foreign-key id="364" parent="62" name="processing_examprocessing_exam_processed_by_id_a8195a3a_fk_users_user_user_id">
-      <ObjectId>1410104064</ObjectId>
-      <CreatedTimestamp>2021-12-15.09:14:20.423</CreatedTimestamp>
-      <ModifiedTimestamp>2021-12-15.09:14:20.423</ModifiedTimestamp>
+      <ObjectId>1426104121</ObjectId>
+      <CreatedTimestamp>2021-12-16.03:02:14.753</CreatedTimestamp>
+      <ModifiedTimestamp>2021-12-16.03:02:14.753</ModifiedTimestamp>
       <ColNames>exam_processed_by_id</ColNames>
       <RefTableId>645577338</RefTableId>
       <RefSchemaName>dbo</RefSchemaName>
