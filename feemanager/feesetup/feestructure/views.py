@@ -1,10 +1,12 @@
 import datetime
 
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 from datetime import datetime
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
 from rest_framework import status
 
 from feemanager.feesetup.feecategories.models import FeeCategories
@@ -16,7 +18,8 @@ from setups.academics.termdates.models import TermDates
 from setups.academics.years.models import Years
 from setups.accounts.standardcharges.models import StandardCharges
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def structurepage(request):
     return render(request, 'fees/feestructure.html')
 
@@ -184,15 +187,39 @@ def updatefeestructure(request,id):
         structure.structure_category = feecat
 
     structure.save()
-    detail = FeeStructureDetails.objects.filter(structuredetail_structure=structure.pk)
+    # detail = FeeStructureDetails.objects.filter(structuredetail_structure=structure.pk)
+    #
+    # for details in detail:
+    #            charge = StandardCharges.objects.get(pk=details.structuredetail_Standardcharge.pk)
+    #            chargename=charge.charge_uiid
+    #            chargeamount=chargename+'Amount'
+    #            amount =  request.POST[chargeamount]
+    #            details.structuredetail_ammount=amount
+    #            details.save()
 
-    for details in detail:
-               charge = StandardCharges.objects.get(pk=details.structuredetail_Standardcharge.pk)
+    for key in request.POST:
+        if key != 'student_fee_category' and key != 'exam_term':
+
+           if 'Value' in key:
+               detailz = FeeStructureDetails()
+               feex = FeeStructureDetails()
+               value = request.POST[key]
+               charge = StandardCharges.objects.get(pk=value)
                chargename=charge.charge_uiid
                chargeamount=chargename+'Amount'
                amount =  request.POST[chargeamount]
-               details.structuredetail_ammount=amount
-               details.save()
+               try:
+                   feex = FeeStructureDetails.objects.get(structuredetail_structure=structure,
+                                                          structuredetail_Standardcharge=charge)
+               except feex.DoesNotExist:
+                   detailz.structuredetail_ammount = amount
+                   detailz.structuredetail_Standardcharge = charge
+                   detailz.structuredetail_structure = structure
+                   detailz.save()
+               else:
+                   feex.structuredetail_ammount=amount
+                   feex.save()
+
 
 
     return JsonResponse({'success':'Fee Structure Updated Successfully'})

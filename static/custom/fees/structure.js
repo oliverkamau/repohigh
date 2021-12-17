@@ -150,6 +150,7 @@ function editFeeStructure(){
             type: 'GET',
             url: 'editfeestructure/'+data,
         }).done(function (w) {
+            $('#structure-form')[0].reset();
             var total = 0;
             if(w.length!==0) {
             $.each(w, function (i, s) {

@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/feemanager/feesetup/feegroups/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feemanager/feesetup/feestructure/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feemanager/feesetup/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/feemanager/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/custom/fees/structure.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/fees/feesetups.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/fees/feestructure.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/28442480-445e-48ed-8545-2bad4a7d3e62/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feemanager/feesetup/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/feesetup/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schoolsys/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schoolsys/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/students/studentsdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/students/studentsdetail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/feesetup/feestructure/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/feesetup/feestructure/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/fees/structure.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/structure.js" afterDir="false" />
     </list>
     <ignored path="D:\django\gabu\repohigh\.idea\shelf/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,20 +51,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/fees/feestructure.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="178" column="21" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="21" />
+            <state relative-caret-position="1094">
+              <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -86,10 +64,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/setups/accounts/standardcharges/models.py">
+        <entry file="file://$PROJECT_DIR$/setups/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="49" selection-start-line="5" selection-start-column="49" selection-end-line="5" selection-end-column="49" />
+            <state relative-caret-position="119">
+              <caret line="7" column="3" selection-start-line="7" selection-end-line="8" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#57#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -97,8 +78,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructuredetails/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="170">
+              <caret line="10" column="29" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="29" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -109,7 +90,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="187">
               <caret line="12" column="28" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="28" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -121,8 +102,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/custom/fees/structure.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="403">
-              <caret line="184" lean-forward="true" selection-start-line="184" selection-end-line="184" />
+            <state relative-caret-position="267">
+              <caret line="155" column="39" lean-forward="true" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -130,7 +111,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/feestructure_feestructure">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="02b9b1a7-f255-4509-8e35-3ff95286733f">
+            <state projectRestartId="46c93f4b-64e6-4442-b638-5c0cd4bce7f3">
               <filtering>
                 <filter text="" />
               </filtering>
@@ -141,7 +122,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
+            <state relative-caret-position="153">
               <caret line="14" selection-start-line="14" selection-end-line="14" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -153,7 +134,18 @@
       <file pinned="false" current-in-tab="false">
         <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/feestructuredetails_feestructuredetails">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="02b9b1a7-f255-4509-8e35-3ff95286733f">
+            <state projectRestartId="46c93f4b-64e6-4442-b638-5c0cd4bce7f3">
+              <filtering>
+                <filter text="" />
+              </filtering>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/standardcharges_standardcharges">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state projectRestartId="46c93f4b-64e6-4442-b638-5c0cd4bce7f3">
               <filtering>
                 <filter text="" />
               </filtering>
@@ -164,7 +156,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/custom/exams/process.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
+            <state relative-caret-position="12461">
               <caret line="733" column="3" selection-start-line="729" selection-end-line="753" selection-end-column="1" />
             </state>
           </provider>
@@ -271,13 +263,13 @@
         <option value="$PROJECT_DIR$/schoolsys/settings.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console_25.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/28442480-445e-48ed-8545-2bad4a7d3e62/console.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/setups/accounts/standardcharges/models.py" />
         <option value="$PROJECT_DIR$/feemanager/feesetup/feestructuredetails/models.py" />
         <option value="$PROJECT_DIR$/feemanager/feesetup/feestructure/urls.py" />
+        <option value="$PROJECT_DIR$/templates/fees/feestructure.html" />
         <option value="$PROJECT_DIR$/feemanager/feesetup/feestructure/views.py" />
         <option value="$PROJECT_DIR$/static/custom/fees/structure.js" />
-        <option value="$PROJECT_DIR$/templates/fees/feestructure.html" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
       </list>
     </option>
   </component>
@@ -385,6 +377,14 @@
               <item name="setups" type="462c0819:PsiDirectoryNode" />
               <item name="accounts" type="462c0819:PsiDirectoryNode" />
               <item name="standardcharges" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
+              <item name="repohigh" type="462c0819:PsiDirectoryNode" />
+              <item name="setups" type="462c0819:PsiDirectoryNode" />
+              <item name="accounts" type="462c0819:PsiDirectoryNode" />
+              <item name="standardcharges" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="repohigh" type="b2602c69:ProjectViewProjectNode" />
@@ -671,11 +671,12 @@
       <workItem from="1639668397936" duration="8997000" />
       <workItem from="1639681338294" duration="4603000" />
       <workItem from="1639716274992" duration="8513000" />
+      <workItem from="1639753751419" duration="1685000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="299607000" />
+    <option name="totallyTimeSpent" value="301292000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -691,7 +692,7 @@
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="1" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.25626516" />
+      <window_info content_ui="combo" id="Project" order="2" weight="0.2603072" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3280142" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.9468085" />
@@ -744,13 +745,6 @@
     <SUITE FILE_PATH="coverage/repohigh$settings.coverage" NAME="settings Coverage Results" MODIFIED="1638169422009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/schoolsys" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feegroups/apps.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/apps.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1006,67 +1000,10 @@
     <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/tests.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/standardcharges_standardcharges">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="02b9b1a7-f255-4509-8e35-3ff95286733f">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructuredetails/models.py">
+    <entry file="file://$PROJECT_DIR$/templates/fees/feestructure.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/exams/process.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="733" column="3" selection-start-line="729" selection-end-line="753" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/feestructure_feestructure">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="02b9b1a7-f255-4509-8e35-3ff95286733f">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/feestructuredetails_feestructuredetails">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="02b9b1a7-f255-4509-8e35-3ff95286733f">
-          <filtering>
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="60">
+          <caret line="64" column="1" lean-forward="true" selection-start-line="64" selection-start-column="1" selection-end-line="64" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1077,27 +1014,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/feestructure_feestructure">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="46c93f4b-64e6-4442-b638-5c0cd4bce7f3">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/custom/exams/process.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12461">
+          <caret line="733" column="3" selection-start-line="729" selection-end-line="753" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setups/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="3" selection-start-line="7" selection-end-line="8" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructuredetails/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="29" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/feemanager/feesetup/feestructure/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="178" column="21" selection-start-line="178" selection-start-column="12" selection-end-line="178" selection-end-column="21" />
+        <state relative-caret-position="1094">
+          <caret line="222" lean-forward="true" selection-start-line="222" selection-end-line="222" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/custom/fees/structure.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="403">
-          <caret line="184" lean-forward="true" selection-start-line="184" selection-end-line="184" />
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/feestructuredetails_feestructuredetails">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="46c93f4b-64e6-4442-b638-5c0cd4bce7f3">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/fees/feestructure.html">
+    <entry file="file://$PROJECT_DIR$/static/custom/fees/structure.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="50" column="28" lean-forward="true" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
+        <state relative-caret-position="267">
+          <caret line="155" column="39" lean-forward="true" selection-start-line="155" selection-start-column="39" selection-end-line="155" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://28442480-445e-48ed-8545-2bad4a7d3e62/database/highschool/schema/dbo/table/standardcharges_standardcharges">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="46c93f4b-64e6-4442-b638-5c0cd4bce7f3">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
