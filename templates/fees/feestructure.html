@@ -1,0 +1,84 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Fee Structure</h4>
+
+                       <button type="button" id="saveStructure" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+                       <button type="button" id="newStructure" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>
+
+
+
+
+            </div>
+        <div class="col-md-10 col-sm-11 mx-5">
+<form id="structure-form">
+     {% csrf_token %}
+<input type="hidden" name="structure_code" id="structureCode">
+
+                      <div class="form-row" id="append-form">
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-2">
+                            <label class="col-md-3 control-label" for="select">Fee Category</label>
+                            <input type="hidden" name="student_fee_category" id="feeCategory">
+                            <select id="fee_frm" class="form-control col-md-7">
+                            </select>
+                          </div>
+
+                          <div class="form-row mb-4 ml-1 mr-1">
+                          &nbsp;
+                          </div>
+                        </div>
+                        <div class="col-md-6 col-sm-12">
+                          <div class="form-row mb-4 ml-1 mr-1">
+                           <label class="col-md-2 control-label" for="select">Term</label>
+                              <input type="hidden" name="exam_term" id="termCode">
+                                                            <input type="hidden"  id="termName">
+
+                           <select id="term_frm" class="form-control col-md-6" ></select>
+                          </div>
+                              <div class="form-row mb-4 ml-1 mr-1">
+
+                                  &nbsp;
+                          </div>
+
+
+                      </div>
+        </div>
+</form>
+
+            <h5 class="text-danger form-control-static pull-right mt-3 mr-5" id="text-total"></h5>
+    </div>
+        <div class="col-md-11 col-sm-11 mx-5 mt-4">
+
+            <div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="feeTable">
+  <thead>
+    <tr>
+      <th scope="col">Category</th>
+      <th scope="col">Term</th>
+      <th scope="col">Year</th>
+        <th></th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/fees/structure.js' %}"></script>
+
+{% endblock %}
