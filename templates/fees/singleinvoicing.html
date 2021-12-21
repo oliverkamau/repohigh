@@ -1,0 +1,97 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-2 mb-4">
+
+              <h4 class="text-muted">Fee Structure</h4>
+
+                       <button type="button" id="saveInvoice" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+                       <button type="button" id="newInvoice" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>
+
+
+
+
+            </div>
+        <div class="col-md-11 col-sm-11 mx-3">
+
+
+
+
+
+
+
+
+            <div class="row mb-4">
+
+  <div class="col-md-5 col-sm-11">
+    <div class="form-row mb-4">
+         <input type="hidden" name="exam_process_student" id="studentCode">
+                            <label class="control-label col-md-3" for="select">Student</label>
+                             <select id="student_frm" type="text" class="form-control col-md-9"></select>
+    </div>
+
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+   <div class="form-row mb-4">
+          <label class="col-md-3 control-label" for="select">Date</label>
+                            <input name="tracker_date" id="date" type="date" class="form-control col-md-9">
+    </div>
+
+  </div>
+
+  <div class="col-md-4 col-sm-11">
+    <div class="form-row mb-4">
+          <label class="col-md-3 control-label" for="select">Notes</label>
+                              <textarea name="tracker_remarks" id="trackerRemarks" class="form-control col-md-9" style="height: 7.0em"></textarea>
+    </div>
+
+  </div>
+
+</div>
+
+            <div class="col-md-10 col-sm-11 mx-5" >
+<form id="tracker-form">
+     {% csrf_token %}
+<input type="hidden" name="tracker_code" id="trackerCode">
+
+                      <div class="form-row" id="append-form">
+                      </div>
+</form>
+                            <h5 class="text-danger form-control-static pull-right mt-3 mr-5" id="text-total"></h5>
+
+            </div>
+
+    </div>
+{#        <div class="col-md-11 col-sm-11 mx-5 mt-4">#}
+{##}
+{#            <div class="table-responsive">#}
+{#        <table class="table table-striped display responsive nowrap" id="feeTable">#}
+{#  <thead>#}
+{#    <tr>#}
+{#      <th scope="col">Category</th>#}
+{#      <th scope="col">Term</th>#}
+{#      <th scope="col">Year</th>#}
+{#        <th></th>#}
+{#        <th></th>#}
+{##}
+{#    </tr>#}
+{#  </thead>#}
+{#  <tbody>#}
+{#  </tbody>#}
+{#</table>#}
+{#    </div>#}
+{##}
+{#        </div>#}
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/fees/singleinvoice.js' %}"></script>
+
+{% endblock %}

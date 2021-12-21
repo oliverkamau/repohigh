@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container-fluid">
+          <h4 class="text-muted mb-5">Manage Balances</h4>
+
+  <div class="row">
+    <div class="col-10 col-md-6 mx-auto">
+      <ul class="list-group card">
+          <li class="list-group-item"><a href="{% url 'singleinvoicepage' %}"><i class="fa fa-credit-card text-info mx-2"></i>&nbsp;&nbsp;Single Invoicing</a></li>
+          <li class="list-group-item"><a href="#">&nbsp;<i class="fa fa-sitemap text-info mx-2"></i>&nbsp;&nbsp;Bulk Invoicing</a></li>
+
+
+      </ul>
+    </div>
+                <div class="col-10 col-md-6 mx-auto">
+                    &nbsp;
+                </div>
+  </div>
+</div>
+
+
+{% endblock %}

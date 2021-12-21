@@ -10,6 +10,10 @@ from django.views.decorators.cache import cache_control
 from rest_framework import status
 
 from feemanager.feesetup.feecategories.models import FeeCategories
+from feemanager.feesetup.feestructure.models import FeeStructure
+from feemanager.feesetup.feestructuredetails.models import FeeStructureDetails
+from feemanager.managebalances.invoicedetails.models import BalanceTrackerDetails
+from feemanager.managebalances.singleinvoicing.models import BalanceTracker
 from setups.academics.campuses.models import Campuses
 from setups.academics.classes.models import SchoolClasses
 from setups.academics.denominations.models import Denomination
@@ -20,7 +24,9 @@ from setups.academics.dorms.models import Dorms
 from setups.academics.healthconditions.models import HealthStatus
 from setups.academics.sources.models import StudentSources
 from setups.academics.studentstatus.models import StudentStatus
+from setups.academics.termdates.models import TermDates
 from setups.academics.years.models import Years
+from setups.accounts.standardcharges.models import StandardCharges
 from studentmanager.parents.models import Parents
 from localities.models import Select2Data, Countries, Counties, SubCounty, Location, SubLocation, Village
 from localities.serializers import Select2Serializer
@@ -442,6 +448,56 @@ def searchdocs(request):
     return JsonResponse({'results': listsel})
 
 
+def definefeestructure(stud):
+    listsel = []
+    category=stud.student_fee_category
+    term = TermDates.objects.get(current_term=True)
+    structure = FeeStructure()
+    try:
+        structure = FeeStructure.objects.get(structure_category=category,structure_term=term)
+
+    except structure.DoesNotExist:
+        balance = BalanceTracker()
+        balance.structure_category = category
+        balance.tracker_date = datetime.today()
+        balance.tracker_notes = 'Intial Student balance'
+        balance.tracker_student = stud
+        balance.tracker_type = 'I'
+        balance.tracker_invoiceno = 'Inv00' + str(stud.student_code) + str(category.category_code)
+        balance.save()
+        # trackers = FeeStructure.objects.get(pk=balance.tracker_code)
+        charges = StandardCharges.objects.filter(charge_active=True).order_by('charge_priority')
+        for charge in charges:
+            trackerdetails = BalanceTrackerDetails()
+            # charge = StandardCharges.objects.get(pk=obj.structuredetail_Standardcharge.pk)
+            trackerdetails.trackerdetails_balance = 0.00
+            trackerdetails.trackerdetails_Standardcharge = charge
+            trackerdetails.trackerdetails_tracker = balance
+            trackerdetails.save()
+
+    else:
+        balance = BalanceTracker()
+        balance.structure_category = category
+        balance.tracker_date = datetime.today()
+        balance.tracker_notes = 'Intial Student balance'
+        balance.tracker_student = stud
+        balance.tracker_type = 'I'
+        balance.tracker_invoiceno = 'Inv00' + str(stud.student_code) + str(category.category_code)
+        balance.save()
+        # tracker = FeeStructure.objects.get(pk=balance.tracker_code)
+
+        details = FeeStructureDetails.objects.filter(structuredetail_structure=structure)
+        for obj in details:
+            trackerdetails = BalanceTrackerDetails()
+            # charge = StandardCharges.objects.get(pk=obj.structuredetail_Standardcharge.pk)
+            trackerdetails.trackerdetails_balance=obj.structuredetail_ammount
+            trackerdetails.trackerdetails_Standardcharge=obj.structuredetail_Standardcharge
+            trackerdetails.trackerdetails_tracker=balance
+            trackerdetails.save()
+
+        return JsonResponse(listsel, safe=False)
+
+
 def addstudent(request):
     student = StudForm(request.POST, request.FILES)
     # if request.method == 'POST':
@@ -537,7 +593,8 @@ def addstudent(request):
     year=year.replace('0','',2)
     keyuniq='S00'+str(stud.pk)+'/'+year
     stud.adm_no=keyuniq
-    stud.birth_cert_no = 'brdq001'
+    # stud.birth_cert_no = 'brdq001'
+    definefeestructure(stud)
     stud.save()
     return JsonResponse({'success': 'Student Saved Successfully'})
 
