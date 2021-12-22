@@ -25,9 +25,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/feemanager/managebalances/singleinvoicing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/managebalances/singleinvoicing/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schoolsys/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/custom/fees/singleinvoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/singleinvoice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/studentmanager/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentmanager/student/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fees/singleinvoicing.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fees/singleinvoicing.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -265,6 +263,11 @@
       <workItem from="1640067835311" duration="19123000" />
       <workItem from="1640111047703" duration="7597000" />
       <workItem from="1640143361480" duration="823000" />
+      <workItem from="1640144384449" duration="603000" />
+      <workItem from="1640158932552" duration="457000" />
+      <workItem from="1640174339929" duration="1034000" />
+      <workItem from="1640175933530" duration="2497000" />
+      <workItem from="1640193857896" duration="3283000" />
     </task>
     <servers />
   </component>

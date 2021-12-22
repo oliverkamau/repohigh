@@ -8,6 +8,7 @@ from localities.models import Select2Data
 from localities.serializers import Select2Serializer
 from setups.accounts.standardcharges.models import StandardCharges
 from setups.system.invoicesequence.models import InvoiceSequence
+from setups.system.systemsequences.models import SystemSequences
 from studentmanager.student.models import Students
 
 
@@ -63,12 +64,21 @@ def updatebalancetracker(request):
         tracker = BalanceTracker.objects.get(pk=bal)
         tracker.tracker_notes=request.POST['notes']
         tracker.tracker_date=request.POST['date']
-        seq = InvoiceSequence.objects.all().order_by("-sequence_code")[0]
-        newseq = InvoiceSequence()
-        newseq.sequence_no = seq.sequence_no + 1
-        newseq.save()
-        tracker.tracker_invoiceno = 'INV00' + str(newseq.sequence_no)
-        tracker.save()
+        if SystemSequences.objects.filter(sequence_type='Invoice').exists():
+            seq = SystemSequences.objects.get(sequence_type='Invoice')
+            tracker.tracker_invoiceno = 'INV00' + str(seq.sequence_nextseq)
+            seq.sequence_nextseq = seq.sequence_nextseq + 1
+            seq.save()
+            tracker.save()
+        else:
+            seq = SystemSequences()
+            seq.sequence_nextseq = 1
+            seq.sequence_type = 'Invoice'
+            seq.save()
+            tracker.tracker_invoiceno = 'INV00' + str(seq.sequence_nextseq)
+            tracker.save()
+            seq.sequence_nextseq = seq.sequence_nextseq + 1
+            seq.save()
 
     for key in request.POST:
         if key != 'student_fee_category' and key != 'exam_term':

@@ -83,6 +83,7 @@ INSTALLED_APPS = [
     'feemanager.managebalances.invoicedetails.apps.InvoicedetailsConfig',
     'setups.system.apps.SystemConfig',
     'setups.system.invoicesequence.apps.InvoicesequenceConfig',
+     'setups.system.systemsequences.apps.SystemsequencesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
