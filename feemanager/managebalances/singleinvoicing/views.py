@@ -7,6 +7,7 @@ from feemanager.managebalances.singleinvoicing.models import BalanceTracker
 from localities.models import Select2Data
 from localities.serializers import Select2Serializer
 from setups.accounts.standardcharges.models import StandardCharges
+from setups.system.invoicesequence.models import InvoiceSequence
 from studentmanager.student.models import Students
 
 
@@ -62,6 +63,11 @@ def updatebalancetracker(request):
         tracker = BalanceTracker.objects.get(pk=bal)
         tracker.tracker_notes=request.POST['notes']
         tracker.tracker_date=request.POST['date']
+        seq = InvoiceSequence.objects.all().order_by("-sequence_code")[0]
+        newseq = InvoiceSequence()
+        newseq.sequence_no = seq.sequence_no + 1
+        newseq.save()
+        tracker.tracker_invoiceno = 'INV00' + str(newseq.sequence_no)
         tracker.save()
 
     for key in request.POST:
@@ -86,5 +92,6 @@ def updatebalancetracker(request):
                 else:
                     feex.trackerdetails_balance = amount
                     feex.save()
+
 
     return JsonResponse({'success':'Balance Updated Successfully'})

@@ -110,6 +110,7 @@ function getFeeStandardCharges(id) {
     }).done(function (s) {
 
         if(s.length!==0) {
+            var total = 0
             $("#append-form").empty()
             $.each(s, function (i, item) {
                 $('#trackerCode').val(item.trackerCode)
@@ -118,11 +119,13 @@ function getFeeStandardCharges(id) {
                     +"<div class='form-row mb-2 ml-1 mr-2'>"
                     + "<input type='hidden' name='"+item.chargeCodeName+"' id='"+item.chargeCodeName+"' value='"+item.chargeCode+"'>"
                     + "<label class='col-md-5 control-label' for='select'>"+item.chargeName+"</label>"
-                    + "<input type='number' name='"+item.chargeAmount+"' class='form-control col-md-7' id='"+item.chargeAmount+"' value='"+parseFloat(item.ammount)+"'>"
+                    + "<input type='number' name='"+item.chargeAmount+"' class='form-control col-md-7' id='"+item.chargeAmount+"' value='"+parseFloat(item.ammount).toFixed(2)+"'>"
                     + "</div>"
                     +"<div class='form-row mb-2 mr-1'>"
                     +      "</div>"
                     + "</div>")
+                 total=total+parseFloat(item.ammount)
+                 $('#text-total').text("Total Balance : "+total.toFixed(2).toString())
             })
         }
 

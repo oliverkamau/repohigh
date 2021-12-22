@@ -27,6 +27,7 @@ from setups.academics.studentstatus.models import StudentStatus
 from setups.academics.termdates.models import TermDates
 from setups.academics.years.models import Years
 from setups.accounts.standardcharges.models import StandardCharges
+from setups.system.invoicesequence.models import InvoiceSequence
 from studentmanager.parents.models import Parents
 from localities.models import Select2Data, Countries, Counties, SubCounty, Location, SubLocation, Village
 from localities.serializers import Select2Serializer
@@ -474,6 +475,19 @@ def definefeestructure(stud):
             trackerdetails.trackerdetails_Standardcharge = charge
             trackerdetails.trackerdetails_tracker = balance
             trackerdetails.save()
+        if InvoiceSequence.objects.exists():
+            seq=InvoiceSequence.objects.all().order_by("-sequence_code")[0]
+            newseq=InvoiceSequence()
+            newseq.sequence_no=seq.sequence_no+1
+            newseq.save()
+            balance.tracker_invoiceno='INV00'+str(newseq.sequence_no)
+            balance.save()
+        else:
+            seq=InvoiceSequence()
+            seq.sequence_no=1
+            seq.save()
+            balance.tracker_invoiceno='INV00'+str(seq.sequence_no)
+            balance.save()
 
     else:
         balance = BalanceTracker()
@@ -495,6 +509,18 @@ def definefeestructure(stud):
             trackerdetails.trackerdetails_tracker=balance
             trackerdetails.save()
 
+        if InvoiceSequence.objects.exists():
+            seq=InvoiceSequence.objects.all().order_by("-sequence_code")[0]
+            seq.sequence_no=seq.sequence_no+1
+            seq.save()
+            balance.tracker_invoiceno='INV00'+str(seq.sequence_no)
+            balance.save()
+        else:
+            seq=InvoiceSequence()
+            seq.sequence_no=1
+            seq.save()
+            balance.tracker_invoiceno='INV00'+str(seq.sequence_no)
+            balance.save()
         return JsonResponse(listsel, safe=False)
 
 
