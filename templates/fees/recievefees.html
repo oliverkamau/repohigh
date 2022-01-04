@@ -1,0 +1,195 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-2 mb-4">
+
+              <h4 class="text-muted">Recieve Fees</h4>
+
+                       <button type="button" id="saveFees" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+                       <button type="button" id="newFees" class="btn btn-outline-secondary mr-1 ml-2 pull-right">New</button>
+
+
+
+
+            </div>
+        <div class="col-md-11 col-sm-11 mx-3">
+
+            <div class="row mb-3">
+
+  <div class="col-md-5 col-sm-11">
+    <div class="form-row mb-4">
+         <input type="hidden" name="exam_process_student" id="studentCode">
+                            <label class="control-label col-md-3" for="select">Class</label>
+        <input type="hidden" name="fees_class" id="feesClass">
+                             <select id="class_frm" type="text" class="form-control col-md-9"></select>
+    </div>
+
+  </div>
+
+  <div class="col-md-4 col-sm-11">
+   <div class="form-row mb-4">
+          <label class="col-md-5 control-label" for="select">Payment Modes</label>
+               <input type="hidden" name="payment_mode" id="paymentMode">
+                             <select id="payment_frm" type="text" class="form-control col-md-7"></select>
+    </div>
+
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+    <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Date</label>
+                            <input name="date" id="date" type="date" class="form-control col-md-8">
+    </div>
+
+  </div>
+
+                <div class="col-md-5 col-sm-11">
+    <div class="form-row mb-4">
+         <input type="hidden" name="exam_process_student" id="studentCode">
+                            <label class="control-label col-md-3" for="select">Student</label>
+                              <input type="hidden" name="fee_student" id="feeStudent">
+
+                             <select id="student_frm" type="text" class="form-control col-md-9"></select>
+    </div>
+
+  </div>
+
+  <div class="col-md-4 col-sm-11">
+   <div class="form-row mb-4">
+          <label class="col-md-5 control-label" for="select">Bank</label>
+                      <input type="hidden" name="bank_branch" id="bankBranch">
+                             <select id="bank_frm" type="text" class="form-control col-md-7">
+
+
+                             </select>
+    </div>
+
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+    <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Doc No.</label>
+                            <input name="document_no" id="docNo" type="text" class="form-control col-md-8">
+    </div>
+
+  </div>
+
+                  <div class="col-md-5 col-sm-11">
+    <div class="form-row mb-4">
+         &nbsp;
+    </div>
+
+  </div>
+
+  <div class="col-md-4 col-sm-11">
+   <div class="form-row mb-4">
+          <label class="col-md-5 control-label" for="select">&nbsp;</label>
+
+    </div>
+
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+    <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Term</label>
+                       <input type="hidden" name="fees_term" id="feesTerm">
+
+    <select id="term_frm" type="text" class="form-control col-md-7">
+
+
+                             </select>    </div>
+
+  </div>
+
+
+</div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+ <div class="container-fluid">
+
+<div class="row">
+  <div class="col-md-7 col-sm-11 mt-1">
+      <form id="fees_form">
+          {% csrf_token %}
+            <div id="append-form">
+
+      </div>
+      </form>
+
+  </div>
+     <div class="col-md-5 col-sm-11 mt-1">
+           <div class="form-row mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="receipt">
+    <label class="form-check-label" for="assign">Show Receipt</label>
+  </div>
+            <div class="form-row">
+    <label class="col-md-4 control-label" for="select">Distribute</label>
+  </div>
+           <div class="form-row mb-1 form-check">
+    <input type="radio" name="distribution" class="form-check-input" id="automatic">
+    <label class="form-check-label" for="assign">Automatically</label>
+
+  </div>
+               <div class="form-row mb-3 form-check">
+    <input type="radio" name="distribution" class="form-check-input" id="manual">
+    <label class="form-check-label" for="assign">Manually</label>
+
+  </div>
+         <div class="form-row">
+    <label class="col-md-8 control-label" for="select">Amount Payable</label>
+  </div>
+         <div class="form-row mb-3">
+   <input name="amount_payable" id="amountPayable" type="number" class="form-control col-md-5">
+  </div>
+
+          <div class="form-row">
+    <label class="col-md-8 control-label" for="select">Amount Paid</label>
+  </div>
+         <div class="form-row mb-3">
+   <input name="amount_paid" id="amountPaid" type="number" class="form-control col-md-5">
+  </div>
+
+          <div class="form-row">
+    <label class="col-md-8 control-label" for="select">Balance</label>
+  </div>
+         <div class="form-row mb-3">
+   <input name="balance" id="balance" type="number" class="form-control col-md-5">
+  </div>
+
+          <div class="form-row">
+    <label class="col-md-5 control-label" for="select">Recieved Today</label>
+                  <label class="col-md-6 control-label text-danger" for="select" id="today">0.00</label>
+
+  </div>
+               <div class="form-row">
+    <label class="col-md-5 control-label" for="select">Recieved This Month</label>
+                  <label class="col-md-6 control-label text-danger" for="select" id="month">0.00</label>
+
+  </div>
+               <div class="form-row">
+    <label class="col-md-5 control-label" for="select">Recieved This Year</label>
+                  <label class="col-md-6 control-label text-danger" for="select" id="year">0.00</label>
+
+  </div>
+               <div class="form-row">
+    <label class="col-md-5 control-label" for="select">Total Fee Balance</label>
+                  <label class="col-md-6 control-label text-danger" for="select" id="total">0.00</label>
+
+  </div>
+     </div>
+</div>
+ </div>
+      <script src=" {% static 'custom/fees/recievefees.js' %}"></script>
+
+{% endblock %}
