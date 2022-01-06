@@ -157,7 +157,7 @@
     <label class="col-md-8 control-label" for="select">Amount Paid</label>
   </div>
          <div class="form-row mb-3">
-   <input name="amount_paid" id="amountPaid" type="number" class="form-control col-md-5">
+   <input name="amount_paid" id="amountPaid" type="number" class="form-control col-md-5" value="0">
   </div>
 
           <div class="form-row">
@@ -191,5 +191,7 @@
 </div>
  </div>
       <script src=" {% static 'custom/fees/recievefees.js' %}"></script>
-
+    <script type="text/javascript">
+    var total = 0;
+</script>
 {% endblock %}

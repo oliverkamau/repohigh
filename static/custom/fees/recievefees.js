@@ -17,6 +17,8 @@ searchTerm();
 getFeeStandardCharges();
 termChange();
 saveFees();
+addTotals();
+getDefaultTerm();
 })
 function formatDate() {
     var d = new Date(),
@@ -93,6 +95,7 @@ function saveFees(){
                     text: s.success,
                     showConfirmButton: true
                 })
+               $('#amountPaid').val(s.amount)
                getFeeTrackerBalance($('#feeStudent').val())
             }).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
@@ -186,11 +189,11 @@ function getFeeTrackerBalance(id) {
         if(s.length!==0) {
             $.each(s, function (i, item) {
                 $("#append-form").append(
-                    "<div class='col-md-11 col-sm-12'>"
-                    +"<div class='form-row ml-1 mr-1'>"
+                    "<div class='col-md-11 col-sm-12 chargeme'>"
+                    +"<div class='form-row ml-1 mr-1 chargenext'>"
                     + "<input type='hidden' name='"+item.tracker+"' id='"+item.trackerCode+"' value='"+item.trackerCode+"'>"
                     + "<label class='col-md-5 control-label' for='select'>"+item.chargeName+"</label>"
-                    + "<input type='number' name='"+item.chargeAmountName+"' class='form-control col-md-3 mr-1' id='"+item.chargeAmountName+"'>"
+                    + "<input type='number' name='"+item.chargeAmountName+"' class='form-control col-md-3 mr-1 charges' id='"+item.chargeAmountName+"'>"
                      + "<input type='number' name='"+item.trackerAmountName+"' class='form-control col-md-3' id='"+item.trackerAmountName+"'  value='"+item.trackerAmountValue+"' readonly>"
                     + "</div>"
                     +"<div class='form-row mr-1'>"
@@ -207,10 +210,46 @@ function getFeeTrackerBalance(id) {
     });
 }
 
+function computetotal(val) {
+    console.log(val)
+    console.log($('#amountPaid').val())
+     $('#amountPaid').val(parseFloat($('#amountPaid').val())+parseFloat(val))
+}
+
+function addTotals(){
+
+    $('#append-form').on('focusout','.chargeme .chargenext .charges',function () {
+        var val = 0
+        if($(this).val()===''){
+            val = 0
+        }
+        else{
+            val = $(this).val()
+        }
+       computetotal(val)
+    })
+}
+function getDefaultTerm(){
+    $.ajax({
+                type: 'GET',
+                url: 'currentterm',
+            }).done(function (s) {
+               if (s.termCode) {
+                $('#feesTerm').val(s.termCode)
+                var $newClass = $("<option selected='selected' value='" + s.termCode + "'>'+s.termNumber+'</option>").val(s.termCode.toString()).text(s.termNumber)
+
+                $('#term_frm').append($newClass).trigger('change');
+            }
+            }).fail(function (xhr, error) {
+                bootbox.alert(xhr.responseText)
+
+            })
+}
 function studentChange() {
     $('#student_frm').on('select2:select', function (e) {
         var data = e.params.data;
         $('#feeStudent').val(data.id)
+        $('#amountPaid').val('0')
         getFeeTrackerBalance(data.id)
     });
     $("#student_frm").on("select2:unselecting", function(e) {

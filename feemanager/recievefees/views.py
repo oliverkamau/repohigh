@@ -6,6 +6,7 @@ from django.shortcuts import render
 # Create your views here.
 from feemanager.managebalances.invoicedetails.models import BalanceTrackerDetails
 from feemanager.managebalances.singleinvoicing.models import BalanceTracker
+from feemanager.recievefeedetails.models import FeePaymentDetails
 from feemanager.recievefees.models import FeePayment
 from localities.models import Select2Data
 from localities.serializers import Select2Serializer
@@ -192,7 +193,6 @@ def recievefees(request):
         bank = BankBranches.objects.get(pk=bn)
         term = TermDates.objects.get(pk=tr)
         u = User.objects.get(username=request.user)
-
         receipt = ''
         if SystemSequences.objects.filter(sequence_type='Receipt').exists():
             seq = SystemSequences.objects.get(sequence_type='Receipt')
@@ -209,25 +209,6 @@ def recievefees(request):
             seq.save()
 
         totals = 0
-        for key in request.POST:
-
-            if 'TrackerCode' in key:
-                   value = request.POST.get(key, None)
-                   detailz = BalanceTrackerDetails.objects.get(pk=value)
-                   charge = StandardCharges.objects.get(pk=detailz.trackerdetails_Standardcharge.pk)
-                   chargename = charge.charge_uiid
-                   paidamount = chargename + 'PaidAmount'
-                   amount = request.POST.get(paidamount, None)
-                   if not amount:
-                     print('Amount is blank')
-                   else:
-                     print('Amount is empty')
-                   if amount:
-                     totals = totals + decimal.Decimal(float(amount))
-                     amount = detailz.trackerdetails_balance-decimal.Decimal(float(amount))
-                     detailz.trackerdetails_balance=amount
-                     detailz.save()
-
         payment = FeePayment()
         payment.payment_amount = totals
         payment.payment_bank = bank
@@ -240,6 +221,44 @@ def recievefees(request):
         payment.payment_date = dt
         payment.payment_capturedby = u
         payment.save()
-        return JsonResponse({'success': 'Record added Successfully!'})
+        pmnt=FeePayment.objects.get(pk=payment.pk)
+        for key in request.POST:
+
+            if 'TrackerCode' in key:
+                   feedet = FeePaymentDetails()
+                   value = request.POST.get(key, None)
+                   detailz = BalanceTrackerDetails.objects.get(pk=value)
+                   charge = StandardCharges.objects.get(pk=detailz.trackerdetails_Standardcharge.pk)
+                   chargename = charge.charge_uiid
+                   paidamount = chargename + 'PaidAmount'
+                   amount = request.POST.get(paidamount, None)
+                   if not amount:
+                     print('Amount is blank')
+                   else:
+                     print('Amount is empty')
+                   if amount:
+
+                     paymentdetail = FeePaymentDetails()
+                     paymentdetail.paymentdetail_payment=pmnt
+                     paymentdetail.paymentdetail_standardcharge=charge
+                     paymentdetail.paymentdetailcharge_amount=decimal.Decimal(float(amount))
+                     paymentdetail.save()
+                     totals = totals + decimal.Decimal(float(amount))
+                     amount = detailz.trackerdetails_balance-decimal.Decimal(float(amount))
+                     detailz.trackerdetails_balance=amount
+                     detailz.save()
+
+        pmnt.payment_amount=totals
+        pmnt.save()
+        response_data = {}
+        response_data['success'] = 'Record added Successfully!'
+        response_data['amount'] = totals
+        return JsonResponse(response_data)
 
 
+def currentterm(request):
+        response_data = {}
+        obj = TermDates.objects.get(current_term=True)
+        response_data['termCode'] = obj.term_code
+        response_data['termNumber'] = obj.term_number
+        return JsonResponse(response_data)
