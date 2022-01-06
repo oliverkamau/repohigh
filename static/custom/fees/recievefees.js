@@ -19,6 +19,7 @@ termChange();
 saveFees();
 addTotals();
 getDefaultTerm();
+removeTotals()
 })
 function formatDate() {
     var d = new Date(),
@@ -227,6 +228,24 @@ function addTotals(){
             val = $(this).val()
         }
        computetotal(val)
+    })
+}
+
+function subtracttotals(val) {
+         $('#amountPaid').val(parseFloat($('#amountPaid').val())-parseFloat(val))
+}
+
+function removeTotals(){
+
+    $('#append-form').on('focus','.chargeme .chargenext .charges',function () {
+        var val = 0
+        if($(this).val()===''){
+            val = 0
+        }
+        else{
+            val = $(this).val()
+        }
+       subtracttotals(val)
     })
 }
 function getDefaultTerm(){

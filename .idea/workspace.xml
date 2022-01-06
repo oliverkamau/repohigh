@@ -20,14 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ccc2ac42-3983-425e-8910-040d9bf6bf0b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ccc2ac42-3983-425e-8910-040d9bf6bf0b.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ccc2ac42-3983-425e-8910-040d9bf6bf0b/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ccc2ac42-3983-425e-8910-040d9bf6bf0b/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feemanager/recievefees/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/recievefees/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feemanager/recievefees/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/recievefees/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/schoolsys/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/custom/fees/recievefees.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/recievefees.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fees/recievefees.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fees/recievefees.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -280,6 +274,7 @@
       <workItem from="1641403860424" duration="1819000" />
       <workItem from="1641405972268" duration="4833000" />
       <workItem from="1641435867211" duration="2226000" />
+      <workItem from="1641438432761" duration="1036000" />
     </task>
     <servers />
   </component>
