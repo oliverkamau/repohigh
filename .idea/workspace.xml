@@ -21,7 +21,10 @@
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/managebalances/singleinvoicing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/managebalances/singleinvoicing/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/recievefees/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/recievefees/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/custom/fees/recievefees.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/recievefees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fees/recievefees.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fees/recievefees.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +277,9 @@
       <workItem from="1641403860424" duration="1819000" />
       <workItem from="1641405972268" duration="4833000" />
       <workItem from="1641435867211" duration="2226000" />
-      <workItem from="1641438432761" duration="1036000" />
+      <workItem from="1641438432761" duration="1137000" />
+      <workItem from="1641451112494" duration="6787000" />
+      <workItem from="1641462014779" duration="14488000" />
     </task>
     <servers />
   </component>
@@ -335,10 +340,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="0" y="0" width="587" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1641204570464" />
-    <state x="297" y="-6" width="670" height="676" key="search.everywhere.popup" timestamp="1641437714519">
+    <state x="297" y="-6" width="670" height="676" key="search.everywhere.popup" timestamp="1641478443785">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="-6" width="670" height="676" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1641437714519" />
+    <state x="297" y="-6" width="670" height="676" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1641478443785" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/repohigh$settings.coverage" NAME="settings Coverage Results" MODIFIED="1638169422009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/schoolsys" />

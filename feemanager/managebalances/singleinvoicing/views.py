@@ -1,7 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
+
 from feemanager.managebalances.invoicedetails.models import BalanceTrackerDetails
 from feemanager.managebalances.singleinvoicing.models import BalanceTracker
 from localities.models import Select2Data
@@ -11,7 +14,8 @@ from setups.system.invoicesequence.models import InvoiceSequence
 from setups.system.systemsequences.models import SystemSequences
 from studentmanager.student.models import Students
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def singleinvoicepage(request):
     return render(request, 'fees/singleinvoicing.html')
 

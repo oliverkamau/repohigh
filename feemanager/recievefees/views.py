@@ -1,9 +1,13 @@
 import decimal
 
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
+from rest_framework import status
+
 from feemanager.managebalances.invoicedetails.models import BalanceTrackerDetails
 from feemanager.managebalances.singleinvoicing.models import BalanceTracker
 from feemanager.recievefeedetails.models import FeePaymentDetails
@@ -19,7 +23,8 @@ from setups.system.systemsequences.models import SystemSequences
 from studentmanager.student.models import Students
 from useradmin.users.models import User
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def feepage(request):
     return render(request, 'fees/recievefees.html')
 
@@ -210,6 +215,8 @@ def recievefees(request):
 
         totals = 0
         payment = FeePayment()
+        feex = FeePayment()
+        pmnt = FeePayment()
         payment.payment_amount = totals
         payment.payment_bank = bank
         payment.payment_class = sclasses
@@ -220,8 +227,16 @@ def recievefees(request):
         payment.payment_student = student
         payment.payment_date = dt
         payment.payment_capturedby = u
-        payment.save()
-        pmnt=FeePayment.objects.get(pk=payment.pk)
+        try:
+            feex = FeePayment.objects.get(payment_docno=doc)
+        except feex.DoesNotExist:
+            payment.save()
+            pmnt = FeePayment.objects.get(pk=payment.pk)
+
+        else:
+            return JsonResponse({
+                'error': 'Document number must be unique'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         for key in request.POST:
 
             if 'TrackerCode' in key:

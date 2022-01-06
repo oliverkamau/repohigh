@@ -4,14 +4,15 @@ $(document).ready(function () {
             "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
         }
     });
- formatDate()
-    searchClass();
- classChange();
- searchStudent("");
- searchBank();
- studentChange();
- bankChange();
- modeChange();
+
+formatDate()
+searchClass();
+classChange();
+searchStudent("");
+searchBank();
+studentChange();
+bankChange();
+modeChange();
 searchPaymentModes();
 searchTerm();
 getFeeStandardCharges();
@@ -19,8 +20,31 @@ termChange();
 saveFees();
 addTotals();
 getDefaultTerm();
-removeTotals()
+removeTotals();
+newFee();
+radiotoggle();
+$('input[name="distribution"][value="manual"]').attr('checked', true);
 })
+function newFee() {
+$('#newFees').click(function () {
+clearpage();
+})
+}
+function clearpage(){
+    getFeeStandardCharges()
+    $('#balance').val("0")
+    $('#amountPaid').val("0")
+    $('#amountPayable').val("0")
+    $('#docNo').val('')
+    $('#feeStudent').val('')
+    $('#student_frm').empty()
+    $('#feesClass').val('')
+    $('#class_frm').empty()
+    $('#paymentMode').val('')
+    $('#payment_frm').empty()
+    $('#bankBranch').val('')
+    $('#bank_frm').empty()
+}
 function formatDate() {
     var d = new Date(),
         month = '' + (d.getMonth() + 1),
@@ -96,8 +120,7 @@ function saveFees(){
                     text: s.success,
                     showConfirmButton: true
                 })
-               $('#amountPaid').val(s.amount)
-               getFeeTrackerBalance($('#feeStudent').val())
+              clearpage();
             }).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
 
@@ -105,6 +128,27 @@ function saveFees(){
 
         }
 	})
+}
+function radiotoggle(){
+    $('input[type=radio][name="distribution"]').change(function() {
+    if (this.value === 'manual') {
+       if($('#feeStudent').val()===''){
+           getFeeStandardCharges()
+       }
+       else{
+           getFeeTrackerBalance($('#feeStudent').val())
+       }
+    }
+    else if (this.value === 'automatic') {
+       if($('#feeStudent').val()===''){
+           getFeeStandardCharges()
+       }
+       else{
+           getFeeTrackerBalance($('#feeStudent').val())
+       }
+
+    }
+});
 }
 function searchClass() {
 
@@ -189,19 +233,45 @@ function getFeeTrackerBalance(id) {
         var total = 0;
         if(s.length!==0) {
             $.each(s, function (i, item) {
-                $("#append-form").append(
-                    "<div class='col-md-11 col-sm-12 chargeme'>"
-                    +"<div class='form-row ml-1 mr-1 chargenext'>"
-                    + "<input type='hidden' name='"+item.tracker+"' id='"+item.trackerCode+"' value='"+item.trackerCode+"'>"
-                    + "<label class='col-md-5 control-label' for='select'>"+item.chargeName+"</label>"
-                    + "<input type='number' name='"+item.chargeAmountName+"' class='form-control col-md-3 mr-1 charges' id='"+item.chargeAmountName+"'>"
-                     + "<input type='number' name='"+item.trackerAmountName+"' class='form-control col-md-3' id='"+item.trackerAmountName+"'  value='"+item.trackerAmountValue+"' readonly>"
-                    + "</div>"
-                    +"<div class='form-row mr-1'>"
-                    +      "</div>"
-                    + "</div>")
-                total=total+parseFloat(item.trackerAmountValue)
-                 $('#amountPayable').val(total.toFixed(2).toString())
+              if($('input[type=radio][name=distribution]:checked').val()==='manual') {
+
+                  $("#append-form").append(
+                      "<div class='col-md-11 col-sm-12 chargeme'>"
+                      + "<div class='form-row ml-1 mr-1 chargenext'>"
+                      + "<input type='hidden' name='" + item.tracker + "' id='" + item.trackerCode + "' value='" + item.trackerCode + "'>"
+                      + "<label class='col-md-5 control-label' for='select'>" + item.chargeName + "</label>"
+                      + "<input type='number' name='" + item.chargeAmountName + "' class='form-control col-md-3 mr-1 charges' id='" + item.chargeAmountName + "'>"
+                      + "<input type='number' name='" + item.trackerAmountName + "' class='form-control col-md-3' id='" + item.trackerAmountName + "'  value='" + item.trackerAmountValue + "' readonly>"
+                      + "</div>"
+                      + "<div class='form-row mr-1'>"
+                      + "</div>"
+                      + "</div>")
+                  total = total + parseFloat(item.trackerAmountValue)
+                  $('#amountPayable').val(total.toFixed(2).toString())
+                  $('#amountPaid').val('0')
+                  $('#balance').val('0')
+                  $('#amountPaid').prop('disabled',true)
+
+              }
+              else{
+                  $("#append-form").append(
+                      "<div class='col-md-11 col-sm-12 chargeme'>"
+                      + "<div class='form-row ml-1 mr-1 chargenext'>"
+                      + "<input type='hidden' name='" + item.tracker + "' id='" + item.trackerCode + "' value='" + item.trackerCode + "'>"
+                      + "<label class='col-md-5 control-label' for='select'>" + item.chargeName + "</label>"
+                      + "<input type='number' name='" + item.chargeAmountName + "' class='form-control col-md-3 mr-1 charges' id='" + item.chargeAmountName + "' readonly>"
+                      + "<input type='number' name='" + item.trackerAmountName + "' class='form-control col-md-3' id='" + item.trackerAmountName + "'  value='" + item.trackerAmountValue + "' readonly>"
+                      + "</div>"
+                      + "<div class='form-row mr-1'>"
+                      + "</div>"
+                      + "</div>")
+                    total = total + parseFloat(item.trackerAmountValue)
+                  $('#amountPayable').val(total.toFixed(2).toString())
+                 $('#amountPaid').val('0')
+                 $('#balance').val('0')
+                 $('#amountPaid').prop('disabled',false)
+
+              }
             })
 
         }
@@ -214,7 +284,10 @@ function getFeeTrackerBalance(id) {
 function computetotal(val) {
     console.log(val)
     console.log($('#amountPaid').val())
-     $('#amountPaid').val(parseFloat($('#amountPaid').val())+parseFloat(val))
+     var amp=parseFloat($('#amountPaid').val())+parseFloat(val)
+     $('#amountPaid').val(amp.toFixed(2).toString())
+     var amt=parseFloat($('#amountPayable').val())-parseFloat($('#amountPaid').val())
+     $('#balance').val(amt.toFixed(2).toString())
 }
 
 function addTotals(){
@@ -232,7 +305,10 @@ function addTotals(){
 }
 
 function subtracttotals(val) {
-         $('#amountPaid').val(parseFloat($('#amountPaid').val())-parseFloat(val))
+         var amp=parseFloat($('#amountPaid').val())-parseFloat(val)
+         $('#amountPaid').val(amp.toFixed(2).toString())
+         var amt=parseFloat($('#amountPayable').val())-parseFloat($('#amountPaid').val())
+         $('#balance').val(amt.toFixed(2).toString())
 }
 
 function removeTotals(){
@@ -372,21 +448,43 @@ function getFeeStandardCharges() {
         processData: false,
         contentType: false,
     }).done(function (s) {
-
+        $("#append-form").empty()
         if(s.length!==0) {
             $.each(s, function (i, item) {
-                $("#append-form").append(
-                    "<div class='col-md-11 col-sm-12'>"
-                    +"<div class='form-row ml-1 mr-1'>"
-                    + "<input type='hidden' name='"+item.chargeCodeName+"' id='"+item.chargeCodeName+"' value='"+item.chargeCode+"'>"
-                    + "<label class='col-md-5 control-label' for='select'>"+item.chargeName+"</label>"
-                    + "<input type='number' name='"+item.chargeAmount+"' class='form-control col-md-3 mr-1' id='"+item.chargeAmount+"'>"
-                     + "<input type='number' name='"+item.chargeAmount+"' class='form-control col-md-3' id='"+item.chargeAmount+"'  readonly>"
+              if($('input[type=radio][name=distribution]:checked').val()==='manual') {
 
-                    + "</div>"
-                    +"<div class='form-row mr-1'>"
-                    +      "</div>"
-                    + "</div>")
+                  $("#append-form").append(
+                      "<div class='col-md-11 col-sm-12'>"
+                      + "<div class='form-row ml-1 mr-1'>"
+                      + "<input type='hidden' name='" + item.chargeCodeName + "' id='" + item.chargeCodeName + "' value='" + item.chargeCode + "'>"
+                      + "<label class='col-md-5 control-label' for='select'>" + item.chargeName + "</label>"
+                      + "<input type='number' name='" + item.chargeAmount + "' class='form-control col-md-3 mr-1' id='" + item.chargeAmount + "'>"
+                      + "<input type='number' name='" + item.chargeAmount + "' class='form-control col-md-3' id='" + item.chargeAmount + "'  readonly>"
+
+                      + "</div>"
+                      + "<div class='form-row mr-1'>"
+                      + "</div>"
+                      + "</div>"
+                  )
+
+                  $('#amountPaid').prop('disabled',true)
+              }
+              else{
+                   $("#append-form").append(
+                      "<div class='col-md-11 col-sm-12'>"
+                      + "<div class='form-row ml-1 mr-1'>"
+                      + "<input type='hidden' name='" + item.chargeCodeName + "' id='" + item.chargeCodeName + "' value='" + item.chargeCode + "'>"
+                      + "<label class='col-md-5 control-label' for='select'>" + item.chargeName + "</label>"
+                      + "<input type='number' name='" + item.chargeAmount + "' class='form-control col-md-3 mr-1' id='" + item.chargeAmount + "' readonly>"
+                      + "<input type='number' name='" + item.chargeAmount + "' class='form-control col-md-3' id='" + item.chargeAmount + "'  readonly>"
+
+                      + "</div>"
+                      + "<div class='form-row mr-1'>"
+                      + "</div>"
+                      + "</div>"
+                  )
+                  $('#amountPaid').prop('disabled',false)
+              }
             })
         }
 
