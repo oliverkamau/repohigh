@@ -14,4 +14,8 @@ urlpatterns = [
     path('recievefees', views.recievefees, name='recievefees'),
     path('currentterm', views.currentterm, name='currentterm'),
     path('feedistribution', views.feedistribution, name='feedistribution'),
+    path('recieveautomaticfees', views.recieveautomaticfees, name='recieveautomaticfees'),
+    path('getfeepaymentstats', views.getfeepaymentstats, name='getfeepaymentstats'),
+
+
 ]

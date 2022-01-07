@@ -1,4 +1,5 @@
 import decimal
+from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
@@ -286,10 +287,159 @@ def feedistribution(request):
         parameter = SystemParameters.objects.get(parameter_name='FEE_DISTRIBUTION_MODE')
     except parameter.DoesNotExist:
         return JsonResponse({
-            'error': 'Setup parameter FEE_DISTRIBUTION_MODE ans assign it either a manual or automatic value'},
+            'error': 'Setup parameter FEE_DISTRIBUTION_MODE and assign it either a manual or automatic value'},
             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     else:
         response_data={}
         response_data['mode']=parameter.parameter_value
         return JsonResponse(response_data)
+
+def recieveautomaticfees(request):
+        stud = request.POST['student']
+        cl = request.POST['classcode']
+        md = request.POST['mode']
+        bn = request.POST['bank']
+        tr = request.POST['term']
+        dt = request.POST['date']
+        doc = request.POST['document']
+        amt = request.POST['amount']
+        amount=decimal.Decimal(float(amt))
+        student = Students.objects.get(pk=stud)
+        sclasses = SchoolClasses.objects.get(pk=cl)
+        mode = PaymentModes.objects.get(pk=md)
+        bank = BankBranches.objects.get(pk=bn)
+        term = TermDates.objects.get(pk=tr)
+        u = User.objects.get(username=request.user)
+        receipt = ''
+        if SystemSequences.objects.filter(sequence_type='Receipt').exists():
+            seq = SystemSequences.objects.get(sequence_type='Receipt')
+            receipt = 'RCT00' + str(seq.sequence_nextseq)
+            seq.sequence_nextseq = seq.sequence_nextseq + 1
+            seq.save()
+        else:
+            seq = SystemSequences()
+            seq.sequence_nextseq = 1
+            seq.sequence_type = 'Receipt'
+            seq.save()
+            receipt = 'RCT00' + str(seq.sequence_nextseq)
+            seq.sequence_nextseq = seq.sequence_nextseq + 1
+            seq.save()
+
+        totals = 0
+        payment = FeePayment()
+        feex = FeePayment()
+        pmnt = FeePayment()
+        payment.payment_amount = amount
+        payment.payment_bank = bank
+        payment.payment_class = sclasses
+        payment.payment_docno = doc
+        payment.payment_term = term
+        payment.payment_mode = mode
+        payment.payment_receiptno = receipt
+        payment.payment_student = student
+        payment.payment_date = dt
+        payment.payment_capturedby = u
+        try:
+            feex = FeePayment.objects.get(payment_docno=doc, payment_mode=mode)
+        except feex.DoesNotExist:
+            payment.save()
+            pmnt = FeePayment.objects.get(pk=payment.pk)
+
+        else:
+            return JsonResponse({
+                'error': 'Document number must be unique for each payment mode'},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+        balance = BalanceTracker.objects.get(tracker_student=student)
+
+        details = BalanceTrackerDetails.objects.raw('select trackerdetails_code,charge_name from invoicedetails_balancetrackerdetails'+
+                                                    ' left join standardcharges_standardcharges ss on invoicedetails_balancetrackerdetails.trackerdetails_Standardcharge_id = ss.charge_code'+
+                                                    ' where charge_active=1 and trackerdetails_tracker_id=%s'+
+                                                    ' order by charge_priority'
+                                                    ,[balance.tracker_code])
+
+        for detail in details:
+            feedetails = FeePaymentDetails()
+            if amount >= detail.trackerdetails_balance:
+                feedetails.paymentdetail_payment = pmnt
+                feedetails.paymentdetailcharge_amount = detail.trackerdetails_balance
+                feedetails.paymentdetail_standardcharge = detail.trackerdetails_Standardcharge
+                feedetails.save()
+                bal=amount-detail.trackerdetails_balance
+                detail.trackerdetails_balance=0
+                amount=bal
+                detail.save()
+
+
+            elif amount <= detail.trackerdetails_balance:
+                feedetails.paymentdetail_payment = pmnt
+                feedetails.paymentdetailcharge_amount = amount
+                feedetails.paymentdetail_standardcharge = detail.trackerdetails_Standardcharge
+                feedetails.save()
+                bal=detail.trackerdetails_balance-amount
+                detail.trackerdetails_balance=bal
+                amount=0
+                detail.save()
+
+            elif amount == 0:
+               break
+
+        if amount > 0:
+            details = BalanceTrackerDetails.objects.raw(
+                'select top 1 trackerdetails_code,charge_name from invoicedetails_balancetrackerdetails' +
+                ' left join standardcharges_standardcharges ss on invoicedetails_balancetrackerdetails.trackerdetails_Standardcharge_id = ss.charge_code' +
+                ' where charge_active=1 and trackerdetails_tracker_id=%s' +
+                ' order by charge_priority'
+                , [balance.tracker_code])
+
+            for detail in details:
+                feedetails = FeePaymentDetails.objects.get(paymentdetail_payment=pmnt,paymentdetail_standardcharge=detail.trackerdetails_Standardcharge)
+                feedetails.paymentdetail_payment = pmnt
+                feedetails.paymentdetailcharge_amount = detail.trackerdetails_balance + amount
+                feedetails.paymentdetail_standardcharge = detail.trackerdetails_Standardcharge
+                feedetails.save()
+                bal = detail.trackerdetails_balance - amount
+                detail.trackerdetails_balance = bal
+                amount = 0
+                detail.save()
+
+
+
+        return JsonResponse({'success':'Automatic Payments done sucessfully!'})
+
+def getfeepaymentstats(request):
+    response_data = {}
+    todaytotals=0
+    monthtotals=0
+    yeartotals=0
+    alltotals=0
+    yr=datetime.today().year
+    datetime.today().replace(day=1)
+    today = FeePayment.objects.filter(payment_date=datetime.now().date())
+    month = FeePayment.objects.filter(payment_date__gte=datetime.today().replace(day=1),payment_date__lte=datetime.now().date())
+    year = FeePayment.objects.filter(payment_date__gte=datetime(yr, 1, 1),payment_date__lte=datetime.now().date())
+    fee = FeePayment.objects.all()
+    for t in today:
+        todaytotals=todaytotals+t.payment_amount
+    response_data['today']=todaytotals
+
+    for m in month:
+       monthtotals=monthtotals+m.payment_amount
+    response_data['month']=monthtotals
+
+    for y in year:
+       yeartotals=yeartotals+y.payment_amount
+    response_data['year']=yeartotals
+
+    for f in fee:
+        alltotals=alltotals+f.payment_amount
+    response_data['all']=alltotals
+
+    return JsonResponse(response_data)
+
+
+
+
+

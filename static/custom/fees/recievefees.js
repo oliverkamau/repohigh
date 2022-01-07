@@ -5,7 +5,6 @@ $(document).ready(function () {
             "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
         }
     });
-
 formatDate();
 getFeeDistribution();
 searchClass();
@@ -19,13 +18,22 @@ searchPaymentModes();
 searchTerm();
 getFeeStandardCharges();
 termChange();
+getDefaultTerm();
+getStatistics();
 saveFees();
 addTotals();
-getDefaultTerm();
+getBalances()
 removeTotals();
 newFee();
 radiotoggle();
 })
+function getBalances(){
+    $('#amountPaid').keyup(function () {
+var amp=parseFloat($('#amountPayable').val())-parseFloat($('#amountPaid').val())
+      $('#balance').val(amp.toFixed(2).toString())
+    })
+
+}
 function newFee() {
 $('#newFees').click(function () {
 clearpage();
@@ -112,8 +120,16 @@ function saveFees(){
       })
         }
         else {
+            var url = ''
+            if($('input[type=radio][name=distribution]').val()==='manual'){
+                url='recievefees'
+            }
+            else{
+                url='recieveautomaticfees'
+            }
             var form = $("#fees_form")[0];
             var data = new FormData(form);
+
             data.append('student',$('#feeStudent').val())
             data.append('classcode',$('#feesClass').val())
             data.append('mode',$('#paymentMode').val())
@@ -121,10 +137,11 @@ function saveFees(){
             data.append('document',$('#docNo').val())
             data.append('term',$('#feesTerm').val())
             data.append('date',$('#date').val())
+            data.append('amount',$('#amountPaid').val())
 
             $.ajax({
                 type: 'POST',
-                url: 'recievefees',
+                url: url,
                 data: data,
                 processData: false,
                 contentType: false
@@ -135,6 +152,8 @@ function saveFees(){
                     text: s.success,
                     showConfirmButton: true
                 })
+                getStatistics();
+
               clearpage();
             }).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
@@ -143,6 +162,21 @@ function saveFees(){
 
         }
 	})
+}
+function getStatistics(){
+  $.ajax({
+                type: 'GET',
+                url: 'getfeepaymentstats'
+
+            }).done(function (s) {
+           $('#today').text(s.today)
+           $('#month').text(s.month)
+           $('#year').text(s.year)
+           $('#total').text(s.all)
+            }).fail(function (xhr, error) {
+                bootbox.alert(xhr.responseText)
+
+            })
 }
 function radiotoggle(){
     $('input[type=radio][name="distribution"]').change(function() {

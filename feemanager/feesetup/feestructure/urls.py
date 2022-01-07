@@ -12,4 +12,5 @@ urlpatterns = [
     path('updatefeestructure/<int:id>', views.updatefeestructure, name='updatefeestructure'),
     path('deletefeestructure/<int:id>', views.deletefeestructure, name='deletefeestructure'),
 
+
 ]
