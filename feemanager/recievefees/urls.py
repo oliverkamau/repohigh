@@ -13,5 +13,5 @@ urlpatterns = [
     path('getrackerbalances/<int:id>', views.getfeestudentcharges, name='getfeestudentcharges'),
     path('recievefees', views.recievefees, name='recievefees'),
     path('currentterm', views.currentterm, name='currentterm'),
-
+    path('feedistribution', views.feedistribution, name='feedistribution'),
 ]

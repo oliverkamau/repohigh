@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $.ajaxSetup({
         headers: {
@@ -5,7 +6,8 @@ $(document).ready(function () {
         }
     });
 
-formatDate()
+formatDate();
+getFeeDistribution();
 searchClass();
 classChange();
 searchStudent("");
@@ -23,7 +25,6 @@ getDefaultTerm();
 removeTotals();
 newFee();
 radiotoggle();
-$('input[name="distribution"][value="manual"]').attr('checked', true);
 })
 function newFee() {
 $('#newFees').click(function () {
@@ -58,6 +59,20 @@ function formatDate() {
 
     $('#date').val([year, month, day].join('-'));
 
+}
+function getFeeDistribution() {
+    $.ajax({
+                type: 'GET',
+                url: 'feedistribution',
+            }).done(function (s) {
+
+              $('input[type=radio][name=distribution]').val()===s.mode
+              $('input[type=radio][name=distribution][value='+s.mode+']').prop('checked',true)
+
+            }).fail(function (xhr, error) {
+                bootbox.alert(xhr.responseText)
+
+            })
 }
 function saveFees(){
  $('#saveFees').click(function () {

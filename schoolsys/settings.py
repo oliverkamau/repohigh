@@ -90,6 +90,7 @@ INSTALLED_APPS = [
     'setups.accounts.glaccounts.apps.GlaccountsConfig',
     'setups.accounts.bankbranches.apps.BankbranchesConfig',
     'feemanager.recievefeedetails.apps.RecievefeedetailsConfig',
+    'setups.system.systemparameters.apps.SystemparametersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

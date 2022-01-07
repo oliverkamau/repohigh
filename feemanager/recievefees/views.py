@@ -19,6 +19,7 @@ from setups.academics.termdates.models import TermDates
 from setups.accounts.bankbranches.models import BankBranches
 from setups.accounts.paymentmodes.models import PaymentModes
 from setups.accounts.standardcharges.models import StandardCharges
+from setups.system.systemparameters.models import SystemParameters
 from setups.system.systemsequences.models import SystemSequences
 from studentmanager.student.models import Students
 from useradmin.users.models import User
@@ -228,14 +229,14 @@ def recievefees(request):
         payment.payment_date = dt
         payment.payment_capturedby = u
         try:
-            feex = FeePayment.objects.get(payment_docno=doc)
+            feex = FeePayment.objects.get(payment_docno=doc,payment_mode=mode)
         except feex.DoesNotExist:
             payment.save()
             pmnt = FeePayment.objects.get(pk=payment.pk)
 
         else:
             return JsonResponse({
-                'error': 'Document number must be unique'},
+                'error': 'Document number must be unique for each payment mode'},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         for key in request.POST:
 
@@ -276,4 +277,19 @@ def currentterm(request):
         obj = TermDates.objects.get(current_term=True)
         response_data['termCode'] = obj.term_code
         response_data['termNumber'] = obj.term_number
+        return JsonResponse(response_data)
+
+
+def feedistribution(request):
+    parameter = SystemParameters()
+    try:
+        parameter = SystemParameters.objects.get(parameter_name='FEE_DISTRIBUTION_MODE')
+    except parameter.DoesNotExist:
+        return JsonResponse({
+            'error': 'Setup parameter FEE_DISTRIBUTION_MODE ans assign it either a manual or automatic value'},
+            status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    else:
+        response_data={}
+        response_data['mode']=parameter.parameter_value
         return JsonResponse(response_data)
