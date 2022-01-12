@@ -91,6 +91,7 @@ INSTALLED_APPS = [
     'setups.accounts.bankbranches.apps.BankbranchesConfig',
     'feemanager.recievefeedetails.apps.RecievefeedetailsConfig',
     'setups.system.systemparameters.apps.SystemparametersConfig',
+    'setups.system.categoryaudit.apps.CategoryauditConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

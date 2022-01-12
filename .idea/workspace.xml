@@ -20,12 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/static/custom/fees/groupings.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/fees/feegroupings.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ccc2ac42-3983-425e-8910-040d9bf6bf0b.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ccc2ac42-3983-425e-8910-040d9bf6bf0b.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ccc2ac42-3983-425e-8910-040d9bf6bf0b/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ccc2ac42-3983-425e-8910-040d9bf6bf0b/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feemanager/feesetup/feestructure/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/feesetup/feestructure/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feemanager/feesetup/feestructure/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/feesetup/feestructure/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feemanager/recievefees/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/recievefees/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/feemanager/recievefees/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/recievefees/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/custom/fees/recievefees.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/recievefees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/feesetup/feegroups/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/feesetup/feegroups/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/feesetup/feegroups/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/feesetup/feegroups/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/feesetup/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/feesetup/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/managebalances/singleinvoicing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/managebalances/singleinvoicing/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schoolsys/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fees/feesetups.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fees/feesetups.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,9 +48,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
+        <option value="Python Script" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -284,6 +289,13 @@
       <workItem from="1641534030263" duration="4594000" />
       <workItem from="1641538876001" duration="20555000" />
       <workItem from="1641573045169" duration="10755000" />
+      <workItem from="1641584278676" duration="94000" />
+      <workItem from="1641802489696" duration="3983000" />
+      <workItem from="1641818982273" duration="3400000" />
+      <workItem from="1641835948115" duration="3119000" />
+      <workItem from="1641883904463" duration="14538000" />
+      <workItem from="1641904312733" duration="4084000" />
+      <workItem from="1641953989397" duration="3835000" />
     </task>
     <servers />
   </component>
@@ -344,10 +356,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="0" y="0" width="587" height="680" key="find.popup/0.0.1280.680@0.0.1280.680" timestamp="1641204570464" />
-    <state x="297" y="-6" width="670" height="676" key="search.everywhere.popup" timestamp="1641582065500">
+    <state x="297" y="-6" width="670" height="676" key="search.everywhere.popup" timestamp="1641954555258">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="-6" width="670" height="676" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1641582065500" />
+    <state x="297" y="-6" width="670" height="676" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1641954555258" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/repohigh$settings.coverage" NAME="settings Coverage Results" MODIFIED="1638169422009" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/schoolsys" />
