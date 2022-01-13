@@ -29,7 +29,7 @@ radiotoggle();
 })
 function getBalances(){
     $('#amountPaid').keyup(function () {
-var amp=parseFloat($('#amountPayable').val())-parseFloat($('#amountPaid').val())
+      var amp=parseFloat($('#amountPayable').val())-parseFloat($('#amountPaid').val())
       $('#balance').val(amp.toFixed(2).toString())
     })
 
@@ -70,11 +70,14 @@ function formatDate() {
 }
 function getFeeDistribution() {
     $.ajax({
+
                 type: 'GET',
                 url: 'feedistribution',
+
             }).done(function (s) {
 
-              $('input[type=radio][name=distribution]').val()===s.mode
+              $('input[type=radio][name=distribution]').val(s.mode)
+
               $('input[type=radio][name=distribution][value='+s.mode+']').prop('checked',true)
 
             }).fail(function (xhr, error) {
@@ -121,6 +124,7 @@ function saveFees(){
         }
         else {
             var url = ''
+            console.log($('input[type=radio][name=distribution]').val())
             if($('input[type=radio][name=distribution]').val()==='manual'){
                 url='recievefees'
             }

@@ -92,6 +92,8 @@ INSTALLED_APPS = [
     'feemanager.recievefeedetails.apps.RecievefeedetailsConfig',
     'setups.system.systemparameters.apps.SystemparametersConfig',
     'setups.system.categoryaudit.apps.CategoryauditConfig',
+    'feemanager.pocketmoney.apps.PocketmoneyConfig',
+    'feemanager.pocketmoneytracker.apps.PocketmoneytrackerConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
