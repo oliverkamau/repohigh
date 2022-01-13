@@ -75,10 +75,12 @@ function getFeeDistribution() {
                 url: 'feedistribution',
 
             }).done(function (s) {
+              // $('input[type=radio][name=distribution]').val(s.mode)
+             $('#uiDistribution').val(s.mode)
 
-              $('input[type=radio][name=distribution]').val(s.mode)
+              // $('input[type=radio][name=distribution]').val(s.mode)
 
-              $('input[type=radio][name=distribution][value='+s.mode+']').prop('checked',true)
+              $('#'+s.mode+'').prop('checked',true)
 
             }).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
@@ -125,7 +127,7 @@ function saveFees(){
         else {
             var url = ''
             console.log($('input[type=radio][name=distribution]').val())
-            if($('input[type=radio][name=distribution]').val()==='manual'){
+            if($('#uiDistribution').val()==='manual'){
                 url='recievefees'
             }
             else{
@@ -184,23 +186,27 @@ function getStatistics(){
 }
 function radiotoggle(){
     $('input[type=radio][name="distribution"]').change(function() {
-    if (this.value === 'manual') {
-       if($('#feeStudent').val()===''){
-           getFeeStandardCharges()
-       }
-       else{
-           getFeeTrackerBalance($('#feeStudent').val())
-       }
-    }
-    else if (this.value === 'automatic') {
-       if($('#feeStudent').val()===''){
-           getFeeStandardCharges()
-       }
-       else{
-           getFeeTrackerBalance($('#feeStudent').val())
-       }
 
-    }
+        if($('#automatic').is(':checked')){
+            $('#uiDistribution').val('automatic')
+            console.log($('#uiDistribution').val())
+       if($('#feeStudent').val()===''){
+           getFeeStandardCharges()
+       }
+       else{
+           getFeeTrackerBalance($('#feeStudent').val())
+       }
+        }
+        else if($('#manual').is(':checked')){
+            $('#uiDistribution').val('manual')
+            console.log($('#uiDistribution').val())
+      if($('#feeStudent').val()===''){
+           getFeeStandardCharges()
+       }
+       else{
+           getFeeTrackerBalance($('#feeStudent').val())
+       }
+        }
 });
 }
 function searchClass() {
@@ -286,7 +292,7 @@ function getFeeTrackerBalance(id) {
         var total = 0;
         if(s.length!==0) {
             $.each(s, function (i, item) {
-              if($('input[type=radio][name=distribution]:checked').val()==='manual') {
+              if($('#uiDistribution').val()==='manual') {
 
                   $("#append-form").append(
                       "<div class='col-md-11 col-sm-12 chargeme'>"
