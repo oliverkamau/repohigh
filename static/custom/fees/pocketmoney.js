@@ -7,10 +7,24 @@ $(document).ready(function () {
 setTransDefault()
 searchClass()
 searchStudent()
+classChange()
+studentChange()
 formatDate()
 transTypeCheck()
 savePocketMoney()
+newRecord()
 })
+function newRecord() {
+$('#newPocketMoney').click(function () {
+clearPage()
+})
+}
+function clearPage(){
+    $('#balance').val('')
+    $('#amount').val('')
+    $('#pocketMoneyStudent').val('')
+    $('#student_frm').empty()
+}
 function setTransDefault() {
 $('#assign').prop('checked',true)
 $('#transactionType').text('Deposit')
@@ -106,6 +120,45 @@ function transTypeCheck() {
         }
     })
 }
+
+function getBalance(id) {
+     $.ajax({
+
+          type: 'GET',
+          url: 'getbalance/'+id,
+
+
+      }).done(function (s) {
+          $('#balance').val(s.balance)
+     })
+      .fail(function (xhr, error) {
+
+          bootbox.alert(xhr.responseText)
+
+      });
+}
+
+function studentChange() {
+    $('#student_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#pocketMoneyStudent').val(data.id)
+        getBalance(data.id)
+    });
+    $("#student_frm").on("select2:unselecting", function(e) {
+    $('#pocketMoneyStudent').val('')
+
+ });
+}
+function classChange() {
+    $('#class_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#reportClass').val(data.id)
+    });
+    $("#class_frm").on("select2:unselecting", function(e) {
+    $('#reportClass').val('')
+
+ });
+}
 function savePocketMoney() {
 $('#savePocketMoney').click(function () {
 
@@ -129,28 +182,29 @@ $('#savePocketMoney').click(function () {
       var data = new FormData();
 
       data.append("transType", $('#transType').val())
-      data.append("category", $('#categoryCode').val())
-      data.append("newcategory", $('#newCategoryCode').val())
-      data.append('students', JSON.stringify(assigned))
+      data.append("student", $('#pocketMoneyStudent').val())
+      data.append("balance", $('#balance').val())
+      data.append("amount", $('#amount').val())
+      data.append("date", $('#date').val())
+
       $.ajax({
+
           type: 'POST',
-          url: 'assigncategory',
+          url: 'savepocketmoney',
           data: data,
           processData: false,
           contentType: false,
+
       }).done(function (s) {
-            swal.close()
-          searchFeeStudent()
-          searchNewFeeStudent()
-          assigned=[]
-        // swal({
-        //  type: 'success',
-        //  title: 'Success',
-        //  text: s.success,
-        //  showConfirmButton: true,
-     //})
+        swal({
+         type: 'success',
+         title: 'Success',
+         text: s.success,
+         showConfirmButton: true,
+     })
+          clearPage()
       }).fail(function (xhr, error) {
-          swal.close()
+
           bootbox.alert(xhr.responseText)
 
       });
