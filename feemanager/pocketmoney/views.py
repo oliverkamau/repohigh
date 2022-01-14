@@ -163,3 +163,48 @@ def getbalance(request,id):
         response_data['balance']=pockettracker.tracker_balance
 
     return JsonResponse(response_data)
+
+
+def getstudents(request):
+    listsel = []
+    students = Students.objects.raw(
+        "SELECT student_code,adm_no,student_name,class_name,dorm_name,tracker_balance FROM pocketmoneytracker_pocketmoneytracker" +
+        " left join student_students  on student_code = tracker_student_id" +
+        " left join classes_schoolclasses ON student_class_id=class_code" +
+        " left join dorms_dorms  on dorm_code = student_dorm_id" +
+        " where student_school_status='Active'"
+        " order by student_code desc"
+
+    )
+    for obj in students:
+        if obj.student_code not in listsel:
+            response_data = {}
+
+            response_data['studentCode'] = obj.student_code
+            response_data['name'] = obj.student_name
+            response_data['admNo'] = obj.adm_no
+            response_data['dorm'] = obj.dorm_name
+            response_data['studentClass'] = obj.class_name
+            response_data['balance'] = obj.tracker_balance
+
+            listsel.append(response_data)
+
+    return JsonResponse(listsel,safe=False)
+
+
+def getstudentgrid(request,id):
+    student = Students.objects.get(pk=id)
+    response_data = {}
+    response_data['studentName'] = student.student_name + '-' + student.adm_no
+    response_data['studentCode'] = student.student_code
+    pockettracker = PocketMoneyTracker()
+    try:
+        pockettracker = PocketMoneyTracker.objects.get(tracker_student=student)
+
+    except pockettracker.DoesNotExist:
+        response_data['balance'] = 0.00
+
+    else:
+        response_data['balance'] = pockettracker.tracker_balance
+
+    return JsonResponse(response_data)

@@ -13,6 +13,10 @@ formatDate()
 transTypeCheck()
 savePocketMoney()
 newRecord()
+getGridValues()
+    editStudent()
+    reportCheck()
+    $('.elementrep').hide()
 })
 function newRecord() {
 $('#newPocketMoney').click(function () {
@@ -32,6 +36,32 @@ $('#transactionType').text('Deposit')
  $("#colorForm").css("background-color", "#FFF0F5");
 // $("#colorForm").css("background-color", "#B0E0E6");
 
+}
+function getGridValues(){
+     $.ajax({
+        type: 'GET',
+        url: 'getstudents',
+        processData: false,
+        contentType: false,
+    }).done(function (s) {
+         $('#pocketTable').DataTable().destroy();
+        $("#pocketTable tbody").empty();
+        $.each(s,function(i,item){
+            $("#pocketTable tbody").append(
+                "<tr>"
+                +"<td>"+item.admNo+"</td>"
+                +"<td>"+item.name+"</td>"
+                +"<td>"+item.studentClass+"</td>"
+                +"<td>"+item.dorm+"</td>"
+                +"<td>"+item.balance+"</td>"
+                +"<td>"+'<form id="editForm" method="post" enctype="multipart/form-data"><input type="hidden" id="edit-student" name="id" value='+item.studentCode+'></form><button class="btn btn-outline-primary btn-sm btn-editstudent" ><i class="fa fa-edit"></button>'
+                +"</td>"
+                +"</tr>" )
+        })
+        $('#pocketTable').DataTable();
+    }).fail(function (xhr, error) {
+       bootbox.alert(xhr.responseText);
+    });
 }
 function formatDate() {
     var d = new Date(),
@@ -120,6 +150,17 @@ function transTypeCheck() {
         }
     })
 }
+function reportCheck() {
+    $('#reports').change(function () {
+        if(this.checked){
+            $('.elementrep').show()
+        }
+        else{
+            $('.elementrep').hide()
+
+        }
+    })
+}
 
 function getBalance(id) {
      $.ajax({
@@ -203,6 +244,7 @@ $('#savePocketMoney').click(function () {
          showConfirmButton: true,
      })
           clearPage()
+          getGridValues()
       }).fail(function (xhr, error) {
 
           bootbox.alert(xhr.responseText)
@@ -210,4 +252,36 @@ $('#savePocketMoney').click(function () {
       });
   }
 })
+}
+function editStudent(){
+    $('#pocketTable').on('click','.btn-editstudent',function (s) {
+        var data=$(this).closest('tr').find('#edit-student').val();
+        	 $.ajax({
+
+          type: 'GET',
+          url: 'getstudentgrid/'+data,
+
+      }).done(function (s) {
+          	if (s.studentCode) {
+			    var $newStat = $("<option selected='selected' value='" + s.studentCode + "'>'+s.studentName+'</option>").val(s.studentCode.toString()).text(s.studentName)
+
+               $('#student_frm').append($newStat).trigger('change');
+			   $('#pocketMoneyStudent').val(s.studentCode)
+
+			    }
+          	else {
+			    $('#student_frm').empty();
+			    $('#pocketMoneyStudent').val('')
+
+			}
+          	$('#balance').val(s.balance)
+
+     })
+      .fail(function (xhr, error) {
+
+          bootbox.alert(xhr.responseText)
+
+      });
+    });
+
 }

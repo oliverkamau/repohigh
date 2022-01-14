@@ -39,7 +39,7 @@
 {% csrf_token %}
             <div class="form-row mb-4">
            <label class="col-md-3 control-label" for="select">Balance</label>
-                              <input type="number" name="pocket_money_balance" id="balance" class="form-control col-md-9">
+                              <input type="number" name="pocket_money_balance" id="balance" class="form-control col-md-9" readonly>
             </div>
            <div class="form-row mb-4">
            <label class="col-md-3 control-label" for="select">Amount</label>
@@ -48,21 +48,35 @@
 
   </div>
 
-  <div class="col-md-4 col-sm-11">
 
-  <div class="form-row mb-4">
+  <div class="col-md-3 col-sm-11">
+          <div class="form-row mb-4">
+         &nbsp;
+    </div>
+    <div class="form-row mb-4">
+          <label class="col-md-3 control-label" for="select">Date</label>
+                            <input name="date_to" id="date" type="date" class="form-control col-md-9">
+    </div>
+  </div>
+
+      <div class="col-md-4 col-sm-11" id="reportDiv">
+    <div class="form-row mb-4 form-check">
+    <input type="checkbox" class="form-check-input" id="reports">
+    <label class="form-check-label" for="assign" id="transactionType">Reports</label>
+  </div>
+  <div class="form-row mb-4 elementrep">
            <label class="col-md-8 control-label" for="select">Report Dates</label>
   </div>
-    <div class="form-row mb-4">
+    <div class="form-row mb-4 elementrep">
                             <label class="control-label col-md-3" for="select">Class</label>
         <input type="hidden" name="report_class" id="reportClass">
                              <select id="class_frm" type="text" class="form-control col-md-9"></select>
     </div>
-    <div class="form-row mb-4">
+    <div class="form-row mb-4 elementrep">
           <label class="col-md-3 control-label" for="select">Date From</label>
                             <input name="date_from" id="dateFrom" type="date" class="form-control col-md-8">
     </div>
-    <div class="form-row mb-4">
+    <div class="form-row mb-4 elementrep">
           <label class="col-md-3 control-label" for="select">Date To</label>
                             <input name="date_to" id="dateTo" type="date" class="form-control col-md-8">
     </div>
@@ -77,42 +91,31 @@
 {#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
   </div>
 
-  <div class="col-md-3 col-sm-11">
-          <div class="form-row mb-4">
-         &nbsp;
-    </div>
-    <div class="form-row mb-4">
-          <label class="col-md-3 control-label" for="select">Date</label>
-                            <input name="date_to" id="date" type="date" class="form-control col-md-9">
-    </div>
-  </div>
-
 </div>
              </form>
 </div>
 
-{#        <div class="col-md-11 col-sm-11 ml-2 mt-2">#}
-{##}
-{#            <div class="table-responsive">#}
-{#      <table class="table table-striped display responsive nowrap" id="teaTable">#}
-{#  <thead>#}
-{#    <tr>#}
-{#      <th scope="col">Admno</th>#}
-{#      <th scope="col">Student Name</th>#}
-{#        <th scope="col">Current Class</th>#}
-{#      <th scope="col">ResidentDorm</th>#}
-{#      <th scope="col">Balance</th>#}
-{#        <th></th>#}
-{#        <th></th>#}
-{##}
-{#    </tr>#}
-{#  </thead>#}
-{#  <tbody>#}
-{#  </tbody>#}
-{#</table>#}
-{#    </div>#}
-{##}
-{#        </div>#}
+        <div class="col-md-11 col-sm-11 ml-2 mt-2">
+
+            <div class="table-responsive">
+      <table class="table table-striped display responsive nowrap" id="pocketTable">
+  <thead>
+    <tr>
+      <th scope="col">Admno</th>
+      <th scope="col">Student Name</th>
+        <th scope="col">Current Class</th>
+      <th scope="col">ResidentDorm</th>
+      <th scope="col">Balance</th>
+        <th></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
     </div>
 
       <script src=" {% static 'custom/fees/pocketmoney.js' %}"></script>
