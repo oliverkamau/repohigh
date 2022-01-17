@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalDependencies">
+    <plugin id="AngularJS" />
+    <plugin id="HtmlTools" />
+    <plugin id="JavaScript" />
+    <plugin id="Pythonid" />
+    <plugin id="com.intellij.css" />
+    <plugin id="org.editorconfig.editorconfigjetbrains" />
+  </component>
+</project>

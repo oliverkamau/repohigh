@@ -641,7 +641,7 @@ def getstudents(request):
         " LEFT JOIN classes_schoolclasses ON student_class_id=class_code" +
         " LEFT JOIN localities_countries ON nationality_id=country_id" +
         " LEFT JOIN parents_parents ON student_parent_id=parent_code"+
-        " where student_school_status='Active'"
+        " where student_school_status='Active' or student_school_status='Leave'"
 
     )
 
@@ -830,3 +830,10 @@ def deletestudentdocs(request):
     except StudentDocument.DoesNotExist:
         return JsonResponse({'error': 'File Does Not Exist!'},
                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+def getleaveoutsurl(request,id):
+    response_data = {}
+    response_data['url'] = urlsplit(
+        request.build_absolute_uri(None)).scheme + '://' + request.get_host() + '/studentmanager/leaveouts/leaveoutspage?student='+str(id)
+    return JsonResponse(response_data)

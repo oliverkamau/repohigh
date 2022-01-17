@@ -94,6 +94,7 @@ INSTALLED_APPS = [
     'setups.system.categoryaudit.apps.CategoryauditConfig',
     'feemanager.pocketmoney.apps.PocketmoneyConfig',
     'feemanager.pocketmoneytracker.apps.PocketmoneytrackerConfig',
+    'studentmanager.studentleaveouts.apps.StudentleaveoutsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

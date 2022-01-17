@@ -28,7 +28,9 @@ urlpatterns = [
     path('searchlocation/<int:id>', views.searchlocation, name='searchlocation'),
     path('searchsublocation/<int:id>', views.searchsublocation, name='searchsublocation'),
     path('searchvillage/<int:id>', views.searchvillage, name='searchvillage'),
-    path('searchstudentsources', views.searchstudentsources, name='searchstudentsources')
+    path('searchstudentsources', views.searchstudentsources, name='searchstudentsources'),
+    path('getleaveoutsurl/<int:id>', views.getleaveoutsurl, name='getleaveoutsurl'),
+
 
 
 ]

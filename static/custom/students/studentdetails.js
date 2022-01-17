@@ -44,6 +44,7 @@ deleteStudent()
 saveDocs()
 viewDocs()
 deleteDocs()
+    issueleaveouts()
 })
 function newStudent() {
    $('#newStudent').click(function () {
@@ -319,6 +320,10 @@ function getStudents() {
         $.each(s,function(i,item){
             $("#studTable tbody").append(
                 "<tr>"
+                 +"<td>"+'<form id="editForm" method="post" enctype="multipart/form-data"><input type="hidden" id="edit-student" name="id" value='+item.studentCode+'></form><button class="btn btn-outline-primary btn-sm btn-editstudent" ><i class="fa fa-edit"></button>'
+                +"</td>"
+                +"<td>"+'<form id="deleteForm" method="post" enctype="multipart/form-data"><input type="hidden" id="delete-student" name="id" value='+item.studentCode+'></form><button class="btn btn-outline-danger btn-sm btn-deletestudent" ><i class="fa fa-trash-o"></button>'
+                +"</td>"
                 +"<td>"+item.admNo+"</td>"
                 +"<td>"+item.name+"</td>"
                 +"<td>"+item.birthDate+"</td>"
@@ -331,9 +336,7 @@ function getStudents() {
                 +"<td>"+item.parent+"</td>"
                 +"<td>"+item.gender+"</td>"
                 +"<td>"+item.nationality+"</td>"
-                +"<td>"+'<form id="editForm" method="post" enctype="multipart/form-data"><input type="hidden" id="edit-student" name="id" value='+item.studentCode+'></form><button class="btn btn-outline-primary btn-sm btn-editstudent" ><i class="fa fa-edit"></button>'
-                +"</td>"
-                +"<td>"+'<form id="deleteForm" method="post" enctype="multipart/form-data"><input type="hidden" id="delete-student" name="id" value='+item.studentCode+'></form><button class="btn btn-outline-danger btn-sm btn-deletestudent" ><i class="fa fa-trash-o"></button>'
+
                 +"</tr>" )
         })
         $('#studTable').DataTable();
@@ -1317,4 +1320,29 @@ function searchVillage(id) {
 
          }
      })
+}
+function issueleaveouts(){
+    $('#leaveouts').click(function () {
+
+         if($('#studentCode').val()==='') {
+             swal({
+                 title: 'Alert!',
+                 type: 'info',
+                 text: 'Select Student to Issue Leaveout to!',
+                 confirmButtonText: 'OK'
+             })
+         }
+         else{
+   $.ajax({
+          type: 'GET',
+          url: 'getleaveoutsurl/'+$('#studentCode').val(),
+      }).done(function (s) {
+         window.location.replace(s.url);
+      }).fail(function (xhr, error) {
+          bootbox.alert(xhr.responseText)
+
+      });
+
+         }
+    })
 }

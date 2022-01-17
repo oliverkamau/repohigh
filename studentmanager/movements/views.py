@@ -113,7 +113,7 @@ def getunassignedstudents(request,id):
     listsel = []
     students = Students.objects.raw(
         "SELECT student_code,concat(adm_no,'--',student_name)name FROM student_students" +
-        " where student_school_status='Active' and  student_class_id = %s",
+        " where student_class_id = %s",
         [id]
 
     )

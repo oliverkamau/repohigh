@@ -1,0 +1,167 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row">
+    <h2 class="text-muted mr-3 ml-5 mb-4">Student LeaveOuts</h2>
+    </div>
+
+<div class="container-fluid">
+  <div class="row col-md-11 col-sm-11 mx-1">
+    <div class="col-md-4 col-sm-10">
+
+ <form id="document-form">
+     {% csrf_token %}
+                 <input type="hidden" id="studentCode" name="student_code" value="{{ student }}">
+
+ </form>
+        <div class="col-md-12 col-sm-12">
+              <label class="control-label" for="class_frm">Class</label>
+            <input type="hidden" id="classCode" name="stud_class">
+            <select id="class_frm" class="form-control col-md-11"></select>
+        </div>
+        <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="unAssignedTbl">
+  <thead>
+    <tr>
+        <th >&nbsp;</th>
+
+    </tr>
+
+  </thead>
+            <tbody>
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                 <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{##}
+{#            </tr>#}
+            </tbody>
+        </table>
+    </div>
+     <div class="col-md-1 col-sm-10">
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+         <br>
+       <button type="button" id="assignAll" class="btn btn-outline-primary pl-2 text-center col-md-8 col-sm-10 mb-2">>></button>
+       <button type="button" id="assignSelected" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2"> > </button>
+       <button type="button" id="unAssignSelected" class="btn btn-outline-primary col-md-8 mb-2 col-sm-10"> < </button>
+       <button type="button" id="unAssignAll" class="btn btn-outline-primary pl-2 text-center col-md-8 col-sm-10 mb-2"> << </button>
+
+    </div>
+    <div class="col-md-4 col-sm-10">
+          <div class="col-md-12 col-sm-12">
+              <label class="control-label" for="select">Type</label>
+
+            <select id="leaveorreturn" name="leave_or_return" class="form-control col-md-11">
+                <option value="">Leave/Return</option>
+                <option value="leave">Leave</option>
+                <option value="return">Return</option>
+                <option></option>
+
+            </select>
+        </div>
+                <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="assignedTbl">
+  <thead>
+    <tr>
+        <th>&nbsp;</th>
+    </tr>
+  </thead>
+                              <tbody>
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                 <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{#            </tr>#}
+{#            <tr>#}
+{#                <td>Gideon Kageni</td>#}
+{##}
+{#            </tr>#}
+            </tbody>
+        </table>
+    </div>
+          <div class="col-md-3 col-sm-10">
+               <div class="col-md-12 col-sm-12 mb-4">
+              <label class="control-label" for="class_frm">Date Left</label>
+            <input type="date" class="form-control" id="leftDate" name="date_left">
+        </div>
+                      <div class="col-md-12 col-sm-12 mb-4">
+              <label class="control-label" for="class_frm">Date to Return</label>
+            <input type="date" class="form-control" id="returnDate" name="date_to_return">
+        </div>
+
+                                    <div class="col-md-12 col-sm-12 mb-4">
+
+                <label class="control-label" for="select">Leave Reason</label>
+                              <textarea name="movement_reason" id="reason" class="form-control" style="height: 8em"></textarea>
+                                    </div>
+              <div class="col-md-12 col-sm-12 mb-4">
+              <label class="control-label" for="class_frm">Date Returned</label>
+            <input type="date" class="form-control" id="returnedDate" name="date_returned">
+        </div>
+          </div>
+
+
+      <div class="col-md-12 col-sm-12 ml-1 mt-2">
+<div class="table-responsive">
+        <table class="table table-striped display responsive nowrap" id="studTable">
+  <thead>
+    <tr>
+      <th></th>
+      <th scope="col">Class</th>
+      <th scope="col">AdmNo</th>
+      <th scope="col">StudentsName</th>
+      <th scope="col">Reason</th>
+      <th scope="col">DateLeft</th>
+      <th scope="col">DateExpected</th>
+       <th scope="col">DateReturned</th>
+      <th scope="col">AuthorisedBy</th>
+      <th scope="col">ReturnedBy</th>
+       <th scope="col">Returned</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+        </div>
+                                                     </div>
+
+
+   </div>
+    </div>
+
+      <script src=" {% static 'custom/students/studentleaveouts.js' %}"></script>
+<script type="text/javascript">
+    var assigned = [];
+</script>
+<script type="text/javascript">
+    var unassigned = [];
+</script>
+    <script type="text/javascript">
+    var spinner ="";
+</script>
+{% endblock %}

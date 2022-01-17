@@ -100,7 +100,7 @@ function unassignStudentSubjects() {
       swal({
           title: 'Alert!',
           type: 'info',
-          text: 'No students selected to assign subjects to',
+          text: 'No students selected to assign leaveouts to',
          confirmButtonText: 'OK'
       })
   } else {

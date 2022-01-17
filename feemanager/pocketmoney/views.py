@@ -172,7 +172,6 @@ def getstudents(request):
         " left join student_students  on student_code = tracker_student_id" +
         " left join classes_schoolclasses ON student_class_id=class_code" +
         " left join dorms_dorms  on dorm_code = student_dorm_id" +
-        " where student_school_status='Active'"
         " order by student_code desc"
 
     )
@@ -183,7 +182,7 @@ def getstudents(request):
             response_data['studentCode'] = obj.student_code
             response_data['name'] = obj.student_name
             response_data['admNo'] = obj.adm_no
-            response_data['dorm'] = obj.dorm_name
+            response_data['dorm'] = obj.student_school_status
             response_data['studentClass'] = obj.class_name
             response_data['balance'] = obj.tracker_balance
 
