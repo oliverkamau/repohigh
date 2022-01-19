@@ -58,7 +58,7 @@
 
                    <form id="main-form">
      {% csrf_token %}
-<input type="hidden" name="student_code" id="studentCode">
+<input type="hidden" name="student_code" id="studentCode" value="{{ student }}">
 
 <div class="row">
 
@@ -163,7 +163,9 @@
 
                           </div>
         <div class="form-row mb-4">
-                                  <label class="col-md-4 control-label" for="select">Fee Balance</label>
+                                  <label class="col-md-6 control-label" for="select">Fee Balance :</label>
+                                              <h5 class="col-md-5 control-label text-danger" id="feeBalance" for="select"></h5>
+
        </div>
 
 

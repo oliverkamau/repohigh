@@ -38,7 +38,16 @@ from studentmanager.student.models import Students
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required
 def studentpage(request):
-    return render(request,'students/studentsdetail.html')
+    context = {}
+    if request.method == 'GET' and 'student' in request.GET:
+        context = {
+            'student': request.GET['student']
+        }
+    else:
+        context = {
+            'student': ''
+        }
+    return render(request,'students/studentsdetail.html',context)
 
 def searchclasses(request):
     if request.method == 'GET' and 'query' in request.GET:
@@ -710,6 +719,19 @@ def editstudent(request,id):
 
  for obj in student:
     response_data = {}
+    stude=Students.objects.get(pk=obj.student_code)
+    balance = BalanceTracker()
+    try:
+        balance = BalanceTracker.objects.get(tracker_student=stude)
+    except balance.DoesNotExist:
+        response_data['balance'] = 0.00
+    else:
+       details = BalanceTrackerDetails.objects.filter(trackerdetails_tracker=balance)
+       total=0
+       for d in details:
+         total = total + d.trackerdetails_balance
+         response_data['balance'] = total
+
     response_data['studentCode'] = obj.student_code
     response_data['name'] = obj.student_name
     response_data['admNo'] = obj.adm_no

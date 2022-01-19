@@ -3,8 +3,16 @@
 {% load static %}
 
 {% block content %}
-    <div class="row">
-    <h2 class="text-muted mr-3 ml-5 mb-4">Student LeaveOuts</h2>
+    <div class="row container-fluid">
+   <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Student Leaveouts</h4>
+
+
+                       <button type="button" id="back" class="btn btn-outline-secondary mr-1 ml-2 pull-right">Back</button>
+
+            </div>
+
     </div>
 
 <div class="container-fluid">
@@ -14,7 +22,7 @@
  <form id="document-form">
      {% csrf_token %}
                  <input type="hidden" id="studentCode" name="student_code" value="{{ student }}">
-
+                  <input type="hidden" id="entryStudent" name="entry_stud" value="{{ student }}">
  </form>
         <div class="col-md-12 col-sm-12">
               <label class="control-label" for="class_frm">Class</label>
@@ -56,24 +64,24 @@
          <br>
          <br>
          <br>
-       <button type="button" id="assignAll" class="btn btn-outline-primary pl-2 text-center col-md-8 col-sm-10 mb-2">>></button>
+{#       <button type="button" id="assignAll" class="btn btn-outline-primary pl-2 text-center col-md-8 col-sm-10 mb-2">>></button>#}
        <button type="button" id="assignSelected" class="btn btn-outline-primary col-md-8 col-sm-10 mb-2"> > </button>
        <button type="button" id="unAssignSelected" class="btn btn-outline-primary col-md-8 mb-2 col-sm-10"> < </button>
-       <button type="button" id="unAssignAll" class="btn btn-outline-primary pl-2 text-center col-md-8 col-sm-10 mb-2"> << </button>
+{#       <button type="button" id="unAssignAll" class="btn btn-outline-primary pl-2 text-center col-md-8 col-sm-10 mb-2"> << </button>#}
 
     </div>
     <div class="col-md-4 col-sm-10">
-          <div class="col-md-12 col-sm-12">
-              <label class="control-label" for="select">Type</label>
-
-            <select id="leaveorreturn" name="leave_or_return" class="form-control col-md-11">
-                <option value="">Leave/Return</option>
-                <option value="leave">Leave</option>
-                <option value="return">Return</option>
-                <option></option>
-
-            </select>
-        </div>
+{#          <div class="col-md-12 col-sm-12">#}
+{#              <label class="control-label" for="select">Type</label>#}
+{##}
+{#            <select id="leaveorreturn" name="leave_or_return" class="form-control col-md-11">#}
+{#                <option value="">Leave/Return</option>#}
+{#                <option value="leave">Leave</option>#}
+{#                <option value="return">Return</option>#}
+{#                <option></option>#}
+{##}
+{#            </select>#}
+{#        </div>#}
                 <table class="table table-striped display responsive nowrap col-md-11 col-sm-12" id="assignedTbl">
   <thead>
     <tr>

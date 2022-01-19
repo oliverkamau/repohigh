@@ -18,6 +18,7 @@ unassignStudentLeaves()
     unassignallStudentLeaveouts()
     getStudentsLeavesTable()
     editStudent()
+    issueleaveouts()
 })
 function getDynamicUrl() {
    $.ajax({
@@ -619,5 +620,28 @@ function getStudentsLeavesTable() {
        bootbox.alert(xhr.responseText);
     });
 
+}
+
+function issueleaveouts(){
+    $('#back').click(function () {
+      var url = '';
+         if($('#entryStudent').val()==='') {
+           url='getstudentsurl';
+         }
+         else{
+             url='getstudenturl/'+$('#entryStudent').val();
+         }
+   $.ajax({
+          type: 'GET',
+          url: url,
+      }).done(function (s) {
+         window.location.replace(s.url);
+      }).fail(function (xhr, error) {
+          bootbox.alert(xhr.responseText)
+
+      });
+
+
+    })
 }
 

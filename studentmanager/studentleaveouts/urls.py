@@ -23,6 +23,7 @@ urlpatterns = [
     path('assignallleaveouts', views.assignallleaveouts, name='assignallleaveouts'),
     path('getstudentsleaves', views.getstudentsleaves, name='getstudentsleaves'),
     path('editstudent/<int:id>', views.editstudent, name='editstudent'),
-
+    path('getstudentsurl', views.getstudentsurl, name='getstudentsurl'),
+    path('getstudenturl/<int:id>', views.getstudenturl, name='getstudenturl'),
 
 ]

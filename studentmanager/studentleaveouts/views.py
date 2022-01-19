@@ -393,3 +393,19 @@ def editstudent(request,id):
             listsel.append(response_data)
 
     return JsonResponse(listsel, safe=False)
+
+
+def getstudentsurl(request):
+    response_data = {}
+    response_data['url'] = urlsplit(
+        request.build_absolute_uri(
+            None)).scheme + '://' + request.get_host() + '/studentmanager/students/studentpage'
+    return JsonResponse(response_data)
+
+
+def getstudenturl(request,id):
+    response_data = {}
+    response_data['url'] = urlsplit(
+        request.build_absolute_uri(
+            None)).scheme + '://' + request.get_host() + '/studentmanager/students/studentpage?student=' + str(id)
+    return JsonResponse(response_data)
