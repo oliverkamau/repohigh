@@ -1,0 +1,117 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid" >
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Petty Cash Payments</h4>
+
+
+                       <button type="button" id="savePettyCash" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+
+                       <button type="button" id="newPettyCash" class="btn btn-outline-secondary mr-3 ml-2 pull-right">New</button>
+
+            </div>
+
+
+        <div class="container-fluid" id="colorForm">
+             <form id="petty-form">
+
+                 <input type="hidden" name="pettycash_code" id="pettyCode">
+<div class="row">
+
+  <div class="col-md-5 col-sm-11 mr-1 ml-1">
+
+
+    <div class="form-row mb-4">
+                            <label class="control-label col-md-4" for="select">Payee</label>
+                              <input type="text" name="pettycash_payee" id="payee" class="form-control col-md-8">
+
+    </div>
+{% csrf_token %}
+            <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Doc No</label>
+                              <input type="text" name="pettycashdoc_no" id="docNo" class="form-control col-md-8">
+            </div>
+           <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Account</label>
+                               <input type="hidden" name="pettycash_account" id="account">
+
+                             <select id="account_frm" type="text" class="form-control col-md-8"></select>
+            </div>
+       <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Amount</label>
+                              <input type="number" name="pettycash_amount" id="amount" class="form-control col-md-8">
+            </div>
+        <div class="form-row mb-4" >
+           <label class="col-md-4 control-label" for="select">Amount Wording</label>
+            <input type="hidden" name="pettycash_amountwording" id="amountWords">
+                                    <textarea name="amountwording" id="wording" class="form-control col-md-8" style="height: 5em" readonly></textarea>
+            </div>
+
+
+  </div>
+
+
+
+
+      <div class="col-md-5 col-sm-11" >
+
+    <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Date</label>
+                            <input name="pettycash_date" id="pettyDate" type="date" class="form-control col-md-8">
+    </div>
+     <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Trans Description</label>
+                                    <textarea name="pettycash_transdescription" id="description" class="form-control col-md-8" style="height: 5em"></textarea>
+            </div>
+        <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Paid By</label>
+                               <input type="hidden" name="pettycash_paidby" id="paidBy">
+
+                             <select id="paidby_frm" type="text" class="form-control col-md-8"></select>
+            </div>
+
+  </div>
+
+</div>
+             </form>
+</div>
+
+        <div class="col-md-11 col-sm-11 ml-2 mt-2">
+
+            <div class="table-responsive">
+      <table class="table table-striped display responsive nowrap" id="pettyTable">
+  <thead>
+    <tr>
+                <th></th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Wording</th>
+      <th scope="col">Purpose</th>
+      <th scope="col">Account</th>
+      <th scope="col">RecievedBy</th>
+      <th scope="col">IssuedBy</th>
+      <th scope="col">Purpose</th>
+      <th scope="col">VoucherNo</th>
+      <th scope="col">ReceiptNo</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+    </div>
+
+      <script src=" {% static 'custom/finance/numbertowordconvertconvert.js' %}"></script>
+
+      <script src=" {% static 'custom/finance/pettycashpayments.js' %}"></script>
+
+
+
+{% endblock %}

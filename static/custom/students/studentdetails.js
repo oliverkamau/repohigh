@@ -46,6 +46,7 @@ saveDocs()
 viewDocs()
 deleteDocs()
     issueleaveouts()
+    statistics()
 })
 function getBackStudent(){
     if($('#studentCode').val()!==''){
@@ -276,6 +277,30 @@ function newStudent() {
    $('#newStudent').click(function () {
        clearPage();
    })
+}
+function statistics() {
+   $('#statistics').click(function () {
+       $.ajax({
+          type: 'GET',
+          url: 'getstatistics',
+      }).done(function (s) {
+           $('#male').html(s.male)
+           $('#female').html(s.female)
+           $('#total').html(s.all)
+           $('#today').html(s.today)
+           $('#month').html(s.month)
+           $('#thisyear').html(s.year)
+           $('#docscaptured').html(s.docs)
+           $('#captured').html("0")
+           $('#statisticsModal').modal({backdrop: 'static', keyboard: false})
+      }).fail(function (xhr, error) {
+          bootbox.alert(xhr.responseText)
+
+      });
+
+
+    })
+
 }
 function saveDocs(){
    $('#saveDocs').click(function () {
@@ -654,7 +679,7 @@ function editStudent(){
             $('#address').val(s[0].address);
             $('#studentEmail').val(s[0].email);
             $('#parentPhone').val(s[0].parentPhone);
-             $('#studentPhone').val(s[0].phone);
+            $('#studentPhone').val(s[0].phone);
             $('#admDate').val(s[0].admDate);
             $('#dob').val(s[0].birthDate);
             $('#completionDate').val(s[0].completionDate);

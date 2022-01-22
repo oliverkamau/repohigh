@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container-fluid">
+          <h4 class="text-muted mb-5">Petty Cash</h4>
+
+  <div class="row">
+    <div class="col-10 col-md-6 mx-auto">
+      <ul class="list-group card">
+          <li class="list-group-item"><a href="{% url 'replenishpage' %}"><i class="fa fa-newspaper-o text-info mx-2"></i>Float Replenishment</a></li>
+          <li class="list-group-item"><a href="{% url 'paymentpage' %}">&nbsp;<i class="fa fa-dollar text-info mx-2"></i>Petty Cash Payments</a></li>
+          <li class="list-group-item"><a href="#">&nbsp;&nbsp;<i class="fa fa-tachometer text-info mx-2"></i>Reports</a></li>
+
+
+      </ul>
+    </div>
+                <div class="col-10 col-md-6 mx-auto">
+                    &nbsp;
+                </div>
+  </div>
+</div>
+
+
+{% endblock %}

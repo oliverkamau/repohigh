@@ -159,7 +159,7 @@
                               <div class="form-row mb-4">
                                                     <label class="col-md-4 control-label" for="select">&nbsp;</label>
 
-                              <button type="button" id="detailedReport" class="btn btn-outline-secondary col-md-8">Statistics</button>
+                              <button type="button" id="statistics" class="btn btn-outline-secondary col-md-8">Statistics</button>
 
                           </div>
         <div class="form-row mb-4">
@@ -595,7 +595,63 @@
 {##}
 {#        </div>#}
 
+<div class="modal fade" id="statisticsModal" role="dialog" aria-labelledby="statisticsModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="statisticsModalTitle">Statistics</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
+          <table class="table">
+  <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-success">Total Students</th>
+      <td class="text-primary text-center" id="total"></td>
+      <td class="text-success">Male</td>
+      <td class="text-primary text-center" id="male"></td>
+     <td class="text-success">Female</td>
+      <td class="text-primary text-center" id="female"></td>
+    </tr>
+    <tr>
+     <td class="text-success">Admitted: Today</th>
+      <td class="text-primary text-center" id="today"></td>
+      <td class="text-success">This Month</td>
+      <td class="text-primary text-center" id="month"></td>
+     <td class="text-success">This Year</td>
+      <td class="text-primary text-center" id="thisyear"></td>
+    </tr>
+    <tr>
+      <td class="text-success">Documents Captured</th>
+      <td class="text-primary text-center" id="docscaptured"></td>
+      <td></td>
+      <td></td>
+     <td class="text-success">Biometrics Captured</td>
+      <td class="text-primary text-center" id="captured"></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
       <script src=" {% static 'custom/students/studentdetails.js' %}"></script>

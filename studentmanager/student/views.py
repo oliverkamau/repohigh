@@ -1,6 +1,7 @@
 from urllib.parse import urlsplit
 
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.http import JsonResponse, request
 from django.shortcuts import render
 from datetime import datetime
@@ -858,4 +859,41 @@ def getleaveoutsurl(request,id):
     response_data = {}
     response_data['url'] = urlsplit(
         request.build_absolute_uri(None)).scheme + '://' + request.get_host() + '/studentmanager/leaveouts/leaveoutspage?student='+str(id)
+    return JsonResponse(response_data)
+
+
+def getstatistics(request):
+    response_data = {}
+
+    yr = datetime.today().year
+    datetime.today().replace(day=1)
+    all = Students.objects.filter(Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended'))
+    today = Students.objects.filter(Q(adm_date=datetime.now().date()),Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended'))
+    month = Students.objects.filter(Q(adm_date__gte=datetime.today().replace(day=1)),
+                                      Q(adm_date__lte=datetime.now().date()),Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended'))
+    year = Students.objects.filter(Q(adm_date__gte=datetime(yr, 1, 1)), Q(adm_date__lte=datetime.now().date()),
+                                     Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended'))
+
+    male = Students.objects.filter(Q(student_gender='M'),Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended'))
+
+    female = Students.objects.filter(Q(student_gender='F'),Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended'))
+
+    docs = StudentDocument.objects.all()
+
+    m = male.count()
+    f = female.count()
+    a = all.count()
+    t = today.count()
+    mo = month.count()
+    y = year.count()
+    d = docs.count()
+    response_data['male'] = m
+    response_data['female'] = f
+    response_data['all'] = a
+    response_data['today'] = t
+    response_data['month'] = mo
+    response_data['year'] = y
+    response_data['docs'] = d
+
+    print( m , f ,a,t, mo,y, d)
     return JsonResponse(response_data)

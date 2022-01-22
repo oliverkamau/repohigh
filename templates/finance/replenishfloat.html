@@ -1,0 +1,122 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid" >
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Float Replenishment</h4>
+
+
+                       <button type="button" id="saveFloat" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+
+                       <button type="button" id="newFloat" class="btn btn-outline-secondary mr-3 ml-2 pull-right">New</button>
+
+            </div>
+
+
+        <div class="container-fluid" id="colorForm">
+             <form id="float-form">
+                 <input type="hidden" name="float_code" id="floatCode">
+<div class="row">
+
+  <div class="col-md-5 col-sm-11 mr-1 ml-1">
+
+      <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Given To</label>
+                               <input type="hidden" name="float_givento" id="floatReceiver">
+
+                             <select id="givento_frm" type="text" class="form-control col-md-8"></select>
+            </div>
+
+         <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Account</label>
+                               <input type="hidden" name="cash_account" id="account">
+
+                             <select id="account_frm" type="text" class="form-control col-md-8"></select>
+            </div>
+
+    <div class="form-row mb-4">
+                            <label class="control-label col-md-4" for="select">Account Bal.</label>
+                              <h5 class="col-md-5 control-label text-danger" id="accountBalance"></h5>
+
+    </div>
+{% csrf_token %}
+            <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Balance</label>
+                              <input type="text" name="balance" id="balance" class="form-control col-md-8" readonly>
+            </div>
+
+       <div class="form-row mb-4" id="tw">
+           <label class="col-md-4 control-label" for="select">Amount</label>
+                              <input type="number" name="float_amount" id="amount" class="form-control col-md-8">
+            </div>
+
+
+  </div>
+
+
+
+
+      <div class="col-md-5 col-sm-11" >
+
+    <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Date</label>
+                            <input name="float_date" id="floatDate" type="date" class="form-control col-md-8">
+    </div>
+    <div class="form-row mb-4">
+                            <label class="control-label col-md-4" for="select">Balance CF</label>
+                              <h5 class="col-md-5 control-label text-danger" id="cf"></h5>
+
+    </div>
+
+            <div class="form-row mb-4">
+                            <label class="control-label col-md-4" for="select">Given By</label>
+                              <h5 class="col-md-5 control-label text-muted" id="givenBy">{{ request.user }}</h5>
+
+    </div>
+
+              <div class="form-row mb-4" id="tw">
+           <label class="col-md-4 control-label" for="select">Document No</label>
+                              <input type="text" name="float_docno" id="docNo" class="form-control col-md-8">
+            </div>
+
+  </div>
+
+</div>
+             </form>
+</div>
+
+        <div class="col-md-11 col-sm-11 ml-2 mt-2">
+
+            <div class="table-responsive">
+      <table class="table table-striped display responsive nowrap" id="replenishTable">
+  <thead>
+    <tr>
+                <th></th>
+      <th scope="col">Date</th>
+      <th scope="col">Amount</th>
+      <th scope="col">RunningBalance</th>
+      <th scope="col">GivenTo</th>
+      <th scope="col">GivenBy</th>
+      <th scope="col">Account</th>
+      <th scope="col">DocNo</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+    </div>
+
+      <script src=" {% static 'custom/finance/numbertowordconvertconvert.js' %}"></script>
+
+      <script src=" {% static 'custom/finance/replenishfloat.js' %}"></script>
+
+
+
+{% endblock %}

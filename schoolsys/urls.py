@@ -32,5 +32,6 @@ urlpatterns = [
     path('staff/', include('staff.urls')),
     path('exams/', include('exams.urls')),
     path('fees/', include('feemanager.urls')),
+    path('finance/', include('financemanager.urls')),
 
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
