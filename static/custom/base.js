@@ -18,7 +18,32 @@ $(document).ready(function () {
       $('#sidebarCollapse').on('click',function () {
        $('#sidebar').toggleClass('active');
    })
+    // autorefresh()
 })
+// function autorefresh() {
+//  localStorage.removeItem("timer");
+// console.log(localStorage.getItem("timer"))
+// if (localStorage.getItem("timer") === null) {
+//     localStorage.setItem("timer","set");
+//     $.ajax({
+//
+//         type: 'GET',
+//         url: 'getrefreshtime'
+//
+//     }).done(function (s) {
+//          localStorage.removeItem("timer");
+//         setInterval('refreshPage()', s.session * 1000);
+//
+//     }).fail(function (xhr, error) {
+//         bootbox.alert(xhr.responseText)
+//     });
+//
+// }
+//     }
+
+
+
+
 function classModal() {
     $('#open-modal').click(function () {
         clearData()

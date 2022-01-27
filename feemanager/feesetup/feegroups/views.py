@@ -2,10 +2,13 @@ import datetime
 import json
 from urllib.parse import urlsplit
 
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
+
 from feemanager.feesetup.feecategories.models import FeeCategories
 from localities.models import Select2Data
 from localities.serializers import Select2Serializer
@@ -14,7 +17,8 @@ from setups.system.categoryaudit.models import CategoryAudit
 from studentmanager.student.models import Students
 from useradmin.users.models import User
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def groupingpage(request):
     return render(request, 'fees/feegroupings.html')
 
@@ -159,6 +163,8 @@ def dynamicaddress(request):
     return JsonResponse(response_data)
 
 def assignstudentcategory(request):
+
+  if request.user.is_authenticated:
     students = request.POST.get('students', None)
     category = request.POST.get('category', None)
     newcategory = request.POST.get('newcategory', None)
@@ -182,6 +188,9 @@ def assignstudentcategory(request):
     audit.save()
 
     return JsonResponse({'success':'Category Assigned Successfully'})
+  else:
+    return JsonResponse({'timeout': 'Your User Session expired!'})
+
 
 def unassignstudentcategory(request):
     students = request.POST.get('students', None)
@@ -200,6 +209,7 @@ def unassignstudentcategory(request):
 
 
 def assignallcategories(request):
+  if request.user.is_authenticated:
     category = request.POST.get('category', None)
     newcategory = request.POST.get('newcategory', None)
     newcategories = FeeCategories.objects.get(category_code=newcategory)
@@ -237,6 +247,8 @@ def assignallcategories(request):
     audit.save()
 
     return JsonResponse({'success': 'Categories Assigned Successfully'})
+  else:
+    return JsonResponse({'timeout': 'Your User Session expired!'})
 
 
 def unassignallcategories(request):

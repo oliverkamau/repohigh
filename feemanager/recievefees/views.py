@@ -15,6 +15,7 @@ from feemanager.recievefeedetails.models import FeePaymentDetails
 from feemanager.recievefees.models import FeePayment
 from localities.models import Select2Data
 from localities.serializers import Select2Serializer
+from schoolsys.settings import BASE_DIR
 from setups.academics.classes.models import SchoolClasses
 from setups.academics.termdates.models import TermDates
 from setups.accounts.bankbranches.models import BankBranches
@@ -24,6 +25,7 @@ from setups.system.systemparameters.models import SystemParameters
 from setups.system.systemsequences.models import SystemSequences
 from studentmanager.student.models import Students
 from useradmin.users.models import User
+
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required
@@ -187,6 +189,7 @@ def searchterm(request):
 
 
 def recievefees(request):
+    if request.user.is_authenticated:
         stud = request.POST['student']
         cl = request.POST['classcode']
         md = request.POST['mode']
@@ -271,6 +274,8 @@ def recievefees(request):
         response_data['success'] = 'Record added Successfully!'
         response_data['amount'] = totals
         return JsonResponse(response_data)
+    else:
+        return JsonResponse({'timeout': 'Your User Session expired!'})
 
 
 def currentterm(request):
@@ -296,6 +301,7 @@ def feedistribution(request):
         return JsonResponse(response_data)
 
 def recieveautomaticfees(request):
+    if request.user.is_authenticated:
         stud = request.POST['student']
         cl = request.POST['classcode']
         md = request.POST['mode']
@@ -408,6 +414,8 @@ def recieveautomaticfees(request):
 
 
         return JsonResponse({'success':'Automatic Payments done sucessfully!'})
+    else:
+        return JsonResponse({'timeout': 'Your User Session expired!'})
 
 def getfeepaymentstats(request):
     response_data = {}
@@ -438,8 +446,5 @@ def getfeepaymentstats(request):
     response_data['all']=alltotals
 
     return JsonResponse(response_data)
-
-
-
 
 

@@ -68,12 +68,20 @@
            <label class="col-md-4 control-label" for="select">Trans Description</label>
                                     <textarea name="pettycash_transdescription" id="description" class="form-control col-md-8" style="height: 5em"></textarea>
             </div>
-        <div class="form-row mb-4">
-           <label class="col-md-4 control-label" for="select">Paid By</label>
-                               <input type="hidden" name="pettycash_paidby" id="paidBy">
+{#        <div class="form-row mb-4">#}
+{#           <label class="col-md-4 control-label" for="select">Paid By</label>#}
+{#                               <input type="hidden" name="pettycash_paidby" id="paidBy">#}
+{##}
+{#                             <select id="paidby_frm" type="text" class="form-control col-md-8"></select>#}
+{#            </div>#}
 
-                             <select id="paidby_frm" type="text" class="form-control col-md-8"></select>
-            </div>
+             <div class="form-row mb-4">
+                            <label class="control-label col-md-4" for="select">Paid By</label>
+                              <input type="hidden" name="pettycash_paidby" id="paidBy" value="{{ request.user }}">
+
+                              <h5 class="col-md-5 control-label text-muted" id="givenBy">{{ request.user }}</h5>
+
+    </div>
 
   </div>
 

@@ -306,10 +306,30 @@ function assignStudentCategory() {
           processData: false,
           contentType: false,
       }).done(function (s) {
-            swal.close()
-          searchFeeStudent()
-          searchNewFeeStudent()
-          assigned=[]
+          if(s.success) {
+              swal.close()
+              searchFeeStudent()
+              searchNewFeeStudent()
+              assigned = []
+          }
+           else if(s.timeout){
+                        swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: s.timeout,
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+              else{
+                       swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: 'Your User Session expired!',
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
         // swal({
         //  type: 'success',
         //  title: 'Success',
@@ -417,9 +437,29 @@ $('#assignAll').on('click',function (s) {
               processData: false,
               contentType: false,
           }).done(function (s) {
-            swal.close()
-            searchFeeStudent()
-            searchNewFeeStudent()
+              if(s.success) {
+                  swal.close()
+                  searchFeeStudent()
+                  searchNewFeeStudent()
+              }
+                  else if(s.timeout){
+                        swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: s.timeout,
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+                    else{
+                       swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: 'Your User Session expired!',
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
       }).fail(function (xhr, error) {
             swal.close()
               bootbox.alert(xhr.responseText)
@@ -428,6 +468,11 @@ $('#assignAll').on('click',function (s) {
       }
     });
 }
+function refreshPage() {
+
+    window.location.reload()
+
+    }
 function unassignallCategory() {
 $('#unAssignAll').on('click',function (s) {
       if($('#categoryCode').val()===''){

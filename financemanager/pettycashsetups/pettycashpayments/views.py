@@ -1,9 +1,11 @@
 import decimal
 
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
 from rest_framework import status
 
 from financemanager.pettycashsetups.pettycashbalances.models import PettyCashBalances
@@ -14,7 +16,8 @@ from setups.accounts.accountmaster.models import AccountMaster
 from setups.system.systemsequences.models import SystemSequences
 from useradmin.users.models import User
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def paymentpage(request):
     return render(request,'finance/pettycashpayment.html')
 
@@ -64,8 +67,11 @@ def searchusers(request):
 
     return JsonResponse({'results': listsel})
 
-
+# @cache_control(no_cache=True, must_revalidate=True, no_store=True)
+# @login_required
 def savepettycash(request):
+
+  if request.user.is_authenticated:
     payee = request.POST.get('pettycash_payee', None)
     doc = request.POST.get('pettycashdoc_no', None)
     acc = request.POST.get('pettycash_account', None)
@@ -74,7 +80,7 @@ def savepettycash(request):
     amount = request.POST.get('pettycash_amount', None)
     trans = request.POST.get('pettycash_transdescription', None)
     payer = request.POST.get('pettycash_paidby', None)
-    payers = User.objects.get(user_id=payer)
+    payers = User.objects.get(username=payer)
     account = AccountMaster.objects.get(pk=acc)
     petty = PettyCashBalances()
     try:
@@ -122,7 +128,8 @@ def savepettycash(request):
     payments.save()
     
     return JsonResponse({'success':'Record Saved Successfully!'})
-
+  else:
+    return JsonResponse({'timeout': 'Your User Session expired!'})
 
 def getpettycashgrid(request):
     listsel = []

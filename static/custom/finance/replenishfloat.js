@@ -174,16 +174,7 @@ function amountToWords(){
 }
 function replenishFloat(){
     $('#saveFloat').click(function () {
-
-        if($('#floatReceiver').val()==''){
-         swal({
-          title: 'Alert!',
-          type: 'info',
-          text: 'Provide a Reciever of the float!',
-         confirmButtonText: 'OK'
-      })
-        }
-        else if($('#account').val()==='') {
+       if($('#account').val()==='') {
             swal({
                 title: 'Alert!',
                 type: 'info',
@@ -213,14 +204,37 @@ function replenishFloat(){
                     processData: false,
                     contentType: false
                 }).done(function (s) {
-                    swal({
-                        type: 'success',
-                        title: 'Success',
-                        text: s.success,
-                        showConfirmButton: true
-                    })
-                    clearPage()
-                    getGridValues()
+
+                    if(s.success) {
+                        swal({
+                            type: 'success',
+                            title: 'Success',
+                            text: s.success,
+                            showConfirmButton: true
+                        })
+                        clearPage()
+                        getGridValues()
+                    }
+
+                    else if(s.timeout){
+                        swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: s.timeout,
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+                      else{
+
+                       swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: 'Your User Session expired!',
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
                 }).fail(function (xhr, error) {
                     bootbox.alert(xhr.responseText)
                 })
@@ -237,6 +251,11 @@ function replenishFloat(){
         }
 	})
 }
+function refreshPage() {
+
+    window.location.reload()
+
+    }
 function savePettyCash(){
  $('#savePettyCash').click(function () {
 

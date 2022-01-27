@@ -1,9 +1,11 @@
 import decimal
 
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
 from rest_framework import status
 
 from feemanager.pocketmoney.models import PocketMoneyTrans
@@ -16,6 +18,8 @@ from studentmanager.student.models import Students
 from useradmin.users.models import User
 
 
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def pocketmoneypage(request):
     return render(request, 'fees/pocketmoney.html')
 
@@ -69,7 +73,7 @@ def searchstudents(request):
 
 
 def savepocketmoney(request):
-
+  if request.user.is_authenticated:
     stud = request.POST.get('student', None)
     trans = request.POST.get('transType', None)
     amount = request.POST.get('amount', None)
@@ -147,7 +151,8 @@ def savepocketmoney(request):
         pockettrans.save()
 
     return JsonResponse({'success': 'Record Updated Successfully'})
-
+  else:
+    return JsonResponse({'timeout': 'Your User Session expired!'})
 
 def getbalance(request,id):
     pockettracker = PocketMoneyTracker()

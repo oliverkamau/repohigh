@@ -1,9 +1,12 @@
 import decimal
 
+from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.shortcuts import render
 
 # Create your views here.
+from django.views.decorators.cache import cache_control
+
 from financemanager.pettycashsetups.floatreplenishment.models import FloatReplenishment
 from financemanager.pettycashsetups.pettycashbalances.models import PettyCashBalances
 from localities.models import Select2Data
@@ -11,7 +14,8 @@ from localities.serializers import Select2Serializer
 from setups.accounts.accountmaster.models import AccountMaster
 from useradmin.users.models import User
 
-
+@cache_control(no_cache=True, must_revalidate=True, no_store=True)
+@login_required
 def replenishpage(request):
     return render(request,'finance/replenishfloat.html')
 
@@ -92,8 +96,10 @@ def float(request,id):
 
     return JsonResponse(response_data)
 
-
+# @cache_control(no_cache=True, must_revalidate=True, no_store=True)
+# @login_required
 def savefloatcash(request):
+ if request.user.is_authenticated:
     payee = request.POST.get('float_givento', None)
     doc = request.POST.get('float_docno', None)
     acc = request.POST.get('cash_account', None)
@@ -135,6 +141,8 @@ def savefloatcash(request):
     account.save()
 
     return JsonResponse({'success':'Record created successfully!'})
+ else:
+    return JsonResponse({'timeout': 'Your User Session expired!!'})
 
 
 def getfloatgrid(request):
@@ -163,7 +171,6 @@ def getfloatgrid(request):
             listsel.append(response_data)
 
     return JsonResponse(listsel, safe=False)
-
 
 def geteditfloat(request,id):
 

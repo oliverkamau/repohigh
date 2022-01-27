@@ -60,6 +60,7 @@ def getfeestandardcharges(request,id):
 
 
 def updatebalancetracker(request):
+  if request.user.is_authenticated:
     tracker = BalanceTracker()
     if 'tracker_code' in request.POST:
         bal = request.POST['tracker_code']
@@ -107,3 +108,5 @@ def updatebalancetracker(request):
 
 
     return JsonResponse({'success':'Balance Updated Successfully'})
+  else:
+    return JsonResponse({'timeout': 'Your User Session expired!'})

@@ -56,14 +56,34 @@ function updateTrackerDetails(){
                 processData: false,
                 contentType: false
             }).done(function (s) {
-                swal({
-                    type: 'success',
-                    title: 'Success',
-                    text: s.success,
-                    showConfirmButton: true
-                })
-                $('#structure-form')[0].reset()
-                $('#structureCode').val('')
+                 if(s.success) {
+                     swal({
+                         type: 'success',
+                         title: 'Success',
+                         text: s.success,
+                         showConfirmButton: true
+                     })
+                     $('#structure-form')[0].reset()
+                     $('#structureCode').val('')
+                 }
+                  else if(s.timeout){
+            swal({
+                title: 'Alert!',
+                 type: 'info',
+                 text: s.timeout,
+                 confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+                    else{
+                       swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: 'Your User Session expired!',
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
             }).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
 
@@ -72,6 +92,11 @@ function updateTrackerDetails(){
         }
 	})
 }
+function refreshPage() {
+
+    window.location.reload()
+
+    }
 function searchStudent() {
 
         $('#student_frm').select2({

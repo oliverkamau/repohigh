@@ -20,27 +20,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/financemanager/pettycashsetups/floatreplenishment/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/financemanager/pettycashsetups/pettycashpayments/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/financemanager/pettycashsetups/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/financemanager/urls.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/custom/finance/numbertowordconvertconvert.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/custom/finance/pettycashpayments.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/custom/finance/replenishfloat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/finance/pettycashpayment.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/finance/pettycashsetups.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/finance/replenishfloat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a4366c71-5e8c-4d5c-aff0-970e80317d52.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a4366c71-5e8c-4d5c-aff0-970e80317d52.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a4366c71-5e8c-4d5c-aff0-970e80317d52/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a4366c71-5e8c-4d5c-aff0-970e80317d52/storage_v2/_src_/database/highschool.lvfpIA/schema/dbo.sYMBAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/reports/receipt.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/feesetup/feegroups/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/feesetup/feegroups/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/managebalances/singleinvoicing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/managebalances/singleinvoicing/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/managebalances/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/managebalances/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/pocketmoney/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/pocketmoney/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/recievefees/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/recievefees/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/feemanager/recievefees/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/feemanager/recievefees/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/financemanager/pettycashsetups/floatreplenishment/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/financemanager/pettycashsetups/floatreplenishment/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/financemanager/pettycashsetups/pettycashpayments/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/financemanager/pettycashsetups/pettycashpayments/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schoolsys/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/schoolsys/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/custom/students/studentdetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/students/studentdetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentmanager/student/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentmanager/student/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentmanager/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentmanager/student/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/students/studentsdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/students/studentsdetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/students/studentsubjects.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/students/studentsubjects.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schoolsys/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/base.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/fees/groupings.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/groupings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/fees/pocketmoney.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/pocketmoney.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/fees/recievefees.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/recievefees.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/fees/singleinvoice.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/fees/singleinvoice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/finance/pettycashpayments.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/finance/pettycashpayments.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/finance/replenishfloat.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/finance/replenishfloat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/finance/pettycashpayment.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/finance/pettycashpayment.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,8 +59,8 @@
       <list>
         <option value="CSS File" />
         <option value="Python Script" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -110,7 +110,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="SQL Server (Microsoft)" />
     <property name="database.console.LAST_STATE" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/reports" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -118,11 +118,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\django\gabu\repohigh\reports" />
       <recent name="D:\django\gabu\repohigh\static\js" />
       <recent name="D:\Gabu\gabu\repohigh\useradmin\users\migrations" />
       <recent name="D:\Gabu\gabu\repohigh\staff\teachers\migrations" />
       <recent name="D:\Gabu\gabu\repohigh\setups\academics\classes\migrations" />
-      <recent name="D:\Gabu\gabu\repohigh\studentmanager\student\migrations" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\django\schoolsys\static\sweetalert" />
@@ -346,6 +346,15 @@
       <workItem from="1642771461060" duration="749000" />
       <workItem from="1642784882159" duration="8033000" />
       <workItem from="1642828349060" duration="14605000" />
+      <workItem from="1643011536157" duration="3179000" />
+      <workItem from="1643044573948" duration="2424000" />
+      <workItem from="1643104641844" duration="9048000" />
+      <workItem from="1643133367873" duration="2502000" />
+      <workItem from="1643180353176" duration="7984000" />
+      <workItem from="1643201885931" duration="2754000" />
+      <workItem from="1643216644891" duration="4774000" />
+      <workItem from="1643250401917" duration="5415000" />
+      <workItem from="1643265622261" duration="3241000" />
     </task>
     <servers />
   </component>

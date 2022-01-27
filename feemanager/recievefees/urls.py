@@ -16,6 +16,4 @@ urlpatterns = [
     path('feedistribution', views.feedistribution, name='feedistribution'),
     path('recieveautomaticfees', views.recieveautomaticfees, name='recieveautomaticfees'),
     path('getfeepaymentstats', views.getfeepaymentstats, name='getfeepaymentstats'),
-
-
 ]

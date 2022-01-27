@@ -237,14 +237,34 @@ $('#savePocketMoney').click(function () {
           contentType: false,
 
       }).done(function (s) {
-        swal({
-         type: 'success',
-         title: 'Success',
-         text: s.success,
-         showConfirmButton: true,
-     })
-          clearPage()
-          getGridValues()
+          if(s.success) {
+              swal({
+                  type: 'success',
+                  title: 'Success',
+                  text: s.success,
+                  showConfirmButton: true,
+              })
+              clearPage()
+              getGridValues()
+          }
+          else if(s.timeout){
+            swal({
+                title: 'Alert!',
+                 type: 'info',
+                 text: s.timeout,
+                 confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+                else{
+                       swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: 'Your User Session expired!',
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
       }).fail(function (xhr, error) {
 
           bootbox.alert(xhr.responseText)
@@ -253,6 +273,11 @@ $('#savePocketMoney').click(function () {
   }
 })
 }
+function refreshPage() {
+
+    window.location.reload()
+
+    }
 function editStudent(){
     $('#pocketTable').on('click','.btn-editstudent',function (s) {
         var data=$(this).closest('tr').find('#edit-student').val();

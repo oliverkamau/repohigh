@@ -106,6 +106,7 @@ function searchUsers() {
         })
 
 }
+
 function accountChange() {
     $('#account_frm').on('select2:select', function (e) {
         var data = e.params.data;
@@ -116,6 +117,7 @@ function accountChange() {
 
  });
 }
+
 function userChange() {
     $('#paidby_frm').on('select2:select', function (e) {
         var data = e.params.data;
@@ -137,15 +139,7 @@ function amountToWords(){
 function savePettyCash(){
  $('#savePettyCash').click(function () {
 
-        if($('#payee').val()==''){
-         swal({
-          title: 'Alert!',
-          type: 'info',
-          text: 'Provide a Payee!',
-         confirmButtonText: 'OK'
-      })
-        }
-        else if($('#account').val()==='') {
+      if($('#account').val()==='') {
             swal({
                 title: 'Alert!',
                 type: 'info',
@@ -158,14 +152,6 @@ function savePettyCash(){
           title: 'Alert!',
           type: 'info',
           text: 'Provide an amount to pay',
-         confirmButtonText: 'OK'
-      })
-        }
-         else if($('#paidBy').val()===''){
-           swal({
-          title: 'Alert!',
-          type: 'info',
-          text: 'Provide the User that paid the money!',
          confirmButtonText: 'OK'
       })
         }
@@ -184,15 +170,37 @@ function savePettyCash(){
                     processData: false,
                     contentType: false
                 }).done(function (s) {
-                    swal({
-                        type: 'success',
-                        title: 'Success',
-                        text: s.success,
-                        showConfirmButton: true
-                    })
-                    getGridValues()
-                    clearPage()
-                }).fail(function (xhr, error) {
+                    console.log('done was excuted')
+                    if(s.success) {
+                        swal({
+                            type: 'success',
+                            title: 'Success',
+                            text: s.success,
+                            showConfirmButton: true
+                        })
+
+                        getGridValues()
+                        clearPage()
+                    }
+                   else if(s.timeout){
+                        swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: s.timeout,
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+                   else{
+                       swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: 'Your User Session expired!',
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+                    }).fail(function (xhr, error) {
                     bootbox.alert(xhr.responseText)
                 })
 
@@ -208,6 +216,11 @@ function savePettyCash(){
         }
 	})
 }
+function refreshPage() {
+
+    window.location.reload()
+
+    }
 function getGridValues(){
      $.ajax({
         type: 'GET',

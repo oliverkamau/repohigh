@@ -121,10 +121,10 @@ MIDDLEWARE = [
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django_currentuser.middleware.ThreadLocalUserMiddleware'
 ]
-SESSION_EXPIRE_SECONDS = 300
-SESSION_TIMEOUT_REDIRECT = '/login/loginpage'
+SESSION_EXPIRE_SECONDS = 20
+SESSION_TIMEOUT_REDIRECT = 'loginpage'
 ROOT_URLCONF = 'schoolsys.urls'
-LOGIN_URL= '/login/loginpage'
+LOGIN_URL= 'loginpage'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

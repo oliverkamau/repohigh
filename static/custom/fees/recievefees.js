@@ -152,15 +152,36 @@ function saveFees(){
                 processData: false,
                 contentType: false
             }).done(function (s) {
-                swal({
-                    type: 'success',
-                    title: 'Success',
-                    text: s.success,
-                    showConfirmButton: true
-                })
-                getStatistics();
+                if(s.success) {
+                    swal({
+                        type: 'success',
+                        title: 'Success',
+                        text: s.success,
+                        showConfirmButton: true
+                    })
+                    getStatistics();
 
-              clearpage();
+                    clearpage();
+                }
+                else if(s.timeout){
+                        swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: s.timeout,
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+                  else{
+                       swal({
+                        title: 'Alert!',
+                       type: 'info',
+                       text: 'Your User Session expired!',
+                        confirmButtonText: 'OK'
+                      })
+                       setInterval('refreshPage()', 3 * 1000);
+                    }
+
             }).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
 
@@ -169,6 +190,11 @@ function saveFees(){
         }
 	})
 }
+function refreshPage() {
+
+    window.location.reload()
+
+    }
 function getStatistics(){
   $.ajax({
                 type: 'GET',
