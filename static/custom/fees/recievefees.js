@@ -26,6 +26,7 @@ getBalances()
 removeTotals();
 newFee();
 radiotoggle();
+$('#btnReceipt').prop('disabled',true)
 })
 function getBalances(){
     $('#amountPaid').keyup(function () {
@@ -159,8 +160,9 @@ function saveFees(){
                         text: s.success,
                         showConfirmButton: true
                     })
+                    $('#receiveId').val(s.code)
+                    $('#btnReceipt').prop('disabled',false)
                     getStatistics();
-
                     clearpage();
                 }
                 else if(s.timeout){

@@ -31,7 +31,7 @@ urlpatterns = [
     path('searchvillage/<int:id>', views.searchvillage, name='searchvillage'),
     path('searchstudentsources', views.searchstudentsources, name='searchstudentsources'),
     path('getleaveoutsurl/<int:id>', views.getleaveoutsurl, name='getleaveoutsurl'),
-
-
+    path('genderdistribution', views.genderdistribution, name='genderdistribution'),
+    path('dynamicaddress', views.dynamicaddress, name='dynamicaddress'),
 
 ]

@@ -129,10 +129,15 @@
 
   </div>
      <div class="col-md-5 col-sm-11 mt-1">
-           <div class="form-row mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="receipt">
-    <label class="form-check-label" for="assign">Show Receipt</label>
-  </div>
+
+           <div class="form-row mb-3">
+                <form action="{% url 'showreceipt' %}">
+   <input type="hidden" name="receive_id" id="receiveId">
+    <button id="btnReceipt" class="btn btn-outline-secondary" type="submit">Show Receipt</button>
+                </form>
+           </div>
+
+
             <div class="form-row">
     <label class="col-md-4 control-label" for="select">Distribute</label>
   </div>

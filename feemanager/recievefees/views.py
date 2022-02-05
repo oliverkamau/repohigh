@@ -1,8 +1,10 @@
 import decimal
+import mimetypes
+import os
 from datetime import datetime
 
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse, FileResponse, HttpResponseNotFound
 from django.shortcuts import render
 
 # Create your views here.
@@ -21,11 +23,12 @@ from setups.academics.termdates.models import TermDates
 from setups.accounts.bankbranches.models import BankBranches
 from setups.accounts.paymentmodes.models import PaymentModes
 from setups.accounts.standardcharges.models import StandardCharges
+from setups.organization.models import Organization
 from setups.system.systemparameters.models import SystemParameters
 from setups.system.systemsequences.models import SystemSequences
 from studentmanager.student.models import Students
 from useradmin.users.models import User
-
+import requests
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required
@@ -273,6 +276,8 @@ def recievefees(request):
         response_data = {}
         response_data['success'] = 'Record added Successfully!'
         response_data['amount'] = totals
+        response_data['code'] = pmnt.payment_code
+
         return JsonResponse(response_data)
     else:
         return JsonResponse({'timeout': 'Your User Session expired!'})
@@ -411,9 +416,10 @@ def recieveautomaticfees(request):
                 amount = 0
                 detail.save()
 
-
-
-        return JsonResponse({'success':'Automatic Payments done sucessfully!'})
+        response_data = {}
+        response_data['success'] = 'Automatic Payments done sucessfully!!'
+        response_data['code'] = pmnt.payment_code
+        return JsonResponse(response_data)
     else:
         return JsonResponse({'timeout': 'Your User Session expired!'})
 
@@ -447,4 +453,30 @@ def getfeepaymentstats(request):
 
     return JsonResponse(response_data)
 
+
+def showreceipt(request):
+    report = 'receipt'
+    receiveid = request.GET['receive_id']
+    payments = FeePayment.objects.get(pk=receiveid)
+    tracker = BalanceTracker.objects.get(tracker_student=payments.payment_student.pk)
+    balance = 0
+    details = BalanceTrackerDetails.objects.filter(trackerdetails_tracker=tracker)
+    for d in details:
+        balance = balance + d.trackerdetails_balance
+    org = Organization.objects.get(organization_name__isnull=False)
+    path=org.organization_logo.path
+    paymentdate = payments.payment_date.strftime("%d/%m/%Y")
+
+    r = requests.get('http://localhost:8086/getReport', params={'payment':receiveid,'report':report,'balance':balance,'path':path,'paymentdate':paymentdate})
+    if r.status_code==200:
+      # name = 'receipt.pdf'
+      json = r.json()
+      file = json['path']
+      # path = open(file, 'rb')
+      # mime_type, _ = mimetypes.guess_type(file)
+      # response = HttpResponse(path, content_type=mime_type)
+      # response['Content-Disposition'] = "attachment; filename=%s" % name
+      return FileResponse(open(file, 'rb'), content_type='application/pdf')
+    else:
+      return HttpResponseNotFound("Error Generating Report")
 

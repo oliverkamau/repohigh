@@ -102,6 +102,7 @@ INSTALLED_APPS = [
     'financemanager.pettycashsetups.pettycashpayments.apps.PettycashpaymentsConfig',
     'financemanager.pettycashsetups.floatreplenishment.apps.FloatreplenishmentConfig',
     'financemanager.pettycashsetups.pettycashbalances.apps.PettycashbalancesConfig',
+    'setups.organization.apps.OrganizationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -121,7 +122,7 @@ MIDDLEWARE = [
     'django_session_timeout.middleware.SessionTimeoutMiddleware',
     'django_currentuser.middleware.ThreadLocalUserMiddleware'
 ]
-SESSION_EXPIRE_SECONDS = 20
+SESSION_EXPIRE_SECONDS = 300
 SESSION_TIMEOUT_REDIRECT = 'loginpage'
 ROOT_URLCONF = 'schoolsys.urls'
 LOGIN_URL= 'loginpage'

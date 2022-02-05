@@ -61,7 +61,7 @@
 <input type="hidden" name="student_code" id="studentCode" value="{{ student }}">
 
 <div class="row">
-
+<input type="hidden" id="context">
   <div class="col-md-4 col-sm-11">
   <div class="form-row mb-4">
                             <label class="col-md-3 control-label" for="select">Adm No.</label>
@@ -160,6 +160,12 @@
                                                     <label class="col-md-4 control-label" for="select">&nbsp;</label>
 
                               <button type="button" id="statistics" class="btn btn-outline-secondary col-md-8">Statistics</button>
+
+                          </div>
+          <div class="form-row mb-4">
+                                                    <label class="col-md-4 control-label" for="select">&nbsp;</label>
+
+                              <button type="button" id="reports" class="btn btn-outline-secondary col-md-8">Reports</button>
 
                           </div>
         <div class="form-row mb-4">
@@ -648,6 +654,28 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <div class="modal fade" id="reportsModal" role="dialog" aria-labelledby="reportsModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="reportsModalTitle">Reports</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+   <input type="hidden" id="genderformat"><input type="radio" name="format" id="excel" value="excel">&nbsp;<label class="form-control-static">Excel</label>&nbsp; <input type="radio" id="pdf" name="format" value="pdf">&nbsp;<label class="form-control-static">Pdf</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" class="text-info" id="genderDistribution"><i class="fa fa-male"></i><i class="fa fa-female"></i>&nbsp;&nbsp;Gender Distribution</></a>
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

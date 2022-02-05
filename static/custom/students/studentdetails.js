@@ -5,6 +5,7 @@ $(document).ready(function () {
             "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
         }
     });
+getDynamicUrl()
 formatDate();
 getBackStudent();
 feeChange();
@@ -47,7 +48,27 @@ viewDocs()
 deleteDocs()
     issueleaveouts()
     statistics()
+    getReportsModal()
+    genderdistribution();
+    $("#pdf").prop("checked", true);
+    $('#genderformat').val('pdf')
+    radiotoggle()
 })
+  function radiotoggle(){
+    $('input[type=radio][name="format"]').change(function() {
+
+        if($('#excel').is(':checked')){
+            $('#genderformat').val('excel')
+            console.log($('#genderformat').val())
+        }
+        else if($('#pdf').is(':checked')){
+            $('#genderformat').val('pdf')
+            console.log($('#genderformat').val())
+
+        }
+});
+}
+
 function getBackStudent(){
     if($('#studentCode').val()!==''){
         $.ajax({
@@ -298,6 +319,13 @@ function statistics() {
 
       });
 
+
+    })
+
+}
+function getReportsModal(){
+    $('#reports').click(function () {
+     $('#reportsModal').modal({backdrop: 'static', keyboard: false})
 
     })
 
@@ -1597,4 +1625,30 @@ function issueleaveouts(){
 
          }
     })
+}
+function getDynamicUrl() {
+   $.ajax({
+          type: 'GET',
+          url: 'dynamicaddress',
+      }).done(function (s) {
+       $('#context').val(s.url)
+      }).fail(function (xhr, error) {
+          bootbox.alert(xhr.responseText)
+
+      });
+}
+function genderdistribution(){
+    $('#genderDistribution').click(function () {
+
+         var context=$('#context').val()
+         var format = $('#genderformat').val()
+       if(format==='pdf') {
+           window.open(context + 'studentmanager/students/genderdistribution?format=' + format + '&name=gender_distribution', '_blank');
+       }
+       else if(format==='excel'){
+           window.open(context + 'studentmanager/students/genderdistribution?format=' + format + '&name=gender_distribution', '_self');
+       }
+
+         }
+    )
 }

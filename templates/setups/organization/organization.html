@@ -1,0 +1,128 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid">
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Organization Details</h4>
+
+
+                       <button type="button" id="saveOrganization" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+
+                       <button type="button" id="newOrganization" class="btn btn-outline-secondary mr-3 ml-2 pull-right">New</button>
+
+            </div>
+
+
+        <div class="container-fluid">
+             <form id="organization-form">
+                 {% csrf_token %}
+                 <input type="hidden" name="organization_code" id="organizationCode">
+<div class="row">
+
+  <div class="col-md-4 col-sm-11">
+    <div class="form-row mb-4">
+          <label class="col-md-4 control-label" for="select">Name</label>
+       <textarea name="organization_name" id="organizationName" class="form-control col-md-8" style="height: 4em"></textarea>
+    </div>
+    <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Physical Address</label>
+       <textarea name="physical_address" id="physicalAddress" class="form-control col-md-8" style="height: 5em"></textarea>
+
+    </div>
+
+    <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Postal Address</label>
+       <textarea name="postal_address" id="postalAddress" class="form-control col-md-8" style="height: 5em"></textarea>
+
+    </div>
+
+            <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Tel No.</label>
+                              <input name="organization_telno" id="telNo" class="form-control col-md-8">   </div>
+      <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Cell No.</label>
+                              <input name="organization_cellno" id="cellNo" class="form-control col-md-8">   </div>
+      <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Website</label>
+                              <input name="organization_websites" id="websites" class="form-control col-md-8">   </div>
+      <div class="form-row mb-4">
+     <label class="col-md-4 control-label" for="select">Email</label>
+                              <input name="organization_email" id="email" class="form-control col-md-8">   </div>
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+
+  <div class="form-row mb-4 form-check">
+   &nbsp;
+  </div>
+
+    <div class="form-row mb-2">
+                                       <input type="file" name="file" id="org-avatar" class="form-control col-md-10">
+
+    </div>
+
+  </div>
+
+  <div class="col-md-3 col-sm-11">
+  <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Mission</label>
+       <textarea name="organization_mission" id="mission" class="form-control col-md-8" style="height: 6em"></textarea>
+
+    </div>
+  <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Motto</label>
+       <textarea name="organization_motto" id="motto" class="form-control col-md-8" style="height: 6em"></textarea>
+
+    </div>
+
+        <div class="form-row mb-4">
+           <label class="col-md-4 control-label" for="select">Vision</label>
+       <textarea name="organization_vision" id="vision" class="form-control col-md-8" style="height: 6em"></textarea>
+
+    </div>
+
+
+
+
+  </div>
+
+</div>
+             </form>
+</div>
+
+        <div class="col-md-11 col-sm-11 ml-2 mt-2">
+
+            <div class="table-responsive">
+      <table class="table table-striped display responsive nowrap" id="orgTable">
+  <thead>
+    <tr>
+        <th></th>
+        <th></th>
+        <th scope="col">Name</th>
+        <th scope="col">Telephone</th>
+        <th scope="col">Cellphone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Website</th>
+
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+
+
+
+    </div>
+
+      <script src=" {% static 'custom/setups/organization/organization.js' %}"></script>
+
+
+
+{% endblock %}

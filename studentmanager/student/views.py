@@ -1,8 +1,9 @@
 from urllib.parse import urlsplit
 
+import requests
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.http import JsonResponse, request
+from django.http import JsonResponse, request, FileResponse, HttpResponseNotFound, HttpResponse
 from django.shortcuts import render
 from datetime import datetime
 
@@ -28,6 +29,7 @@ from setups.academics.studentstatus.models import StudentStatus
 from setups.academics.termdates.models import TermDates
 from setups.academics.years.models import Years
 from setups.accounts.standardcharges.models import StandardCharges
+from setups.organization.models import Organization
 from setups.system.invoicesequence.models import InvoiceSequence
 from setups.system.systemsequences.models import SystemSequences
 from studentmanager.parents.models import Parents
@@ -896,4 +898,39 @@ def getstatistics(request):
     response_data['docs'] = d
 
     print( m , f ,a,t, mo,y, d)
+    return JsonResponse(response_data)
+
+def genderdistribution(request):
+    report = request.GET['name']
+    format = request.GET['format']
+
+    org = Organization.objects.get(organization_name__isnull=False)
+    path=org.organization_logo.path
+
+    r = requests.get('http://localhost:8086/getReport', params={'report':report,'path':path,'format':format})
+
+    if r.status_code==200:
+        if format == 'pdf':
+            json = r.json()
+            file = json['path']
+            return FileResponse(open(file, 'rb'), content_type='application/pdf')
+        elif format == 'excel':
+            json = r.json()
+            file = json['path']
+            filename = report+".xlsx"
+            res = HttpResponse(
+            open(file, 'rb'),
+            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+            res['Content-Disposition'] = f'attachment; filename={filename}'
+            return res
+
+    else:
+        return HttpResponseNotFound("Error Generating Report")
+
+
+def dynamicaddress(request):
+    response_data = {}
+    response_data['url'] = urlsplit(
+        request.build_absolute_uri(None)).scheme + '://' + request.get_host()+'/'
     return JsonResponse(response_data)

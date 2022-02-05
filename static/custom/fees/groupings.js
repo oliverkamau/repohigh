@@ -54,7 +54,6 @@ function searchFeeCategory() {
                      gotoPage: params.page
                  }
              },
-
              processResults: function (data,params) {
                  params.page = params.page || 1;
                  console.log('data: ', data);

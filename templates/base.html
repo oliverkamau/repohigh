@@ -51,9 +51,13 @@
                     <li>
                         <a href="#setupsSubMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-cogs"></i></span>Configs</a>
                         <ul class="collapse list-unstyled" id="setupsSubMenu">
+                                    <li>
+                    <a href="{% url 'getorgpage' %}">Organization</a>
+                                </li>
                                  <li>
                     <a href="#">System Setups</a>
                                 </li>
+
                 <li>
                     <a href="{% url 'usersadmin' %}">Admin Setups</a>
                 </li>
@@ -85,7 +89,7 @@
               <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-graduation-cap"></i></span>Student Manager</a>
               <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li>
-                    <a href="">Student Enquiry</a>
+                    <a href="{% url 'genderdistribution' %}">Student Enquiry</a>
                 </li>
                 <li>
                     <a  href="{% url 'getparent' %}">Parents</a>
@@ -169,7 +173,7 @@
                     <a href="{% url 'feepage' %}">Recieve Fees</a>
                 </li>
                 <li>
-                    <a href="#">M~PESA Transactions</a>
+                    <a href="{% url 'showreceipt' %}">M~PESA Transactions</a>
                 </li>
                   <li>
                     <a href="#">Recieve External Funding</a>
