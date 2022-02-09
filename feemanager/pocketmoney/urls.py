@@ -9,6 +9,8 @@ urlpatterns = [
     path('getbalance/<int:id>', views.getbalance, name='getbalance'),
     path('getstudents', views.getstudents, name='getstudents'),
     path('getstudentgrid/<int:id>', views.getstudentgrid, name='getstudentgrid'),
-
+    path('pocketmoneyindividual', views.pocketmoneyindividual, name='pocketmoneyindividual'),
+    path('pocketmoneyclass', views.pocketmoneyclass, name='pocketmoneyclass'),
+    path('dynamicaddress', views.dynamicaddress, name='dynamicaddress'),
 
 ]

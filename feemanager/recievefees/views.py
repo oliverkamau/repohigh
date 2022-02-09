@@ -2,6 +2,7 @@ import decimal
 import mimetypes
 import os
 from datetime import datetime
+from urllib.parse import urlsplit
 
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse, HttpResponse, FileResponse, HttpResponseNotFound
@@ -119,6 +120,11 @@ def getfeestudentcharges(request,id):
 
     return JsonResponse(listsel, safe=False)
 
+def dynamicaddress(request):
+    response_data = {}
+    response_data['url'] = urlsplit(
+        request.build_absolute_uri(None)).scheme + '://' + request.get_host()+'/'
+    return JsonResponse(response_data)
 
 def searchmodes(request):
     if request.method == 'GET' and 'query' in request.GET:
@@ -455,7 +461,7 @@ def getfeepaymentstats(request):
 
 
 def showreceipt(request):
-    report = 'receipt'
+    report = request.GET['name']
     receiveid = request.GET['receive_id']
     payments = FeePayment.objects.get(pk=receiveid)
     tracker = BalanceTracker.objects.get(tracker_student=payments.payment_student.pk)

@@ -5,6 +5,7 @@ $(document).ready(function () {
             "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
         }
     });
+ getDynamicUrl()
 formatDate();
 getFeeDistribution();
 searchClass();
@@ -26,7 +27,10 @@ getBalances()
 removeTotals();
 newFee();
 radiotoggle();
-$('#btnReceipt').prop('disabled',true)
+changeCheck();
+$('#btnReceipt').prop('disabled',true);
+$('#showReceipt').val('false');
+console.log($('#showReceipt').val());
 })
 function getBalances(){
     $('#amountPaid').keyup(function () {
@@ -34,6 +38,34 @@ function getBalances(){
       $('#balance').val(amp.toFixed(2).toString())
     })
 
+}
+function changeCheck(){
+ $('#rcpt').change(function () {
+  if ($(this).prop("checked")) {
+
+        $('#showReceipt').val('true');
+         console.log($('#showReceipt').val());
+
+    }
+    else{
+
+        $('#showReceipt').val('false');
+           console.log($('#showReceipt').val());
+
+    }
+
+ })
+}
+function getDynamicUrl() {
+   $.ajax({
+          type: 'GET',
+          url: 'dynamicaddress',
+      }).done(function (s) {
+       $('#context').val(s.url)
+      }).fail(function (xhr, error) {
+          bootbox.alert(xhr.responseText)
+
+      });
 }
 function newFee() {
 $('#newFees').click(function () {
@@ -154,6 +186,7 @@ function saveFees(){
                 contentType: false
             }).done(function (s) {
                 if(s.success) {
+                  if($('#showReceipt').val()==='true'){
                     swal({
                         type: 'success',
                         title: 'Success',
@@ -164,6 +197,23 @@ function saveFees(){
                     $('#btnReceipt').prop('disabled',false)
                     getStatistics();
                     clearpage();
+                    var context = $('#context').val();
+                    var id = $('#receiveId').val()
+
+                    window.open(context + 'fees/recieve/showreceipt?receive_id='+id+'&name=receipt', '_blank');
+                    }
+                    else{
+                       swal({
+                        type: 'success',
+                        title: 'Success',
+                        text: s.success,
+                        showConfirmButton: true
+                    })
+                    $('#receiveId').val(s.code)
+                    $('#btnReceipt').prop('disabled',false)
+                    getStatistics();
+                    clearpage();
+                    }
                 }
                 else if(s.timeout){
                         swal({

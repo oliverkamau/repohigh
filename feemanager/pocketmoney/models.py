@@ -11,3 +11,4 @@ class PocketMoneyTrans(models.Model):
     pocketmoney_transtype = models.CharField(max_length=200)
     pocketmoney_student = models.ForeignKey(Students, on_delete=models.CASCADE)
     pocketmoney_addedby = models.ForeignKey(User, on_delete=models.CASCADE)
+    pocketmoney_balance = models.DecimalField(max_digits=13, decimal_places=2, default=0)

@@ -1,7 +1,8 @@
 import decimal
+from urllib.parse import urlsplit
 
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseNotFound, HttpResponse, FileResponse
 from django.shortcuts import render
 
 # Create your views here.
@@ -13,9 +14,11 @@ from feemanager.pocketmoneytracker.models import PocketMoneyTracker
 from localities.models import Select2Data
 from localities.serializers import Select2Serializer
 from setups.academics.classes.models import SchoolClasses
+from setups.organization.models import Organization
 from setups.system.systemsequences.models import SystemSequences
 from studentmanager.student.models import Students
 from useradmin.users.models import User
+import requests
 
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
@@ -82,6 +85,7 @@ def savepocketmoney(request):
     student = Students.objects.get(pk=stud)
 
     pockettracker = PocketMoneyTracker()
+    runningbalance = 0
     try:
         pockettracker = PocketMoneyTracker.objects.get(tracker_student=student)
 
@@ -91,6 +95,7 @@ def savepocketmoney(request):
           tracker.tracker_student = student
           tracker.tracker_date = date
           tracker.tracker_balance = decimal.Decimal(float(amount))
+          runningbalance=tracker.tracker_balance
           tracker.save()
           if SystemSequences.objects.filter(sequence_type='Invoice').exists():
             seq = SystemSequences.objects.get(sequence_type='Invoice')
@@ -115,6 +120,7 @@ def savepocketmoney(request):
         pockettracker.tracker_date=date
         if trans=='Deposit':
            pockettracker.tracker_balance = decimal.Decimal(float(amount))+pockettracker.tracker_balance
+           runningbalance=pockettracker.tracker_balance
 
         elif trans == 'Withdraw':
             if decimal.Decimal(float(amount)) > pockettracker.tracker_balance:
@@ -123,7 +129,7 @@ def savepocketmoney(request):
                     status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             else:
               pockettracker.tracker_balance = pockettracker.tracker_balance - decimal.Decimal(float(amount))
-
+              runningbalance = pockettracker.tracker_balance
 
         if SystemSequences.objects.filter(sequence_type='Invoice').exists():
             seq = SystemSequences.objects.get(sequence_type='Invoice')
@@ -141,14 +147,15 @@ def savepocketmoney(request):
             seq.sequence_nextseq = seq.sequence_nextseq + 1
             seq.save()
 
-        pockettrans = PocketMoneyTrans()
-        u = User.objects.get(username=request.user)
-        pockettrans.pocketmoney_addedby = u
-        pockettrans.pocketmoney_amount = decimal.Decimal(float(amount))
-        pockettrans.pocketmoney_date = date
-        pockettrans.pocketmoney_transtype = trans
-        pockettrans.pocketmoney_student = student
-        pockettrans.save()
+    pockettrans = PocketMoneyTrans()
+    u = User.objects.get(username=request.user)
+    pockettrans.pocketmoney_addedby = u
+    pockettrans.pocketmoney_amount = decimal.Decimal(float(amount))
+    pockettrans.pocketmoney_date = date
+    pockettrans.pocketmoney_transtype = trans
+    pockettrans.pocketmoney_student = student
+    pockettrans.pocketmoney_balance = runningbalance
+    pockettrans.save()
 
     return JsonResponse({'success': 'Record Updated Successfully'})
   else:
@@ -212,3 +219,75 @@ def getstudentgrid(request,id):
         response_data['balance'] = pockettracker.tracker_balance
 
     return JsonResponse(response_data)
+
+def pocketmoneyindividual(request):
+    report = request.GET['name']
+    format = request.GET['format']
+    id = request.GET['id']
+    dateFrom = request.GET['dateFrom']
+    dateTo = request.GET['dateTo']
+    print(dateTo)
+    org = Organization.objects.get(organization_name__isnull=False)
+    path=org.organization_logo.path
+
+    r = requests.get('http://localhost:8086/getReport', params={'report':report,'path':path,'format':format,'id':id,'dateFrom':dateFrom,'dateTo':dateTo})
+
+    if r.status_code==200:
+        if format == 'pdf':
+            json = r.json()
+            file = json['path']
+            return FileResponse(open(file, 'rb'), content_type='application/pdf')
+        elif format == 'excel':
+            json = r.json()
+            file = json['path']
+            filename = report+".xlsx"
+            res = HttpResponse(
+            open(file, 'rb'),
+            content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+            res['Content-Disposition'] = f'attachment; filename={filename}'
+            return res
+
+    else:
+        return HttpResponseNotFound("Error Generating Report")
+
+
+def dynamicaddress(request):
+    response_data = {}
+    response_data['url'] = urlsplit(
+        request.build_absolute_uri(None)).scheme + '://' + request.get_host()+'/'
+    return JsonResponse(response_data)
+
+
+def pocketmoneyclass(request):
+    report = request.GET['name']
+    format = request.GET['format']
+    id = request.GET['classes']
+    dateFrom = request.GET['dateFrom']
+    dateTo = request.GET['dateTo']
+    print(dateTo)
+    org = Organization.objects.get(organization_name__isnull=False)
+    path = org.organization_logo.path
+
+    r = requests.get('http://localhost:8086/getReport',
+                     params={'report': report, 'path': path, 'format': format, 'id': id, 'dateFrom': dateFrom,
+                             'dateTo': dateTo})
+
+    if r.status_code == 200:
+        if format == 'pdf':
+            json = r.json()
+            file = json['path']
+            return FileResponse(open(file, 'rb'), content_type='application/pdf')
+        elif format == 'excel':
+            json = r.json()
+            file = json['path']
+            filename = report + ".xlsx"
+            res = HttpResponse(
+                open(file, 'rb'),
+                content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            )
+            res['Content-Disposition'] = f'attachment; filename={filename}'
+            return res
+
+    else:
+        return HttpResponseNotFound("Error Generating Report")

@@ -4,6 +4,7 @@ $(document).ready(function () {
             "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
         }
     });
+    getDynamicUrl();
 setTransDefault()
 searchClass()
 searchStudent()
@@ -16,8 +17,87 @@ newRecord()
 getGridValues()
     editStudent()
     reportCheck()
+    searchReportStudent()
+    studentReportChange()
     $('.elementrep').hide()
+    radiotoggle()
 })
+function getDynamicUrl() {
+   $.ajax({
+          type: 'GET',
+          url: 'dynamicaddress',
+      }).done(function (s) {
+       $('#context').val(s.url)
+      }).fail(function (xhr, error) {
+          bootbox.alert(xhr.responseText)
+
+      });
+}
+ function radiotoggle(){
+    $('input[type=radio][name="format"]').change(function() {
+     if($('#dateFrom').val()===''){
+       swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Date From is required to run report!',
+         confirmButtonText: 'OK'
+      })
+     }
+     else if($('#dateFrom').val()===''){
+       swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Date To is required to run report!',
+         confirmButtonText: 'OK'
+      })
+     }else if($('#reportStudent').val()==='' && $('#reportClass').val()===''){
+       swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Student or Class is required to run report!',
+         confirmButtonText: 'OK'
+      })
+     }
+     else{
+        var context = $('#context').val()
+        var id = $('#reportStudent').val()
+        var classes = $('#reportClass').val()
+        var dateFrom = $('#dateFrom').val()
+        var dateTo = $('#dateTo').val()
+        if($('#excel').is(':checked')){
+
+           if($('#reportStudent').val()!=='' && $('#reportClass').val()!==''){
+           window.open(context + 'fees/pocket/pocketmoneyindividual?format=excel&name=pocketmoney_individual&id='+id+'&dateFrom='+dateFrom+'&dateTo='+dateTo, '_self');
+
+           }
+           else if($('#reportStudent').val()==='' && $('#reportClass').val()!==''){
+           window.open(context + 'fees/pocket/pocketmoneyclass?format=excel&name=pocketmoney_class&classes='+classes+'&dateFrom='+dateFrom+'&dateTo='+dateTo, '_self');
+
+           }
+           else{
+           window.open(context + 'fees/pocket/pocketmoneyindividual?format=excel&name=pocketmoney_individual&id='+id+'&dateFrom='+dateFrom+'&dateTo='+dateTo, '_self');
+
+           }
+
+        }
+        else if($('#pdf').is(':checked')){
+           if($('#reportStudent').val()!=='' && $('#reportClass').val()!==''){
+           window.open(context + 'fees/pocket/pocketmoneyindividual?format=pdf&name=pocketmoney_individual&id='+id+'&dateFrom='+dateFrom+'&dateTo='+dateTo, '_blank');
+
+           }
+           else if($('#reportStudent').val()==='' && $('#reportClass').val()!==''){
+            window.open(context + 'fees/pocket/pocketmoneyclass?format=pdf&name=pocketmoney_class&classes='+classes+'&dateFrom='+dateFrom+'&dateTo='+dateTo, '_blank');
+
+           }
+           else{
+           window.open(context + 'fees/pocket/pocketmoneyindividual?format=pdf&name=pocketmoney_individual&id='+id+'&dateFrom='+dateFrom+'&dateTo='+dateTo, '_blank');
+
+           }
+
+        }
+        }
+});
+}
 function newRecord() {
 $('#newPocketMoney').click(function () {
 clearPage()
@@ -83,7 +163,7 @@ function searchClass() {
         $('#class_frm').select2({
             placeholder: 'Class',
             allowClear: true,
-            width: '66%',
+            width: '75%',
             ajax: {
                 delay: 250,
                 url: 'searchclass',
@@ -110,6 +190,36 @@ function searchClass() {
 function searchStudent() {
 
         $('#student_frm').select2({
+            placeholder: 'Students',
+            allowClear: true,
+            width: '75%',
+            ajax: {
+                delay: 250,
+                url: 'searchstudents',
+                data: function (params) {
+                    console.log("AA", params);
+                    return {
+                        query: params.term,
+                        gotoPage: params.page
+                    }
+                },
+
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log('data: ', data);
+                    return {
+                        results: data.results
+                    };
+                }
+
+            }
+        })
+
+}
+
+function searchReportStudent() {
+
+        $('#student_report_frm').select2({
             placeholder: 'Students',
             allowClear: true,
             width: '75%',
@@ -187,6 +297,17 @@ function studentChange() {
     });
     $("#student_frm").on("select2:unselecting", function(e) {
     $('#pocketMoneyStudent').val('')
+
+ });
+}
+function studentReportChange() {
+    $('#student_report_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#reportStudent').val(data.id)
+        getBalance(data.id)
+    });
+    $("#student_report_frm").on("select2:unselecting", function(e) {
+    $('#reportStudent').val('')
 
  });
 }

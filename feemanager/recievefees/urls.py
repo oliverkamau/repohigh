@@ -17,5 +17,7 @@ urlpatterns = [
     path('recieveautomaticfees', views.recieveautomaticfees, name='recieveautomaticfees'),
     path('getfeepaymentstats', views.getfeepaymentstats, name='getfeepaymentstats'),
     path('showreceipt', views.showreceipt, name='showreceipt'),
+    path('dynamicaddress', views.dynamicaddress, name='dynamicaddress'),
+
 
 ]

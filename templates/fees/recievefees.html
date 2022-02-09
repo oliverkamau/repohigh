@@ -22,7 +22,10 @@
 
   <div class="col-md-5 col-sm-11">
     <div class="form-row mb-4">
-         <input type="hidden" name="exam_process_student" id="studentCode">
+<!--         <input type="hidden" name="exam_process_student" id="studentCode">-->
+                 <input type="hidden" id="context">
+
+
                             <label class="control-label col-md-3" for="select">Class</label>
         <input type="hidden" name="fees_class" id="feesClass">
                              <select id="class_frm" type="text" class="form-control col-md-9"></select>
@@ -130,11 +133,14 @@
   </div>
      <div class="col-md-5 col-sm-11 mt-1">
 
-           <div class="form-row mb-3">
-                <form action="{% url 'showreceipt' %}">
+           <div class="form-row mb-3 ml-1">
+<!--                <form action="{% url 'showreceipt' %}">-->
    <input type="hidden" name="receive_id" id="receiveId">
-    <button id="btnReceipt" class="btn btn-outline-secondary" type="submit">Show Receipt</button>
-                </form>
+<!--    <button id="btnReceipt" class="btn btn-outline-secondary" type="submit">Show Receipt</button>-->
+<!--                </form>-->
+                <input type="checkbox" class="form-check-input" id="rcpt">
+               <input type="hidden" id="showReceipt">
+    <label class="form-check-label" for="assign">Show Receipt</label>
            </div>
 
 

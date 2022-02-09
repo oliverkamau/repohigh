@@ -22,6 +22,7 @@
 <div class="row">
 
   <div class="col-md-5 col-sm-11">
+      <input type="hidden" id="context">
     <div class="form-row mb-4 form-check">
                                     <label class="control-label col-md-3" for="select">&nbsp;</label>
 
@@ -62,11 +63,16 @@
       <div class="col-md-4 col-sm-11" id="reportDiv">
     <div class="form-row mb-4 form-check">
     <input type="checkbox" class="form-check-input" id="reports">
-    <label class="form-check-label" for="assign" id="transactionType">Reports</label>
+    <label class="form-check-label" for="assign" id="transactioType">Reports</label>
   </div>
   <div class="form-row mb-4 elementrep">
            <label class="col-md-8 control-label" for="select">Report Dates</label>
   </div>
+            <div class="form-row mb-4 elementrep">
+                            <label class="control-label col-md-3" for="select">Student</label>
+        <input type="hidden" name="report_student" id="reportStudent">
+                             <select id="student_report_frm" class="form-control col-md-9"></select>
+    </div>
     <div class="form-row mb-4 elementrep">
                             <label class="control-label col-md-3" for="select">Class</label>
         <input type="hidden" name="report_class" id="reportClass">
@@ -74,12 +80,25 @@
     </div>
     <div class="form-row mb-4 elementrep">
           <label class="col-md-3 control-label" for="select">Date From</label>
-                            <input name="date_from" id="dateFrom" type="date" class="form-control col-md-8">
+                            <input name="date_from" id="dateFrom" type="date" class="form-control col-md-9">
     </div>
     <div class="form-row mb-4 elementrep">
           <label class="col-md-3 control-label" for="select">Date To</label>
-                            <input name="date_to" id="dateTo" type="date" class="form-control col-md-8">
+                            <input name="date_to" id="dateTo" type="date" class="form-control col-md-9">
     </div>
+              <div class="form-row mb-4 elementrep">
+<div class="form-check form-check-inline ml-2">
+  <input class="form-check-input" type="radio" name="format" id="excel" value="excel">
+  <label class="form-check-label" for="excel">Excel</label>
+</div>
+<!--                  <input type="hidden" id="genderformat"><input type="radio" name="format" id="excel" value="excel">&nbsp;<label for="excel" class="control-label">Excel</label>&nbsp; <input type="radio" id="pdf" name="format" value="pdf" style=" flex: 1 0 auto;display: flex;flex-direction: column;align-items: center;">&nbsp;<label for="pdf" class="form-control-static">Pdf</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Generate Report</button>-->
+                  <div class="form-check form-check-inline ml-4">
+  <input class="form-check-input" type="radio" name="format" id="pdf" value="pdf">
+  <label class="form-check-label" for="pdf">Pdf</label>
+</div>
+
+              </div>
+
 {#    <div class="form-row mb-3">#}
 {#     <label class="col-md-3 control-label" for="select">Adm No.</label>#}
 {#                            <input type="text" name="adm_no" id="admNo" class="form-control col-md-8">    </div>#}
