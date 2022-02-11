@@ -28,8 +28,9 @@ removeTotals();
 newFee();
 radiotoggle();
 changeCheck();
+$('#showReceipt').val('true');
+$('#rcpt').prop('checked',true)
 $('#btnReceipt').prop('disabled',true);
-$('#showReceipt').val('false');
 console.log($('#showReceipt').val());
 })
 function getBalances(){

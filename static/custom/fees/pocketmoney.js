@@ -21,6 +21,7 @@ getGridValues()
     studentReportChange()
     $('.elementrep').hide()
     radiotoggle()
+    generateReports()
 })
 function getDynamicUrl() {
    $.ajax({
@@ -33,9 +34,11 @@ function getDynamicUrl() {
 
       });
 }
- function radiotoggle(){
-    $('input[type=radio][name="format"]').change(function() {
-     if($('#dateFrom').val()===''){
+function generateReports(){
+$('#generateButton').click(function(){
+
+ var format = $('#format').val()
+   if($('#dateFrom').val()===''){
        swal({
           title: 'Alert!',
           type: 'info',
@@ -64,7 +67,7 @@ function getDynamicUrl() {
         var classes = $('#reportClass').val()
         var dateFrom = $('#dateFrom').val()
         var dateTo = $('#dateTo').val()
-        if($('#excel').is(':checked')){
+        if(format==='excel'){
 
            if($('#reportStudent').val()!=='' && $('#reportClass').val()!==''){
            window.open(context + 'fees/pocket/pocketmoneyindividual?format=excel&name=pocketmoney_individual&id='+id+'&dateFrom='+dateFrom+'&dateTo='+dateTo, '_self');
@@ -80,7 +83,8 @@ function getDynamicUrl() {
            }
 
         }
-        else if($('#pdf').is(':checked')){
+        else if(format==='pdf'){
+
            if($('#reportStudent').val()!=='' && $('#reportClass').val()!==''){
            window.open(context + 'fees/pocket/pocketmoneyindividual?format=pdf&name=pocketmoney_individual&id='+id+'&dateFrom='+dateFrom+'&dateTo='+dateTo, '_blank');
 
@@ -95,9 +99,31 @@ function getDynamicUrl() {
            }
 
         }
+        else{
+         swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Select a report Format to continue!!',
+         confirmButtonText: 'OK'
+      })
         }
-});
+        }
+
+})
+
+
 }
+ function radiotoggle(){
+    $('input[type=radio][name="format"]').change(function() {
+        if($('#excel').is(':checked')){
+             $('#format').val('excel')
+        }
+        else if($('#pdf').is(':checked')){
+             $('#format').val('pdf')
+
+        }
+        })
+        }
 function newRecord() {
 $('#newPocketMoney').click(function () {
 clearPage()

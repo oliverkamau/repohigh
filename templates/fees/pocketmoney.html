@@ -23,6 +23,7 @@
 
   <div class="col-md-5 col-sm-11">
       <input type="hidden" id="context">
+      <input type="hidden" id="format">
     <div class="form-row mb-4 form-check">
                                     <label class="control-label col-md-3" for="select">&nbsp;</label>
 
@@ -92,11 +93,11 @@
   <label class="form-check-label" for="excel">Excel</label>
 </div>
 <!--                  <input type="hidden" id="genderformat"><input type="radio" name="format" id="excel" value="excel">&nbsp;<label for="excel" class="control-label">Excel</label>&nbsp; <input type="radio" id="pdf" name="format" value="pdf" style=" flex: 1 0 auto;display: flex;flex-direction: column;align-items: center;">&nbsp;<label for="pdf" class="form-control-static">Pdf</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Generate Report</button>-->
-                  <div class="form-check form-check-inline ml-4">
+                  <div class="form-check form-check-inline ml-4 mr-4">
   <input class="form-check-input" type="radio" name="format" id="pdf" value="pdf">
   <label class="form-check-label" for="pdf">Pdf</label>
 </div>
-
+<button type="button" class="btn btn-outline-secondary ml-4 pull-right" id="generateButton">Generate Report</button>
               </div>
 
 {#    <div class="form-row mb-3">#}

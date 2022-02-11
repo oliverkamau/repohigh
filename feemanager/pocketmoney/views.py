@@ -15,6 +15,7 @@ from localities.models import Select2Data
 from localities.serializers import Select2Serializer
 from setups.academics.classes.models import SchoolClasses
 from setups.organization.models import Organization
+from setups.system.systemparameters.models import SystemParameters
 from setups.system.systemsequences.models import SystemSequences
 from studentmanager.student.models import Students
 from useradmin.users.models import User
@@ -229,8 +230,9 @@ def pocketmoneyindividual(request):
     print(dateTo)
     org = Organization.objects.get(organization_name__isnull=False)
     path=org.organization_logo.path
-
-    r = requests.get('http://localhost:8086/getReport', params={'report':report,'path':path,'format':format,'id':id,'dateFrom':dateFrom,'dateTo':dateTo})
+    parameter = SystemParameters.objects.get(parameter_name="REPORT_PATH")
+    reportPath = parameter.parameter_value + format + "\\"
+    r = requests.get('http://localhost:8086/getReport', params={'report':report,'path':path,'format':format,'id':id,'dateFrom':dateFrom,'dateTo':dateTo,'reportPath':reportPath})
 
     if r.status_code==200:
         if format == 'pdf':
@@ -268,10 +270,11 @@ def pocketmoneyclass(request):
     print(dateTo)
     org = Organization.objects.get(organization_name__isnull=False)
     path = org.organization_logo.path
-
+    parameter = SystemParameters.objects.get(parameter_name="REPORT_PATH")
+    reportPath = parameter.parameter_value + format + "\\"
     r = requests.get('http://localhost:8086/getReport',
                      params={'report': report, 'path': path, 'format': format, 'id': id, 'dateFrom': dateFrom,
-                             'dateTo': dateTo})
+                             'dateTo': dateTo,'reportPath':reportPath})
 
     if r.status_code == 200:
         if format == 'pdf':

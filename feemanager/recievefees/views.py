@@ -464,6 +464,7 @@ def showreceipt(request):
     report = request.GET['name']
     receiveid = request.GET['receive_id']
     payments = FeePayment.objects.get(pk=receiveid)
+    format="pdf"
     tracker = BalanceTracker.objects.get(tracker_student=payments.payment_student.pk)
     balance = 0
     details = BalanceTrackerDetails.objects.filter(trackerdetails_tracker=tracker)
@@ -472,8 +473,9 @@ def showreceipt(request):
     org = Organization.objects.get(organization_name__isnull=False)
     path=org.organization_logo.path
     paymentdate = payments.payment_date.strftime("%d/%m/%Y")
-
-    r = requests.get('http://localhost:8086/getReport', params={'payment':receiveid,'report':report,'balance':balance,'path':path,'paymentdate':paymentdate})
+    parameter = SystemParameters.objects.get(parameter_name="REPORT_PATH")
+    reportPath =parameter.parameter_value+format+"\\"
+    r = requests.get('http://localhost:8086/getReport', params={'payment':receiveid,'report':report,'balance':balance,'path':path,'paymentdate':paymentdate,'reportPath':reportPath})
     if r.status_code==200:
       # name = 'receipt.pdf'
       json = r.json()
