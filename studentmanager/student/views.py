@@ -31,6 +31,7 @@ from setups.academics.years.models import Years
 from setups.accounts.standardcharges.models import StandardCharges
 from setups.organization.models import Organization
 from setups.system.invoicesequence.models import InvoiceSequence
+from setups.system.systemparameters.models import SystemParameters
 from setups.system.systemsequences.models import SystemSequences
 from studentmanager.parents.models import Parents
 from localities.models import Select2Data, Countries, Counties, SubCounty, Location, SubLocation, Village
@@ -906,8 +907,9 @@ def genderdistribution(request):
 
     org = Organization.objects.get(organization_name__isnull=False)
     path=org.organization_logo.path
-
-    r = requests.get('http://localhost:8086/getReport', params={'report':report,'path':path,'format':format})
+    parameter = SystemParameters.objects.get(parameter_name="REPORT_PATH")
+    reportPath = parameter.parameter_value + format + "\\"
+    r = requests.get('http://localhost:8086/getReport', params={'report':report,'path':path,'format':format,'reportPath':reportPath})
 
     if r.status_code==200:
         if format == 'pdf':
