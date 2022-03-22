@@ -20,8 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/static/custom/timetabling/daysetups.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/custom/timetabling/lessonallocation.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/custom/timetabling/lessonsetups.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/timetabling/daysetups.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/timetabling/lessonallocation.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/timetabling/lessonsetups.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timetabling/daysetups/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timetabling/daysetups/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timetabling/lessonallocation/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timetabling/lessonallocation/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timetabling/lessonsetups/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timetabling/lessonsetups/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/timetabling/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/studentmanager/student/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentmanager/student/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schoolsys/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/schoolsys/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/schoolsys/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +87,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="Python Script" />
       </list>
     </option>

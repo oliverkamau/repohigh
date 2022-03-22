@@ -163,6 +163,22 @@
                 </li>
               </ul>
 	          </li>
+
+                        <li>
+              <a href="#timeTableSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-line-chart"></i></span>Timetable Manager</a>
+              <ul class="collapse list-unstyled" id="timeTableSubmenu">
+                <li>
+                    <a href="{% url 'daysetups' %}">Days Setup</a>
+                </li>
+                <li>
+                    <a href="{% url 'lessonsetup' %}">Lessons Setup</a>
+                </li>
+                <li>
+                    <a href="{% url 'lessonallocation' %}">Lessons Allocation</a>
+                </li>
+              </ul>
+	          </li>
+
                 <li>
               <a href="#feemanagerSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><span><i class="fa fa-money"></i></span>Fee Manager</a>
               <ul class="collapse list-unstyled" id="feemanagerSubmenu">

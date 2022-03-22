@@ -1,0 +1,125 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="row container-fluid" >
+     <div class="col-md-11 col-sm-11 mx-3 mb-4">
+
+              <h4 class="text-muted">Lesson Allocation</h4>
+
+
+                       <button type="button" id="saveTimetable" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+
+
+                       <button type="button" id="newTimetable" class="btn btn-outline-secondary mr-3 ml-2 pull-right">New</button>
+
+            </div>
+
+
+        <div class="container-fluid" id="colorForm">
+             <form id="timetable-form">
+                 <input type="hidden" name="timetable_code" id="timetableCode">
+<div class="row mx-1">
+
+  <div class="col-md-5 col-sm-11 mr-1 ml-1">
+
+      <div class="form-row mb-4">
+           <label class="col-md-2 control-label" for="select">Day</label>
+                               <input type="hidden" name="timetable_day" id="ttDay">
+
+                             <select id="day_frm" class="form-control col-md-9"></select>
+            </div>
+
+         <div class="form-row mb-4">
+           <label class="col-md-2 control-label" for="select">Class</label>
+                               <input type="hidden" name="timetable_class" id="ttClass">
+
+                             <select id="class_frm" class="form-control col-md-9"></select>
+            </div>
+
+{% csrf_token %}
+
+ <div class="form-row mb-4">
+           <label class="col-md-2 control-label" for="select">Lesson</label>
+                               <input type="hidden" name="timetable_lesson" id="ttLesson">
+
+                             <select id="lesson_frm" class="form-control col-md-9"></select>
+            </div>
+
+
+  </div>
+
+
+
+
+      <div class="col-md-5 col-sm-11" >
+    <div class="form-row mb-4">
+        <input type="hidden" name="timetable_term" id="termNumber">
+                            <label class="control-label col-md-2" for="select">Term</label>
+                              <h5 class="col-md-5 control-label text-muted" id="term"></h5>
+
+    </div>
+
+
+
+         <div class="form-row mb-4">
+           <label class="col-md-2 control-label" for="select">Subject</label>
+                               <input type="hidden" name="timetable_subject" id="ttSubject">
+
+                             <select id="subject_frm" class="form-control col-md-9"></select>
+            </div>
+
+         <div class="form-row mb-5">
+           <label class="col-md-2 control-label" for="select">Teacher</label>
+                               <input type="hidden" name="timetable_teacher" id="ttTeacher">
+
+                             <input type="text" id="ttTeacherName" class="form-control col-md-8">
+            </div>
+
+           <div class="form-group row mb-4 mt-3">
+
+                        <div class="col-md-8 col-sm-11">
+                          <input type="checkbox"  id="showTimetable">
+                                      <label for="unit-id" class="ml-3 control-label">Show Timetable</label>
+
+                        </div>
+
+                </div>
+
+  </div>
+
+</div>
+             </form>
+</div>
+
+        <div class="col-md-11 col-sm-11 ml-2 mt-2">
+
+            <div class="table-responsive">
+      <table class="table table-striped display responsive nowrap" id="timetableTable">
+  <thead>
+    <tr>
+                <th></th>
+        <th></th>
+      <th scope="col">Lesson</th>
+      <th scope="col">Subject</th>
+      <th scope="col">Day</th>
+      <th scope="col">Class</th>
+      <th scope="col">Term</th>
+      <th scope="col">Teacher</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+    </div>
+
+        </div>
+    </div>
+
+
+      <script src=" {% static 'custom/timetabling/lessonallocation.js' %}"></script>
+
+
+
+{% endblock %}
