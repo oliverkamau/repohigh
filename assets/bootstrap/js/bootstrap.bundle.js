@@ -4142,13 +4142,13 @@ var Dropdown = function ($$$1) {
         };
 
         if (!context) {
-          continue;
+          break;
         }
 
         var dropdownMenu = context._menu;
 
         if (!$$$1(parent).hasClass(ClassName.SHOW)) {
-          continue;
+          break;
         }
 
         if (event && (event.type === 'click' && /input|textarea/i.test(event.target.tagName) || event.type === 'keyup' && event.which === TAB_KEYCODE) && $$$1.contains(parent, event.target)) {

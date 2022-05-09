@@ -7,9 +7,12 @@
      <div class="col-md-11 col-sm-11 mx-3 mb-4">
 
               <h4 class="text-muted">Lesson Allocation</h4>
+<!--                       <a href="{% url 'generateExcel' %}" id="generateTimetable" class="btn btn-outline-info mr-3 ml-2 pull-right">Timetable</a>-->
 
 
-                       <button type="button" id="saveTimetable" class="btn btn-outline-primary mr-3 ml-2 pull-right">Save</button>
+                       <button type="button" id="saveTimetable" class="btn btn-outline-primary mr-3 ml-2 pull-right">Generate</button>
+                       <button  type="button" id="generateExcel" class="btn btn-outline-info mr-3 ml-2 pull-right">View</button>
+
 
 
                        <button type="button" id="newTimetable" class="btn btn-outline-secondary mr-3 ml-2 pull-right">New</button>
@@ -20,6 +23,7 @@
         <div class="container-fluid" id="colorForm">
              <form id="timetable-form">
                  <input type="hidden" name="timetable_code" id="timetableCode">
+                 <input type="hidden" name="context" id="context">
 <div class="row mx-1">
 
   <div class="col-md-5 col-sm-11 mr-1 ml-1">
@@ -114,12 +118,58 @@
 </table>
     </div>
 
+
+
+<div class="modal fade" id="classModal" role="dialog" aria-labelledby="classModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mb-1" id="classModalTitle">Select Class</h5>
+        <button type="button" class="close mr-1 mb-2 btn btn-outline-light" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+         <form id="tt-form">
+                {% csrf_token %}
+                         <input type="hidden" id="term-id" name="term_code" required/>
+
+                            <div class="form-group row mb-3">
+                          <label for="unit-id" class="col-md-2 ml-3 col-sm-11 control-label">Class</label>
+
+                        <div class="col-md-8 col-sm-11">
+                         <input type="hidden" id="class-id" name="class_code" required/>
+                          <input type="hidden" id="class-name">
+                         <select id="class-frm" class="form-control"
+                     >
+
+
+        </select>
+                        </div>
+                </div>
+
+
+            </form>
+      </div>
+      <div class="modal-footer">
+        <input type="button" id="generateTT" class="btn btn-outline-primary" value="Generate">
+
+        <button type="button" class="btn btn-outline-default-" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
         </div>
     </div>
 
 
       <script src=" {% static 'custom/timetabling/lessonallocation.js' %}"></script>
-
+  <script type="text/javascript">
+    var spinner ="";
+</script>
 
 
 {% endblock %}

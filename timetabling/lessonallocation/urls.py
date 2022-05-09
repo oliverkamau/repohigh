@@ -13,6 +13,10 @@ urlpatterns = [
 	path(r'getcurrentterm', views.getcurrentterm, name="getcurrentterm"),
 	path(r'getTimetable', views.getTimetable, name="getTimetable"),
 	path(r'createtimetable', views.createtimetable, name="createtimetable"),
+	path(r'automatictimetable', views.automatictimetable, name="automatictimetable"),
+	path(r'generateExcel', views.generateExcel, name="generateExcel"),
+	path(r'dynamicspinneraddress', views.dynamicspinneraddress, name="dynamicspinneraddress"),
+	path(r'dynamicaddress', views.dynamicaddress, name="dynamicaddress"),
 	path(r'updatetimetable/<int:id>', views.updatetimetable, name="updatetimetable"),
 	path(r'getteacher/<int:classcodes>/<int:subject>', views.getteacher, name="getteacher"),
 

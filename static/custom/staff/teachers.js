@@ -53,6 +53,7 @@ function classChange() {
  });
 }
 function clearpage(){
+
     $('#teacher-form')[0].reset();
     $('#responsibility_frm').empty();
     $('#department_frm').empty();
@@ -118,6 +119,9 @@ function getSubjects() {
         $('#unAssignedTbl').DataTable({
                         'dom': 't',
                          scrollY: "400px",
+                         "scrollCollapse": true,
+                          "paging": false
+
         });
     }).fail(function (xhr, error) {
        bootbox.alert(xhr.responseText);
@@ -312,7 +316,9 @@ function getSubjectsAssigned() {
         }
         $('#assignedTbl').DataTable({
             'dom': 't',
-             scrollY: "400px"
+             scrollY: "400px",
+             "scrollCollapse": true,
+             "paging": false
         });
     }).fail(function (xhr, error) {
        bootbox.alert(xhr.responseText);

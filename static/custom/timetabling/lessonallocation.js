@@ -4,7 +4,12 @@ $(document).ready(function () {
          "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
        }
    });
+   getDynamicUrl();
+   getDynamicSpinnerUrl();
 searchClass();
+classModal();
+searchTTClass();
+classTTChange();
 classChange();
 searchDays();
 dayChange();
@@ -18,12 +23,38 @@ getCurrentTerm();
 newTimeTable();
 saveTimetable();
 getTimetable();
+generateReports();
+
  })
 
 function newTimeTable(){
 $('#newTimetable').click(function(){
 clearData();
 })
+}
+function getDynamicSpinnerUrl() {
+   $.ajax({
+          type: 'GET',
+          url: 'dynamicspinneraddress',
+      }).done(function (s) {
+          spinner=s.url
+      }).fail(function (xhr, error) {
+          bootbox.alert(xhr.responseText)
+
+      });
+}
+function classModal() {
+    $('#generateExcel').click(function () {
+        clearData()
+        $('#classModal').modal({backdrop: 'static', keyboard: false})
+    })
+
+}
+function clearClass(){
+      $('#class-frm').empty();
+      $('#class-name').val('');
+      $('#class-id').val('');
+
 }
 function getCurrentTerm(){
 $.ajax({
@@ -32,12 +63,51 @@ $.ajax({
 		}).done(function (s) {
             $('#term').text(s.termNumber)
             $('#termNumber').val(s.termCode)
+            $('#term-id').val(s.termCode)
 
 		}).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
 		})
 
 }
+function getDynamicUrl() {
+   $.ajax({
+          type: 'GET',
+          url: 'dynamicaddress',
+      }).done(function (s) {
+       $('#context').val(s.url)
+      }).fail(function (xhr, error) {
+          bootbox.alert(xhr.responseText)
+
+      });
+}
+
+function generateReports(){
+$('#generateTT').click(function(){
+
+
+   if($('#class-id').val()===''){
+       swal({
+          title: 'Alert!',
+          type: 'info',
+          text: 'Select a Class to generate the timetable!',
+         confirmButtonText: 'OK'
+      })
+     }
+     else{
+        var context = $('#context').val()
+        var class_code = $('#class-id').val()
+        var term_code = $('#term-id').val()
+        window.open(context + 'timetabling/allocation/generateExcel?class_code='+class_code+'&term_code='+term_code, '_self');
+        }
+
+     $('#classModal').modal('hide')
+
+})
+
+
+}
+
 function deleteLesson() {
     $('#lessonTable').on('click','.btn-deleteLesson',function (s) {
         var data = $(this).closest('tr').find('#delete-lesson').val();
@@ -74,6 +144,19 @@ function classChange() {
     $('#ttClass').val('')
  });
 }
+function classTTChange() {
+    $('#class-frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#class-id').val(data.id)
+        $('#class-name').val(data.text)
+
+    });
+    $("#class-frm").on("select2:unselecting", function(e) {
+    $('#class-id').val('')
+    $('#class-name').val('')
+
+ });
+}
 function searchClass() {
         $('#class_frm').select2({
             placeholder: 'Class',
@@ -102,7 +185,34 @@ function searchClass() {
         })
 
 }
+function searchTTClass() {
+        $('#class-frm').select2({
+            placeholder: 'Class',
+            allowClear: true,
+            width:'70%',
+            ajax: {
+                delay: 250,
+                url: 'searchclasses',
+                data: function (params) {
+                    console.log("AA", params);
+                    return {
+                        query: params.term,
+                        gotoPage: params.page
+                    }
+                },
 
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log('data: ', data);
+                    return {
+                        results: data.results
+                    };
+                }
+
+            }
+        })
+
+}
 function dayChange() {
     $('#day_frm').on('select2:select', function (e) {
         var data = e.params.data;
@@ -279,67 +389,75 @@ function searchTeachers() {
 
 function saveTimetable(){
     $('#saveTimetable').click(function () {
-     if($('#ttDay').val()==='') {
-             swal({
-                 title: 'Alert!',
-                 type: 'info',
-                 text: 'Provide a Day for timetable setups!',
-                 confirmButtonText: 'OK'
-             })
-         }
-         else if($('#ttClass').val()===''){
-          swal({
-                 title: 'Alert!',
-                 type: 'info',
-                 text: 'Provide a Class for timetable setups!',
-                 confirmButtonText: 'OK'
-             })
-
-         }
-         else if($('#ttLesson').val()===''){
-          swal({
-                 title: 'Alert!',
-                 type: 'info',
-                 text: 'Provide a Lesson for timetable setups!',
-                 confirmButtonText: 'OK'
-             })
-
-         }
-
-         else if($('#ttSubject').val()===''){
-
-          swal({
-                 title: 'Alert!',
-                 type: 'info',
-                 text: 'Provide a Subject for timetable setups!',
-                 confirmButtonText: 'OK'
-             })
-         }
-              else if($('#ttTeacher').val()===''){
-
-          swal({
-                 title: 'Alert!',
-                 type: 'info',
-                 text: 'This subject has no teacher assigned to it in the selected class!',
-                 confirmButtonText: 'OK'
-             })
-         }
-         else{
-
-
-        var data=$('#timetable-form').serialize();
-        var url = '';
-        if($('#timetableCode').val()===''){
-          url = 'createtimetable'
-        }
-        else{
-            url = 'updatetimetable/'+$('#timetableCode').val()
-        }
+     swal({
+              title: "Generating Timetable Please Wait...",
+              imageUrl: spinner,
+              showConfirmButton: false,
+              allowOutsideClick: false
+            });
+//     if($('#ttDay').val()==='') {
+//             swal({
+//                 title: 'Alert!',
+//                 type: 'info',
+//                 text: 'Provide a Day for timetable setups!',
+//                 confirmButtonText: 'OK'
+//             })
+//         }
+//         else if($('#ttClass').val()===''){
+//          swal({
+//                 title: 'Alert!',
+//                 type: 'info',
+//                 text: 'Provide a Class for timetable setups!',
+//                 confirmButtonText: 'OK'
+//             })
+//
+//         }
+//         else if($('#ttLesson').val()===''){
+//          swal({
+//                 title: 'Alert!',
+//                 type: 'info',
+//                 text: 'Provide a Lesson for timetable setups!',
+//                 confirmButtonText: 'OK'
+//             })
+//
+//         }
+//
+//         else if($('#ttSubject').val()===''){
+//
+//          swal({
+//                 title: 'Alert!',
+//                 type: 'info',
+//                 text: 'Provide a Subject for timetable setups!',
+//                 confirmButtonText: 'OK'
+//             })
+//         }
+//              else if($('#ttTeacher').val()===''){
+//
+//          swal({
+//                 title: 'Alert!',
+//                 type: 'info',
+//                 text: 'This subject has no teacher assigned to it in the selected class!',
+//                 confirmButtonText: 'OK'
+//             })
+//         }
+//         else{
+//
+//
+//        var data=$('#timetable-form').serialize();
+//        var url = '';
+//        if($('#timetableCode').val()===''){
+//          url = 'createtimetable'
+//        }
+//        else{
+//            url = 'updatetimetable/'+$('#timetableCode').val()
+//        }
 		$.ajax({
 			type: 'POST',
-			url: url,
-            data: data
+			url: 'automatictimetable',
+//            data: data
+
 		}).done(function (s) {
+		swal.close()
 		     swal({
 
              type: 'success',
@@ -348,13 +466,13 @@ function saveTimetable(){
              showConfirmButton: true
 
                         })
-             clearData()
+//             clearData()
              getTimetable()
             $('#lessonModal').modal('hide')
 		}).fail(function (xhr, error) {
                 bootbox.alert(xhr.responseText)
 		})
-   }
+ //  }
 
 	})
 }
@@ -438,3 +556,4 @@ function getTimetable() {
     });
 
 }
+

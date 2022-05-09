@@ -97,7 +97,7 @@ function global:deactivate ([switch]$NonDestructive) {
     }
 
     # Just remove the _PYTHON_VENV_PROMPT_PREFIX altogether:
-    if (Get-Variable -Name "_PYTHON_VENV_PROMPT_PREFIX" -ErrorAction SilentlyContinue) {
+    if (Get-Variable -Name "_PYTHON_VENV_PROMPT_PREFIX" -ErrorAction Silentlybreak) {
         Remove-Variable -Name _PYTHON_VENV_PROMPT_PREFIX -Scope Global -Force
     }
 
@@ -129,8 +129,8 @@ function Get-PyVenvConfig(
 ) {
     Write-Verbose "Given ConfigDir=$ConfigDir, obtain values in pyvenv.cfg"
 
-    # Ensure the file exists, and issue a warning if it doesn't (but still allow the function to continue).
-    $pyvenvConfigPath = Join-Path -Resolve -Path $ConfigDir -ChildPath 'pyvenv.cfg' -ErrorAction Continue
+    # Ensure the file exists, and issue a warning if it doesn't (but still allow the function to break).
+    $pyvenvConfigPath = Join-Path -Resolve -Path $ConfigDir -ChildPath 'pyvenv.cfg' -ErrorAction break
 
     # An empty map will be returned if no config file is found.
     $pyvenvConfig = @{ }

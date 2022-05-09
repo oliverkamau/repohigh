@@ -101,6 +101,7 @@ INSTALLED_APPS = [
     'timetabling.daysetups.apps.DaysetupsConfig',
     'timetabling.lessonallocation.apps.LessonallocationConfig',
     'timetabling.lessonsetups.apps.LessonsetupsConfig',
+    'timetabling.doublestracker.apps.DoublestrackerConfig',
     'financemanager.pettycashsetups.apps.PettycashsetupsConfig',
     'setups.accounts.accountgroups.apps.AccountgroupsConfig',
     'setups.accounts.accountmaster.apps.AccountmasterConfig',
