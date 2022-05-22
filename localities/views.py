@@ -7,8 +7,14 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.cache import cache_control
 
+from feemanager.managebalances.invoicedetails.models import BalanceTrackerDetails
+from feemanager.managebalances.singleinvoicing.models import BalanceTracker
+from feemanager.recievefees.models import FeePayment
 from localities.forms import StudentForm, CountriesForm, CountiesForm
 from localities.serializers import Select2Serializer
+from setups.academics.classes.models import SchoolClasses
+from setups.accounts.paymentmodes.models import PaymentModes
+from studentmanager.student.models import Students
 from .models import StudentDef, Select2Data, Countries, Counties
 
 
@@ -18,6 +24,423 @@ from .models import StudentDef, Select2Data, Countries, Counties
 @login_required
 def home(request):
     return render(request,'home/home.html')
+
+def genderdata(request):
+    male = Students.objects.filter(student_gender='M').count()
+    female = Students.objects.filter(student_gender='F').count()
+    gender = []
+    gender.append(male)
+    gender.append(female)
+    return JsonResponse(gender,safe=False)
+
+def classdata(request):
+
+    classes = SchoolClasses.objects.filter(active=True)
+    data = []
+    forms = []
+    labels = []
+    students = []
+    colors = []
+    background = []
+    if classes:
+        for cls in classes:
+            if int(cls.form) not in forms:
+                forms.append(int(cls.form))
+                labels.append('Form '+cls.form)
+
+    if forms:
+        for form in forms:
+            count = Students.objects.filter(student_class__form=form).count()
+            students.append(count)
+
+    x = len(forms)
+
+    if x == 1:
+        colors.append('#50e991')
+        background.append('#34495E')
+    if x == 2:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+
+    if x == 3:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+
+    if x == 4:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+
+    if x == 5:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+
+
+    if x == 6:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        colors.append('#49A9EA')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+
+    if x == 7:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        colors.append('#49A9EA')
+        colors.append('#88B04B')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+        background.append('#F7CAC9')
+
+    if x == 8:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        colors.append('#49A9EA')
+        colors.append('#88B04B')
+        colors.append('#FF6F61')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+        background.append('#F7CAC9')
+        background.append('#F7CAC9')
+
+
+
+
+    data.append(labels)
+    data.append(students)
+    data.append(colors)
+    data.append(background)
+
+    return JsonResponse(data,safe=False)
+
+
+def paymentmodes(request):
+    data = []
+    modes = []
+    labels = []
+    fees = []
+    colors = []
+    background = []
+    payments = PaymentModes.objects.all()
+    if payments:
+       for mode in payments:
+           modes.append(mode.payment_code)
+           labels.append(mode.payment_name)
+
+
+    if modes:
+        for mode in modes:
+            balance = 0
+            feepays = FeePayment.objects.filter(payment_mode=mode)
+            if feepays:
+                for pay in feepays:
+                    balance = balance + pay.payment_amount
+
+
+            fees.append(balance)
+
+
+
+
+    x = len(modes)
+
+    if x == 1:
+        colors.append('#9B59B6')
+
+        # colors.append('#50e991')
+        background.append('#34495E')
+
+
+    if x == 2:
+        colors.append('#9B59B6')
+        colors.append('#88B04B')
+        # colors.append('#50e991')
+        # colors.append('#b3d4ff')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+
+    if x == 3:
+        colors.append('#9B59B6')
+        colors.append('#88B04B')
+        # colors.append('#50e991')
+        colors.append('#b3d4ff')
+        # colors.append('#3498DB')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+
+    if x == 4:
+        colors.append('#9B59B6')
+        colors.append('#88B04B')
+        # colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        # colors.append('#9B59B6')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+
+    if x == 5:
+        colors.append('#9B59B6')
+        colors.append('#88B04B')
+        # colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+
+
+    if x == 6:
+        colors.append('#9B59B6')
+        colors.append('#88B04B')
+        # colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        # colors.append('#49A9EA')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+
+    if x == 7:
+        colors.append('#9B59B6')
+        colors.append('#88B04B')
+        # colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        colors.append('#49A9EA')
+        # colors.append('#88B04B')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+        background.append('#F7CAC9')
+
+    if x == 8:
+        colors.append('#9B59B6')
+        colors.append('#88B04B')
+        # colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        colors.append('#49A9EA')
+        # colors.append('#88B04B')
+        colors.append('#FF6F61')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+        background.append('#F7CAC9')
+        background.append('#F7CAC9')
+
+
+
+
+    data.append(labels)
+    data.append(fees)
+    data.append(colors)
+    data.append(background)
+
+    return JsonResponse(data,safe=False)
+
+
+def feebalances(request):
+
+    classes = SchoolClasses.objects.filter(active=True)
+    data = []
+    forms = []
+    labels = []
+    fees = []
+    colors = []
+    background = []
+    if classes:
+        for cls in classes:
+            if int(cls.form) not in forms:
+                forms.append(int(cls.form))
+                labels.append('Form '+cls.form+' Balance')
+
+    if forms:
+        for form in forms:
+            balance = 0
+
+            students = Students.objects.filter(student_class__form=form)
+            if students:
+                for std in students:
+                    print(std.student_code)
+                    tempbal = 0
+                    tracker = BalanceTracker()
+                    try:
+                        tracker = BalanceTracker.objects.get(tracker_student=std)
+                    except tracker.DoesNotExist:
+                         print('Student '+std.student_name+' '+std.adm_no+' has no balance tracker')
+                    else:
+                        tracker = BalanceTracker.objects.get(tracker_student=std)
+                        details = BalanceTrackerDetails.objects.filter(trackerdetails_tracker=tracker)
+                        for detail in details:
+                            tempbal = tempbal + detail.trackerdetails_balance
+                    balance = balance + tempbal
+
+            fees.append(balance)
+
+
+
+
+    x = len(forms)
+
+    if x == 1:
+        colors.append('#50e991')
+        background.append('#34495E')
+    if x == 2:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+
+    if x == 3:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+
+    if x == 4:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+
+    if x == 5:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+
+
+    if x == 6:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        colors.append('#49A9EA')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+
+    if x == 7:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        colors.append('#49A9EA')
+        colors.append('#88B04B')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+        background.append('#F7CAC9')
+
+    if x == 8:
+        colors.append('#50e991')
+        colors.append('#b3d4ff')
+        colors.append('#3498DB')
+        colors.append('#9B59B6')
+        colors.append('#26B99A')
+        colors.append('#49A9EA')
+        colors.append('#88B04B')
+        colors.append('#FF6F61')
+        background.append('#34495E')
+        background.append('#CFD4D8')
+        background.append('#49A9EA')
+        background.append('#B370CF')
+        background.append('#36CAAB')
+        background.append('#b3d4ff')
+        background.append('#F7CAC9')
+        background.append('#F7CAC9')
+
+
+
+
+    data.append(labels)
+    data.append(fees)
+    data.append(colors)
+    data.append(background)
+
+    return JsonResponse(data,safe=False)
 # def add(request):
 #     # firstName = request.POST['firstName']
 #     # lastName = request.POST['lastName']
@@ -231,3 +654,4 @@ def home(request):
 #     return JsonResponse({'results': listsel})
 #
 #
+

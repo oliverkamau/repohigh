@@ -3,12 +3,56 @@
 {% load static %}
 
 {% block content %}
-    <div class="row">
-    <h2 class="text-muted mr-3 ml-5 mb-4">Home Coming Soon</h2>
-    </div>
+
+     <div class="row tile_count mx-3">
+  <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top blue"><i class="fa fa-users blue"></i>&nbsp;Total Students</span>
+    <div class="count blue pending-quote">0</div>
+    <span class="count_bottom"><i class="green"></i></span>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top green"><i class="fa fa-align-center green"></i>&nbsp;In School</span>
+    <div class="count green expired-pols">0</div>
+    <span class="count_bottom"><i class="green"></i></span>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top red"><i class="fa fa-exclamation red"></i>&nbsp;Out of School</span>
+    <div class="count red pend-endorse">0</div>
+    <span class="count_bottom"><i class="green"></i></span>
+  </div>
+  <div class="col-md-3 col-sm-4 col-xs-6 tile_stats_count">
+    <span class="count_top purple"><i class="fa fa-street-view purple"></i>&nbsp;Teachers</span>
+    <div class="count purple pend-ren">0</div>
+    <span class="count_bottom"><i class="red"></i></span>
+  </div>
+</div>
+     <div class="graphBox row container-fluid">
+     <div class="box">
+<canvas id="myChart" width="400" height="400"></canvas>
+
+     </div>
+              <div class="box">
+<canvas id="classes" width="400" height="400"></canvas>
+
+     </div>
 
 
+     </div>
 
-      <script src=" {% static 'custom/main.js' %}"></script>
+     <div class="graphBox row container-fluid">
+     <div class="box">
+<canvas id="feeBalance" width="400" height="400"></canvas>
+
+     </div>
+              <div class="box">
+<canvas id="paymentMode" width="400" height="400"></canvas>
+
+     </div>
+
+
+     </div>
+
+
+      <script src=" {% static 'custom/home.js' %}"></script>
 
 {% endblock %}

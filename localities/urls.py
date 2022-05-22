@@ -3,6 +3,12 @@ from . import views
 
 urlpatterns = [
     path('',views.home,name= 'home'),
+    path('genderdata', views.genderdata, name='genderdata'),
+    path('classdata', views.classdata, name='classdata'),
+    path('feebalances', views.feebalances, name='feebalances'),
+    path('paymentmodes', views.paymentmodes, name='paymentmodes'),
+
+
     # path('country',views.country,name='country'),
     # path('county', views.county, name='county'),
     # path('add', views.add, name='add'),
