@@ -4,6 +4,7 @@ $(document).ready(function () {
          "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
        }
    });
+   getSchoolStats()
    getStudentData()
    getClassData()
    getFeeBalances()
@@ -20,7 +21,20 @@ $(document).ready(function () {
     }).fail(function (xhr, error) {
     });
    }
+ function getSchoolStats(){
+    $.ajax({
+        type: 'GET',
+        url: 'getstats',
 
+    }).done(function (s) {
+    $('#total').text(s.total)
+    $('#teachers').text(s.teachers)
+    $('#inschool').text(s.inschool)
+    $('#outofschool').text(s.outofschool)
+
+    }).fail(function (xhr, error) {
+    });
+   }
     function getClassData(){
     $.ajax({
         type: 'GET',

@@ -329,7 +329,7 @@ def unassignallstudents(request):
 
 
 def getspecificstudents(request,action):
-
+    todo = ''
     if (action == 'S'):
         todo = 'Suspended'
     elif (action == 'T'):

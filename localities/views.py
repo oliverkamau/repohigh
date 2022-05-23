@@ -3,6 +3,7 @@ from urllib.parse import urlsplit
 
 from django.contrib.auth.decorators import login_required
 from django.core import serializers
+from django.db.models import Q
 from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.decorators.cache import cache_control
@@ -14,6 +15,7 @@ from localities.forms import StudentForm, CountriesForm, CountiesForm
 from localities.serializers import Select2Serializer
 from setups.academics.classes.models import SchoolClasses
 from setups.accounts.paymentmodes.models import PaymentModes
+from staff.teachers.models import Teachers
 from studentmanager.student.models import Students
 from .models import StudentDef, Select2Data, Countries, Counties
 
@@ -26,12 +28,25 @@ def home(request):
     return render(request,'home/home.html')
 
 def genderdata(request):
-    male = Students.objects.filter(student_gender='M').count()
-    female = Students.objects.filter(student_gender='F').count()
+    male = Students.objects.filter(Q(student_gender='M'),(Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended'))).count()
+    female = Students.objects.filter(Q(student_gender='F'),(Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended'))).count()
     gender = []
     gender.append(male)
     gender.append(female)
     return JsonResponse(gender,safe=False)
+
+
+def getstats(request):
+    students = Students.objects.filter(Q(student_school_status='Active') | Q(student_school_status='Leave') | Q(student_school_status='Suspended')).count()
+    teachers = Teachers.objects.filter(status='Active').count()
+    inschool = Students.objects.filter(student_school_status='Active').count()
+    outofSchool = Students.objects.filter(Q(student_school_status='Leave') | Q(student_school_status='Suspended')).count()
+    response = {}
+    response['total']=students
+    response['teachers'] = teachers
+    response['inschool'] = inschool
+    response['outofschool'] = outofSchool
+    return JsonResponse(response)
 
 def classdata(request):
 

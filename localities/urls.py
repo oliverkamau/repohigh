@@ -7,7 +7,7 @@ urlpatterns = [
     path('classdata', views.classdata, name='classdata'),
     path('feebalances', views.feebalances, name='feebalances'),
     path('paymentmodes', views.paymentmodes, name='paymentmodes'),
-
+    path('getstats', views.getstats, name='getstats'),
 
     # path('country',views.country,name='country'),
     # path('county', views.county, name='county'),

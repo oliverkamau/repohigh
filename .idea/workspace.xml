@@ -20,53 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="495b8b0c-58d2-4c26-b176-7eb409ec546a" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/static/chartjs/LICENSE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/auto/auto.esm.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/auto/auto.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/auto/auto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/auto/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/dist/chart.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/dist/chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/dist/chart.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/dist/chunks/helpers.segment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/dist/helpers.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/helpers/helpers.esm.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/helpers/helpers.esm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/helpers/helpers.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/helpers/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/adapters.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/animation.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/basic.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/color.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/element.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/geometric.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.canvas.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.collection.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.color.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.core.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.curve.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.dom.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.easing.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.extras.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.interpolation.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.intl.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.math.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.options.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.rtl.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/helpers.segment.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/helpers/index.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/index.esm.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/layout.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/chartjs/types/utils.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/css/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/custom/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/js/chart.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/localities/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/localities/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/localities/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/localities/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/custom/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/custom/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/studentmanager/movements/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/studentmanager/movements/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
