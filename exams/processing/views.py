@@ -24,13 +24,9 @@ from setups.academics.subjects.models import Subjects
 from setups.academics.termdates.models import TermDates
 from setups.academics.years.models import Years
 from staff.teachers.models import Teachers
-from staff.teachersubjects.models import TeacherSubjects
-from studentmanager.parents.models import ExcelFile
 from studentmanager.student.models import Students
-from studentmanager.studentsubjects.models import StudentSubjects
 from useradmin.users.models import User
-from django_currentuser.middleware import (
-    get_current_user, get_current_authenticated_user)
+
 
 @cache_control(no_cache=True, must_revalidate=True, no_store=True)
 @login_required

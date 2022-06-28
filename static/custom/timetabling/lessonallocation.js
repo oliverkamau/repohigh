@@ -397,11 +397,11 @@ function saveTimetable(){
             });
 //     if($('#ttDay').val()==='') {
 //             swal({
-//                 title: 'Alert!',
-//                 type: 'info',
-//                 text: 'Provide a Day for timetable setups!',
-//                 confirmButtonText: 'OK'
-//             })
+// //                 title: 'Alert!',
+// //                 type: 'info',
+// //                 text: 'Provide a Day for timetable setups!',
+// //                 confirmButtonText: 'OK'
+// //             })
 //         }
 //         else if($('#ttClass').val()===''){
 //          swal({
@@ -470,7 +470,10 @@ function saveTimetable(){
              getTimetable()
             $('#lessonModal').modal('hide')
 		}).fail(function (xhr, error) {
-                bootbox.alert(xhr.responseText)
+		    swal.close()
+                // bootbox.alert(xhr.responseText)
+             var err = JSON.parse(xhr.responseText);
+              bootbox.alert(err.error);
 		})
  //  }
 

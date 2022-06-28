@@ -157,10 +157,10 @@ WSGI_APPLICATION = 'schoolsys.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'sql_server.pyodbc',
-        'NAME': 'highschool',
+        'NAME': 'high_db',
         'USER': 'sa',
         'PASSWORD': 'kamau',
-        'HOST': 'DESKTOP-AT48DO2\SQLEXPRESS',
+        'HOST': '127.0.0.1',
         'PORT': '1433',
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',

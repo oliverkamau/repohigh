@@ -539,6 +539,7 @@ def automatictimetable(request, alloc=None):
                                                                               delesson.delete()
 
                                                                               print(subj.subject_name + ' has no teacher assigned in ' + classstrk.class_name + ' and it is stroked with ' + subject.subject_name)
+                                                                              #find another slots
                                                                               break
 
                                                                   else:
@@ -940,5 +941,333 @@ def generateExcel(request):
                  )
           res['Content-Disposition'] = f'attachment; filename={filename}'
           return res
+
+
+def automatictimetablev1(request):
+    days = DaySetups.objects.all()
+    term = TermDates.objects.get(current_term=True)
+    DoublesTracker.objects.filter(doubletracker_term=term).delete()
+    LessonAllocation.objects.filter(timetable_term=term).delete()
+    if days:
+        for day in days:
+            classes = SchoolClasses.objects.filter(active=True)
+            if classes:
+                for cls in classes:
+                    allocs = ClassSubjects.objects.raw("select * from classsubjects_classsubjects" +
+                                                       " inner join subjects_subjects ss on classsubjects_classsubjects.classsubject_subject_id = ss.subject_code" +
+                                                       " inner join classes_schoolclasses cs on classsubjects_classsubjects.classsubject_class_id = cs.class_code" +
+                                                       " where classsubject_class_id=%s"
+                                                       " order by class_name,cast(subject_order as numeric)",
+                                                       [cls.class_code])
+
+                    if allocs:
+                        for alloc in allocs:
+                            print(alloc.subject_name)
+                            lessons = LessonSetups.objects.raw("select * from lessonsetups_lessonsetups"
+                                                               " where lesson_type='L'" +
+                                                               " order by lesson_start")
+
+                            if lessons:
+                                for lesson in lessons:
+                                    allocated = LessonAllocation.objects.filter(timetable_lesson=lesson,
+                                                                                timetable_class=cls,
+                                                                                timetable_term=term,
+                                                                                timetable_day=day).count()
+                                    if allocated == 0:
+                                        num = alloc.lessons_perweek
+                                        subject = Subjects.objects.get(pk=alloc.classsubject_subject.pk)
+                                        count = LessonAllocation.objects.filter(timetable_subject=subject,
+                                                                                timetable_class=cls,
+                                                                                timetable_term=term).count()
+                                        if count <= num:
+                                            cnt = LessonAllocation.objects.filter(timetable_day=day,
+                                                                                  timetable_subject=subject,
+                                                                                  timetable_class=cls,
+                                                                                  timetable_term=term).count()
+                                            dbs = alloc.double_lessons
+                                            doublecount = 0
+                                            doublestracker = DoublesTracker()
+                                            try:
+                                                doublestracker = DoublesTracker.objects.get(
+                                                    doubletracker_subject=subject, doubletracker_class=cls,
+                                                    doubletracker_term=term)
+                                            except doublestracker.DoesNotExist:
+                                                doublecount = 0
+
+                                            else:
+                                                doublecount = doublestracker.doubletracker_number
+
+                                            if cnt == 0:
+                                                tcount = 0
+                                                teachersubject = TeacherSubjects()
+                                                try:
+                                                    teachersubject = TeacherSubjects.objects.get(
+                                                        teacher_subjectclass=cls, teacher_subjectsubject=subject)
+                                                    teacher = Teachers.objects.get(
+                                                        pk=teachersubject.teacher_subjectteacher.pk)
+                                                except teachersubject.DoesNotExist:
+                                                    print('Teacher Does not Exist!')
+                                                    break
+                                                else:
+                                                    tcount = LessonAllocation.objects.filter(timetable_day=day,
+                                                                                             timetable_lesson=lesson,
+                                                                                             timetable_teacher=teacher,
+                                                                                             timetable_term=term).count()
+
+                                                    if tcount == 0:
+
+                                                        if alloc.stroked_subject:
+                                                            stroked = alloc.stroked_with
+                                                            strokedsubject = ClassSubjects.objects.filter(
+                                                                stroked_with=stroked, classsubject_class=cls)
+                                                            if strokedsubject:
+                                                                for stro in strokedsubject:
+                                                                    subj = Subjects.objects.get(
+                                                                        pk=stro.classsubject_subject.pk)
+                                                                    classstrk = SchoolClasses.objects.get(
+                                                                        pk=stro.classsubject_class.pk)
+                                                                    teachersubject = TeacherSubjects()
+                                                                    try:
+                                                                        teachersubject = TeacherSubjects.objects.get(
+                                                                            teacher_subjectclass=classstrk,
+                                                                            teacher_subjectsubject=subj)
+                                                                        subjs = Subjects.objects.get(
+                                                                            pk=teachersubject.teacher_subjectsubject.pk)
+                                                                    except teachersubject.DoesNotExist:
+                                                                        delestroked = LessonAllocation.objects.filter(
+                                                                            timetable_day=day, timetable_lesson=lesson,
+                                                                            timetable_class=classstrk)
+                                                                        if delestroked:
+                                                                            for dele in delestroked:
+                                                                                delesson = LessonAllocation.objects.get(
+                                                                                    pk=dele.timetable_code)
+                                                                                delesson.delete()
+
+                                                                                print(
+                                                                                    subj.subject_name + ' has no teacher assigned in ' + classstrk.class_name + ' and it is stroked with ' + subject.subject_name)
+                                                                                # find another slots
+                                                                                break
+
+                                                                    else:
+                                                                        strteacher = Teachers.objects.get(
+                                                                            pk=teachersubject.teacher_subjectteacher.pk)
+                                                                        strcount = LessonAllocation.objects.filter(
+                                                                            timetable_day=day, timetable_lesson=lesson,
+                                                                            timetable_subject=subjs,
+                                                                            timetable_teacher=strteacher).count()
+                                                                        if strcount == 0:
+                                                                            checkdup = LessonAllocation.objects.filter(
+                                                                                timetable_day=day,
+                                                                                timetable_lesson=lesson,
+                                                                                timetable_subject=subj).count()
+                                                                            if checkdup == 0:
+                                                                                strokedTable = LessonAllocation()
+                                                                                strokedTable.timetable_lesson = lesson
+                                                                                strokedTable.timetable_day = day
+                                                                                strokedTable.timetable_subject = subj
+                                                                                strokedTable.timetable_teacher = strteacher
+                                                                                strokedTable.timetable_term = term
+                                                                                strokedTable.timetable_class = classstrk
+                                                                                strokedTable.save()
+                                                                            else:
+
+                                                                                print(
+                                                                                    subj.subject_name + ' has the teacher assigned in another class at this lesson and its stroked with ' + subject.subject_name)
+                                                                                break
+
+
+                                                        else:
+                                                            tt = LessonAllocation()
+                                                            tt.timetable_day = day
+                                                            tt.timetable_lesson = lesson
+                                                            tt.timetable_class = cls
+                                                            tt.timetable_subject = subject
+                                                            tt.timetable_term = term
+                                                            tt.timetable_teacher = teacher
+                                                            tt.save()
+
+
+
+
+                                            elif count == 1 and dbs > 0:
+                                                if doublecount < dbs:
+                                                    tcount = LessonAllocation.objects.filter(timetable_day=day,
+                                                                                             timetable_lesson=lesson,
+                                                                                             timetable_teacher=teacher).count()
+                                                    if tcount == 0:
+
+                                                        allocated2 = LessonAllocation.objects.get(timetable_day=day,
+                                                                                                  timetable_subject=subject,
+                                                                                                  timetable_class=cls)
+
+                                                        less1 = LessonSetups.objects.get(
+                                                            pk=allocated2.timetable_lesson.pk)
+                                                        if less1.lesson_end == lesson.lesson_start:
+                                                            if alloc.stroked_subject:
+                                                                stroked = alloc.stroked_with
+                                                                strokedsubject = ClassSubjects.objects.filter(
+                                                                    stroked_with=stroked, classsubject_class=cls)
+                                                                if strokedsubject:
+                                                                    for stro in strokedsubject:
+                                                                        subj = Subjects.objects.get(
+                                                                            pk=stro.classsubject_subject.pk)
+                                                                        classstrk = SchoolClasses.objects.get(
+                                                                            pk=stro.classsubject_class.pk)
+                                                                        teachersubject = TeacherSubjects()
+                                                                        try:
+                                                                            teachersubject = TeacherSubjects.objects.get(
+                                                                                teacher_subjectclass=classstrk,
+                                                                                teacher_subjectsubject=subj)
+                                                                            subjs = Subjects.objects.get(
+                                                                                pk=teachersubject.teacher_subjectsubject.pk)
+
+                                                                        except teachersubject.DoesNotExist:
+                                                                            delestroked = LessonAllocation.objects.filter(
+                                                                                timetable_day=day,
+                                                                                timetable_lesson=lesson,
+                                                                                timetable_class=classstrk)
+                                                                            if delestroked:
+                                                                                for dele in delestroked:
+                                                                                    delesson = LessonAllocation.objects.get(
+                                                                                        pk=dele.timetable_code)
+                                                                                    delesson.delete()
+
+                                                                                    print(
+                                                                                        subj.subject_name + ' has no teacher assigned in ' + classstrk.class_name + ' and it is stroked with' + subject.subject_name)
+                                                                                    break
+
+                                                                        else:
+                                                                            strteacher = Teachers.objects.get(
+                                                                                pk=teachersubject.teacher_subjectteacher.pk)
+                                                                            strcount = LessonAllocation.objects.filter(
+                                                                                timetable_day=day,
+                                                                                timetable_lesson=lesson,
+                                                                                timetable_subject=subjs,
+                                                                                timetable_teacher=strteacher).count()
+                                                                            if strcount == 0:
+
+                                                                                checkdup = LessonAllocation.objects.filter(
+                                                                                    timetable_day=day,
+                                                                                    timetable_lesson=lesson,
+                                                                                    timetable_subject=subj).count()
+                                                                                if checkdup == 0:
+                                                                                    strokedTable = LessonAllocation()
+                                                                                    strokedTable.timetable_lesson = lesson
+                                                                                    strokedTable.timetable_day = day
+                                                                                    strokedTable.timetable_subject = subj
+                                                                                    strokedTable.timetable_teacher = strteacher
+                                                                                    strokedTable.timetable_term = term
+                                                                                    strokedTable.timetable_class = classstrk
+                                                                                    strokedTable.save()
+                                                                                    doublestracker = DoublesTracker()
+                                                                                    try:
+                                                                                        doublestracker = DoublesTracker.objects.get(
+                                                                                            doubletracker_subject=subject,
+                                                                                            doubletracker_class=cls,
+                                                                                            doubletracker_term=term)
+                                                                                    except doublestracker.DoesNotExist:
+                                                                                        dbtr = DoublesTracker()
+                                                                                        dbtr.doubletracker_number = 0
+                                                                                        dbtr.doubletracker_class = cls
+                                                                                        dbtr.doubletracker_term = term
+                                                                                        dbtr.doubletracker_subject = subject
+                                                                                        dbtr.save()
+
+                                                                                    else:
+                                                                                        doublestracker.doubletracker_number = doublestracker.doubletracker_number + 1
+                                                                                        doublestracker.save()
+
+                                                                            else:
+
+                                                                                print(
+                                                                                    subj.subject_name + ' has the teacher assigned in another class at this lesson and its stroked with ' + subject.subject_name)
+                                                                                break
+                                                                else:
+                                                                    tt = LessonAllocation()
+                                                                    tt.timetable_day = day
+                                                                    tt.timetable_lesson = lesson
+                                                                    tt.timetable_class = cls
+                                                                    tt.timetable_subject = subject
+                                                                    tt.timetable_term = term
+                                                                    tt.timetable_teacher = teacher
+                                                                    tt.save()
+                                                                    doublestracker = DoublesTracker()
+                                                                    try:
+                                                                        doublestracker = DoublesTracker.objects.get(
+                                                                            doubletracker_subject=subject,
+                                                                            doubletracker_class=cls,
+                                                                            doubletracker_term=term)
+                                                                    except doublestracker.DoesNotExist:
+                                                                        dbtr = DoublesTracker()
+                                                                        dbtr.doubletracker_number = 0
+                                                                        dbtr.doubletracker_class = cls
+                                                                        dbtr.doubletracker_term = term
+                                                                        dbtr.doubletracker_subject = subject
+                                                                        dbtr.save()
+
+                                                                    else:
+                                                                        doublestracker.doubletracker_number = doublestracker.doubletracker_number + 1
+                                                                        doublestracker.save()
+
+                                                            else:
+                                                                tt = LessonAllocation()
+                                                                tt.timetable_day = day
+                                                                tt.timetable_lesson = lesson
+                                                                tt.timetable_class = cls
+                                                                tt.timetable_subject = subject
+                                                                tt.timetable_term = term
+                                                                tt.timetable_teacher = teacher
+                                                                tt.save()
+                                                                doublestracker = DoublesTracker()
+                                                                try:
+                                                                    doublestracker = DoublesTracker.objects.get(
+                                                                        doubletracker_subject=subject,
+                                                                        doubletracker_class=cls,
+                                                                        doubletracker_term=term)
+                                                                except doublestracker.DoesNotExist:
+                                                                    dbtr = DoublesTracker()
+                                                                    dbtr.doubletracker_number = 0
+                                                                    dbtr.doubletracker_class = cls
+                                                                    dbtr.doubletracker_term = term
+                                                                    dbtr.doubletracker_subject = subject
+                                                                    dbtr.save()
+
+                                                                else:
+                                                                    doublestracker.doubletracker_number = doublestracker.doubletracker_number + 1
+                                                                    doublestracker.save()
+                                                        else:
+                                                            print(
+                                                                'Double lessons should not have a break or a lesson between them')
+                                                            break
+                                                    else:
+                                                        print(
+                                                            teacher.teacher_name + ' is already assigned to another lesson in another class')
+                                                        break
+
+                                            elif count > 1:
+                                                print(
+                                                    subject.subject_name + ' lesson already has a double today so its not possible to have it again')
+                                                break
+                                        else:
+                                            print(
+                                                'Subject ' + subject.subject_name + ' has had maximum number of lessons per week')
+                                            break
+                                    else:
+                                        print('Lesson ' + lesson.lesson_name + ' already has a subject assigned to it!')
+                            else:
+                                print('Lessons need to be setup for timetable processing!')
+                    else:
+                        print('Class Subjects need to be setup for timetable processing!')
+            else:
+                print('Classes require to be setup for timetable processing')
+    else:
+        print('Days require to be setup for timetable processing')
+
+    return JsonResponse({'success': 'Generated Successfully'})
+
+
+# def solveteacherallocated(cls,lesson,teacher):
+    #query unallocated teachers and first one allocate there
+
 
 

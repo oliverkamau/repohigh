@@ -8,6 +8,13 @@ urlpatterns = [
     path('feebalances', views.feebalances, name='feebalances'),
     path('paymentmodes', views.paymentmodes, name='paymentmodes'),
     path('getstats', views.getstats, name='getstats'),
+    path('searchexamyear', views.searchexamyear, name='searchexamyear'),
+    path('searchclasses', views.searchclasses, name='searchclasses'),
+    path('searchexamterm', views.searchexamterm, name='searchexamterm'),
+    path('searchexamregister/<int:term>/<int:year>', views.searchexamregister, name='searchexamregister'),
+    path('searchsubjects/<int:classcode>', views.searchsubjects, name='searchsubjects'),
+    path('examchartdata', views.examchartdata, name='examchartdata'),
+
 
     # path('country',views.country,name='country'),
     # path('county', views.county, name='county'),

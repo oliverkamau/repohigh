@@ -4,11 +4,22 @@ $(document).ready(function () {
          "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()
        }
    });
-   getSchoolStats()
-   getStudentData()
-   getClassData()
-   getFeeBalances()
-   getFeepayments()
+   getSchoolStats();
+   getStudentData();
+   getClassData();
+   getFeeBalances();
+   getFeepayments();
+   searchTerm();
+   searchYear();
+    searchClass();
+    termChange();
+    yearChange();
+    classChange();
+    examChange();
+    subjectChange();
+
+
+
 
    })
    function getStudentData(){
@@ -150,7 +161,6 @@ const myChart = new Chart(ctx, {
 });
 
  }
-
  function createpaymentChart(forms,students,colors, backgrounds){
 
 const ctx = document.getElementById('paymentMode').getContext('2d');
@@ -173,3 +183,277 @@ const myChart = new Chart(ctx, {
 });
 
  }
+
+ function searchSubjects(id) {
+
+        $('#subject_frm').select2({
+            placeholder: 'Subjects',
+            allowClear: true,
+            width: '67%',
+            ajax: {
+                delay: 250,
+                url: 'searchsubjects/'+id,
+                data: function (params) {
+                    console.log("AA", params);
+                    return {
+                        query: params.term,
+                        gotoPage: params.page
+                    }
+                },
+
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log('data: ', data);
+                    return {
+                        results: data.results
+                    };
+                }
+
+            }
+        })
+
+}
+function subjectChange() {
+
+    $('#subject_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#subjectCode').val(data.id);
+        getExamChart()
+
+    });
+    $("#subject_frm").on("select2:unselecting", function(e) {
+    $('#subjectCode').val('')
+ });
+
+}
+
+function searchTerm() {
+
+        $('#term_frm').select2({
+            placeholder: 'Term',
+            allowClear: true,
+            width: '67%',
+
+            ajax: {
+                delay: 250,
+                url: 'searchexamterm',
+                data: function (params) {
+                    console.log("AA", params);
+                    return {
+                        query: params.term,
+                        gotoPage: params.page
+                    }
+                },
+
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log('data: ', data);
+                    return {
+                        results: data.results
+                    };
+                }
+
+            }
+        })
+
+}
+
+function termChange() {
+    $('#term_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#termCode').val(data.id);
+        if($('#yearCode').val()!==''){
+            $('#reg_frm').empty()
+            $('#regCode').val('')
+            console.log('year code '+$('#yearCode').val())
+            console.log('term code '+data.id)
+            searchExam(data.id,$('#yearCode').val());
+        }
+    });
+    $("#term_frm").on("select2:unselecting", function(e) {
+    $('#termCode').val('')
+    $('#termName').val('')
+
+ });
+}
+
+function searchYear() {
+        $('#year_frm').select2({
+            placeholder: 'Year',
+            allowClear: true,
+            width: '66%',
+            ajax: {
+                delay: 250,
+                url: 'searchexamyear',
+                data: function (params) {
+                    console.log("AA", params);
+                    return {
+                        query: params.term,
+                        gotoPage: params.page
+                    }
+                },
+
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log('data: ', data);
+                    return {
+                        results: data.results
+                    };
+                }
+
+            }
+        })
+
+}
+
+function yearChange() {
+    $('#year_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#yearCode').val(data.id)
+
+    });
+    $("#year_frm").on("select2:unselecting", function(e) {
+    $('#yearCode').val('')
+    $('#yearName').val('')
+
+ });
+}
+
+function searchClass() {
+        $('#class_frm').select2({
+            placeholder: 'Select Class',
+            allowClear: true,
+             width: '67%',
+            ajax: {
+                delay: 250,
+                url: 'searchclasses',
+                data: function (params) {
+                    console.log("AA", params);
+                    return {
+                        query: params.term,
+                        gotoPage: params.page
+                    }
+                },
+
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log('data: ', data);
+                    return {
+                        results: data.results
+                    };
+                }
+
+            }
+        })
+
+}
+function classChange() {
+    $('#class_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#classCode').val(data.id)
+        searchSubjects($('#classCode').val())
+    });
+    $("#class_frm").on("select2:unselecting", function(e) {
+    $('#classCode').val('')
+ });
+}
+function searchExam(term,year) {
+       $('#reg_frm').select2({
+            placeholder: 'Exam',
+            allowClear: true,
+            width: '67%',
+
+            ajax: {
+                delay: 250,
+                url: 'searchexamregister/'+term+'/'+year,
+                data: function (params) {
+                    console.log("AA", params);
+                    return {
+                        query: params.term,
+                        gotoPage: params.page
+                    }
+                },
+
+                processResults: function (data, params) {
+                    params.page = params.page || 1;
+                    console.log('data: ', data);
+                    return {
+                        results: data.results
+                    };
+                }
+
+            }
+        })
+}
+function examChange() {
+    $('#reg_frm').on('select2:select', function (e) {
+        var data = e.params.data;
+        $('#regCode').val(data.id)
+    });
+    $("#reg_frm").on("select2:unselecting", function(e) {
+    $('#regCode').val('')
+
+ });
+}
+function getExamChart() {
+    var examCode = $('#regCode').val();
+    var classCode = $('#classCode').val();
+    var subjectCode = $('#subjectCode').val();
+    if (examCode === '' || classCode === '' || subjectCode === '') {
+ swal({
+                title: 'Alert!',
+                type: 'info',
+                text: 'Exam,Class and Subject are Mandatory to view perfomance!',
+                confirmButtonText: 'OK'
+            })
+    } else {
+        $.ajax({
+            type: 'GET',
+            url: 'examchartdata',
+            data:{
+                examCode: examCode,
+                classCode: classCode,
+                subjectCode: subjectCode
+            }
+
+        }).done(function (s) {
+            if(s.length!==0) {
+                createexamChart(s[0], s[1], s[2], s[3])
+            }else{
+                createexamChart([], [], [], [])
+                bootbox.alert("No examination data exists for this exam on this class or subject!")
+            }
+        }).fail(function (xhr, error) {
+
+        });
+
+    }
+}
+
+function createexamChart(grades,students,colors, backgrounds) {
+$('#canvasContainer').empty();
+var canvas = document.createElement('canvas');
+canvas.width=400;
+canvas.height=400;
+canvas.id='examChart';
+$('#canvasContainer').append(canvas);
+
+const ctx = document.getElementById('examChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: grades,
+        datasets: [{
+            label: 'Fee Balance Per Class',
+            data: students,
+            backgroundColor: colors,
+            borderColor: backgrounds,
+            borderWidth: 1
+        }]
+    },
+    options: {
+       responsive: true,
+    }
+});
+
+}

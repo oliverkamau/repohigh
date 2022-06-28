@@ -26,12 +26,32 @@
     <span class="count_bottom"><i class="red"></i></span>
   </div>
 </div>
-     <div class="graphBox row container-fluid">
-     <div class="box">
+
+
+
+
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+        	<ul class="nav nav-tabs">
+        		<li class="nav-item">
+        			<a href="#main" class="nav-link active" role="tab" data-toggle="tab">Main</a>
+        		</li>
+
+        		<li class="nav-item">
+        			<a href="#exams" class="nav-link" role="tab" data-toggle="tab">Exams</a>
+        		</li>
+        	</ul>
+
+        	<div class="tab-content">
+        		<div role="tabpanel" class="tab-pane fade show active" id="main">
+                 <div class="col-md-12 col-sm-12 mx-0 mt-4">
+                 <div class="graphBox row tile_count mx-3">
+     <div class="box col-md-5 col-sm-12 mr-3 mt-1">
 <canvas id="myChart" width="400" height="400"></canvas>
 
      </div>
-              <div class="box">
+              <div class="box col-md-6 col-sm-12 mr-1 mt-1">
 <canvas id="classes" width="400" height="400"></canvas>
 
      </div>
@@ -39,18 +59,79 @@
 
      </div>
 
-     <div class="graphBox row container-fluid">
-     <div class="box">
+                          <div class="graphBox row tile_count mx-3">
+     <div class="box col-md-5 col-sm-12 mr-3 mt-1">
 <canvas id="feeBalance" width="400" height="400"></canvas>
 
      </div>
-              <div class="box">
+              <div class="box col-md-6 col-sm-12 mr-1 mt-1">
 <canvas id="paymentMode" width="400" height="400"></canvas>
 
      </div>
 
 
      </div>
+
+                     </div>
+                </div>
+            	<div role="tabpanel" class="tab-pane fade" id="exams">
+                 <div class="col-md-12 col-sm-12 mx-0 mt-4">
+                     <div class="row">
+
+           <div class="col-md-4 col-sm-11">
+
+        <div class="form-row mb-4">
+                                    <label class="col-md-3 control-label" for="select">Year</label>
+
+     <input type="hidden" name="exam_process_year" id="yearCode">
+
+ <select id="year_frm" class="form-control col-md-8"></select>
+  </div>
+                      <div class="form-row mb-4">
+        <label class="col-md-3 control-label" for="select">Term</label>
+                              <input type="hidden" name="exam_process_term" id="termCode">
+
+                           <select id="term_frm" class="form-control col-md-8" ></select>
+    </div>
+
+
+                      <div class="form-row mb-4">
+                            <label class="col-md-3 control-label" for="select">Exam Name</label>
+                           <input type="hidden" name="exam_process_exam" id="regCode">
+                           <select id="reg_frm" class="form-control col-md-8" ></select>
+
+                          </div>
+           </div>
+
+ <div class="col-md-4 col-sm-11">
+    <div class="form-row mb-4">
+     <label class="control-label col-md-3" for="frm">Class</label>
+            <input type="hidden" id="classCode" name="exam_process_class">
+            <select id="class_frm" class="form-control col-md-8"></select>
+    </div>
+       <div class="form-row mb-4">
+        <label class="control-label col-md-3" for="select">Subject</label>
+              <input type="hidden" id="subjectCode" name="exam_process_subject">
+
+            <select id="subject_frm" class="form-control col-md-8"></select>
+    </div>
+ </div>
+
+
+
+                     </div>
+                     <div class="graphBox row tile_count mx-3">
+                     <div class="box offset-1 col-md-9 col-sm-12  mt-1" id="canvasContainer">
+{#                      <canvas id="examChart" width="400" height="400"></canvas>#}
+
+                       </div>
+                     </div>
+                </div>
+            </div>
+
+
+
+
 
 
       <script src=" {% static 'custom/home.js' %}"></script>

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="highschool@localhost" uuid="b4dac568-8f1b-4194-824b-6fda837dd6d8">
+    <data-source source="LOCAL" name="highschool" uuid="3338a0c9-1cd6-43e5-b496-f1478bc0ef2f">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://localhost:1433;database=highschool</jdbc-url>
-      <driver-properties>
-        <property name="applicationName" value="DataGrip" />
-      </driver-properties>
+      <jdbc-url>jdbc:sqlserver://localhost:1433;database=high_db</jdbc-url>
     </data-source>
   </component>
 </project>
